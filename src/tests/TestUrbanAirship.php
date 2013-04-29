@@ -1,6 +1,8 @@
 <?php
 
-require_once("../UrbanAirship.php");
+require_once "../UrbanAirship.php";
+require_once "../RESTClient.php";
+require_once "HTTP/Request2.php";
 /**
  * Created by IntelliJ IDEA.
  * User: mhooge
@@ -11,9 +13,16 @@ require_once("../UrbanAirship.php");
 
 class TestUrbanAirship extends PHPUnit_Framework_TestCase
 {
-    public function testFailure()
+    public function testBasicAuthRequest()
     {
-        $url = UrbanAirship::getBaseUrl();
-        $this->assertTrue(strcmp($url, "http://go.urbanairship.com/api") == 0);
+        $url = "url";
+        $user = "user";
+        $pass = "pass";
+        $request = RESTClient::createBasicAuthRequest(HTTP_Request2::METHOD_GET,
+            $url,
+            $user,
+            $pass);
+
+        $this->assertNotNull($request);
     }
 }
