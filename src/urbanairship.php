@@ -1,5 +1,15 @@
 <?php
 
+class UrbanAirship
+{
 
-echo "Hello from PHP";
+    private static $_baseUrl = "http://go.urbanairship.com/api";
+
+    public static function getBaseUrl()
+    {
+        return  self::$_baseUrl;
+    }
+}
+
+
 ?>
