@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="WEB_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="false">
+    <content url="file://$MODULE_DIR$" />
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library">
+      <library name="PHARS">
+        <CLASSES>
+          <root url="phar://$MODULE_DIR$/thirdparty/phpunit.phar" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="phar://$MODULE_DIR$/thirdparty/phpunit.phar" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="PHP">
+        <CLASSES>
+          <root url="file:///usr/local/Cellar/php54/5.4.14/lib/php/PEAR" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file:///usr/local/Cellar/php54/5.4.14/lib/php/PEAR" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+  </component>
+</module>
+
