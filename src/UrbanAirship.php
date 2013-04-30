@@ -1,4 +1,3 @@
-
 <?php
 
 //    Copyright 2012 Urban Airship
@@ -14,6 +13,12 @@
 //    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 //    See the License for the specific language governing permissions and
 //    limitations under the License.
+
+/**
+ * Urban Airship PHP API Library
+ */
+namespace UrbanAirship;
+
 
 class UrbanAirship
 {

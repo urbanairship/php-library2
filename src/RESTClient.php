@@ -14,16 +14,48 @@
 //    See the License for the specific language governing permissions and
 //    limitations under the License.
 
-require_once "HTTP/Request2.php";
+/**
+ * Urban Airship PHP API Library
+ */
+namespace UrbanAirship;
+use \HTTP_Request2;
 
-class RESTClient {
+//require_once "HTTP/Request2.php";
 
-    public static function createBasicAuthRequest($method, $url, $user, $password){
+/**
+ * Class RESTClient is a lightweight wrapper around HTTP_Request2 for use with
+ * the Urban Airship API
+
+ *
+ * @package UrbanAirship
+ * @author Matt Hooge <mhooge@urbanairhsip.com>
+ */
+ class RESTClient {
+
+     /**
+      * @var string $BASE_URL The base url for the Urban Airship API
+      */
+     private static $BASE_URL = "https://go.urbanairship.com/api";
+
+    /**
+     * Create a authenticated request with the given parameters for use with the
+     * Urban Airship API.
+     *
+     * @param string $method REST method for the request. Use the methods defined in
+     * HTTP_Request2. Example: HTTP_Request2::METHOD_GET
+     * @param string $url The URL for the request.
+     * @param string $key The app key for the request.
+     * @param string $secret The secret used to authenticate the request. Depending on
+     * access level needed, the could be the app secret or app master secret.
+     * @return HTTP_Request2
+     */
+    public static function createBasicAuthRequest($method, $url, $key, $secret){
         $request = new HTTP_Request2($url);
         $request->setMethod($method);
         // Defaults to basic auth, which is what we're looking for
-        $request->setAuth($user, $password);
+        $request->setAuth($key, $secret);
         return $request;
     }
+
 
 }
