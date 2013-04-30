@@ -23,6 +23,14 @@ class TestUrbanAirship extends PHPUnit_Framework_TestCase
             $user,
             $pass);
 
-        $this->assertNotNull($request);
+        $this->assertTrue(strcmp($request->getUrl(), $url) == 0);
+        $auth_headers = $request->getAuth();
+        print_r($auth_headers);
+        $this->assertTrue(strcmp($auth_headers['user'], $user) == 0);
+        $this->assertTrue(strcmp($auth_headers['password'], $pass) == 0);
+        $this->assertTrue(strcmp($auth_headers['scheme'],
+            HTTP_Request2::AUTH_BASIC ) == 0);
+
+
     }
 }

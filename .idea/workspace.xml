@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9c1f9946-8e00-4df6-a18f-285108634741" name="Default" comment="" />
+    <list default="true" id="9c1f9946-8e00-4df6-a18f-285108634741" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RESTClient.php" afterPath="$PROJECT_DIR$/src/RESTClient.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tests/TestUrbanAirship.php" afterPath="$PROJECT_DIR$/src/tests/TestUrbanAirship.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="uaphp.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/urbanairship.php" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1366998354305" ignored="false" />
     <file path="/test_urbanairship.php" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1367271143378" ignored="false" />
-    <file path="$PROJECT_DIR$/.idea/workspace.xml" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1367279178148" ignored="false" />
     <file path="/a.dummy" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1367269522829" ignored="false" />
     <file path="/UrbanAirship.php" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1367272871661" ignored="false" />
-    <file path="/RESTClient.php" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1367278842109" ignored="false" />
-    <file path="/TestUrbanAirship.php" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1367279133975" ignored="false" />
+    <file path="/RESTClient.php" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1367337438794" ignored="false" />
+    <file path="/TestUrbanAirship.php" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1367338343968" ignored="false" />
+    <file path="/Dummy.txt" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1367336064886" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,8 +81,10 @@
           <file leaf-file-name="UrbanAirship.php" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/UrbanAirship.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="16" column="2" selection-start="216" selection-end="216" vertical-scroll-proportion="-10.461538">
-                  <folding />
+                <state line="30" column="0" selection-start="831" selection-end="831" vertical-scroll-proportion="0.0">
+                  <folding>
+                    <element signature="e#8#42#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -85,7 +92,7 @@
           <file leaf-file-name="TestUrbanAirship.php" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/tests/TestUrbanAirship.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="28" column="0" selection-start="630" selection-end="630" vertical-scroll-proportion="0.4117647">
+                <state line="31" column="43" selection-start="970" selection-end="970" vertical-scroll-proportion="0.69525063">
                   <folding />
                 </state>
               </provider>
@@ -98,18 +105,29 @@
           <file leaf-file-name="UrbanAirship.php" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/UrbanAirship.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="13" column="1" selection-start="211" selection-end="211" vertical-scroll-proportion="-8.5">
+                <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="RESTClient.php" pinned="false" current="false" current-in-tab="true">
+          <file leaf-file-name="Request2.php" pinned="false" current="false" current-in-tab="true">
+            <entry file="file:///usr/local/Cellar/php54/5.4.14/lib/php/HTTP/Request2.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="78" column="37" selection-start="2946" selection-end="2946" vertical-scroll-proportion="0.49861112">
+                  <folding>
+                    <element signature="e#6#1941#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="RESTClient.php" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/RESTClient.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="1" column="3" selection-start="9" selection-end="9" vertical-scroll-proportion="0.014705882">
+                <state line="28" column="1" selection-start="990" selection-end="990" vertical-scroll-proportion="-18.307692">
                   <folding>
-                    <element signature="e#6#187#0" expanded="true" />
+                    <element signature="e#7#41#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -124,14 +142,23 @@
       <setting name="OPEN_NEW_TAB" value="false" />
     </FindUsagesManager>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitLogSettings">
+    <option name="myDateState">
+      <MyDateState />
+    </option>
+  </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/urbanairship.php" />
         <option value="/private/var/folders/h4/9v02rq8n2fbfgjhxthjfqst00000gn/T/ide-phpunit.php" />
         <option value="$PROJECT_DIR$/src/tests/test_urbanairship.php" />
-        <option value="$PROJECT_DIR$/src/UrbanAirship.php" />
         <option value="$PROJECT_DIR$/src/tests/RESTClient.php" />
+        <option value="$PROJECT_DIR$/src/UrbanAirship.php" />
+        <option value="$PROJECT_DIR$/src/RESTClient.php" />
         <option value="$PROJECT_DIR$/src/tests/TestUrbanAirship.php" />
       </list>
     </option>
@@ -153,7 +180,7 @@
     <option name="width" value="2540" />
     <option name="height" value="1330" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
     <OptionsSetting value="true" id="Remove" />
     <OptionsSetting value="true" id="Checkout" />
@@ -184,6 +211,8 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -236,19 +265,17 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="options.lastSelected" value="Configurable.PHP" />
+    <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
     <property name="recentsLimit" value="5" />
     <property name="last_opened_file_path" value="/usr/local/Cellar/php54/5.4.14/lib/php" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="GoToClass.includeJavaFiles" value="false" />
+    <property name="GoToClass.includeJavaFiles" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="restartRequiresConfirmation" value="true" />
     <property name="FullScreen" value="false" />
@@ -290,8 +317,8 @@
       <method />
     </configuration>
     <list size="2">
-      <item index="0" class="java.lang.String" itemvalue="PHP Script.urbanairship.php" />
-      <item index="1" class="java.lang.String" itemvalue="PHPUnit.UAPHPUnit" />
+      <item index="0" class="java.lang.String" itemvalue="PHPUnit.UAPHPUnit" />
+      <item index="1" class="java.lang.String" itemvalue="PHP Script.urbanairship.php" />
     </list>
     <recent_temporary>
       <list size="1">
@@ -327,7 +354,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="10" y="22" width="2540" height="1330" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -335,11 +362,11 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27145147" sideWeight="0.6710744" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27385727" sideWeight="0.6710744" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3289256" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3289256" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -408,7 +435,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="4" />
+      <option name="time" value="5" />
     </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -419,21 +446,9 @@
     <entry file="file://$PROJECT_DIR$/src/UrbanAirship.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tests/TestUrbanAirship.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="0" selection-start="274" selection-end="274" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/UrbanAirship.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
+          <folding>
+            <element signature="e#8#42#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -447,7 +462,9 @@
     <entry file="file://$PROJECT_DIR$/src/UrbanAirship.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
+          <folding>
+            <element signature="e#8#42#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -461,35 +478,45 @@
     <entry file="file://$PROJECT_DIR$/src/UrbanAirship.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="4" column="2" selection-start="33" selection-end="33" vertical-scroll-proportion="0.0">
-          <folding />
+          <folding>
+            <element signature="e#8#42#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/UrbanAirship.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
+          <folding>
+            <element signature="e#8#42#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/UrbanAirship.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
+          <folding>
+            <element signature="e#8#42#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/UrbanAirship.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
+          <folding>
+            <element signature="e#8#42#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/UrbanAirship.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
+          <folding>
+            <element signature="e#8#42#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -505,25 +532,43 @@
         </state>
       </provider>
     </entry>
+    <entry file="file:///usr/local/Cellar/php54/5.4.14/lib/php/.registry/http_request2.reg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/UrbanAirship.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="2" selection-start="216" selection-end="216" vertical-scroll-proportion="-10.461538">
-          <folding />
+        <state line="30" column="0" selection-start="831" selection-end="831" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#8#42#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/RESTClient.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="3" selection-start="9" selection-end="9" vertical-scroll-proportion="0.014705882">
+        <state line="28" column="1" selection-start="990" selection-end="990" vertical-scroll-proportion="-18.307692">
           <folding>
-            <element signature="e#6#187#0" expanded="true" />
+            <element signature="e#7#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/Cellar/php54/5.4.14/lib/php/HTTP/Request2.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="78" column="37" selection-start="2946" selection-end="2946" vertical-scroll-proportion="0.49861112">
+          <folding>
+            <element signature="e#6#1941#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/tests/TestUrbanAirship.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="0" selection-start="630" selection-end="630" vertical-scroll-proportion="0.4117647">
+        <state line="31" column="43" selection-start="970" selection-end="970" vertical-scroll-proportion="0.69525063">
           <folding />
         </state>
       </provider>
