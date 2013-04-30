@@ -20,6 +20,33 @@
 namespace UrbanAirship;
 use \HTTP_Request2;
 
+require_once "RESTClient.php";
+require_once "HTTP/Request2.php";
+
+class UAAPIResponse {
+    private $responseCode;
+    private $responseData;
+    private $responsePhrase;
+
+    public function getResponsePhrase() {
+        return $this->responsePhrase;
+    }
+
+    public function getResponseCode(){
+        return $this->responseCode;
+    }
+
+    public function getResponseData(){
+        return $this->responseData;
+    }
+
+    function __construct($http_request2_response) {
+        $this->responseCode = $http_request2_response->getStatus();
+        $this->responsePhrase = $http_request2_response->getReasonPhrase();
+        $this->responseData = json_decode($http_request2_response->getBody());
+    }
+
+}
 
 class UrbanAirship{
 
@@ -35,6 +62,13 @@ class UrbanAirship{
     /** @var string $URL_PATH_SEPARATOR Path separator for URLs as strings */
     private static $URL_PATH_SEPARATOR = "/";
 
+    /**
+     * Retrieve metadata about an iOS device from the UA API
+     * @param string $key Application key
+     * @param string $secret Application secret
+     * @param string $token iOS device token
+     * @return HTTP_Request2
+     */
     public static function getTokenInformation($key, $secret, $token){
         $url = self::appendPathComponentsToURL(self::$BASE_URL, array(
             self::$DEVICE_TOKEN_PATH, $token));
@@ -43,9 +77,14 @@ class UrbanAirship{
         return $request;
     }
 
+
     private static function appendPathComponentsToURL($url, $pathComponents){
         $path = implode(self::$URL_PATH_SEPARATOR, $pathComponents);
         return "{$url}/{$path}/";
+    }
+
+    public static function parseServerResponse($response){
+        return new UAAPIResponse($response);
     }
 
 }

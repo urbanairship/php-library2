@@ -41,8 +41,6 @@ class TestRestClient  extends PHPUnit_Framework_TestCase{
             HTTP_Request2::AUTH_BASIC ) == 0);
     }
 
-
-
 }
 
 class TestUrbanAirship extends PHPUnit_Framework_TestCase {
