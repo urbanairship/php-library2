@@ -18,18 +18,35 @@
  * Urban Airship PHP API Library
  */
 namespace UrbanAirship;
+use \HTTP_Request2;
 
 
-class UrbanAirship
-{
+class UrbanAirship{
 
-    private static $_baseUrl = "http://go.urbanairship.com/api";
+    /**
+     * @var string $BASE_URL The base url for the Urban Airship API
+     */
+    private static $BASE_URL = "https://go.urbanairship.com/api";
 
-    public static function getBaseUrl()
-    {
-        return  self::$_baseUrl;
+    private static $PUSH_PATH = "push";
+
+    private static $DEVICE_TOKEN_PATH = "device_tokens";
+
+    /** @var string $URL_PATH_SEPARATOR Path separator for URLs as strings */
+    private static $URL_PATH_SEPARATOR = "/";
+
+    public static function getTokenInformation($key, $secret, $token){
+        $url = self::appendPathComponentsToURL(self::$BASE_URL, array(
+            self::$DEVICE_TOKEN_PATH, $token));
+        $request = RESTClient::createBasicAuthRequest(HTTP_Request2::METHOD_GET, $url,
+            $key, $secret);
+        return $request;
     }
 
-//    public static function
+    private static function appendPathComponentsToURL($url, $pathComponents){
+        $path = implode(self::$URL_PATH_SEPARATOR, $pathComponents);
+        return "{$url}/{$path}/";
+    }
+
 }
 

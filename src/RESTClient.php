@@ -32,11 +32,6 @@ use \HTTP_Request2;
  */
  class RESTClient {
 
-     /**
-      * @var string $BASE_URL The base url for the Urban Airship API
-      */
-     private static $BASE_URL = "https://go.urbanairship.com/api";
-
     /**
      * Create a authenticated request with the given parameters for use with the
      * Urban Airship API.
@@ -56,6 +51,15 @@ use \HTTP_Request2;
         $request->setAuth($key, $secret);
         return $request;
     }
+
+
+
+
+
+
+
+
+
 
 
 }
