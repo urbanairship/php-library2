@@ -28,14 +28,26 @@ class UAAPIResponse {
     private $responseData;
     private $responsePhrase;
 
+    /**
+     * Response phrase for HTTP request ( OK, Unauthorized, Not found.....)
+     * @return string
+     */
     public function getResponsePhrase() {
         return $this->responsePhrase;
     }
 
+    /**
+     * Response code for the request.
+     * @return integer
+     */
     public function getResponseCode(){
         return $this->responseCode;
     }
 
+    /**
+     * Object parse from JSON response or nil
+     * @return object
+     */
     public function getResponseData(){
         return $this->responseData;
     }

@@ -8,7 +8,6 @@
     <list default="true" id="9c1f9946-8e00-4df6-a18f-285108634741" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/UrbanAirship.php" afterPath="$PROJECT_DIR$/src/UrbanAirship.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/UrbanAirshipCLI.php" afterPath="$PROJECT_DIR$/src/UrbanAirshipCLI.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tests/UrbanAirshipTest.php" afterPath="$PROJECT_DIR$/src/tests/UrbanAirshipTest.php" />
     </list>
     <ignored path="uaphp.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -19,9 +18,9 @@
     <file path="/RESTClient.php" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1367355740682" ignored="false" />
     <file path="/TestUrbanAirship.php" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1367357792597" ignored="false" />
     <file path="/Dummy.txt" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1367343423341" ignored="false" />
-    <file path="/a.php" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1367351012375" ignored="false" />
+    <file path="/a.php" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1367365421723" ignored="false" />
     <file path="/UrbanAirshipCLI.sh" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1367356526150" ignored="false" />
-    <file path="/UrbanAirshipCLI.php" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1367362452317" ignored="false" />
+    <file path="/UrbanAirshipCLI.php" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1367365416493" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,10 +96,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="UrbanAirshipCLI.php" pinned="false" current="false" current-in-tab="true">
+          <file leaf-file-name="UrbanAirshipCLI.php" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/UrbanAirshipCLI.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="18" column="0" selection-start="444" selection-end="444" vertical-scroll-proportion="0.4135135">
+                <state line="16" column="19" selection-start="351" selection-end="351" vertical-scroll-proportion="0.36756757">
                   <folding />
                 </state>
               </provider>
@@ -109,7 +108,7 @@
           <file leaf-file-name="URL2.php" pinned="false" current="false" current-in-tab="false">
             <entry file="file:///usr/local/Cellar/php54/5.4.14/lib/php/Net/URL2.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="398" column="20" selection-start="10986" selection-end="10986" vertical-scroll-proportion="-5.1153846">
+                <state line="417" column="58" selection-start="11410" selection-end="11410" vertical-scroll-proportion="-17.538462">
                   <folding />
                 </state>
               </provider>
@@ -122,7 +121,7 @@
           <file leaf-file-name="Request2.php" pinned="false" current="false" current-in-tab="false">
             <entry file="file:///usr/local/Cellar/php54/5.4.14/lib/php/HTTP/Request2.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="123" column="21" selection-start="4092" selection-end="4092" vertical-scroll-proportion="-54.26923">
+                <state line="123" column="21" selection-start="4092" selection-end="4092" vertical-scroll-proportion="-15.692307">
                   <folding />
                 </state>
               </provider>
@@ -139,10 +138,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="UrbanAirship.php" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="UrbanAirship.php" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/UrbanAirship.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="47" column="0" selection-start="1414" selection-end="1414" vertical-scroll-proportion="0.6783784">
+                <state line="47" column="45" selection-start="1295" selection-end="1295" vertical-scroll-proportion="0.045945946">
                   <folding />
                 </state>
               </provider>
@@ -177,8 +176,8 @@
         <option value="$PROJECT_DIR$/src/tests/TestUrbanAirship.php" />
         <option value="$PROJECT_DIR$/src/RESTClient.php" />
         <option value="$PROJECT_DIR$/src/tests/UrbanAirshipTest.php" />
-        <option value="$PROJECT_DIR$/src/UrbanAirshipCLI.php" />
         <option value="$PROJECT_DIR$/src/UrbanAirship.php" />
+        <option value="$PROJECT_DIR$/src/UrbanAirshipCLI.php" />
       </list>
     </option>
   </component>
@@ -323,7 +322,7 @@
     <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
       <method />
     </configuration>
-    <configuration default="false" name="UACLI" type="PhpLocalRunConfigurationType" factoryName="PHP Console" path="$PROJECT_DIR$/src/UrbanAirshipCLI.php">
+    <configuration default="false" name="UACLI" type="PhpLocalRunConfigurationType" factoryName="PHP Console" path="$PROJECT_DIR$/src/UrbanAirshipCLI.php" scriptParameters="--info --token &quot;cats&quot; ">
       <RunnerSettings RunnerId="PhpRunner" />
       <ConfigurationWrapper RunnerId="PhpRunner" />
       <method />
@@ -519,13 +518,6 @@
         <state line="176" column="0" selection-start="5469" selection-end="5469" vertical-scroll-proportion="0.34496644" />
       </provider>
     </entry>
-    <entry file="file:///usr/local/Cellar/php54/5.4.14/lib/php/Net/URL2.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="398" column="20" selection-start="10986" selection-end="10986" vertical-scroll-proportion="-5.1153846">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/tests/UrbanAirshipTest.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="42" column="0" selection-start="1537" selection-end="1537" vertical-scroll-proportion="-27.461538">
@@ -544,20 +536,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/UrbanAirshipCLI.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="0" selection-start="444" selection-end="444" vertical-scroll-proportion="0.4135135">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/local/Cellar/php54/5.4.14/lib/php/HTTP/Request2.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="123" column="21" selection-start="4092" selection-end="4092" vertical-scroll-proportion="-54.26923">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/RESTClient.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="32" column="19" selection-start="955" selection-end="955" vertical-scroll-proportion="-20.923077">
@@ -567,9 +545,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file:///usr/local/Cellar/php54/5.4.14/lib/php/HTTP/Request2.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="123" column="21" selection-start="4092" selection-end="4092" vertical-scroll-proportion="-15.692307">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/Cellar/php54/5.4.14/lib/php/Net/URL2.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="417" column="58" selection-start="11410" selection-end="11410" vertical-scroll-proportion="-17.538462">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/UrbanAirship.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="0" selection-start="1414" selection-end="1414" vertical-scroll-proportion="0.6783784">
+        <state line="47" column="45" selection-start="1295" selection-end="1295" vertical-scroll-proportion="0.045945946">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/UrbanAirshipCLI.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="19" selection-start="351" selection-end="351" vertical-scroll-proportion="0.36756757">
           <folding />
         </state>
       </provider>
