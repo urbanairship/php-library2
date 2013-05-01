@@ -1,0 +1,9 @@
+{
+	"autoload" : {
+		"psr-0":{"UrbanAirship":"src/"}
+	},
+	"require":{
+		"monolog/monolog":"1.5.0",
+		"nategood/httpful":"*"
+	}
+}

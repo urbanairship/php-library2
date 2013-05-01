@@ -14,11 +14,7 @@
 //    See the License for the specific language governing permissions and
 //    limitations under the License.
 
-/**
- * Urban Airship PHP API Library
- */
-namespace UrbanAirship;
-use \HTTP_Request2;
+
 
 //require_once "HTTP/Request2.php";
 
@@ -42,14 +38,14 @@ use \HTTP_Request2;
      * @param string $key The app key for the request.
      * @param string $secret The secret used to authenticate the request. Depending on
      * access level needed, the could be the app secret or app master secret.
-     * @return HTTP_Request2
+     * @return
      */
     public static function createBasicAuthRequest($method, $url, $key, $secret){
-        $request = new HTTP_Request2($url);
-        $request->setMethod($method);
-        // Defaults to basic auth, which is what we're looking for
-        $request->setAuth($key, $secret);
-        return $request;
+//        $request = new HTTP_Request2($url);
+//        $request->setMethod($method);
+//        // Defaults to basic auth, which is what we're looking for
+//        $request->setAuth($key, $secret);
+//        return $request;
     }
 
 

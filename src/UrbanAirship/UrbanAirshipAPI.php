@@ -18,12 +18,12 @@
  * Urban Airship PHP API Library
  */
 namespace UrbanAirship;
-use \HTTP_Request2;
+use Httpful\Httpful;
 
-require_once "RESTClient.php";
-require_once "HTTP/Request2.php";
+require "../vendor/autoload.php";
 
-class UAAPIResponse {
+//require "../vendor/http/"
+class UrbanAirshipAPIResponse {
     private $responseCode;
     private $responseData;
     private $responsePhrase;
@@ -60,7 +60,7 @@ class UAAPIResponse {
 
 }
 
-class UrbanAirship{
+class UrbanAirshipAPI{
 
     /**
      * @var string $BASE_URL The base url for the Urban Airship API
@@ -79,13 +79,13 @@ class UrbanAirship{
      * @param string $key Application key
      * @param string $secret Application secret
      * @param string $token iOS device token
-     * @return HTTP_Request2
+     * @return
      */
     public static function getTokenInformation($key, $secret, $token){
         $url = self::appendPathComponentsToURL(self::$BASE_URL, array(
             self::$DEVICE_TOKEN_PATH, $token));
-        $request = RESTClient::createBasicAuthRequest(HTTP_Request2::METHOD_GET, $url,
-            $key, $secret);
+        $request = \Httpful\Request::get("https://www.googleapis.com/freebase/v1/mqlread?query=%7B%22type%22:%22/music/artist%22%2C%22name%22:%22The%20Dead%20Weather%22%2C%22album%22:%5B%5D%7D")->send();
+
         return $request;
     }
 
@@ -96,7 +96,7 @@ class UrbanAirship{
     }
 
     public static function parseServerResponse($response){
-        return new UAAPIResponse($response);
+        return new UrbanAirshipAPIResponse($response);
     }
 
 }
