@@ -18,12 +18,14 @@
  * Urban Airship PHP API Library
  */
 namespace UrbanAirship;
-use Httpful\Httpful;
 
-require "../vendor/autoload.php";
+use Httpful\Mime as Mime;
+use Httpful\Request as Request;
 
-//require "../vendor/http/"
-class UrbanAirshipAPIResponse {
+require_once '../vendor/autoload.php';
+
+class UrbanAirshipAPIResponse
+{
     private $responseCode;
     private $responseData;
     private $responsePhrase;
@@ -32,7 +34,8 @@ class UrbanAirshipAPIResponse {
      * Response phrase for HTTP request ( OK, Unauthorized, Not found.....)
      * @return string
      */
-    public function getResponsePhrase() {
+    public function getResponsePhrase()
+    {
         return $this->responsePhrase;
     }
 
@@ -40,7 +43,8 @@ class UrbanAirshipAPIResponse {
      * Response code for the request.
      * @return integer
      */
-    public function getResponseCode(){
+    public function getResponseCode()
+    {
         return $this->responseCode;
     }
 
@@ -48,11 +52,13 @@ class UrbanAirshipAPIResponse {
      * Object parse from JSON response or nil
      * @return object
      */
-    public function getResponseData(){
+    public function getResponseData()
+    {
         return $this->responseData;
     }
 
-    function __construct($http_request2_response) {
+    function __construct($http_request2_response)
+    {
         $this->responseCode = $http_request2_response->getStatus();
         $this->responsePhrase = $http_request2_response->getReasonPhrase();
         $this->responseData = json_decode($http_request2_response->getBody());
@@ -60,7 +66,8 @@ class UrbanAirshipAPIResponse {
 
 }
 
-class UrbanAirshipAPI{
+class UrbanAirshipAPI
+{
 
     /**
      * @var string $BASE_URL The base url for the Urban Airship API
@@ -79,23 +86,40 @@ class UrbanAirshipAPI{
      * @param string $key Application key
      * @param string $secret Application secret
      * @param string $token iOS device token
-     * @return
+     * @return Httpful\Request
      */
-    public static function getTokenInformation($key, $secret, $token){
-        $url = self::appendPathComponentsToURL(self::$BASE_URL, array(
-            self::$DEVICE_TOKEN_PATH, $token));
-        $request = \Httpful\Request::get("https://www.googleapis.com/freebase/v1/mqlread?query=%7B%22type%22:%22/music/artist%22%2C%22name%22:%22The%20Dead%20Weather%22%2C%22album%22:%5B%5D%7D")->send();
+    public static function getTokenInformation($key, $secret, $token)
+    {
+        $request = self::getTokenInformationRequest($key, $secret, $token);
+        $response = $request->send();
+        return $response;
+    }
 
+    public static function getTokenInformationRequest( $key, $secret, $token)
+    {
+        $url = self::appendPathComponentsToURL(
+            self::$BASE_URL,
+            array(self::$PUSH_PATH, self::$DEVICE_TOKEN_PATH),
+            $token);
+
+        return self::getBasicAuthRequest($url, $key, $secret);
+    }
+
+    private static function getBasicAuthRequest($url, $username, $password)
+    {
+        $request = Request::get($url)->authenticateWithBasic($username, $password);
         return $request;
     }
 
 
-    private static function appendPathComponentsToURL($url, $pathComponents){
+    private static function appendPathComponentsToURL($url, $pathComponents)
+    {
         $path = implode(self::$URL_PATH_SEPARATOR, $pathComponents);
         return "{$url}/{$path}/";
     }
 
-    public static function parseServerResponse($response){
+    public static function parseServerResponse($response)
+    {
         return new UrbanAirshipAPIResponse($response);
     }
 
