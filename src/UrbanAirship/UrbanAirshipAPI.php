@@ -156,6 +156,23 @@ class UrbanAirshipAPI
 
     }
 
+    public static function getApsPayload($alert=null, $badge=null, $sound=null)
+    {
+
+
+    }
+
+    public static function pushToIos($apsPayload, $deviceTokens=null, $alias=null, $tags=null)
+    {
+
+    }
+
+    public static function getPushPayload($apsPayload, $deviceTokens=null, $alias=null, $tags=null)
+    {
+
+
+    }
+
 
     public static function getRegisterDeviceTokenRequest($key, $secret, $token){
         $request = self::getTokenInformationRequest($key, $secret, $token);
@@ -168,6 +185,8 @@ class UrbanAirshipAPI
     {
         return new UrbanAirshipAPIResponse($response);
     }
+
+
 
 }
 

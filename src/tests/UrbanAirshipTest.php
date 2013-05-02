@@ -15,10 +15,12 @@
 //    limitations under the License.
 
 use UrbanAirship\UrbanAirshipAPI as UA;
+use UrbanAirship\UrbanAirshipPushPayload as PushPayload;
 use Httpful\Http;
 
 require_once $_SERVER["UA_HANGER"] . "/src/UrbanAirship/UrbanAirshipAPI.php";
 require_once $_SERVER["UA_HANGER"] . "/src/UrbanAirship/UrbanAirshipRequest.php";
+require_once $_SERVER["UA_HANGER"] . "/src/UrbanAirship/UrbanAirshipPushPayload.php";
 
 class TestUrbanAirship extends PHPUnit_Framework_TestCase {
 
@@ -58,7 +60,21 @@ class TestUrbanAirship extends PHPUnit_Framework_TestCase {
         $this->assertTrue(strcmp($request->method, "PUT") == 0);
     }
 
-    
+    public function testUrbanAirshipPushPayload()
+    {
+        //TODO setup aps payload
+        $payload = new PushPayload();
+        $payload->setDeviceToken("token");
+        $payload->setTag("tag");
+        $payload->setAlias("alias");
+        $json = json_encode($payload, JSON_PRETTY_PRINT);
+        print_r($json);
+
+
+    }
+
+
+
 
 
 }
