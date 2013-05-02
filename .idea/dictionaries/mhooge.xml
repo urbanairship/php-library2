@@ -2,6 +2,7 @@
   <dictionary name="mhooge">
     <words>
       <w>autoload</w>
+      <w>httpful</w>
     </words>
   </dictionary>
 </component>

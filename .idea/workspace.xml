@@ -9,23 +9,25 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/UrbanAirship/UrbanAirshipAPI.php" afterPath="$PROJECT_DIR$/src/UrbanAirship/UrbanAirshipAPI.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/UrbanAirship/UrbanAirshipCLI.php" afterPath="$PROJECT_DIR$/src/UrbanAirship/UrbanAirshipCLI.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tests/UrbanAirshipTest.php" afterPath="$PROJECT_DIR$/src/tests/UrbanAirshipTest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dictionaries/mhooge.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/mhooge.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="uaphp.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/urbanairship.php" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1366998354305" ignored="false" />
     <file path="/test_urbanairship.php" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1367271143378" ignored="false" />
-    <file path="/a.dummy" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1367439929682" ignored="false" />
+    <file path="/a.dummy" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1367529249291" ignored="false" />
     <file path="/UrbanAirship.php" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1367362809375" ignored="false" />
     <file path="/RESTClient.php" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1367355740682" ignored="false" />
     <file path="/TestUrbanAirship.php" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1367357792597" ignored="false" />
-    <file path="/Dummy.txt" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1367524009574" ignored="false" />
+    <file path="/Dummy.txt" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1367526069300" ignored="false" />
     <file path="/a.php" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1367524941787" ignored="false" />
     <file path="/UrbanAirshipCLI.sh" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1367356526150" ignored="false" />
-    <file path="/UrbanAirshipCLI.php" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1367452816938" ignored="false" />
-    <file path="/UrbanAirshipTest.php" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1367524871750" ignored="false" />
-    <file path="/UrbanAirshipAPI.php" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1367524895256" ignored="false" />
+    <file path="/UrbanAirshipCLI.php" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1367530079008" ignored="false" />
+    <file path="/UrbanAirshipTest.php" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1367532330530" ignored="false" />
+    <file path="/UrbanAirshipAPI.php" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1367530163106" ignored="false" />
     <file path="/private/var/folders/h4/9v02rq8n2fbfgjhxthjfqst00000gn/T/ide-phpunit.php" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1367524874564" ignored="false" />
+    <file path="/fragment.php" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1367528739187" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +42,6 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -77,6 +78,7 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -91,17 +93,28 @@
           <file leaf-file-name="Request.php" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/vendor/nategood/httpful/src/Httpful/Request.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+                <state line="65" column="33" selection-start="1925" selection-end="1925" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="UrbanAirshipTest.php" pinned="false" current="false" current-in-tab="false">
+          <file leaf-file-name="Response.php" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/vendor/nategood/httpful/src/Httpful/Response.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="76" column="7" selection-start="1710" selection-end="1710" vertical-scroll-proportion="-49.692307">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="UrbanAirshipTest.php" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/tests/UrbanAirshipTest.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="19" column="21" selection-start="764" selection-end="764" vertical-scroll-proportion="-4.576923">
-                  <folding />
+                <state line="60" column="4" selection-start="2254" selection-end="2254" vertical-scroll-proportion="0.8167116">
+                  <folding>
+                    <element signature="e#624#663#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -109,16 +122,18 @@
           <file leaf-file-name="UrbanAirshipAPI.php" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/UrbanAirship/UrbanAirshipAPI.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="40" column="0" selection-start="1129" selection-end="1129" vertical-scroll-proportion="0.0">
-                  <folding />
+                <state line="141" column="23" selection-start="3952" selection-end="3952" vertical-scroll-proportion="0.0">
+                  <folding>
+                    <marker date="1367531408000" expanded="true" signature="2907:2987" placeholder="..." />
+                  </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="UrbanAirshipCLI.php" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="UrbanAirshipCLI.php" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/UrbanAirship/UrbanAirshipCLI.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="5" column="53" selection-start="106" selection-end="106" vertical-scroll-proportion="0.12648809">
+                <state line="21" column="0" selection-start="497" selection-end="497" vertical-scroll-proportion="-13.730769">
                   <folding />
                 </state>
               </provider>
@@ -140,7 +155,7 @@
           <file leaf-file-name="Request.php" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/vendor/nategood/httpful/src/Httpful/Request.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="476" column="0" selection-start="13357" selection-end="13357" vertical-scroll-proportion="0.0">
+                <state line="247" column="31" selection-start="6889" selection-end="6898" vertical-scroll-proportion="-80.75">
                   <folding />
                 </state>
               </provider>
@@ -149,8 +164,10 @@
           <file leaf-file-name="UrbanAirshipAPI.php" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/UrbanAirship/UrbanAirshipAPI.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="22" column="31" selection-start="747" selection-end="747" vertical-scroll-proportion="-1.1687306">
-                  <folding />
+                <state line="68" column="40" selection-start="1643" selection-end="1643" vertical-scroll-proportion="-1.6354748">
+                  <folding>
+                    <element signature="e#690#707#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -188,9 +205,9 @@
         <option value="$PROJECT_DIR$/vendor/nategood/httpful/src/Httpful/Http.php" />
         <option value="$PROJECT_DIR$/vendor/nategood/httpful/src/Httpful/Request.php" />
         <option value="$PROJECT_DIR$/UrbanAirshipCLI.php" />
-        <option value="$PROJECT_DIR$/src/tests/UrbanAirshipTest.php" />
-        <option value="$PROJECT_DIR$/src/UrbanAirship/UrbanAirshipAPI.php" />
         <option value="$PROJECT_DIR$/src/UrbanAirship/UrbanAirshipCLI.php" />
+        <option value="$PROJECT_DIR$/src/UrbanAirship/UrbanAirshipAPI.php" />
+        <option value="$PROJECT_DIR$/src/tests/UrbanAirshipTest.php" />
       </list>
     </option>
   </component>
@@ -242,7 +259,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -285,6 +301,58 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="vendor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nategood" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="httpful" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="uaphp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="uaphp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vendor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nategood" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="httpful" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Httpful" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="uaphp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="uaphp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -314,6 +382,7 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -347,7 +416,7 @@
       <recent name="$PROJECT_DIR$/src" />
     </key>
   </component>
-  <component name="RunManager" selected="PHP Script.UrbanAirshipCLI.php">
+  <component name="RunManager" selected="PHPUnit.UAPHPUnit">
     <configuration default="false" name="UrbanAirshipCLI.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/src/UrbanAirship/UrbanAirshipCLI.php">
       <CommandLine>
         <envs>
@@ -393,9 +462,9 @@
       <method />
     </configuration>
     <list size="3">
-      <item index="0" class="java.lang.String" itemvalue="PHP Script.UrbanAirshipCLI.php" />
-      <item index="1" class="java.lang.String" itemvalue="PHP Script.UrbanAirshipAPI.php" />
-      <item index="2" class="java.lang.String" itemvalue="PHPUnit.UAPHPUnit" />
+      <item index="0" class="java.lang.String" itemvalue="PHPUnit.UAPHPUnit" />
+      <item index="1" class="java.lang.String" itemvalue="PHP Script.UrbanAirshipCLI.php" />
+      <item index="2" class="java.lang.String" itemvalue="PHP Script.UrbanAirshipAPI.php" />
     </list>
     <recent_temporary>
       <list size="3">
@@ -437,20 +506,20 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32920793" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13466233" sideWeight="0.6" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3429752" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13588282" sideWeight="0.6578512" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34214875" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32920793" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -514,7 +583,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="10" />
+      <option name="time" value="21" />
     </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -522,28 +591,9 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/UrbanAirship/UrbanAirshipAPI.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/UrbanAirship/UrbanAirshipAPI.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/local/Cellar/php54/5.4.14/lib/php/test/Structures_Graph/tests/testCase/BasicGraph.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.65384614" />
-      </provider>
-    </entry>
-    <entry file="file:///private/var/folders/h4/9v02rq8n2fbfgjhxthjfqst00000gn/T/ide-phpunit.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="0" selection-start="893" selection-end="893" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file:///usr/local/Cellar/php54/5.4.14/lib/php/PHPUnit/TextUI/Command.php">
@@ -588,31 +638,56 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/nategood/httpful/src/Httpful/Response.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="76" column="7" selection-start="1710" selection-end="1710" vertical-scroll-proportion="-49.692307">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/nategood/httpful/src/Httpful/Request.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tests/UrbanAirshipTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="21" selection-start="764" selection-end="764" vertical-scroll-proportion="-4.576923">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/UrbanAirship/UrbanAirshipAPI.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="0" selection-start="1129" selection-end="1129" vertical-scroll-proportion="0.0">
+        <state line="65" column="33" selection-start="1925" selection-end="1925" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/UrbanAirship/UrbanAirshipCLI.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="53" selection-start="106" selection-end="106" vertical-scroll-proportion="0.12648809">
+        <state line="21" column="0" selection-start="497" selection-end="497" vertical-scroll-proportion="-13.730769">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/Cellar/php54/5.4.14/lib/php/PHPUnit/Framework/TestCase.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1819" column="2" selection-start="52101" selection-end="52101" vertical-scroll-proportion="0.31071427">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/nategood/httpful/bootstrap.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="0" selection-start="84" selection-end="84" vertical-scroll-proportion="0.0945758">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/UrbanAirship/UrbanAirshipAPI.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="141" column="23" selection-start="3952" selection-end="3952" vertical-scroll-proportion="0.0">
+          <folding>
+            <marker date="1367531408000" expanded="true" signature="2907:2987" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tests/UrbanAirshipTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="60" column="4" selection-start="2254" selection-end="2254" vertical-scroll-proportion="0.8167116">
+          <folding>
+            <element signature="e#624#663#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

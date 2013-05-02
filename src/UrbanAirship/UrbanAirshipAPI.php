@@ -19,6 +19,7 @@
  */
 namespace UrbanAirship;
 
+use Httpful\Http;
 use Httpful\Mime as Mime;
 use Httpful\Request as Request;
 
@@ -26,44 +27,34 @@ require_once $_SERVER["UA_HANGER"].'/vendor/autoload.php';
 
 class UrbanAirshipAPIResponse
 {
-    private $responseCode;
-    private $responseData;
-    private $responsePhrase;
+    private $code;
+    private $responseBody;
 
-    /**
-     * Response phrase for HTTP request ( OK, Unauthorized, Not found.....)
-     * @return string
-     */
-    public function getResponsePhrase()
-    {
-        return $this->responsePhrase;
-    }
 
     /**
      * Response code for the request.
      * @return integer
      */
-    public function getResponseCode()
+    public function getCode()
     {
-        return $this->responseCode;
+        return $this->code;
     }
 
     /**
-     * Object parse from JSON response or nil
+     * Object parsed from JSON response or nil
      * @return object
      */
-    public function getResponseData()
+    public function getResponseBody()
     {
-        return $this->responseData;
+        return $this->responseBody;
     }
 
-    function __construct($http_request2_response)
+    function __construct($httpful_response)
     {
-        $this->responseCode = $http_request2_response->getStatus();
-        $this->responsePhrase = $http_request2_response->getReasonPhrase();
-        $this->responseData = json_decode($http_request2_response->getBody());
+        $this->code = $httpful_response->code;
+        # JSON Parsing is free
+        $this->responseBody = $httpful_response->body;
     }
-
 }
 
 class UrbanAirshipAPI
@@ -74,12 +65,24 @@ class UrbanAirshipAPI
      */
     private static $BASE_URL = "https://go.urbanairship.com/api";
 
+    /**
+     * @var string $PUSH_PATH Push path.
+     */
     private static $PUSH_PATH = "push";
 
     private static $DEVICE_TOKEN_PATH = "device_tokens";
 
+
     /** @var string $URL_PATH_SEPARATOR Path separator for URLs as strings */
     private static $URL_PATH_SEPARATOR = "/";
+
+    /**
+     * @return string Base url for the Urban Airhsip API
+     */
+    public static function getBaseUrlForUrbanAirshipAPI()
+    {
+        return self::$BASE_URL;
+    }
 
     /**
      * Retrieve metadata about an iOS device from the UA API
@@ -91,20 +94,34 @@ class UrbanAirshipAPI
     public static function getTokenInformation($key, $secret, $token)
     {
         $request = self::getTokenInformationRequest($key, $secret, $token);
-        $response = $request->send();
-        return $response;
+        return self::parseServerResponse($request->send());
+
     }
 
+    /**
+     * Get a request for information about a particular device token.
+     * @param $key string Application key
+     * @param $secret string Application secret
+     * @param $token string Device token to get metadata for
+     * @return Request
+     */
     public static function getTokenInformationRequest( $key, $secret, $token)
     {
         $url = self::appendPathComponentsToURL(
             self::$BASE_URL,
-            array(self::$PUSH_PATH, self::$DEVICE_TOKEN_PATH),
-            $token);
+            array(self::$DEVICE_TOKEN_PATH, $token));
 
         return self::getBasicAuthRequest($url, $key, $secret);
     }
 
+    /**
+     * Get an HTTP Request authenticated with the username and password using
+     * basic auth.
+     * @param $url string URL for the request
+     * @param $username string Username for authentication
+     * @param $password string Password for authentication.
+     * @return Request
+     */
     private static function getBasicAuthRequest($url, $username, $password)
     {
         $request = Request::get($url)->authenticateWithBasic($username, $password);
@@ -112,11 +129,40 @@ class UrbanAirshipAPI
     }
 
 
+    /**
+     * Create a URL with the given base URL and extra components. The components
+     * are appended to the URL using the $PATH
+     * @param $url
+     * @param $pathComponents
+     * @return string
+     */
     private static function appendPathComponentsToURL($url, $pathComponents)
     {
         $path = implode(self::$URL_PATH_SEPARATOR, $pathComponents);
         return "{$url}/{$path}/";
     }
+
+    /**
+     * Register a device token with Urban Airship.
+     *
+     * @param $key string App key.
+     * @param $secret string App Secret.
+     * @param $token string Device Token
+     * @return Request
+     */
+    public static function registerDeviceToken($key, $secret, $token){
+        $request = self::getRegisterDeviceTokenRequest($key, $secret, $token);
+        return self::parseServerResponse($request->send());
+
+    }
+
+
+    public static function getRegisterDeviceTokenRequest($key, $secret, $token){
+        $request = self::getTokenInformationRequest($key, $secret, $token);
+        $request->method = Http::PUT;
+        return $request;
+    }
+
 
     public static function parseServerResponse($response)
     {

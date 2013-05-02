@@ -15,43 +15,50 @@
 //    limitations under the License.
 
 use UrbanAirship\UrbanAirshipAPI as UA;
+use Httpful\Http;
 
 require_once $_SERVER["UA_HANGER"] . "/src/UrbanAirship/UrbanAirshipAPI.php";
 require_once $_SERVER["UA_HANGER"] . "/src/UrbanAirship/UrbanAirshipRequest.php";
 
-//class TestRestClient  extends PHPUnit_Framework_TestCase{
-//
-//    public function testBasicAuthRequest(){
-//        $url = "url";
-//        $user = "user";
-
-//        $pass = "pass";
-//        $request = RClient::createBasicAuthRequest(HTTP_Request2::METHOD_GET,
-//            $url,
-//            $user,
-//            $pass);
-//
-//        $this->assertTrue(strcmp($request->getUrl(), $url) == 0);
-//        $auth_headers = $request->getAuth();
-////        print_r($auth_headers);
-//        $this->assertTrue(strcmp($auth_headers['user'], $user) == 0);
-//        $this->assertTrue(strcmp($auth_headers['password'], $pass) == 0);
-//        $this->assertTrue(strcmp($auth_headers['scheme'],
-//            HTTP_Request2::AUTH_BASIC ) == 0);
-//    }
-//
-//}
-
 class TestUrbanAirship extends PHPUnit_Framework_TestCase {
 
-    public function testGetTokenInformationRequest(){
-        $key = "key";
-        $secret = "secret";
-        $token = "token";
-        $request = UA::getTokenInformation($key, $secret, $token);
-        print_r($request);
-//        $url = $request->getUrl();
-//        $expectedURL =  "https://go.urbanairship.com/api/device_tokens/token/";
-//        $this->assertTrue(strcmp($expectedURL, $url) == 0);
+    protected $key;
+    protected $secret;
+    protected $token;
+
+    protected function setUp()
+    {
+        $this->key = "key";
+        $this->secret = "secret";
+        $this->token = "token";
     }
+
+    public function testGetTokenInformationRequest()
+    {
+
+        $request = UA::getTokenInformationRequest($this->key, $this->secret, $this->token);
+//        print_r($request);
+        $url = $request->uri;
+        $expectedURL =  "https://go.urbanairship.com/api/device_tokens/token/";
+        $this->assertTrue(strcmp($expectedURL, $url) == 0);
+        $this->assertTrue(strcmp($request->username, $this->key) == 0);
+        $this->assertTrue(strcmp($request->password, $this->secret) == 0);
+        $this->assertTrue(strcmp($request->method, "GET") == 0);
+    }
+
+    public function testGetRegisterDeviceTokenRequest(){
+
+        $request = UA::getRegisterDeviceTokenRequest($this->key, $this->secret, $this->token);
+//        print_r($request);
+        $url = $request->uri;
+        $expectedURL =  "https://go.urbanairship.com/api/device_tokens/token/";
+        $this->assertTrue(strcmp($expectedURL, $url) == 0);
+        $this->assertTrue(strcmp($request->username, $this->key) == 0);
+        $this->assertTrue(strcmp($request->password, $this->secret) == 0);
+        $this->assertTrue(strcmp($request->method, "PUT") == 0);
+    }
+
+    
+
+
 }
