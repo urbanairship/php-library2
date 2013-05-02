@@ -22,7 +22,7 @@ namespace UrbanAirship;
 use Httpful\Mime as Mime;
 use Httpful\Request as Request;
 
-require_once '../vendor/autoload.php';
+require_once $_SERVER["UA_HANGER"].'/vendor/autoload.php';
 
 class UrbanAirshipAPIResponse
 {

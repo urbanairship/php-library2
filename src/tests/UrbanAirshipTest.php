@@ -16,14 +16,15 @@
 
 use UrbanAirship\UrbanAirshipAPI as UA;
 
-require_once __DIR__ . "/../UrbanAirship/UrbanAirshipAPI.php";
-require_once __DIR__ . "/../UrbanAirship/UrbanAirshipRequest.php";
+require_once $_SERVER["UA_HANGER"] . "/src/UrbanAirship/UrbanAirshipAPI.php";
+require_once $_SERVER["UA_HANGER"] . "/src/UrbanAirship/UrbanAirshipRequest.php";
 
 //class TestRestClient  extends PHPUnit_Framework_TestCase{
 //
 //    public function testBasicAuthRequest(){
 //        $url = "url";
 //        $user = "user";
+
 //        $pass = "pass";
 //        $request = RClient::createBasicAuthRequest(HTTP_Request2::METHOD_GET,
 //            $url,
