@@ -64,9 +64,9 @@ class TestUrbanAirship extends PHPUnit_Framework_TestCase {
     {
         //TODO setup aps payload
         $payload = new PushPayload();
-        $payload->setDeviceToken("token");
-        $payload->setTag("tag");
-        $payload->setAlias("alias");
+        $payload->setDeviceTokens(array("token"));
+        $payload->setTags(array("tag"));
+        $payload->setAliases(array("alias"));
         $json = json_encode($payload, JSON_PRETTY_PRINT);
         print_r($json);
 
