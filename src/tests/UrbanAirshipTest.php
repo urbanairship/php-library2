@@ -24,18 +24,21 @@ require_once $_SERVER["UA_HANGER"] . "/src/UrbanAirship/UrbanAirshipAPI.php";
 require_once $_SERVER["UA_HANGER"] . "/src/UrbanAirship/UrbanAirshipRequest.php";
 require_once $_SERVER["UA_HANGER"] . "/src/UrbanAirship/UrbanAirshipPushPayload.php";
 require_once $_SERVER["UA_HANGER"] . "/src/UrbanAirship/UrbanAirshipIosRegistrationPayload.php";
+require_once $_SERVER["UA_HANGER"] . "/src/UrbanAirship/UrbanAirshipIosPushMessage.php";
 
 class TestUrbanAirship extends PHPUnit_Framework_TestCase {
 
     protected $key;
     protected $secret;
     protected $token;
+    protected $payload;
 
     protected function setUp()
     {
         $this->key = "key";
         $this->secret = "secret";
         $this->token = "token";
+        $this->payload = array("payload" => "stuff");
     }
 
     public function testGetTokenInformationRequest()
@@ -71,7 +74,7 @@ class TestUrbanAirship extends PHPUnit_Framework_TestCase {
         $payload->setTags(array("tag"));
         $payload->setAliases(array("alias"));
         $json = json_encode($payload, JSON_PRETTY_PRINT);
-        print_r($json);
+//        print_r($json);
     }
 
     public function testUrbanAirshipIosRegistrationPayload()
@@ -81,10 +84,28 @@ class TestUrbanAirship extends PHPUnit_Framework_TestCase {
         $payload->setBadge(1);
         $payload->setQuietTime("qt_start", "qt_end");
         $payload->setTimeZone("pancake_time");
-        print_r(json_encode($payload, JSON_PRETTY_PRINT));
+//        print_r(json_encode($payload, JSON_PRETTY_PRINT));
 
     }
 
+    public function testGetPushMessagingRequest()
+    {
+        $request = \UrbanAirship\UrbanAirshipAPI::getPushMessagingRequest(
+            $this->key,
+            $this->secret,
+            $this->token,
+            $this->payload);
+
+//        print_r($request);
+    }
+
+    public function testPushMessage()
+    {
+        $message = new \UrbanAirship\UrbanAirshipIosPushMessage();
+        $message->setAlert("alert")->setBadge(1)->setDeviceTokens("token")->setAliases("cats");
+        print_r(json_encode($message, JSON_PRETTY_PRINT));
+
+    }
 
 
 

@@ -35,7 +35,7 @@ class UrbanAirshipMetadata implements \JsonSerializable
     const REGISTRATION_PAYLOAD_QUIET_TIME_END_KEY = "end";
 
 
-    private $metadata;
+    protected  $metadata;
 
     public function  __constructor()
     {

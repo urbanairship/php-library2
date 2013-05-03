@@ -163,19 +163,55 @@ class UrbanAirshipAPI
 
     public static function getApsPayload($alert=null, $badge=null, $sound=null)
     {
-
-
+        return new UrbanAirshipApsPayload($alert, $badge, $sound);
     }
 
     public static function pushToIos($apsPayload, $deviceTokens=null, $alias=null, $tags=null)
     {
+        $pushPayload = self::getPushPayload($apsPayload, $deviceTokens, $alias, $tags);
+//        $request = self::getPushMessagingRequest()
 
     }
 
     public static function getPushPayload($apsPayload, $deviceTokens=null, $alias=null, $tags=null)
     {
+        $payload = new UrbanAirshipPushPayload();
+        if ($deviceTokens != null)
+        {
+            if (is_array($deviceTokens)){
+                $payload->setDeviceTokens($deviceTokens);
+            }
+            else {
+                $payload->setDeviceTokens(array($deviceTokens));
+            }
+        }
+        if ($alias != null){
+            if (is_array($alias)){
+                $payload->setAliases($alias);
+            }
+            else {
+                $payload->setAliases(array($alias));
+            }
+        }
+        if ($tags != null){
+            if (is_array($tags)){
+                $payload->setTags($tags);
+            }
+            else {
+                $payload->setTags(array($tags));
+            }
+        }
+    }
 
 
+    public static function getPushMessagingRequest($key, $secret, $pushPayload)
+    {
+        $url = self::appendPathComponentsToURL(
+            self::getBaseUrlForUrbanAirshipAPI(),
+            array(self::$PUSH_PATH));
+        $request = self::getBasicAuthRequest($url, $key, $secret);
+        $request->method(Http::POST)->sends(Mime::JSON)->body($pushPayload);
+        return $request;
     }
 
 
