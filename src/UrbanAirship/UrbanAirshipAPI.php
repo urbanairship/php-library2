@@ -20,6 +20,7 @@
 namespace UrbanAirship;
 
 use Httpful\Http;
+use Httpful\Httpful;
 use Httpful\Mime as Mime;
 use Httpful\Request as Request;
 
@@ -148,10 +149,14 @@ class UrbanAirshipAPI
      * @param $key string App key.
      * @param $secret string App Secret.
      * @param $token string Device Token
-     * @return Request
+     * @param $payload UrbanAirshipIosRegistrationPayload Optional registration
+     * payload.
+     *
+     * @return UrbanAirshipAPIResponse
      */
-    public static function registerDeviceToken($key, $secret, $token){
-        $request = self::getRegisterDeviceTokenRequest($key, $secret, $token);
+    public static function registerDeviceToken($key, $secret, $token, $payload=null)
+    {
+        $request = self::getRegisterDeviceTokenRequest($key, $secret, $token, $payload);
         return self::parseServerResponse($request->send());
 
     }
@@ -174,9 +179,14 @@ class UrbanAirshipAPI
     }
 
 
-    public static function getRegisterDeviceTokenRequest($key, $secret, $token){
+    public static function getRegisterDeviceTokenRequest($key, $secret, $token, $payload=null)
+    {
         $request = self::getTokenInformationRequest($key, $secret, $token);
         $request->method = Http::PUT;
+        if ($payload != null){
+            $request->body($payload);
+            $request->sends(Mime::JSON);
+        }
         return $request;
     }
 
@@ -185,8 +195,6 @@ class UrbanAirshipAPI
     {
         return new UrbanAirshipAPIResponse($response);
     }
-
-
 
 }
 

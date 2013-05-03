@@ -12,6 +12,17 @@ require_once $_SERVER["UA_HANGER"].'/vendor/autoload.php';
 
 class UrbanAirshipIosRegistrationPayload extends UrbanAirshipMetadata
 {
+
+    public function getTags()
+    {
+        return $this->getMetadata(self::REGISTRATION_PAYLOAD_TAGS_KEY);
+    }
+
+    public function setTags($tags)
+    {
+        $this->setMetadata(self::REGISTRATION_PAYLOAD_TAGS_KEY, $tags);
+    }
+
     public function getAlias()
     {
         return $this->getMetadata(self::REGISTRATION_PAYLOAD_ALIAS_KEY);
@@ -32,6 +43,11 @@ class UrbanAirshipIosRegistrationPayload extends UrbanAirshipMetadata
         $this->setMetadata(self::REGISTRATION_PAYLOAD_BADGE_KEY, $badge);
     }
 
+    public function getQuietTime()
+    {
+        return $this->getMetadata(self::REGISTRATION_PAYLOAD_QUIET_TIME_KEY);
+    }
+
     public function setQuietTime($start, $end)
     {
         // TODO Verify quiet time is in the correct format
@@ -42,8 +58,14 @@ class UrbanAirshipIosRegistrationPayload extends UrbanAirshipMetadata
         $this->setMetadata(self::REGISTRATION_PAYLOAD_QUIET_TIME_KEY, $quietTime);
     }
 
-    public function getQuietTime()
+    public function getTimeZone()
     {
-        return $this->getMetadata(self::REGISTRATION_PAYLOAD_QUIET_TIME_KEY);
+        $this->getMetadata(self::REGISTRATION_PAYLOAD_TIME_ZONE_KEY);
+    }
+
+    public function setTimeZone($timeZone)
+    {
+        //TODO verify what format time zones take
+        $this->setMetadata(self::REGISTRATION_PAYLOAD_TIME_ZONE_KEY, $timeZone);
     }
 }

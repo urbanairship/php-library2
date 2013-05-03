@@ -26,6 +26,7 @@ class UrbanAirshipMetadata implements \JsonSerializable
     const PUSH_PAYLOAD_SCHEDULE_KEY = "schedule_for";
     const PUSH_PAYLOAD_EXCLUDE_TOKENS_KEY = "exclude_tokens";
 
+    const REGISTRATION_PAYLOAD_TAGS_KEY = "tags";
     const REGISTRATION_PAYLOAD_ALIAS_KEY = "alias";
     const REGISTRATION_PAYLOAD_BADGE_KEY = "badge";
     const REGISTRATION_PAYLOAD_QUIET_TIME_KEY = "quiettime";
