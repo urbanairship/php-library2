@@ -70,11 +70,16 @@ class TestUrbanAirship extends PHPUnit_Framework_TestCase {
     {
         //TODO setup aps payload
         $payload = new PushPayload();
+        $aps = new \UrbanAirship\UrbanAirshipApsPayload(
+            "siren",
+            4,
+            "cat.caf");
+        $payload->setAps($aps);
         $payload->setDeviceTokens(array("token"));
         $payload->setTags(array("tag"));
         $payload->setAliases(array("alias"));
         $json = json_encode($payload, JSON_PRETTY_PRINT);
-//        print_r($json);
+        print_r($json);
     }
 
     public function testUrbanAirshipIosRegistrationPayload()
@@ -88,24 +93,24 @@ class TestUrbanAirship extends PHPUnit_Framework_TestCase {
 
     }
 
-    public function testGetPushMessagingRequest()
-    {
-        $request = \UrbanAirship\UrbanAirshipAPI::getPushMessagingRequest(
-            $this->key,
-            $this->secret,
-            $this->token,
-            $this->payload);
-
+//    public function testGetPushMessagingRequest()
+//    {
+//        $request = \UrbanAirship\UrbanAirshipAPI::getPushMessagingRequest(
+//            $this->key,
+//            $this->secret,
+//            $this->token,
+//            $this->payload);
+//
 //        print_r($request);
-    }
+//    }
 
-    public function testPushMessage()
-    {
-        $message = new \UrbanAirship\UrbanAirshipIosPushMessage();
-        $message->setAlert("alert")->setBadge(1)->setDeviceTokens("token")->setAliases("cats");
-        print_r(json_encode($message, JSON_PRETTY_PRINT));
-
-    }
+//    public function testPushMessage()
+//    {
+//        $message = new \UrbanAirship\UrbanAirshipIosPushMessage();
+//        $message->setAlert("alert")->setBadge(1)->setDeviceTokens("token")->setAliases("cats");
+//        print_r(json_encode($message, JSON_PRETTY_PRINT));
+//
+//    }
 
 
 

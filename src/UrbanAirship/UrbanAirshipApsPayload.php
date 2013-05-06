@@ -10,10 +10,17 @@ namespace UrbanAirship;
 
 require_once $_SERVER["UA_HANGER"].'/vendor/autoload.php';
 
-class UrbanAirshipApsPayload extends UrbanAirshipMetadata
+class UrbanAirshipApsPayload implements \JsonSerializable
 {
+    const APS_ALERT_KEY = "alert";
+    const APS_BADGE_KEY = "badge";
+    const APS_SOUND_KEY = "sound";
 
-    public function __constructor($alert=null, $badge=null, $sound=null)
+    private $alert;
+    private $badge;
+    private $sound;
+
+    public function __construct($alert=null, $badge=null, $sound=null)
     {
         if ($alert != null)
         {
@@ -32,37 +39,40 @@ class UrbanAirshipApsPayload extends UrbanAirshipMetadata
 
     public function getAlert()
     {
-       return $this->getMetadata(self::APS_ALERT_KEY);
+       return $this->$alert;
     }
 
     public function setAlert($alert)
     {
-        $this->setMetadata(self::APS_ALERT_KEY, $alert);
+        $this->alert = $alert;
     }
 
     public function getSound()
     {
-        return $this->getMetadata(self::APS_SOUND_KEY);
+        return $this->sound;
     }
 
     public function setSound($sound)
     {
-        $this->setSound(self::APS_SOUND_KEY, $sound);
+        $this->sound = $sound;
     }
 
     public function getBadge()
     {
-        return $this->getMetadata(self::APS_BADGE_KEY);
+        return $this->badge;
     }
 
     public function setBadge($badge)
     {
-        $this->setMetadata(self::APS_BADGE_KEY, $badge);
+        $this->badge = $badge;
     }
 
     public function jsonSerialize()
     {
-        return $this->metadata;
+        $aps = array(self::APS_ALERT_KEY => $this->alert,
+                self::APS_BADGE_KEY => $this->badge,
+                self::APS_SOUND_KEY => $this->sound);
+        return $aps;
     }
 
 }

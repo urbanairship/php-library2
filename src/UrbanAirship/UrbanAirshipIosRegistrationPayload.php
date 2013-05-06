@@ -13,6 +13,8 @@ require_once $_SERVER["UA_HANGER"].'/vendor/autoload.php';
 class UrbanAirshipIosRegistrationPayload extends UrbanAirshipMetadata
 {
 
+
+
     public function getTags()
     {
         return $this->getMetadata(self::REGISTRATION_PAYLOAD_TAGS_KEY);

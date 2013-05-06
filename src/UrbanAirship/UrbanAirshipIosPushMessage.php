@@ -99,7 +99,7 @@ class UrbanAirshipIosPushMessage extends UrbanAirshipMetadata
         $payload = array("aps" => $this->aps);
         $pushPayloadValues = $this->pushPayload->metadata;
         foreach ($pushPayloadValues as $key => $value){
-            print "key" . $key . ;
+            print "key" . $key . "\n" ;
             print  "value" . $value;
         }
 

@@ -15,16 +15,8 @@ class UrbanAirshipMetadata implements \JsonSerializable
     // Their are duplicate values in these constants, there is no guarantee
     // that matching keys will always stay that way.
 
-    const APS_ALERT_KEY = "alert";
-    const APS_BADGE_KEY = "badge";
-    const APS_SOUND_KEY = "sound";
 
-    const PUSH_PAYLOAD_APS_KEY = "aps";
-    const PUSH_PAYLOAD_DEVICE_TOKENS_KEY = "device_tokens";
-    const PUSH_PAYLOAD_ALIASES_KEY = "aliases";
-    const PUSH_PAYLOAD_TAGS_KEY = "tags";
-    const PUSH_PAYLOAD_SCHEDULE_KEY = "schedule_for";
-    const PUSH_PAYLOAD_EXCLUDE_TOKENS_KEY = "exclude_tokens";
+
 
     const REGISTRATION_PAYLOAD_TAGS_KEY = "tags";
     const REGISTRATION_PAYLOAD_ALIAS_KEY = "alias";
