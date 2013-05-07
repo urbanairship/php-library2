@@ -19,14 +19,11 @@ $token2 = "1bf62ee6bf92337785c0da1c0ff16c7dbc03b9f4e19b23834a754f19c0e962d9";
 //$response = UrbanAirshipAPI::getTokenInformation($key, $secret, $token);
 
 $payload = new UrbanAirshipIosRegistrationPayload();
-$payload->setAlias("PHP");
-$payload->setTags(array("php rocks"));
+$payload->setAlias("PHP")->setTags(array("php rocks"));
 $response = UrbanAirshipAPI::registerDeviceToken($key, $secret, $token2, $payload);
 
 print_r($response);
 
-print_r(UrbanAirshipAPI::getTokenInformation($key, $secret, $token2));
-
-
+//print_r(UrbanAirshipAPI::getTokenInformation($key, $secret, $token2));
 
 ?>

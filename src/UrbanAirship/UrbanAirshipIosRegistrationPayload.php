@@ -10,7 +10,7 @@ namespace UrbanAirship;
 
 require_once $_SERVER["UA_HANGER"].'/vendor/autoload.php';
 
-class UrbanAirshipIosRegistrationPayload implements \JsonSerializable
+class UrbanAirshipIosRegistrationPayload extends UrbanAirshipPayload
 {
 
     const REGISTRATION_PAYLOAD_TAGS_KEY = "tags";
@@ -35,6 +35,7 @@ class UrbanAirshipIosRegistrationPayload implements \JsonSerializable
     public function setAlias($alias)
     {
         $this->alias = $alias;
+        return $this;
     }
 
     public function getTags()
@@ -50,6 +51,7 @@ class UrbanAirshipIosRegistrationPayload implements \JsonSerializable
         else {
             $this->tags = array($tags);
         }
+        return $this;
     }
 
     public function getBadge()
@@ -60,6 +62,7 @@ class UrbanAirshipIosRegistrationPayload implements \JsonSerializable
     public function setBadge($badge)
     {
         $this->badge = $badge;
+        return $this;
     }
 
     public function getQuietTime()
@@ -75,6 +78,7 @@ class UrbanAirshipIosRegistrationPayload implements \JsonSerializable
             self::REGISTRATION_PAYLOAD_QUIET_TIME_END_KEY => $end
         );
         $this->quietTime = $quietTime;
+        return $this;
     }
 
     public function getTimeZone()
@@ -86,6 +90,7 @@ class UrbanAirshipIosRegistrationPayload implements \JsonSerializable
     {
         //TODO verify what format time zones take
         $this->timeZone = $timeZone;
+        return $this;
     }
 
     /**
@@ -94,13 +99,15 @@ class UrbanAirshipIosRegistrationPayload implements \JsonSerializable
      */
     public function metadata()
     {
-        return array(
+        $payload = array(
             self::REGISTRATION_PAYLOAD_TAGS_KEY => $this->tags,
             self::REGISTRATION_PAYLOAD_ALIAS_KEY => $this->alias,
             self::REGISTRATION_PAYLOAD_BADGE_KEY => $this->badge,
             self::REGISTRATION_PAYLOAD_QUIET_TIME_KEY => $this->quietTime,
             self::REGISTRATION_PAYLOAD_TIME_ZONE_KEY => $this->timeZone
         );
+
+        return $this->removeNilValuesFromPayload($payload);
     }
 
     public function jsonSerialize()

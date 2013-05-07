@@ -21,7 +21,6 @@ use UrbanAirship\UrbanAirshipIosRegistrationPayload as RegistrationPayload;
 use Httpful\Http;
 
 require_once $_SERVER["UA_HANGER"] . "/src/UrbanAirship/UrbanAirshipAPI.php";
-require_once $_SERVER["UA_HANGER"] . "/src/UrbanAirship/UrbanAirshipRequest.php";
 require_once $_SERVER["UA_HANGER"] . "/src/UrbanAirship/UrbanAirshipPushPayload.php";
 require_once $_SERVER["UA_HANGER"] . "/src/UrbanAirship/UrbanAirshipIosRegistrationPayload.php";
 require_once $_SERVER["UA_HANGER"] . "/src/UrbanAirship/UrbanAirshipPushPayload.php";
@@ -74,10 +73,10 @@ class TestUrbanAirship extends PHPUnit_Framework_TestCase {
             "siren",
             4,
             "cat.caf");
-        $payload->setAps($aps);
-        $payload->setDeviceTokens(array("token"));
-        $payload->setTags(array("tag"));
-        $payload->setAliases(array("alias"));
+        $payload->setAps($aps)
+            ->setDeviceTokens(array("token"))
+            ->setTags(array("tag"))
+            ->setAliases(array("alias"));
         $json = json_encode($payload, JSON_PRETTY_PRINT);
         print_r($json);
     }
@@ -85,11 +84,11 @@ class TestUrbanAirship extends PHPUnit_Framework_TestCase {
     public function testUrbanAirshipIosRegistrationPayload()
     {
         $payload = new RegistrationPayload();
-        $payload->setAlias("alias");
-        $payload->setBadge(1);
-        $payload->setQuietTime("qt_start", "qt_end");
-        $payload->setTimeZone("pancake_time");
-//        print_r(json_encode($payload, JSON_PRETTY_PRINT));
+        $payload->setAlias("alias")
+            ->setBadge(1)
+            ->setQuietTime("qt_start", "qt_end")
+            ->setTimeZone("pancake_time");
+        print_r(json_encode($payload, JSON_PRETTY_PRINT));
 
     }
 
@@ -101,7 +100,7 @@ class TestUrbanAirship extends PHPUnit_Framework_TestCase {
             $this->token,
             $this->payload);
 
-//        print_r($request);
+        print_r($request);
     }
 
 
