@@ -2,8 +2,8 @@
 /**
  * Name: Matt Hooge
  * Company: Urban Airship
- * Date: 5/2/13
- * Time: 4:04 PM
+ * Date: 5/3/13
+ * Time: 2:36 PM
  */
 
 namespace UrbanAirship;
@@ -12,40 +12,102 @@ require_once $_SERVER["UA_HANGER"].'/vendor/autoload.php';
 
 class UrbanAirshipPushPayload implements \JsonSerializable
 {
-    const PUSH_PAYLOAD_APS_KEY = "aps";
-    const PUSH_PAYLOAD_DEVICE_TOKENS_KEY = "device_tokens";
-    const PUSH_PAYLOAD_ALIASES_KEY = "aliases";
-    const PUSH_PAYLOAD_TAGS_KEY = "tags";
-    const PUSH_PAYLOAD_SCHEDULE_KEY = "schedule_for";
-    const PUSH_PAYLOAD_EXCLUDE_TOKENS_KEY = "exclude_tokens";
+
+    /* Device identifiers */
+    const PUSH_PAYLOAD_KEY_DEVICE_TOKENS = "device_tokens";
+    const PUSH_PAYLOAD_KEY_APIDS = "apids";
+    const PUSH_PAYLOAD_KEY_DEVICE_PINS = "device_pins";
+
+    /* Message payloads */
+    const PUSH_PAYLOAD_KEY_APS = "aps";
+    const PUSH_PAYLOAD_KEY_ANDROID = "android";
+    const PUSH_PAYLOAD_KEY_BLACKBERRY = "blackberry";
+
+    /* Metadata */
+    const PUSH_PAYLOAD_KEY_ALIASES = "aliases";
+    const PUSH_PAYLOAD_KEY_TAGS = "tags";
+    const PUSH_PAYLOAD_KEY_EXCLUDE_TOKENS = "exclude_tokens";
+    const PUSH_PAYLOAD_KEY_SCHEDULE_FOR = "schedule_for";
+
+    /* Device identifiers */
+    private $deviceTokens;
+    private $apids;
+    private $devicePins;
+
+    /* Message payloads */
+    private $aps;
+    private $android;
+    private $blackberry;
+
+    /* Metadata */
+    private $aliases;
+    private $tags;
+    private $excludeTokens;
+    private $scheduleFor;
 
 
-    protected $aps;
-    protected $tags;
-    protected $deviceTokens;
-    protected $aliases;
-    protected $scheduleFor;
-    protected $exclude_tokens;
-
-
-    public function setExcludeTokens($exclude_tokens)
+    public function getDeviceTokens()
     {
-        $this->exclude_tokens = $exclude_tokens;
+        return $this->deviceTokens;
     }
 
-    public function getExcludeTokens()
+    public function setDeviceTokens($deviceTokens)
     {
-        return $this->exclude_tokens;
+        $this->deviceTokens = $deviceTokens;
+        return $this;
     }
 
-    public function getScheduleFor()
+    public function getApids()
     {
-        return $this->scheduleFor;
+        return $this->apids;
     }
 
-    public function setScheduleFor($scheduleFor)
+    public function setApids($apids)
     {
-        $this->scheduleFor = $scheduleFor;
+        $this->apids = $apids;
+        return $this;
+    }
+
+    public function getDevicePins()
+    {
+        return $this->devicePins;
+    }
+
+    public function setDevicePins($devicePins)
+    {
+        $this->devicePins = $devicePins;
+    }
+
+    public function getAps()
+    {
+        return $this->aps;
+    }
+
+    public function setAps($aps)
+    {
+        $this->aps = $aps;
+        return $this;
+    }
+    public function getAndroid()
+    {
+        return $this->android;
+    }
+
+    public function setAndroid($android)
+    {
+        $this->android = $android;
+        return $this;
+    }
+
+    public function getBlackberry()
+    {
+        return $this->blackberry;
+    }
+
+    public function setBlackberry($blackberry)
+    {
+        $this->blackberry = $blackberry;
+        return $this;
     }
 
     public function getAliases()
@@ -56,48 +118,61 @@ class UrbanAirshipPushPayload implements \JsonSerializable
     public function setAliases($aliases)
     {
         $this->aliases = $aliases;
+        return $this;
     }
 
-    public function setAps($aps)
+    public function getExcludeTokens()
     {
-        $this->aps = $aps;
+        return $this->excludeTokens;
     }
 
-    public function getAps()
+    public function setExcludeTokens($excludeTokens)
     {
-        return $this->aps;
-    }
-
-    public function setDeviceTokens($deviceTokens)
-    {
-        $this->deviceTokens = $deviceTokens;
-    }
-
-    public function getDeviceTokens()
-    {
-        return $this->deviceTokens;
+        $this->excludeTokens = $excludeTokens;
+        return $this;
     }
 
     public function getTags()
     {
-        return $this->tags;
+        $this->tags;
     }
 
     public function setTags($tags)
     {
         $this->tags = $tags;
+        return $this;
+    }
+
+    public function getScheduleFor()
+    {
+        $this->scheduleFor;
+    }
+
+    public function setScheduleFor($scheduleFor)
+    {
+        $this->scheduleFor = $scheduleFor;
+        return $this;
+    }
+
+
+    public function metadata()
+    {
+        // TODO add android, blackberry payloads as they come online
+        $metadata =  array(
+            self::PUSH_PAYLOAD_KEY_DEVICE_TOKENS => $this->deviceTokens,
+            self::PUSH_PAYLOAD_KEY_APS => $this->aps->metadata(),
+            self::PUSH_PAYLOAD_KEY_ALIASES => $this->aliases,
+            self::PUSH_PAYLOAD_KEY_TAGS => $this->tags,
+            self::PUSH_PAYLOAD_KEY_EXCLUDE_TOKENS => $this->excludeTokens,
+            self::PUSH_PAYLOAD_KEY_SCHEDULE_FOR => $this->scheduleFor
+        );
+
+        return $metadata;
     }
 
     public function jsonSerialize()
     {
-//        $aps = json_encode($this->aps);
-        $json = array(self::PUSH_PAYLOAD_APS_KEY => json_encode($this->aps),
-            self::PUSH_PAYLOAD_DEVICE_TOKENS_KEY => $this->deviceTokens,
-            self::PUSH_PAYLOAD_ALIASES_KEY => $this->aliases,
-            self::PUSH_PAYLOAD_TAGS_KEY => $this->tags,
-            self::PUSH_PAYLOAD_SCHEDULE_KEY => $this->scheduleFor,
-            self::PUSH_PAYLOAD_EXCLUDE_TOKENS_KEY => $this->exclude_tokens);
-        return $json;
+        return $this->metadata();
     }
 
 

@@ -24,7 +24,7 @@ require_once $_SERVER["UA_HANGER"] . "/src/UrbanAirship/UrbanAirshipAPI.php";
 require_once $_SERVER["UA_HANGER"] . "/src/UrbanAirship/UrbanAirshipRequest.php";
 require_once $_SERVER["UA_HANGER"] . "/src/UrbanAirship/UrbanAirshipPushPayload.php";
 require_once $_SERVER["UA_HANGER"] . "/src/UrbanAirship/UrbanAirshipIosRegistrationPayload.php";
-require_once $_SERVER["UA_HANGER"] . "/src/UrbanAirship/UrbanAirshipIosPushMessage.php";
+require_once $_SERVER["UA_HANGER"] . "/src/UrbanAirship/UrbanAirshipPushPayload.php";
 
 class TestUrbanAirship extends PHPUnit_Framework_TestCase {
 
@@ -93,24 +93,16 @@ class TestUrbanAirship extends PHPUnit_Framework_TestCase {
 
     }
 
-//    public function testGetPushMessagingRequest()
-//    {
-//        $request = \UrbanAirship\UrbanAirshipAPI::getPushMessagingRequest(
-//            $this->key,
-//            $this->secret,
-//            $this->token,
-//            $this->payload);
-//
-//        print_r($request);
-//    }
+    public function testGetPushMessagingRequest()
+    {
+        $request = \UrbanAirship\UrbanAirshipAPI::getPushMessagingRequest(
+            $this->key,
+            $this->secret,
+            $this->token,
+            $this->payload);
 
-//    public function testPushMessage()
-//    {
-//        $message = new \UrbanAirship\UrbanAirshipIosPushMessage();
-//        $message->setAlert("alert")->setBadge(1)->setDeviceTokens("token")->setAliases("cats");
-//        print_r(json_encode($message, JSON_PRETTY_PRINT));
-//
-//    }
+//        print_r($request);
+    }
 
 
 

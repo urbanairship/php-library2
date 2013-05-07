@@ -39,7 +39,7 @@ class UrbanAirshipApsPayload implements \JsonSerializable
 
     public function getAlert()
     {
-       return $this->$alert;
+       return $this->alert;
     }
 
     public function setAlert($alert)
@@ -67,12 +67,16 @@ class UrbanAirshipApsPayload implements \JsonSerializable
         $this->badge = $badge;
     }
 
+    public function metadata()
+    {
+        return array(self::APS_ALERT_KEY => $this->alert,
+            self::APS_BADGE_KEY => $this->badge,
+            self::APS_SOUND_KEY => $this->sound);
+    }
+
     public function jsonSerialize()
     {
-        $aps = array(self::APS_ALERT_KEY => $this->alert,
-                self::APS_BADGE_KEY => $this->badge,
-                self::APS_SOUND_KEY => $this->sound);
-        return $aps;
+        return $this->metadata();
     }
 
 }
