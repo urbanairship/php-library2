@@ -10,7 +10,7 @@ namespace UrbanAirship;
 
 require_once $_SERVER["UA_HANGER"].'/vendor/autoload.php';
 
-class UrbanAirshipPushPayload implements \JsonSerializable
+class UrbanAirshipPushPayload extends UrbanAirshipPayload
 {
 
     /* Device identifiers */
@@ -160,7 +160,8 @@ class UrbanAirshipPushPayload implements \JsonSerializable
         // TODO add android, blackberry payloads as they come online
         $metadata =  array(
             self::PUSH_PAYLOAD_KEY_DEVICE_TOKENS => $this->deviceTokens,
-            self::PUSH_PAYLOAD_KEY_APS => $this->aps->metadata(),
+            self::PUSH_PAYLOAD_KEY_APS =>
+                $this->removeNilValuesFromPayload($this->aps->metadata()),
             self::PUSH_PAYLOAD_KEY_ALIASES => $this->aliases,
             self::PUSH_PAYLOAD_KEY_TAGS => $this->tags,
             self::PUSH_PAYLOAD_KEY_EXCLUDE_TOKENS => $this->excludeTokens,
@@ -172,7 +173,8 @@ class UrbanAirshipPushPayload implements \JsonSerializable
 
     public function jsonSerialize()
     {
-        return $this->metadata();
+        $payload = $this->metadata();
+        return $this->removeNilValuesFromPayload($payload);
     }
 
 

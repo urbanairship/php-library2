@@ -11,7 +11,11 @@ namespace UrbanAirship;
 abstract class UrbanAirshipPayload implements \JsonSerializable
 {
 
-
+    /**
+     * Returns an reduced array that only has non null key/value pairs
+     * @param $payloadWithNilValues Array that contains null values
+     * @return array Array with null values removed
+     */
     public function removeNilValuesFromPayload($payloadWithNilValues)
     {
 

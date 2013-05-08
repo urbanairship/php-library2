@@ -27,11 +27,15 @@ use Httpful\Request as Request;
 
 require_once $_SERVER["UA_HANGER"].'/vendor/autoload.php';
 
+/**
+ * Class UrbanAirshipAPIResponse
+ * Easy wrapper to Http/Response object
+ * @package UrbanAirship
+ */
 class UrbanAirshipAPIResponse
 {
     private $code;
     private $responseBody;
-
 
     /**
      * Response code for the request.
@@ -74,17 +78,36 @@ class UrbanAirshipAPI
 
     private static $DEVICE_TOKEN_PATH = "device_tokens";
 
-
     /** @var string $URL_PATH_SEPARATOR Path separator for URLs as strings */
     private static $URL_PATH_SEPARATOR = "/";
 
+    //--------------------------------------------------------------------------
+    // Payloads
+    //--------------------------------------------------------------------------
+
+
+    public static function getApsPayload()
+    {
+        return new UrbanAirshipApsPayload();
+    }
+
+    public static function getPushMessagePayload()
+    {
+        return new UrbanAirshipPushPayload();
+    }
+
     /**
-     * @return string Base url for the Urban Airhsip API
+     * @return string Base url for the Urban Airship API
      */
     public static function getBaseUrlForUrbanAirshipAPI()
     {
         return self::$BASE_URL;
     }
+
+    //--------------------------------------------------------------------------
+    // API Methods
+    //--------------------------------------------------------------------------
+
 
     /**
      * Retrieve metadata about an iOS device from the UA API
@@ -98,6 +121,20 @@ class UrbanAirshipAPI
         $request = self::getTokenInformationRequest($key, $secret, $token);
         return self::parseServerResponse($request->send());
 
+    }
+
+    /**
+     * Send a push message to the Urban Airship API
+     * @param $key
+     * @param $masterSecret
+     * @param $pushMessage
+     * @return UrbanAirshipAPIResponse
+     */
+
+    public static function sendPushMessage($key, $masterSecret, $pushMessage)
+    {
+        $request = self::getPushMessagingRequest($key, $masterSecret, $pushMessage);
+        return self::parseServerResponse($request->send());
     }
 
     /**
@@ -159,63 +196,40 @@ class UrbanAirshipAPI
     {
         $request = self::getRegisterDeviceTokenRequest($key, $secret, $token, $payload);
         return self::parseServerResponse($request->send());
-
     }
 
-    public static function getApsPayload($alert=null, $badge=null, $sound=null)
-    {
-        return new UrbanAirshipApsPayload($alert, $badge, $sound);
-    }
+    //--------------------------------------------------------------------------
+    // HTTP Request Methods
+    //--------------------------------------------------------------------------
 
-    public static function pushToIos($apsPayload, $deviceTokens=null, $alias=null, $tags=null)
-    {
-        $pushPayload = self::getPushPayload($apsPayload, $deviceTokens, $alias, $tags);
-//        $request = self::getPushMessagingRequest()
-
-    }
-
-    public static function getPushPayload($apsPayload, $deviceTokens=null, $alias=null, $tags=null)
-    {
-        $payload = new UrbanAirshipPushPayload();
-        if ($deviceTokens != null)
-        {
-            if (is_array($deviceTokens)){
-                $payload->setDeviceTokens($deviceTokens);
-            }
-            else {
-                $payload->setDeviceTokens(array($deviceTokens));
-            }
-        }
-        if ($alias != null){
-            if (is_array($alias)){
-                $payload->setAliases($alias);
-            }
-            else {
-                $payload->setAliases(array($alias));
-            }
-        }
-        if ($tags != null){
-            if (is_array($tags)){
-                $payload->setTags($tags);
-            }
-            else {
-                $payload->setTags(array($tags));
-            }
-        }
-    }
-
-
-    public static function getPushMessagingRequest($key, $secret, $pushPayload)
+    /**
+     * Get an authorized request for sending a push message
+     * @param $key string  Application Key
+     * @param $masterSecret string  Application Master Secret
+     * @param $pushPayload UrbanAirshipPushPayload Payload with metadata for the
+     * message
+     * @return Request
+     */
+    public static function getPushMessagingRequest($key, $masterSecret, $pushPayload)
     {
         $url = self::appendPathComponentsToURL(
             self::getBaseUrlForUrbanAirshipAPI(),
             array(self::$PUSH_PATH));
-        $request = self::getBasicAuthRequest($url, $key, $secret);
+        $request = self::getBasicAuthRequest($url, $key, $masterSecret);
         $request->method(Http::POST)->sends(Mime::JSON)->body($pushPayload);
         return $request;
     }
 
 
+    /**
+     * Get an authenticated request to register a device
+     * @param $key string Application key
+     * @param $secret string Application secret
+     * @param $token string Device token to register
+     * @param UrbanAirshipIosRegistrationPayload $payload Metadata associated
+     * with the registration
+     * @return Request
+     */
     public static function getRegisterDeviceTokenRequest($key, $secret, $token, $payload=null)
     {
         $request = self::getTokenInformationRequest($key, $secret, $token);
@@ -227,7 +241,15 @@ class UrbanAirshipAPI
         return $request;
     }
 
+    //--------------------------------------------------------------------------
+    // Server Response
+    //--------------------------------------------------------------------------
 
+
+    /**
+     * @param $response Http/Response Response from the request
+     * @return UrbanAirshipAPIResponse
+     */
     public static function parseServerResponse($response)
     {
         return new UrbanAirshipAPIResponse($response);

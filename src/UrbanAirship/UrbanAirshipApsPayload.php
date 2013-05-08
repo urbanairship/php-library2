@@ -10,7 +10,7 @@ namespace UrbanAirship;
 
 require_once $_SERVER["UA_HANGER"].'/vendor/autoload.php';
 
-class UrbanAirshipApsPayload implements \JsonSerializable
+class UrbanAirshipApsPayload extends UrbanAirshipPayload
 {
     const APS_ALERT_KEY = "alert";
     const APS_BADGE_KEY = "badge";
@@ -34,7 +34,6 @@ class UrbanAirshipApsPayload implements \JsonSerializable
         {
             $this->setSound($sound);
         }
-
     }
 
     public function getAlert()
@@ -45,6 +44,7 @@ class UrbanAirshipApsPayload implements \JsonSerializable
     public function setAlert($alert)
     {
         $this->alert = $alert;
+        return $this;
     }
 
     public function getSound()
@@ -55,6 +55,7 @@ class UrbanAirshipApsPayload implements \JsonSerializable
     public function setSound($sound)
     {
         $this->sound = $sound;
+        return $this;
     }
 
     public function getBadge()
@@ -65,6 +66,7 @@ class UrbanAirshipApsPayload implements \JsonSerializable
     public function setBadge($badge)
     {
         $this->badge = $badge;
+        return $this;
     }
 
     public function metadata()
@@ -76,7 +78,8 @@ class UrbanAirshipApsPayload implements \JsonSerializable
 
     public function jsonSerialize()
     {
-        return $this->metadata();
+        $metadata = $this->metadata();
+        return $this->removeNilValuesFromPayload($metadata);
     }
 
 }
