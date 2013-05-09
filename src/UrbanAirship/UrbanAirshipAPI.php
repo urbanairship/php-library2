@@ -114,7 +114,7 @@ class UrbanAirshipAPI
      * @param string $key Application key
      * @param string $secret Application secret
      * @param string $token iOS device token
-     * @return Httpful\Request
+     * @return UrbanAirshipAPIResponse
      */
     public static function getTokenInformation($key, $secret, $token)
     {

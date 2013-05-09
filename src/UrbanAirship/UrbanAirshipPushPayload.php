@@ -46,28 +46,49 @@ class UrbanAirshipPushPayload extends UrbanAirshipPayload
     private $scheduleFor;
 
 
+    /**
+     * Array of device tokens
+     * @return mixed
+     */
     public function getDeviceTokens()
     {
         return $this->deviceTokens;
     }
 
+    /**
+     * Sets tokens to message to.
+     * @param $deviceTokens Array Array of device tokens
+     * @return $this
+     */
     public function setDeviceTokens($deviceTokens)
     {
         $this->deviceTokens = $deviceTokens;
         return $this;
     }
 
+    /**
+     * Current array of APIDs
+     * @return mixed
+     */
     public function getApids()
     {
         return $this->apids;
     }
 
+    /**
+     * @param $apids Array Sets the array of APIDs
+     * @return $this
+     */
     public function setApids($apids)
     {
         $this->apids = $apids;
         return $this;
     }
 
+    /**
+     * Current Blackberry device pins
+     * @return mixed
+     */
     public function getDevicePins()
     {
         return $this->devicePins;
