@@ -3,8 +3,9 @@
 
 namespace UrbanAirship;
 
-# TODO Figure out another way to setup path to things
 require_once '../../vendor/autoload.php';
+
+use UrbanAirship\UrbanAirshipAPI;
 
 $longopts = array (
     "token:",

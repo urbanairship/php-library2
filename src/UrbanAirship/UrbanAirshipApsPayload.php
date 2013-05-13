@@ -8,7 +8,6 @@
 
 namespace UrbanAirship;
 
-require_once $_SERVER["UA_HANGER"].'/vendor/autoload.php';
 
 class UrbanAirshipApsPayload extends UrbanAirshipPayload
 {

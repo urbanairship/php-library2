@@ -25,7 +25,7 @@ use Httpful\Httpful;
 use Httpful\Mime as Mime;
 use Httpful\Request as Request;
 
-require_once $_SERVER["UA_HANGER"].'/vendor/autoload.php';
+/* require_once $_SERVER["UA_HANGER"].'/vendor/autoload.php'; */
 
 /**
  * Class UrbanAirshipAPIResponse
@@ -210,6 +210,8 @@ class UrbanAirshipAPI
      * message
      * @return Request
      */
+
+    //TODO:dc: Consider a builder pattern
     public static function getPushMessagingRequest($key, $masterSecret, $pushPayload)
     {
         $url = self::appendPathComponentsToURL(
@@ -220,7 +222,7 @@ class UrbanAirshipAPI
         return $request;
     }
 
-
+ 
     /**
      * Get an authenticated request to register a device
      * @param $key string Application key
@@ -230,7 +232,8 @@ class UrbanAirshipAPI
      * with the registration
      * @return Request
      */
-    public static function getRegisterDeviceTokenRequest($key, $secret, $token, $payload=null)
+    //TODO:dc: this name implies a GET but it does a PUT
+   public static function getRegisterDeviceTokenRequest($key, $secret, $token, $payload=null)
     {
         $request = self::getTokenInformationRequest($key, $secret, $token);
         $request->method = Http::PUT;

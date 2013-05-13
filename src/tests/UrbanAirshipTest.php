@@ -20,10 +20,7 @@ use UrbanAirship\UrbanAirshipIosRegistrationPayload as RegistrationPayload;
 
 use Httpful\Http;
 
-require_once $_SERVER["UA_HANGER"] . "/src/UrbanAirship/UrbanAirshipAPI.php";
-require_once $_SERVER["UA_HANGER"] . "/src/UrbanAirship/UrbanAirshipPushPayload.php";
-require_once $_SERVER["UA_HANGER"] . "/src/UrbanAirship/UrbanAirshipIosRegistrationPayload.php";
-require_once $_SERVER["UA_HANGER"] . "/src/UrbanAirship/UrbanAirshipPushPayload.php";
+require_once __DIR__ . "/../../vendor/autoload.php";
 
 class TestUrbanAirship extends PHPUnit_Framework_TestCase {
 

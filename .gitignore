@@ -1,3 +1,4 @@
-/docs/
-/data/
-/vendor/
+docs/
+data/
+vendor/
+composer.phar
