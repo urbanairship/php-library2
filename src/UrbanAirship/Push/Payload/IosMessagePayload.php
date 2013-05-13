@@ -6,10 +6,9 @@
  * Time: 1:35 PM
  */
 
-namespace UrbanAirship;
+namespace UrbanAirship\Push\Payload;
 
-
-class UrbanAirshipApsPayload extends UrbanAirshipPayload
+class IosMessagePayload extends Payload
 {
     const APS_ALERT_KEY = "alert";
     const APS_BADGE_KEY = "badge";
@@ -19,21 +18,6 @@ class UrbanAirshipApsPayload extends UrbanAirshipPayload
     private $badge;
     private $sound;
 
-    public function __construct($alert=null, $badge=null, $sound=null)
-    {
-        if ($alert != null)
-        {
-            $this->setAlert($alert);
-        }
-        if ($badge != null)
-        {
-            $this->setBadge($badge);
-        }
-        if ($sound != null)
-        {
-            $this->setSound($sound);
-        }
-    }
 
     public function getAlert()
     {
@@ -73,6 +57,11 @@ class UrbanAirshipApsPayload extends UrbanAirshipPayload
         return array(self::APS_ALERT_KEY => $this->alert,
             self::APS_BADGE_KEY => $this->badge,
             self::APS_SOUND_KEY => $this->sound);
+    }
+
+    public static function payload()
+    {
+        return new IosMessagePayload();
     }
 
     public function jsonSerialize()

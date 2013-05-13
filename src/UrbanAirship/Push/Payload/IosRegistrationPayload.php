@@ -6,9 +6,10 @@
  * Time: 11:37 AM
  */
 
-namespace UrbanAirship;
+namespace UrbanAirship\Push\Payload;
 
-class UrbanAirshipIosRegistrationPayload extends UrbanAirshipPayload
+
+class IosRegistrationPayload extends Payload
 {
 
     const REGISTRATION_PAYLOAD_TAGS_KEY = "tags";

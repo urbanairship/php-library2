@@ -6,9 +6,11 @@
  * Time: 2:36 PM
  */
 
-namespace UrbanAirship;
+namespace UrbanAirship\Push\Payload\Broadcast;
 
-class UrbanAirshipPushPayload extends UrbanAirshipPayload
+use UrbanAirship\Push\Payload;
+
+class Ios extends Payload
 {
 
     /* Device identifiers */

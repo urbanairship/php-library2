@@ -14,9 +14,6 @@
 //    See the License for the specific language governing permissions and
 //    limitations under the License.
 
-use UrbanAirship\UrbanAirshipAPI as UA;
-use UrbanAirship\UrbanAirshipPushPayload as PushPayload;
-use UrbanAirship\UrbanAirshipIosRegistrationPayload as RegistrationPayload;
 
 use Httpful\Http;
 
@@ -40,7 +37,7 @@ class TestUrbanAirship extends PHPUnit_Framework_TestCase {
     public function testGetTokenInformationRequest()
     {
 
-        $request = UA::getTokenInformationRequest($this->key, $this->secret, $this->token);
+        $request = UA::tokenInformationRequest($this->key, $this->secret, $this->token);
 //        print_r($request);
         $url = $request->uri;
         $expectedURL =  "https://go.urbanairship.com/api/device_tokens/token/";
@@ -52,7 +49,7 @@ class TestUrbanAirship extends PHPUnit_Framework_TestCase {
 
     public function testGetRegisterDeviceTokenRequest(){
 
-        $request = UA::getRegisterDeviceTokenRequest($this->key, $this->secret, $this->token);
+        $request = UA::registerDeviceTokenRequest($this->key, $this->secret, $this->token);
 //        print_r($request);
         $url = $request->uri;
         $expectedURL =  "https://go.urbanairship.com/api/device_tokens/token/";
@@ -62,36 +59,11 @@ class TestUrbanAirship extends PHPUnit_Framework_TestCase {
         $this->assertTrue(strcmp($request->method, "PUT") == 0);
     }
 
-    public function testUrbanAirshipPushPayload()
-    {
-        //TODO setup aps payload
-        $payload = new PushPayload();
-        $aps = new \UrbanAirship\UrbanAirshipApsPayload(
-            "siren",
-            4,
-            "cat.caf");
-        $payload->setAps($aps)
-            ->setDeviceTokens(array("token"))
-            ->setTags(array("tag"))
-            ->setAliases(array("alias"));
-        $json = json_encode($payload, JSON_PRETTY_PRINT);
-        print_r($json);
-    }
 
-    public function testUrbanAirshipIosRegistrationPayload()
-    {
-        $payload = new RegistrationPayload();
-        $payload->setAlias("alias")
-            ->setBadge(1)
-            ->setQuietTime("qt_start", "qt_end")
-            ->setTimeZone("pancake_time");
-        print_r(json_encode($payload, JSON_PRETTY_PRINT));
-
-    }
 
     public function testGetPushMessagingRequest()
     {
-        $request = \UrbanAirship\UrbanAirshipAPI::getPushMessagingRequest(
+        $request = \UrbanAirship\IosApi::getPushMessagingRequest(
             $this->key,
             $this->secret,
             $this->token,

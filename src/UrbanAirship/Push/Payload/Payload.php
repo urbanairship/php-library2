@@ -6,9 +6,9 @@
  * Time: 1:33 PM
  */
 
-namespace UrbanAirship;
+namespace UrbanAirship\Push\Payload;
 
-abstract class UrbanAirshipPayload implements \JsonSerializable
+abstract class Payload implements \JsonSerializable
 {
 
     /**
