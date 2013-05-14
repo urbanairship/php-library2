@@ -22,6 +22,8 @@ require_once __DIR__ . "/../../vendor/autoload.php";
 use UrbanAirship\Push\Request\IosRegisterTokenRequest;
 use UrbanAirship\Push\Request\IosTokenInformationRequest;
 use UrbanAirship\Push\Request\IosDeactivateTokenRequest;
+use UrbanAirship\Push\Request\IosSendNotificationRequest;
+use UrbanAirship\Push\Payload;
 
 class TestRequests extends PHPUnit_Framework_TestCase {
 
@@ -50,7 +52,7 @@ class TestRequests extends PHPUnit_Framework_TestCase {
         $this->assertTrue(strcmp($expectedURL, $request->uri) == 0, "bad url");
         $this->assertTrue(strcmp($request->username, $this->key) == 0, "bad key");
         $this->assertTrue(strcmp($request->password, $this->secret) == 0, "bad secret");
-        $this->assertTrue(strcmp($request->method, "GET") == 0, "wront http method");
+        $this->assertTrue(strcmp($request->method, "GET") == 0, "wrong http method");
     }
 
     public function testIosRegisterTokenRequest(){
@@ -60,7 +62,7 @@ class TestRequests extends PHPUnit_Framework_TestCase {
             ->setAppSecret($this->secret)
             ->setDeviceToken($this->token);
 
-        $request = $registrationRequest->buildRegistrationRequest();
+        $request = $registrationRequest->buildDeactivateRequest();
         $expectedURL =  "https://go.urbanairship.com/api/device_tokens/token/";
         $this->assertTrue(strcmp($expectedURL, $request->uri) == 0, "bad url");
         $this->assertTrue(strcmp($request->username, $this->key) == 0, "bad username");
@@ -76,7 +78,7 @@ class TestRequests extends PHPUnit_Framework_TestCase {
             ->setAppSecret($this->secret)
             ->setDeviceToken($this->token);
 
-        $request = $deactivateRequest->buildRegistrationRequest();
+        $request = $deactivateRequest->buildDeactivateRequest();
         $expectedURL =  "https://go.urbanairship.com/api/device_tokens/token/";
         $this->assertTrue(strcmp($expectedURL, $request->uri) == 0, "bad url");
         $this->assertTrue(strcmp($request->username, $this->key) == 0, "bad username");
@@ -85,7 +87,34 @@ class TestRequests extends PHPUnit_Framework_TestCase {
 
     }
 
+    public function testSendMessageRequest()
+    {
 
+        $testAlert = "The cake is a lie.";
+        $aps = Payload\IosMessagePayload::payload()->setAlert($testAlert);
+        $testTokens = array("token", "chicken");
+        $paylaod = Payload\BroadcastPayload::payload()
+            ->setAps($aps)
+            ->setDeviceTokens($testTokens);
+        $notificationRequest = IosSendNotificationRequest::request()
+            ->setAppKey($this->key)
+            ->setAppSecret($this->secret)
+            ->setBroadcastPayload($paylaod);
+
+        $request = $notificationRequest->buildSendNotificationRequest();
+        $expectedURL = "https://go.urbanairship.com/api/push/";
+        $this->assertTrue(strcmp($expectedURL, $request->uri) == 0, "bad url");
+        $this->assertTrue(strcmp($request->username, $this->key) == 0, "bad username");
+        $this->assertTrue(strcmp($request->password, $this->secret) == 0, "bad secret");
+        $this->assertTrue(strcmp($request->method, "POST") == 0, "wrong http method");
+        // Paylaod checking
+        $requestPayload = json_decode($request->payload);
+        $this->assertTrue(strcmp($requestPayload->aps->alert, $testAlert) == 0, "wrong alert string" );
+        $tokensArray = $requestPayload->device_tokens;
+        $this->assertTrue($tokensArray == $testTokens);
+
+
+    }
 
 
 }

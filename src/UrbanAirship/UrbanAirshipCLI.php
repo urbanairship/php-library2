@@ -5,9 +5,13 @@ namespace UrbanAirship;
 
 require_once '../../vendor/autoload.php';
 
+use UrbanAirship\Push\Payload\BroadcastPayload;
+
 use UrbanAirship\Push\Request\IosRegisterTokenRequest;
 use UrbanAirship\Push\Request\IosTokenInformationRequest;
 use UrbanAirship\Push\Request\IosDeactivateTokenRequest;
+use UrbanAirship\Push\Request\IosSendNotificationRequest;
+use UrbanAirship\Push\Payload\IosMessagePayload;
 
 $longopts = array (
     "token:",
@@ -45,5 +49,21 @@ $token2 = "1bf62ee6bf92337785c0da1c0ff16c7dbc03b9f4e19b23834a754f19c0e962d9";
 //
 //echo "DEACTIVATE\n";
 //print_r($response);
+
+$aps = IosMessagePayload::payload()
+    ->setAlert("Hello from PHP");
+
+$payload = BroadcastPayload::payload()
+    ->setAps($aps)
+    ->setDeviceTokens(array($token, $token2));
+
+$response = IosSendNotificationRequest::request()
+    ->setAppKey($key)
+    ->setAppSecret($masterSecret)
+    ->setBroadcastPayload($payload)
+    ->send();
+
+print_r($response);
+
 
 ?>

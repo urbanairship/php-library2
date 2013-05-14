@@ -6,11 +6,17 @@
  * Time: 2:36 PM
  */
 
-namespace UrbanAirship\Push\Payload\Broadcast;
+namespace UrbanAirship\Push\Payload;;
 
-use UrbanAirship\Push\Payload;
+/**
+ * Class BroadcastPayload
+ * Represents a broadcast push through Urban Airship. Devices can be targeted
+ * using the different API methods available on each platform.
+ *
+ * @package UrbanAirship\Push\Payload
+ */
 
-class Ios extends Payload
+class BroadcastPayload extends Payload
 {
 
     /* Device identifiers */
@@ -44,6 +50,8 @@ class Ios extends Payload
     private $tags;
     private $excludeTokens;
     private $scheduleFor;
+
+    protected function __constructor(){}
 
 
     /**
@@ -173,6 +181,11 @@ class Ios extends Payload
     {
         $this->scheduleFor = $scheduleFor;
         return $this;
+    }
+
+    public static function payload()
+    {
+        return new BroadcastPayload();
     }
 
 

@@ -16,9 +16,9 @@ class IosDeactivateTokenRequest extends IosRegisterTokenRequest
         return new IosDeactivateTokenRequest();
     }
 
-    public function buildRegistrationRequest()
+    public function buildDeactivateRequest()
     {
-        $request = parent::buildRegistrationRequest();
+        $request = parent::buildDeactivateRequest();
         return $request->method(self::DELETE);
     }
 }

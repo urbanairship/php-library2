@@ -46,4 +46,10 @@ class IosUrl extends Url
     {
         return IosUrl::iosRegistration($deviceToken);
     }
+
+    public static function iosPushMessage()
+    {
+        return self::appendPathComponentsToURL(self::urbanAirshipBaseApiUrl(),
+            array(self::$PUSH_PATH));
+    }
 }

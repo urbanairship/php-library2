@@ -32,7 +32,7 @@ class IosRegisterTokenRequest extends UARequest
         return $this;
     }
 
-    public function buildRegistrationRequest()
+    public function buildDeactivateRequest()
     {
         $request = $this->tokenBasedAuthenticatedRequest($this->deviceToken);
         $request->method(self::PUT);
@@ -49,7 +49,7 @@ class IosRegisterTokenRequest extends UARequest
 
     public function send()
     {
-        $request =$this->buildRegistrationRequest();
+        $request =$this->buildDeactivateRequest();
         return $request->send();
     }
 

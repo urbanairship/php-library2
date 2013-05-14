@@ -18,6 +18,7 @@ class IosMessagePayload extends Payload
     private $badge;
     private $sound;
 
+    protected function __constructor(){}
 
     public function getAlert()
     {
@@ -69,5 +70,6 @@ class IosMessagePayload extends Payload
         $metadata = $this->metadata();
         return $this->removeNilValuesFromPayload($metadata);
     }
+
 
 }
