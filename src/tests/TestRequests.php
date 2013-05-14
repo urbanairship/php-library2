@@ -22,7 +22,7 @@ require_once __DIR__ . "/../../vendor/autoload.php";
 use UrbanAirship\Push\Request\IosRegisterTokenRequest;
 use UrbanAirship\Push\Request\IosTokenInformationRequest;
 use UrbanAirship\Push\Request\IosDeactivateTokenRequest;
-use UrbanAirship\Push\Request\IosSendNotificationRequest;
+use UrbanAirship\Push\Request\PushNotificationRequest;
 use UrbanAirship\Push\Payload;
 
 class TestRequests extends PHPUnit_Framework_TestCase {
@@ -87,21 +87,21 @@ class TestRequests extends PHPUnit_Framework_TestCase {
 
     }
 
-    public function testSendMessageRequest()
+    public function testPushNotificationRequest()
     {
 
         $testAlert = "The cake is a lie.";
         $aps = Payload\IosMessagePayload::payload()->setAlert($testAlert);
         $testTokens = array("token", "chicken");
-        $paylaod = Payload\BroadcastPayload::payload()
+        $payload = Payload\MessagePayload::payload()
             ->setAps($aps)
             ->setDeviceTokens($testTokens);
-        $notificationRequest = IosSendNotificationRequest::request()
+        $notificationRequest = PushNotificationRequest::request()
             ->setAppKey($this->key)
             ->setAppSecret($this->secret)
-            ->setBroadcastPayload($paylaod);
+            ->setPushNotificationPayload($payload);
 
-        $request = $notificationRequest->buildSendNotificationRequest();
+        $request = $notificationRequest->buildPushNotificationRequest();
         $expectedURL = "https://go.urbanairship.com/api/push/";
         $this->assertTrue(strcmp($expectedURL, $request->uri) == 0, "bad url");
         $this->assertTrue(strcmp($request->username, $this->key) == 0, "bad username");

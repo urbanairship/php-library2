@@ -11,11 +11,6 @@ namespace UrbanAirship\Push\Url;
 class IosUrl extends Url
 {
     /**
-     * @var string $PUSH_PATH Push path.
-     */
-    private static $PUSH_PATH = "push";
-
-    /**
      * @var string $$DEVICE_TOKEN_PATH Device Token Path.
      */
     private static $DEVICE_TOKEN_PATH = "device_tokens";
@@ -28,13 +23,6 @@ class IosUrl extends Url
         return self::$DEVICE_TOKEN_PATH;
     }
 
-    /**
-     * @return string Push Path for URL
-     */
-    protected  static function pushPath()
-    {
-        return self::$PUSH_PATH;
-    }
 
     public static function iosRegistration($deviceToken)
     {

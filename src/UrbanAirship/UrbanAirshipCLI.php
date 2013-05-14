@@ -5,12 +5,12 @@ namespace UrbanAirship;
 
 require_once '../../vendor/autoload.php';
 
-use UrbanAirship\Push\Payload\BroadcastPayload;
+use UrbanAirship\Push\Payload\MessagePayload;
 
 use UrbanAirship\Push\Request\IosRegisterTokenRequest;
 use UrbanAirship\Push\Request\IosTokenInformationRequest;
 use UrbanAirship\Push\Request\IosDeactivateTokenRequest;
-use UrbanAirship\Push\Request\IosSendNotificationRequest;
+use UrbanAirship\Push\Request\NotificationRequest;
 use UrbanAirship\Push\Payload\IosMessagePayload;
 
 $longopts = array (
@@ -53,14 +53,13 @@ $token2 = "1bf62ee6bf92337785c0da1c0ff16c7dbc03b9f4e19b23834a754f19c0e962d9";
 $aps = IosMessagePayload::payload()
     ->setAlert("Hello from PHP");
 
-$payload = BroadcastPayload::payload()
-    ->setAps($aps)
-    ->setDeviceTokens(array($token, $token2));
+$payload = MessagePayload::payload()
+    ->setAps($aps);
 
-$response = IosSendNotificationRequest::request()
+$response = NotificationRequest::request()
     ->setAppKey($key)
     ->setAppSecret($masterSecret)
-    ->setBroadcastPayload($payload)
+    ->setPushPayload($payload)
     ->send();
 
 print_r($response);

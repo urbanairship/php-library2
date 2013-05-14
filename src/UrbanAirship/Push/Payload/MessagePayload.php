@@ -16,7 +16,7 @@ namespace UrbanAirship\Push\Payload;;
  * @package UrbanAirship\Push\Payload
  */
 
-class BroadcastPayload extends Payload
+class MessagePayload extends Payload
 {
 
     /* Device identifiers */
@@ -185,7 +185,7 @@ class BroadcastPayload extends Payload
 
     public static function payload()
     {
-        return new BroadcastPayload();
+        return new MessagePayload();
     }
 
 
