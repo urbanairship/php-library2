@@ -5,7 +5,9 @@ namespace UrbanAirship;
 
 require_once '../../vendor/autoload.php';
 
-use UrbanAirship\Push\Request\IosRegistrationRequest;
+use UrbanAirship\Push\Request\IosRegisterTokenRequest;
+use UrbanAirship\Push\Request\IosTokenInformationRequest;
+use UrbanAirship\Push\Request\IosDeactivateTokenRequest;
 
 $longopts = array (
     "token:",
@@ -18,19 +20,30 @@ $masterSecret = "JkyLL9IqQ2OVkashrzLq-A";
 $token = "9459c465b199f44e8127c9e24e180615bb759e4f46de57f1b73a32d97700e6b9";
 $token2 = "1bf62ee6bf92337785c0da1c0ff16c7dbc03b9f4e19b23834a754f19c0e962d9";
 
-$response = IosRegistrationRequest::request()
-    ->setAppKey($key)
-    ->setAppSecret($secret)
-    ->setDeviceToken($token)
-    ->send();
+//$response = IosRegisterTokenRequest::request()
+//    ->setAppKey($key)
+//    ->setAppSecret($secret)
+//    ->setDeviceToken($token)
+//    ->send();
+//echo "REGISTER\n";
+//print_r($response);
 
-print_r($response);
+//$response = IosTokenInformationRequest::request()
+//    ->setAppKey($key)
+//    ->setAppSecret($secret)
+//    ->setDeviceToken($token)
+//    ->send();
 //
-//$payload = UrbanAirship::Payloads::IosRegistration::Builder().setAlias().setPayload().build();
-//(my fancy stuff
+//echo "INFO\n";
+//print_r($response);
 
-
-
-
+//$response = IosDeactivateTokenRequest::request()
+//    ->setAppKey($key)
+//    ->setAppSecret($secret)
+//    ->setDeviceToken($token)
+//    ->send();
+//
+//echo "DEACTIVATE\n";
+//print_r($response);
 
 ?>

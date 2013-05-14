@@ -19,7 +19,9 @@ use Httpful\Http;
 
 require_once __DIR__ . "/../../vendor/autoload.php";
 
-use UrbanAirship\Push\Request\IosRegistrationRequest;
+use UrbanAirship\Push\Request\IosRegisterTokenRequest;
+use UrbanAirship\Push\Request\IosTokenInformationRequest;
+use UrbanAirship\Push\Request\IosDeactivateTokenRequest;
 
 class TestRequests extends PHPUnit_Framework_TestCase {
 
@@ -36,22 +38,24 @@ class TestRequests extends PHPUnit_Framework_TestCase {
         $this->payload = array("payload" => "stuff");
     }
 
-//    public function testGetTokenInformationRequest()
-//    {
-//
-//        $request = UA::tokenInformationRequest($this->key, $this->secret, $this->token);
-////        print_r($request);
-//        $url = $request->uri;
-//        $expectedURL =  "https://go.urbanairship.com/api/device_tokens/token/";
-//        $this->assertTrue(strcmp($expectedURL, $url) == 0);
-//        $this->assertTrue(strcmp($request->username, $this->key) == 0);
-//        $this->assertTrue(strcmp($request->password, $this->secret) == 0);
-//        $this->assertTrue(strcmp($request->method, "GET") == 0);
-//    }
+    public function testTokenInformationRequest()
+    {
 
-    public function testIosRegistrationRequest(){
+        $infoRequest = IosTokenInformationRequest::request()
+            ->setAppKey($this->key)
+            ->setAppSecret($this->secret)
+            ->setDeviceToken($this->token);
+        $request = $infoRequest->buildTokenInformationRequest();
+        $expectedURL =  "https://go.urbanairship.com/api/device_tokens/token/";
+        $this->assertTrue(strcmp($expectedURL, $request->uri) == 0, "bad url");
+        $this->assertTrue(strcmp($request->username, $this->key) == 0, "bad key");
+        $this->assertTrue(strcmp($request->password, $this->secret) == 0, "bad secret");
+        $this->assertTrue(strcmp($request->method, "GET") == 0, "wront http method");
+    }
 
-        $registrationRequest = IosRegistrationRequest::request()
+    public function testIosRegisterTokenRequest(){
+
+        $registrationRequest = IosRegisterTokenRequest::request()
             ->setAppKey($this->key)
             ->setAppSecret($this->secret)
             ->setDeviceToken($this->token);
@@ -65,9 +69,19 @@ class TestRequests extends PHPUnit_Framework_TestCase {
     }
 
 
-    public function testGetPushMessagingRequest()
+    public function testDeactivateTokenRequest()
     {
+        $deactivateRequest = IosDeactivateTokenRequest::request()
+            ->setAppKey($this->key)
+            ->setAppSecret($this->secret)
+            ->setDeviceToken($this->token);
 
+        $request = $deactivateRequest->buildRegistrationRequest();
+        $expectedURL =  "https://go.urbanairship.com/api/device_tokens/token/";
+        $this->assertTrue(strcmp($expectedURL, $request->uri) == 0, "bad url");
+        $this->assertTrue(strcmp($request->username, $this->key) == 0, "bad username");
+        $this->assertTrue(strcmp($request->password, $this->secret) == 0, "bad secret");
+        $this->assertTrue(strcmp($request->method, "DELETE") == 0, "wrong http method");
 
     }
 

@@ -9,10 +9,18 @@
 namespace UrbanAirship\Push\Request;
 
 use Httpful\Request;
-
+use UrbanAirship\Push\Payload\Broadcast\Ios;
+use UrbanAirship\Push\Url\IosUrl;
 
 abstract class UARequest
 {
+
+    const HEAD      = 'HEAD';
+    const GET       = 'GET';
+    const POST      = 'POST';
+    const PUT       = 'PUT';
+    const DELETE    = 'DELETE';
+
     protected $appKey;
 
     protected $appSecret;
@@ -37,4 +45,18 @@ abstract class UARequest
         $this->payload = $payload;
         return $this;
     }
+
+    /**
+     * Returns an authenticated request with the current key and secret. Defaults
+     * to GET, no parameters other than defaults or authentication are set.
+     * @param $token string Device token
+     * @return Request Get request authenticated with app key and secret
+     */
+    protected function tokenBasedAuthenticatedRequest($token)
+    {
+        $url = IosUrl::iosRegistration($token);
+        return Request::get($url)
+            ->authenticateWithBasic($this->appKey, $this->appSecret);
+    }
+
 }

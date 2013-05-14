@@ -8,18 +8,18 @@
 
 namespace UrbanAirship\Push\Request;
 
+use Httpful\Http;
 use Httpful\Mime as Mime;
 use Httpful\Request as Request;
 use UrbanAirship\Push\Url\IosUrl;
 
-class IosRegistrationRequest extends UARequest
+class IosRegisterTokenRequest extends UARequest
 {
 
-
-    private $deviceToken;
+    protected  $deviceToken;
 
     // Don't allow construction outside factory method
-    private function  __construct(){}
+    protected  function  __construct(){}
 
     public function setRegistrationPayload($registrationPayload)
     {
@@ -32,11 +32,10 @@ class IosRegistrationRequest extends UARequest
         return $this;
     }
 
-    public  function buildRegistrationRequest()
+    public function buildRegistrationRequest()
     {
-        $url = IosUrl::iosRegistration($this->deviceToken);
-        $request = Request::put($url)->authenticateWithBasic($this->appKey,
-            $this->appSecret);
+        $request = $this->tokenBasedAuthenticatedRequest($this->deviceToken);
+        $request->method(self::PUT);
         if (!is_null($this->payload)) {
             $request->mime(Mime::JSON)
                 ->body($this->payload);
@@ -45,7 +44,7 @@ class IosRegistrationRequest extends UARequest
     }
 
     public static function request() {
-        return new IosRegistrationRequest();
+        return new IosRegisterTokenRequest();
     }
 
     public function send()
