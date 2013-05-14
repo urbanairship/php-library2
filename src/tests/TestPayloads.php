@@ -9,6 +9,7 @@
 require_once __DIR__ . "/../../vendor/autoload.php";
 
 use UrbanAirship\Push\Payload\IosMessagePayload;
+use UrbanAirship\Push\Payload\IosRegistrationPayload;
 
 class TestPayload extends PHPUnit_Framework_TestCase
 {
@@ -35,18 +36,18 @@ class TestPayload extends PHPUnit_Framework_TestCase
             ->setAlert($alert)
             ->setBadge($badge)
             ->setSound($sound);
-        
+
         print_r(json_encode($aps));
     }
 
     public function testIosRegistration()
     {
-//        $payload = new IosRegistration();
-//        $payload->setAlias("alias")
-//            ->setBadge(1)
-//            ->setQuietTime("qt_start", "qt_end")
-//            ->setTimeZone("pancake_time");
-//        print_r(json_encode($payload, JSON_PRETTY_PRINT));
+        $payload = new IosRegistrationPayload();
+        $payload->setAlias("alias")
+            ->setBadge(1)
+            ->setQuietTime("qt_start", "qt_end")
+            ->setTimeZone("pancake_time");
+        print_r(json_encode($payload, JSON_PRETTY_PRINT));
     }
 
 }

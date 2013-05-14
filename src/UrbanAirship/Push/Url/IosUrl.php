@@ -36,11 +36,9 @@ class IosUrl extends Url
         return self::$PUSH_PATH;
     }
 
-    public static function iosRegistration()
+    public static function iosRegistration($deviceToken)
     {
-        return self::appendPathComponentsToURL(
-            self::urbanAirshipBaseApiUrl(),
-            array(self::$PUSH_PATH,
-            self::$DEVICE_TOKEN_PATH));
+        return self::appendPathComponentsToURL(self::urbanAirshipBaseApiUrl(),
+            array(self::$DEVICE_TOKEN_PATH, $deviceToken));
     }
 }

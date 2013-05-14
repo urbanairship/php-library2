@@ -12,45 +12,46 @@ use Httpful\Mime as Mime;
 use Httpful\Request as Request;
 use UrbanAirship\Push\Url\IosUrl;
 
-class IosRegistrationRequest
+class IosRegistrationRequest extends UARequest
 {
-    private $appKey;
-
-    private $appSecret;
-
-    private $registrationPayload;
 
 
-    public function setAppKey($appKey)
-    {
-        $this->appKey = $appKey;
-        return $this;
-    }
+    private $deviceToken;
 
-    public function setAppSecret($appSecret)
-    {
-        $this->appSecret = $appSecret;
-        return $this;
-    }
+    // Don't allow construction outside factory method
+    private function  __construct(){}
 
     public function setRegistrationPayload($registrationPayload)
     {
-        $this->registrationPayload = $registrationPayload;
+        return $this->setPayload($registrationPayload);
+    }
+
+    public function setDeviceToken($deviceToken)
+    {
+        $this->deviceToken = $deviceToken;
         return $this;
     }
 
-    private function buildRegistrationRequest()
+    public  function buildRegistrationRequest()
     {
-        $url = IosUrl::iosRegistration();
-        return Request::put($url)
-            ->authenticateWithBasic($this->appKey, $this->appSecret)
-            ->mime(Mime::JSON)
-            ->body($this->registrationPayload);
+        $url = IosUrl::iosRegistration($this->deviceToken);
+        $request = Request::put($url)->authenticateWithBasic($this->appKey,
+            $this->appSecret);
+        if (!is_null($this->payload)) {
+            $request->mime(Mime::JSON)
+                ->body($this->payload);
+        }
+        return $request;
+    }
+
+    public static function request() {
+        return new IosRegistrationRequest();
     }
 
     public function send()
     {
-        $this->buildRegistrationRequest()->send();
+        $request =$this->buildRegistrationRequest();
+        return $request->send();
     }
 
 }
