@@ -61,7 +61,6 @@ abstract class UARequest
         return $this;
     }
 
-
     /**
      * Basic auth request using this key (user) and secret (password)
      * @param $url string URL for request
@@ -72,6 +71,8 @@ abstract class UARequest
         return Request::get($url)
             ->authenticateWithBasic($this->appKey, $this->appSecret);
     }
+
+    public abstract function buildRequest();
 
 
 }

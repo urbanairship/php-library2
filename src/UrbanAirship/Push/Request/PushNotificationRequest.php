@@ -8,8 +8,6 @@
 
 namespace UrbanAirship\Push\Request;
 
-use UrbanAirship\Push\Url\iUrl;
-
 class PushNotificationRequest extends NotificationRequest
 {
 
@@ -34,11 +32,6 @@ class PushNotificationRequest extends NotificationRequest
         return $this;
     }
 
-    public function buildNotificationRequest()
-    {
-        return parent::buildNotificationRequest();
-    }
-
     /**
      * @param $url string URL for the push notification endpoint, either push,
      * batch, or broadcast.
@@ -51,6 +44,6 @@ class PushNotificationRequest extends NotificationRequest
 
     public function send()
     {
-        return $this->buildNotificationRequest()->send();
+        return $this->buildRequest()->send();
     }
 }

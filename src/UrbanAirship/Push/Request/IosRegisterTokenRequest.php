@@ -32,7 +32,7 @@ class IosRegisterTokenRequest extends UARequest
         return $this;
     }
 
-    public function buildRegisterTokenRequest()
+    public function buildRequest()
     {
         $url = IosUrl::iosRegistration($this->deviceToken);
         $request = $this->basicAuthRequest($url)->method(self::PUT);

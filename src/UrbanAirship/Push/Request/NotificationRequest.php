@@ -15,9 +15,7 @@ abstract class NotificationRequest extends UARequest
 {
     protected $url;
 
-    public abstract function send();
-
-    protected function buildNotificationRequest()
+    public  function buildRequest()
     {
         $request = self::basicAuthRequest($this->url)
             ->method(self::POST)

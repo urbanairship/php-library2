@@ -19,7 +19,7 @@ class IosTokenInformationRequest extends IosRegisterTokenRequest
         $this->deviceToken = $deviceToken;
         return $this;
     }
-    public function buildTokenInformationRequest()
+    public function buildRequest()
     {
         return  $this->tokenBasedAuthenticatedRequest($this->deviceToken)
             ->expectsType(Mime::JSON);
@@ -33,7 +33,7 @@ class IosTokenInformationRequest extends IosRegisterTokenRequest
     public function send()
     {
         $url = IosUrl::iosDeviceInformation($this->deviceToken);
-        $request = $this->buildTokenInformationRequest();
+        $request = $this->buildRequest();
         return $request->send();
     }
 

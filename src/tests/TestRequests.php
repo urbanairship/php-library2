@@ -23,6 +23,7 @@ use UrbanAirship\Push\Request\IosRegisterTokenRequest;
 use UrbanAirship\Push\Request\IosTokenInformationRequest;
 use UrbanAirship\Push\Request\IosDeactivateTokenRequest;
 use UrbanAirship\Push\Request\PushNotificationRequest;
+use UrbanAirship\Push\Request\IosFeedbackRequest;
 use UrbanAirship\Push\Payload;
 use UrbanAirship\Push\Url\NotificationUrl;
 
@@ -48,7 +49,7 @@ class TestRequests extends PHPUnit_Framework_TestCase {
             ->setAppKey($this->key)
             ->setAppSecret($this->secret)
             ->setDeviceToken($this->token);
-        $request = $infoRequest->buildTokenInformationRequest();
+        $request = $infoRequest->buildRequest();
         $expectedURL =  "https://go.urbanairship.com/api/device_tokens/token/";
         $this->assertTrue(strcmp($expectedURL, $request->uri) == 0, "bad url");
         $this->assertTrue(strcmp($request->username, $this->key) == 0, "bad key");
@@ -63,7 +64,7 @@ class TestRequests extends PHPUnit_Framework_TestCase {
             ->setAppSecret($this->secret)
             ->setDeviceToken($this->token);
 
-        $request = $registrationRequest->buildRegisterTokenRequest();
+        $request = $registrationRequest->buildRequest();
         $expectedURL =  "https://go.urbanairship.com/api/device_tokens/token/";
         $this->assertTrue(strcmp($expectedURL, $request->uri) == 0, "bad url");
         $this->assertTrue(strcmp($request->username, $this->key) == 0, "bad username");
@@ -79,7 +80,7 @@ class TestRequests extends PHPUnit_Framework_TestCase {
             ->setAppSecret($this->secret)
             ->setDeviceToken($this->token);
 
-        $request = $deactivateRequest->buildDeactivateRequest();
+        $request = $deactivateRequest->buildRequest();
         $expectedURL =  "https://go.urbanairship.com/api/device_tokens/token/";
         $this->assertTrue(strcmp($expectedURL, $request->uri) == 0, "bad url");
         $this->assertTrue(strcmp($request->username, $this->key) == 0, "bad username");
@@ -103,18 +104,29 @@ class TestRequests extends PHPUnit_Framework_TestCase {
             ->setAppSecret($this->secret)
             ->setPushNotificationPayload($payload);
 
-        $request = $notificationRequest->buildNotificationRequest();
+        $request = $notificationRequest->buildRequest();
         $expectedURL = "https://go.urbanairship.com/api/push/";
         $this->assertTrue(strcmp($expectedURL, $request->uri) == 0, "bad url");
         $this->assertTrue(strcmp($request->username, $this->key) == 0, "bad username");
         $this->assertTrue(strcmp($request->password, $this->secret) == 0, "bad secret");
         $this->assertTrue(strcmp($request->method, "POST") == 0, "wrong http method");
-        // Paylaod checking
+        // Payload checking
         $requestPayload = json_decode($request->payload);
         $this->assertTrue(strcmp($requestPayload->aps->alert, $testAlert) == 0, "wrong alert string" );
         $tokensArray = $requestPayload->device_tokens;
         $this->assertTrue($tokensArray == $testTokens);
 
+    }
+
+    public function testFeedbackRequest()
+    {
+        $date = new DateTime();
+        $feedbackRequest = IosFeedbackRequest::request()->setDateTime($date);
+        $request = $feedbackRequest->buildRequest();
+        $dateString = date(DATE_ISO8601, $date->getTimestamp());
+        $expectedUrl = "https://go.urbanairship.com/api/device_tokens/feedback/?since={$dateString}/";
+        $this->assertTrue($expectedUrl === $request->uri, "URL for feedback incorrect");
+        $this->assertTrue("GET" === $request->method, "Feedback request method incorrect");
 
     }
 

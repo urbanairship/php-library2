@@ -5,12 +5,14 @@ namespace UrbanAirship;
 
 require_once '../../vendor/autoload.php';
 
+use phpDocumentor\Transformer\Exception;
 use UrbanAirship\Push\Payload\NotificationPayload;
 
 use UrbanAirship\Push\Request\IosRegisterTokenRequest;
 use UrbanAirship\Push\Request\IosTokenInformationRequest;
 use UrbanAirship\Push\Request\IosDeactivateTokenRequest;
 use UrbanAirship\Push\Request\PushNotificationRequest;
+use UrbanAirship\Push\Request\IosFeedbackRequest;
 use UrbanAirship\Push\Payload\IosMessagePayload;
 use UrbanAirship\Push\Url\IosUrl;
 use UrbanAirship\Push\Url\NotificationUrl;
@@ -39,9 +41,9 @@ $token2 = "1bf62ee6bf92337785c0da1c0ff16c7dbc03b9f4e19b23834a754f19c0e962d9";
 //    ->setAppSecret($secret)
 //    ->setDeviceToken($token)
 //    ->send();
-//
-//echo "INFO\n";
-//print_r($response);
+
+
+echo "INFO\n";
 
 //$response = IosDeactivateTokenRequest::request()
 //    ->setAppKey($key)
@@ -52,12 +54,12 @@ $token2 = "1bf62ee6bf92337785c0da1c0ff16c7dbc03b9f4e19b23834a754f19c0e962d9";
 //echo "DEACTIVATE\n";
 //print_r($response);
 
-$aps = IosMessagePayload::payload()
-    ->setAlert("Hello from PHP");
-
-$payload = NotificationPayload::payload()
-    ->setAps($aps)
-    ->setDeviceTokens(array($token, $token2));
+//$aps = IosMessagePayload::payload()
+//    ->setAlert("Hello from PHP");
+//
+//$payload = NotificationPayload::payload()
+//    ->setAps($aps)
+//    ->setDeviceTokens(array($token, $token2));
 
 //$url = NotificationUrl::pushNotificationUrl();
 //$response = PushNotificationRequest::request($url)
@@ -68,21 +70,21 @@ $payload = NotificationPayload::payload()
 //
 //print_r($response);
 
-$aps = IosMessagePayload::payload()
-    ->setAlert("Hello from PHP");
-
-$payload = NotificationPayload::payload()
-    ->setAps($aps)
-    ->setDeviceTokens(array($token, $token2));
-
-$url = NotificationUrl::batchNotificationUrl();
-$response = PushNotificationRequest::request($url)
-    ->setAppKey($key)
-    ->setAppSecret($masterSecret)
-    ->setPushNotificationPayload(array($payload))
-    ->send();
-
-print_r($response);
+//$aps = IosMessagePayload::payload()
+//    ->setAlert("Hello from PHP");
+//
+//$payload = NotificationPayload::payload()
+//    ->setAps($aps)
+//    ->setDeviceTokens(array($token, $token2));
+//
+//$url = NotificationUrl::batchNotificationUrl();
+//$response = PushNotificationRequest::request($url)
+//    ->setAppKey($key)
+//    ->setAppSecret($masterSecret)
+//    ->setPushNotificationPayload(array($payload))
+//    ->send();
+//
+//print_r($response);
 
 //$payload = MessagePayload::payload()
 //    ->setAps($aps);
