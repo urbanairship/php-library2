@@ -52,7 +52,6 @@ class IosRegisterTokenRequest extends UARequest
     {
         $url = IosUrl::iosRegistration($token);
         return self::basicAuthRequest($url);
-
     }
 
     public static function request() {

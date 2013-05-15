@@ -15,7 +15,6 @@ abstract class UARequest
 {
 
     /* HTTP Methods */
-    const HEAD      = 'HEAD';
     const GET       = 'GET';
     const POST      = 'POST';
     const PUT       = 'PUT';

@@ -8,7 +8,24 @@
 
 namespace UrbanAirship\Push\Request;
 
-class IosDeviceTokeListRequest
+use UrbanAirship\Push\Url\IosUrl;
+
+class IosDeviceTokenListRequest extends UARequest
 {
+    public static function request()
+    {
+        return new IosDeviceTokenListRequest();
+    }
+
+    public function buildRequest()
+    {
+        $url = IosUrl::iosDeviceTokenList();
+        return $this->basicAuthRequest($url);
+    }
+
+    public function send()
+    {
+        return $this->buildRequest()->send();
+    }
 
 }

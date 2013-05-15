@@ -39,14 +39,12 @@ class IosUrl extends Url
         return IosUrl::iosRegistration($deviceToken);
     }
 
-    /**
-     * Queries the feedback service for inactive tokens, which include tokens
-     * that have been marked inactive by Urban Airship and tokens which have
-     * been marked inactive by Apple.
-     *
-     * @param $isoDateString string Date in ISO 8601 date parameter
-     * @return
-     */
+    public static function iosDeviceTokenList()
+    {
+        return self::appendPathComponentsToURL(self::$BASE_URL,
+            array(self::$DEVICE_TOKEN_PATH));
+    }
+
     public static function iosFeedbackSince($isoDateString)
     {
         $query = self::$FEEDBACK_QUERY_PARAM;

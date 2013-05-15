@@ -13,6 +13,7 @@ use UrbanAirship\Push\Request\IosTokenInformationRequest;
 use UrbanAirship\Push\Request\IosDeactivateTokenRequest;
 use UrbanAirship\Push\Request\PushNotificationRequest;
 use UrbanAirship\Push\Request\IosFeedbackRequest;
+use UrbanAirship\Push\Request\IosDeviceTokenListRequest;
 use UrbanAirship\Push\Payload\IosMessagePayload;
 use UrbanAirship\Push\Url\IosUrl;
 use UrbanAirship\Push\Url\NotificationUrl;
@@ -27,6 +28,13 @@ $secret = "AAZnUxo7QvCHz3SAVb1O3w";
 $masterSecret = "JkyLL9IqQ2OVkashrzLq-A";
 $token = "9459c465b199f44e8127c9e24e180615bb759e4f46de57f1b73a32d97700e6b9";
 $token2 = "1bf62ee6bf92337785c0da1c0ff16c7dbc03b9f4e19b23834a754f19c0e962d9";
+
+$request = IosDeviceTokenListRequest::request()
+    ->setAppKey($key)
+    ->setAppSecret($masterSecret);
+
+print_r($request->send());
+
 
 //$response = IosRegisterTokenRequest::request()
 //    ->setAppKey($key)
