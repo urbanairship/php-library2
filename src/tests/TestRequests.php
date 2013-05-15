@@ -24,6 +24,7 @@ use UrbanAirship\Push\Request\IosTokenInformationRequest;
 use UrbanAirship\Push\Request\IosDeactivateTokenRequest;
 use UrbanAirship\Push\Request\PushNotificationRequest;
 use UrbanAirship\Push\Payload;
+use UrbanAirship\Push\Url\NotificationUrl;
 
 class TestRequests extends PHPUnit_Framework_TestCase {
 
@@ -62,7 +63,7 @@ class TestRequests extends PHPUnit_Framework_TestCase {
             ->setAppSecret($this->secret)
             ->setDeviceToken($this->token);
 
-        $request = $registrationRequest->buildDeactivateRequest();
+        $request = $registrationRequest->buildRegisterTokenRequest();
         $expectedURL =  "https://go.urbanairship.com/api/device_tokens/token/";
         $this->assertTrue(strcmp($expectedURL, $request->uri) == 0, "bad url");
         $this->assertTrue(strcmp($request->username, $this->key) == 0, "bad username");
@@ -93,15 +94,16 @@ class TestRequests extends PHPUnit_Framework_TestCase {
         $testAlert = "The cake is a lie.";
         $aps = Payload\IosMessagePayload::payload()->setAlert($testAlert);
         $testTokens = array("token", "chicken");
-        $payload = Payload\MessagePayload::payload()
+        $payload = Payload\NotificationPayload::payload()
             ->setAps($aps)
             ->setDeviceTokens($testTokens);
-        $notificationRequest = PushNotificationRequest::request()
+        $url = NotificationUrl::pushNotificationUrl();
+        $notificationRequest = PushNotificationRequest::request($url)
             ->setAppKey($this->key)
             ->setAppSecret($this->secret)
             ->setPushNotificationPayload($payload);
 
-        $request = $notificationRequest->buildPushNotificationRequest();
+        $request = $notificationRequest->buildNotificationRequest();
         $expectedURL = "https://go.urbanairship.com/api/push/";
         $this->assertTrue(strcmp($expectedURL, $request->uri) == 0, "bad url");
         $this->assertTrue(strcmp($request->username, $this->key) == 0, "bad username");

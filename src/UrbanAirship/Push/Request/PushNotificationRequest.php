@@ -8,31 +8,49 @@
 
 namespace UrbanAirship\Push\Request;
 
-use UrbanAirship\Push\Url\Url;
-
+use UrbanAirship\Push\Url\iUrl;
 
 class PushNotificationRequest extends NotificationRequest
 {
 
+    /**
+     * @param $url string URL to send the message to, push, batch, or broadcast
+     */
+    protected  function __construct($url)
+    {
+        $this->url = $url;
+    }
+
+    /**
+     * Payloads for push notification. See API documentation for payload options
+     * and formats.
+     * @param $payload object Array with the correct parameters for the given
+     * push URL. Improperly formatted payloads will result in a 400 response
+     * @return $this
+     */
     public function setPushNotificationPayload($payload)
     {
         $this->setPayload($payload);
         return $this;
     }
 
-    public static function request()
+    public function buildNotificationRequest()
     {
-        return new PushNotificationRequest();
+        return parent::buildNotificationRequest();
     }
 
-    public function buildPushNotificationRequest()
+    /**
+     * @param $url string URL for the push notification endpoint, either push,
+     * batch, or broadcast.
+     * @return PushNotificationRequest
+     */
+    public static function request($url)
     {
-        $url = Url::pushNotificationUrl();
-        return $this->buildNotificationRequest($url);
+        return new PushNotificationRequest($url);
     }
 
     public function send()
     {
-        $this->buildPushNotificationRequest()->send();
+        return $this->buildNotificationRequest()->send();
     }
 }

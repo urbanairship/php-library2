@@ -12,10 +12,8 @@ namespace UrbanAirship\Push\Request;
 use UrbanAirship\Push\Url\IosUrl;
 use Httpful\Mime;
 
-class IosTokenInformationRequest extends UARequest
+class IosTokenInformationRequest extends IosRegisterTokenRequest
 {
-    private $deviceToken;
-
     public function setDeviceToken($deviceToken)
     {
         $this->deviceToken = $deviceToken;

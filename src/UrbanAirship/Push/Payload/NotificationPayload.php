@@ -6,7 +6,7 @@
  * Time: 2:36 PM
  */
 
-namespace UrbanAirship\Push\Payload;;
+namespace UrbanAirship\Push\Payload;
 
 /**
  * Class BroadcastPayload
@@ -16,7 +16,7 @@ namespace UrbanAirship\Push\Payload;;
  * @package UrbanAirship\Push\Payload
  */
 
-class MessagePayload extends Payload
+class NotificationPayload extends Payload
 {
 
     /* Device identifiers */
@@ -185,9 +185,8 @@ class MessagePayload extends Payload
 
     public static function payload()
     {
-        return new MessagePayload();
+        return new NotificationPayload();
     }
-
 
     public function metadata()
     {

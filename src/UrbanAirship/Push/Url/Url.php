@@ -6,10 +6,6 @@ namespace UrbanAirship\Push\Url;
 
 class Url
 {
-    /**
-     * @var string $BASE_URL The base url for the Urban Airship API
-     */
-    private  static $BASE_URL = "https://go.urbanairship.com/api";
 
     /**
      * @var string $URL_PATH_SEPARATOR Path separator for URLs as strings
@@ -17,13 +13,9 @@ class Url
     private static $URL_PATH_SEPARATOR = "/";
 
     /**
-     * @var string $PUSH_PATH Push path.
+     * @var string $BASE_URL The base url for the Urban Airship API
      */
-    protected static $PUSH_PATH = "push";
-
-    protected static $BATCH_PATH = "batch";
-
-    protected static $BROADCAST_PATH = "broadcast";
+    protected   static $BASE_URL = "https://go.urbanairship.com/api";
 
     /**
      * @return string Base URL for the Urban Airship API
@@ -40,31 +32,6 @@ class Url
     {
         return self::$URL_PATH_SEPARATOR;
     }
-    /**
-     * @return string Push Path for URL
-     */
-    protected static function pushPath()
-    {
-        return self::$PUSH_PATH;
-    }
-
-    public static function pushNotificationUrl()
-    {
-        return self::appendPathComponentsToURL(self::$BASE_URL,
-            array(self::$PUSH_PATH));
-    }
-
-    public static function broadcastNotificationUrl()
-    {
-        return self::appendPathComponentsToURL(self::$BASE_URL,
-            array(self::$PUSH_PATH, self::$BROADCAST_PATH));
-    }
-
-    public static function batchNotificationUrl()
-    {
-        return self::appendPathComponentsToURL(self::$BASE_URL,
-            array(self::$PUSH_PATH, self::$BATCH_PATH));
-    }
 
     /**
      * Create a URL with the given base URL and extra components. The components
@@ -79,5 +46,6 @@ class Url
         $path = implode(self::$URL_PATH_SEPARATOR, $pathComponents);
         return "{$url}/{$path}/";
     }
+
 
 }

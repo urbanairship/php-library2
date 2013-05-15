@@ -32,15 +32,27 @@ class IosRegisterTokenRequest extends UARequest
         return $this;
     }
 
-    public function buildDeactivateRequest()
+    public function buildRegisterTokenRequest()
     {
-        $request = $this->tokenBasedAuthenticatedRequest($this->deviceToken);
-        $request->method(self::PUT);
-        if (!is_null($this->payload)) {
-            $request->mime(Mime::JSON)
-                ->body($this->payload);
+        $url = IosUrl::iosRegistration($this->deviceToken);
+        $request = $this->basicAuthRequest($url)->method(self::PUT);
+        if (!is_null($this->payload)){
+            $request->payload = $this->payload;
         }
         return $request;
+    }
+
+    /**
+     * Returns an authenticated request with the current key and secret. Defaults
+     * to GET, no parameters other than defaults or authentication are set.
+     * @param $token string Device token
+     * @return Request Get request authenticated with app key and secret
+     */
+    protected function tokenBasedAuthenticatedRequest($token)
+    {
+        $url = IosUrl::iosRegistration($token);
+        return self::basicAuthRequest($url);
+
     }
 
     public static function request() {
@@ -49,7 +61,7 @@ class IosRegisterTokenRequest extends UARequest
 
     public function send()
     {
-        $request =$this->buildDeactivateRequest();
+        $request =$this->tokenBasedAuthenticatedRequest($this->deviceToken);
         return $request->send();
     }
 

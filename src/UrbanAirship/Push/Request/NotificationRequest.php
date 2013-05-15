@@ -10,15 +10,16 @@ namespace UrbanAirship\Push\Request;
 
 use Httpful\Request;
 use Httpful\Mime;
-use UrbanAirship\Push\Url\IosUrl;
 
 abstract class NotificationRequest extends UARequest
 {
+    protected $url;
+
     public abstract function send();
 
-    protected function buildNotificationRequest($url)
+    protected function buildNotificationRequest()
     {
-        $request = self::basicAuthRequest($url)
+        $request = self::basicAuthRequest($this->url)
             ->method(self::POST)
             ->sendsType(Mime::JSON)
             ->body(json_encode($this->payload));

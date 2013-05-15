@@ -18,7 +18,12 @@ class IosDeactivateTokenRequest extends IosRegisterTokenRequest
 
     public function buildDeactivateRequest()
     {
-        $request = parent::buildDeactivateRequest();
-        return $request->method(self::DELETE);
+        $request = $this->tokenBasedAuthenticatedRequest($this->deviceToken);
+        $request->method(self::DELETE);
+        if (!is_null($this->payload)) {
+            $request->mime(Mime::JSON)
+                ->body($this->payload);
+        }
+        return $request;
     }
 }
