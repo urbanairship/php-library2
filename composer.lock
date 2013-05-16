@@ -1,6 +1,38 @@
 {
-    "hash": "beb187d170054fb9b17740563940b7a1",
+    "hash": "224b5a876165eed4bd3dec9e74033198",
     "packages": [
+        {
+            "name": "d11wtq/boris",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/d11wtq/boris.git",
+                "reference": "09c211ab3a79154f39efce542f737ad08596e63f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/d11wtq/boris/zipball/09c211ab3a79154f39efce542f737ad08596e63f",
+                "reference": "09c211ab3a79154f39efce542f737ad08596e63f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "ext-readline": "*",
+                "ext-pcntl": "*",
+                "ext-posix": "*"
+            },
+            "time": "1366723911",
+            "bin": [
+                "bin/boris"
+            ],
+            "type": "library",
+            "installation-source": "source",
+            "autoload": {
+                "psr-0": {
+                    "Boris": "lib"
+                }
+            }
+        },
         {
             "name": "monolog/monolog",
             "version": "1.5.0",
@@ -154,7 +186,7 @@
 
     ],
     "minimum-stability": "stable",
-    "stability-flags": [
-
-    ]
+    "stability-flags": {
+        "d11wtq/boris": 20
+    }
 }

@@ -53,7 +53,6 @@ class IosUrl extends Url
             array(self::$DEVICE_TOKEN_PATH,
                 self::$FEEDBACK_PATH,
                 $timeQuery));
-
     }
 
 }
