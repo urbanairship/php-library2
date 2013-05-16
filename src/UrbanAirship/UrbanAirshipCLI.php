@@ -29,11 +29,11 @@ $masterSecret = "JkyLL9IqQ2OVkashrzLq-A";
 $token = "9459c465b199f44e8127c9e24e180615bb759e4f46de57f1b73a32d97700e6b9";
 $token2 = "1bf62ee6bf92337785c0da1c0ff16c7dbc03b9f4e19b23834a754f19c0e962d9";
 
-$request = IosDeviceTokenListRequest::request()
-    ->setAppKey($key)
-    ->setAppSecret($masterSecret);
-
-print_r($request->send());
+//$request = IosDeviceTokenListRequest::request()
+//    ->setAppKey($key)
+//    ->setAppSecret($masterSecret);
+//
+//print_r($request->send());
 
 
 //$response = IosRegisterTokenRequest::request()
@@ -50,8 +50,6 @@ print_r($request->send());
 //    ->setDeviceToken($token)
 //    ->send();
 
-
-echo "INFO\n";
 
 //$response = IosDeactivateTokenRequest::request()
 //    ->setAppKey($key)
