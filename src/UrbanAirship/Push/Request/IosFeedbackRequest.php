@@ -11,6 +11,13 @@ namespace UrbanAirship\Push\Request;
 use UrbanAirship\Push\Url\IosUrl;
 use Httpful\Mime;
 
+/**
+ * Query the Urban Airship feedback service for a list of tokens that have
+ * been returned by Apple as uninstalled or have been rendered inactive through
+ * the API.
+ * Class IosFeedbackRequest
+ * @package UrbanAirship\Push\Request
+ */
 class IosFeedbackRequest extends UARequest
 {
 

@@ -8,6 +8,13 @@
 
 namespace UrbanAirship\Push\Request;
 
+use \Httpful\Mime;
+
+/**
+ * Deactivate the given token with Urban Airship.
+ * Class IosDeactivateTokenRequest
+ * @package UrbanAirship\Push\Request
+ */
 class IosDeactivateTokenRequest extends IosRegisterTokenRequest
 {
 

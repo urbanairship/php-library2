@@ -13,6 +13,12 @@ use Httpful\Mime as Mime;
 use Httpful\Request as Request;
 use UrbanAirship\Push\Url\IosUrl;
 
+
+/**
+ * Register an iOS device token with Urban Airship.
+ * Class IosRegisterTokenRequest
+ * @package UrbanAirship\Push\Request
+ */
 class IosRegisterTokenRequest extends UARequest
 {
 
