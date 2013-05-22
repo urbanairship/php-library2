@@ -117,6 +117,7 @@ class NotificationPayload extends Payload
         $this->aps = $aps;
         return $this;
     }
+
     public function getAndroid()
     {
         return $this->android;
@@ -190,16 +191,21 @@ class NotificationPayload extends Payload
 
     public function metadata()
     {
-        // TODO add android, blackberry payloads as they come online
-        $metadata =  array(
-            self::PUSH_PAYLOAD_KEY_DEVICE_TOKENS => $this->deviceTokens,
-            self::PUSH_PAYLOAD_KEY_APS =>
-                $this->removeNilValuesFromPayload($this->aps->metadata()),
-            self::PUSH_PAYLOAD_KEY_ALIASES => $this->aliases,
-            self::PUSH_PAYLOAD_KEY_TAGS => $this->tags,
-            self::PUSH_PAYLOAD_KEY_EXCLUDE_TOKENS => $this->excludeTokens,
-            self::PUSH_PAYLOAD_KEY_SCHEDULE_FOR => $this->scheduleFor
-        );
+        $metadata = array();
+        if (!is_null($this->aps)) {
+            $metadata[self::PUSH_PAYLOAD_KEY_APS] =
+                $this->removeNilValuesFromPayload($this->aps->metadata());
+        }
+        if (!is_null($this->android)) {
+            $metadata[self::PUSH_PAYLOAD_KEY_ANDROID] =
+                $this->removeNilValuesFromPayload($this->android->metadata());
+        }
+        $metadata[self::PUSH_PAYLOAD_KEY_APIDS] = $this->apids;
+        $metadata[self::PUSH_PAYLOAD_KEY_DEVICE_TOKENS] = $this->deviceTokens;
+        $metadata[self::PUSH_PAYLOAD_KEY_ALIASES] = $this->aliases;
+        $metadata[self::PUSH_PAYLOAD_KEY_TAGS] = $this->tags;
+        $metadata[self::PUSH_PAYLOAD_KEY_EXCLUDE_TOKENS] = $this->excludeTokens;
+        $metadata[self::PUSH_PAYLOAD_KEY_SCHEDULE_FOR] = $this->scheduleFor;
 
         return $metadata;
     }
