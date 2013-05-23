@@ -13,7 +13,7 @@ use UrbanAirship\Push\Exception\UARequestException;
 
 class UAResponse {
 
-    private $response;
+    protected  $response;
 
     public function __construct($response){
         $this->response = $response;

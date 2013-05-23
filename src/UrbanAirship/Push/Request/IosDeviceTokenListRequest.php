@@ -9,6 +9,8 @@
 namespace UrbanAirship\Push\Request;
 
 use UrbanAirship\Push\Url\IosUrl;
+use UrbanAirship\Push\Response\UADeviceTokenListResponse;
+use Httpful\Mime;
 
 /**
  * Get a list of device tokens for the give application
@@ -45,12 +47,13 @@ class IosDeviceTokenListRequest extends UARequest
         else {
             $url = $this->nextPageUrl;
         }
-        return $this->basicAuthRequest($url);
+        return $this->basicAuthRequest($url)->expectsType(Mime::JSON);
+
     }
 
     public function send()
     {
-        return $this->buildRequest()->send();
+        return new UADeviceTokenListResponse($this->buildRequest()->send());
     }
 
 }
