@@ -75,10 +75,24 @@ class UADeviceTokenListResponse extends UAResponse implements \Iterator{
      */
     public function valid()
     {
-        if ($this->position < count($this->page->{self::DEVICE_TOKENS_KEY})){
+        $tokenCount = count($this->page->{self::DEVICE_TOKENS_KEY});
+        // Moving through existing page
+        if ($this->position < $tokenCount){
             return true;
         }
-        else false;
+        // Check and load another page if it exists
+        elseif($this->position >= $tokenCount){
+            $nextPage = $this->loadNextPage($this->page);
+            if (is_null($nextPage)){
+                // TODO info about no more pages
+                return false;
+            }
+            // Only replace the page if a new one came down
+            $this->page = $nextPage;
+            // Reset counter if a new page was downloaded.
+            $this->position = 0;
+            return true;
+        }
     }
 
     /**
@@ -90,6 +104,31 @@ class UADeviceTokenListResponse extends UAResponse implements \Iterator{
     public function rewind()
     {
         $this->position = 0;
+    }
+
+    /**
+     * Takes the current page and retrieves the next
+     * page of results. Returns
+     * @param $page object Object representing a single page result
+     * @return null
+     */
+    private function loadNextPage($page)
+    {
+        if (!isset($page->{self::NEXT_PAGE_KEY})){
+            return null;
+        }
+        else {
+            $request = $this->response->request;
+            $request->uri($page->{self::NEXT_PAGE_KEY});
+            $response = $request->send();
+            if ($response->hasErrors()){
+                // TODO log error info
+                return null;
+            }
+            else {
+                return $response->body;
+            }
+        }
     }
 
 

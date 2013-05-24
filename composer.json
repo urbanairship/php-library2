@@ -4,8 +4,7 @@
 	},
 	"require":{
 		"monolog/monolog":"1.5.0",
-		"nategood/httpful":"*",
-		"d11wtq/boris": "dev-master"
+		"nategood/httpful":"*"
 	},
     "require-dev": {
         "phpunit/phpunit": "3.7.*"

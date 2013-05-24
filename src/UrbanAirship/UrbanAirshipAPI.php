@@ -17,7 +17,6 @@ use UrbanAirship\Push\Url;
 
 class UrbanAirshipAPI {
 
-
     protected $appKey;
     protected $appSecret;
     protected $appMasterSecret;
