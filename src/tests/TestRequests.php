@@ -27,7 +27,8 @@ use UrbanAirship\Push\Request\IosFeedbackRequest;
 use UrbanAirship\Push\Payload;
 use UrbanAirship\Push\Url\NotificationUrl;
 
-class TestRequests extends PHPUnit_Framework_TestCase {
+class TestRequests extends PHPUnit_Framework_TestCase
+{
 
     protected $key;
     protected $secret;

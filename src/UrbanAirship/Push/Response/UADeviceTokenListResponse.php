@@ -81,7 +81,7 @@ class UADeviceTokenListResponse extends UAResponse implements \Iterator{
             return true;
         }
         // Check and load another page if it exists
-        elseif($this->position >= $tokenCount){
+        if($this->position >= $tokenCount){
             $nextPage = $this->loadNextPage($this->page);
             if (is_null($nextPage)){
                 // TODO info about no more pages
