@@ -6,12 +6,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9c1f9946-8e00-4df6-a18f-285108634741" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/UrbanAirship/Push/Payload/IosMessagePayload.php" afterPath="$PROJECT_DIR$/src/UrbanAirship/Push/Payload/IosMessagePayload.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/UrbanAirship/Push/Payload/IosRegistrationPayload.php" afterPath="$PROJECT_DIR$/src/UrbanAirship/Push/Payload/IosRegistrationPayload.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tests/TestPayloads.php" afterPath="$PROJECT_DIR$/src/tests/TestPayloads.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tests/TestRequests.php" afterPath="$PROJECT_DIR$/src/tests/TestRequests.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/UrbanAirship/Push/Response/UADeviceTokenListResponse.php" afterPath="$PROJECT_DIR$/src/UrbanAirship/Push/Response/UADeviceTokenListResponse.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/UrbanAirship/UrbanAirshipCLI.php" afterPath="$PROJECT_DIR$/src/UrbanAirship/UrbanAirshipCLI.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/composer.lock" afterPath="$PROJECT_DIR$/composer.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="uaphp.iws" />
@@ -44,7 +40,7 @@
     <file path="/Payload.php" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1368488077874" ignored="false" />
     <file path="/Url.php" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1368635233495" ignored="false" />
     <file path="/IosApi.php" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1368486621219" ignored="false" />
-    <file path="/TestPayloads.php" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1369433934174" ignored="false" />
+    <file path="/TestPayloads.php" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1369438564259" ignored="false" />
     <file path="/IosRegistration.php" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1368488528755" ignored="false" />
     <file path="/IosRegistrationRequest.php" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1368560728012" ignored="false" />
     <file path="/IosUrl.php" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1368725071406" ignored="false" />
@@ -69,7 +65,7 @@
     <file path="/RequestBuilder.php" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1368658835374" ignored="false" />
     <file path="/APIRequest.php" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1368659484674" ignored="false" />
     <file path="/RequestBuilders.php" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1368659978456" ignored="false" />
-    <file path="/AndroidMessagePayload.php" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1369243397883" ignored="false" />
+    <file path="/AndroidMessagePayload.php" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1369434631508" ignored="false" />
     <file path="/NotificationPayload.php" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1369248788387" ignored="false" />
     <file path="/BackberryMessagePayload.php" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1369252463182" ignored="false" />
     <file path="/UARequestException.php" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1369326289720" ignored="false" />
@@ -143,31 +139,22 @@
     <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf>
-          <file leaf-file-name="AndroidMessagePayload.php" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/UrbanAirship/Push/Payload/AndroidMessagePayload.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="IosMessagePayload.php" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/UrbanAirship/Push/Payload/IosMessagePayload.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="120" column="0" selection-start="2670" selection-end="2670" vertical-scroll-proportion="-30.666666">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="TestPayloads.php" pinned="false" current="false" current-in-tab="true">
+          <file leaf-file-name="TestPayloads.php" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/tests/TestPayloads.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="46" column="39" selection-start="1323" selection-end="1323" vertical-scroll-proportion="0.828841">
+                <state line="103" column="8" selection-start="3661" selection-end="3661" vertical-scroll-proportion="0.9461153">
                   <folding>
                     <element signature="e#149#197#0" expanded="true" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="IosRegistrationPayload.php" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/UrbanAirship/Push/Payload/IosRegistrationPayload.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -176,10 +163,10 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="IosMessagePayload.php" pinned="false" current="true" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/UrbanAirship/Push/Payload/IosMessagePayload.php">
+          <file leaf-file-name="IosRegistrationPayload.php" pinned="false" current="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/UrbanAirship/Push/Payload/IosRegistrationPayload.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="39" column="31" selection-start="861" selection-end="861" vertical-scroll-proportion="0.68733156">
+                <state line="178" column="0" selection-start="4187" selection-end="4187" vertical-scroll-proportion="3.2518797">
                   <folding />
                 </state>
               </provider>
@@ -205,8 +192,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/UrbanAirship/UrbanAirshipAPI.php" />
-        <option value="$PROJECT_DIR$/src/UrbanAirship/Push/Payload/AndroidMessagePayload.php" />
         <option value="$PROJECT_DIR$/src/UrbanAirship/Push/Payload/NotificationPayload.php" />
         <option value="$PROJECT_DIR$/src/UrbanAirship/Push/Request/PushNotificationRequest.php" />
         <option value="$PROJECT_DIR$/src/UrbanAirship/Push/Payload/BackberryMessagePayload.php" />
@@ -219,8 +204,10 @@
         <option value="$PROJECT_DIR$/src/UrbanAirship/UrbanAirshipCLI.php" />
         <option value="$PROJECT_DIR$/src/tests/TestRequests.php" />
         <option value="$PROJECT_DIR$/src/UrbanAirship/Push/Response/UADeviceTokenListResponse.php" />
-        <option value="$PROJECT_DIR$/src/tests/TestPayloads.php" />
         <option value="$PROJECT_DIR$/src/UrbanAirship/Push/Payload/IosMessagePayload.php" />
+        <option value="$PROJECT_DIR$/src/UrbanAirship/Push/Payload/AndroidMessagePayload.php" />
+        <option value="$PROJECT_DIR$/src/UrbanAirship/Push/Payload/IosRegistrationPayload.php" />
+        <option value="$PROJECT_DIR$/src/tests/TestPayloads.php" />
       </list>
     </option>
   </component>
@@ -579,9 +566,9 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15286624" sideWeight="0.6136012" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15286624" sideWeight="0.6568779" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29012346" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.38639876" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3431221" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -647,7 +634,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="124" />
+      <option name="time" value="125" />
     </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -694,13 +681,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/UrbanAirship/Push/Payload/IosRegistrationPayload.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/UrbanAirship/Push/Response/UAResponse.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="42" column="1" selection-start="706" selection-end="706" vertical-scroll-proportion="0.4340836">
@@ -736,26 +716,33 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/UrbanAirship/Push/Payload/IosMessagePayload.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="106" column="5" selection-start="2254" selection-end="2254" vertical-scroll-proportion="0.399384">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/UrbanAirship/Push/Payload/AndroidMessagePayload.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="14" column="0" selection-start="221" selection-end="221" vertical-scroll-proportion="0.1386037">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/UrbanAirship/Push/Payload/IosRegistrationPayload.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/tests/TestPayloads.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="39" selection-start="1323" selection-end="1323" vertical-scroll-proportion="0.828841">
+        <state line="103" column="8" selection-start="3661" selection-end="3661" vertical-scroll-proportion="0.9461153">
           <folding>
             <element signature="e#149#197#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/UrbanAirship/Push/Payload/IosMessagePayload.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="31" selection-start="861" selection-end="861" vertical-scroll-proportion="0.68733156">
-          <folding />
         </state>
       </provider>
     </entry>

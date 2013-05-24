@@ -63,12 +63,46 @@ class TestPayloads extends PHPUnit_Framework_TestCase
 
     public function testIosRegistration()
     {
+        $alias = "alias";
+        $badge = 42;
+        $timeZone = "pancake_time";
+        $quietTimeStart = "7:00";
+        $quietTimeEnd = "22:00";
+        $tags = array("cats", "hats");
+
         $payload = new IosRegistrationPayload();
-        $payload->setAlias("alias")
-            ->setBadge(1)
-            ->setQuietTime("qt_start", "qt_end")
-            ->setTimeZone("pancake_time");
-//        print_r(json_encode($payload, JSON_PRETTY_PRINT));
+        $payload->setAlias($alias)
+            ->setBadge($badge)
+            ->setQuietTime($quietTimeStart, $quietTimeEnd)
+            ->setTimeZone($timeZone)
+            ->setTags($tags);
+
+        $json = json_encode($payload, JSON_PRETTY_PRINT);
+        $jsonObject = json_decode($json);
+
+        $this->assertTrue(
+            $jsonObject->{IosRegistrationPayload::REGISTRATION_PAYLOAD_ALIAS_KEY}
+                === $alias, "Bad registration alias");
+        $this->assertTrue(
+            $jsonObject->{IosRegistrationPayload::REGISTRATION_PAYLOAD_TAGS_KEY}
+                === $tags, "Bad registration tags");
+        $this->assertTrue(
+            $jsonObject->{IosRegistrationPayload::REGISTRATION_PAYLOAD_TIME_ZONE_KEY}
+                === $timeZone, "Bad registration time zone");
+        $this->assertTrue(
+            $jsonObject->{IosRegistrationPayload::REGISTRATION_PAYLOAD_BADGE_KEY}
+                === $badge, "Bad registration badge");
+
+        $this->assertTrue(
+            $jsonObject->{IosRegistrationPayload::REGISTRATION_PAYLOAD_QUIET_TIME_KEY}
+                ->{IosRegistrationPayload::REGISTRATION_PAYLOAD_QUIET_TIME_START_KEY}
+                === $quietTimeStart, "Bad quiet time start");
+        $this->assertTrue(
+            $jsonObject->{IosRegistrationPayload::REGISTRATION_PAYLOAD_QUIET_TIME_KEY}
+            ->{IosRegistrationPayload::REGISTRATION_PAYLOAD_QUIET_TIME_END_KEY}
+            === $quietTimeEnd, "Bad quiet time end");
+        
+
     }
 
 
