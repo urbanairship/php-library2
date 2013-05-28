@@ -11,6 +11,7 @@ namespace UrbanAirship\Push\Request;
 use Httpful\Http;
 use Httpful\Mime as Mime;
 use Httpful\Request as Request;
+use UrbanAirship\Push\Payload\IosRegistrationPayload;
 use UrbanAirship\Push\Url\IosUrl;
 
 
@@ -22,22 +23,42 @@ use UrbanAirship\Push\Url\IosUrl;
 class IosRegisterTokenRequest extends UARequest
 {
 
+    /**
+     * @var string Device token
+     */
     protected  $deviceToken;
 
     // Don't allow construction outside factory method
     protected  function  __construct(){}
 
+
+    /**
+     * Sets a registration payload.
+     * @param $registrationPayload IosRegistrationPayload
+     * @return $this
+     */
     public function setRegistrationPayload($registrationPayload)
     {
         return $this->setPayload($registrationPayload);
     }
 
+    /**
+     * Set a device token for registration requests. Device tokens are required
+     * for registration
+     * @param $deviceToken
+     * @return $this
+     */
     public function setDeviceToken($deviceToken)
     {
         $this->deviceToken = $deviceToken;
         return $this;
     }
 
+    /**
+     * Build a Httpful/Request authenticated with the app key and secret. Metadata
+     * on this object is used to create the registration payload.
+     * @return Request
+     */
     public function buildRequest()
     {
         $url = IosUrl::iosRegistration($this->deviceToken);
@@ -50,24 +71,21 @@ class IosRegisterTokenRequest extends UARequest
     }
 
     /**
-     * Returns an authenticated request with the current key and secret. Defaults
-     * to GET, no parameters other than defaults or authentication are set.
-     * @param $token string Device token
-     * @return Request Get request authenticated with app key and secret
+     * Create a new IosRegisterTokenRequest
+     * @return IosRegisterTokenRequest
      */
-    protected function tokenBasedAuthenticatedRequest($token)
-    {
-        $url = IosUrl::iosRegistration($token);
-        return self::basicAuthRequest($url);
-    }
-
     public static function request() {
         return new IosRegisterTokenRequest();
     }
 
+    /**
+     * Build a new request and send it. All calls to this method produce
+     * new request objects.
+     * @return \Httpful\Response Response for this request.
+     */
     public function send()
     {
-        $request =$this->tokenBasedAuthenticatedRequest($this->deviceToken);
+        $request =$this->buildRequest();
         return $request->send();
     }
 

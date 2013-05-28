@@ -117,6 +117,7 @@ class TestRequests extends PHPUnit_Framework_TestCase
             ->setPushNotificationPayload($payload);
 
         $request = $notificationRequest->buildRequest();
+        $this->assertTrue($request->content_type === "application/json");
         $expectedURL = "https://go.urbanairship.com/api/push/";
         $this->assertTrue(strcmp($expectedURL, $request->uri) == 0, "bad url");
         $this->assertTrue(strcmp($request->username, $this->key) == 0, "bad username");

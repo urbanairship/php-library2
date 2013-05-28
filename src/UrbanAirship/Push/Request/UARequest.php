@@ -71,6 +71,10 @@ abstract class UARequest
             ->authenticateWithBasic($this->appKey, $this->appSecret);
     }
 
+    /**
+     * Build a request.
+     * @return mixed
+     */
     public abstract function buildRequest();
 
 
