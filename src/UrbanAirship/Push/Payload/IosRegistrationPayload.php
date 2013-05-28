@@ -1,10 +1,17 @@
 <?php
-/**
- * Name: Matt Hooge
- * Company: Urban Airship
- * Date: 5/3/13
- * Time: 11:37 AM
- */
+//    Copyright 2012 Urban Airship
+//
+//    Licensed under the Apache License, Version 2.0 (the "License");
+//    you may not use this file except in compliance with the License.
+//    You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+//    Unless required by applicable law or agreed to in writing, software
+//    distributed under the License is distributed on an "AS IS" BASIS,
+//    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//    See the License for the specific language governing permissions and
+//    limitations under the License.
 
 namespace UrbanAirship\Push\Payload;
 
@@ -29,6 +36,17 @@ class IosRegistrationPayload extends Payload
     private $badge;
     private $quietTime;
     private $timeZone;
+
+    protected function __construct(){}
+
+    /**
+     * Create a new IosRegistrationPayload.
+     * @return IosRegistrationPayload
+     */
+    public static function payload()
+    {
+        return new IosRegistrationPayload();
+    }
 
     /**
      * Current alias for this registration.

@@ -1,14 +1,30 @@
 <?php
-/**
- * Name: Matt Hooge
- * Company: Urban Airship
- * Date: 5/23/13
- * Time: 12:23 PM
- */
+//    Copyright 2012 Urban Airship
+//
+//    Licensed under the Apache License, Version 2.0 (the "License");
+//    you may not use this file except in compliance with the License.
+//    You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+//    Unless required by applicable law or agreed to in writing, software
+//    distributed under the License is distributed on an "AS IS" BASIS,
+//    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//    See the License for the specific language governing permissions and
+//    limitations under the License.
 
 namespace UrbanAirship\Push\Response;
 
-
+/**
+ * Returned for queries against the device token list API endpoint. This response
+ * handles multi page responses from the UA server. The API automatically pages
+ * a response at 2000 tokens. When that limit is hit, this response will
+ * automatically download the next page and continue iterating over device
+ * tokens. This could potentially be a long running operation.
+ *
+ * Class UADeviceTokenListResponse
+ * @package UrbanAirship\Push\Response
+ */
 class UADeviceTokenListResponse extends UAResponse implements \Iterator{
 
     const NEXT_PAGE_KEY = "next_page";
@@ -16,8 +32,14 @@ class UADeviceTokenListResponse extends UAResponse implements \Iterator{
     const DEVICE_TOKENS_COUNT_KEY = "device_tokens_count";
     const ACTIVE_DEVICE_TOKENS_COUNT_KEY = "active_device_tokens_count";
 
+    /**
+     * @var int Position for Iterator interface
+     */
     private $position;
 
+    /**
+     * @var object Current page of multi page download
+     */
     private $page;
 
     /**
