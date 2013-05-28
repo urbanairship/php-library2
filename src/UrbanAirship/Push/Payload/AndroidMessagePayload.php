@@ -81,6 +81,11 @@ class AndroidMessagePayload extends Payload {
     }
 
 
+    /**
+     * Takes all the parameters of the object and creates a JSON object
+     * with the proper keys for the Urban Airship API
+     * @return array|mixed
+     */
     public function jsonSerialize()
     {
         $metadata = $this->metadata();

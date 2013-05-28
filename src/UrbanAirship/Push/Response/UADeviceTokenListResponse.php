@@ -20,6 +20,10 @@ class UADeviceTokenListResponse extends UAResponse implements \Iterator{
 
     private $page;
 
+    /**
+     * Return the current page of results
+     * @return mixed
+     */
     public function getPage()
     {
         return $this->page;

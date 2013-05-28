@@ -102,93 +102,155 @@ class NotificationPayload extends Payload
         return $this->devicePins;
     }
 
+    /**
+     * Set the device pins for this message. Used with Blackberry messages.
+     * @param $devicePins
+     */
     public function setDevicePins($devicePins)
     {
         $this->devicePins = $devicePins;
     }
 
+    /**
+     * Get the APS message payload, used for iOS push messages.
+     * @return IosMessagePayload
+     */
     public function getAps()
     {
         return $this->aps;
     }
 
+    /**
+     * Set a new IosMessagePayload. This will be message delivered to the device.
+     * @param $aps
+     * @return $this
+     */
     public function setAps($aps)
     {
         $this->aps = $aps;
         return $this;
     }
 
+    /**
+     * Get the Android message payload.
+     * @return AndroidMessagePayload
+     */
     public function getAndroid()
     {
         return $this->android;
     }
 
+    /**
+     * Set a new AndroidMessagePayload. This will be the message delivered to the
+     * device.
+     * @param $android
+     * @return $this
+     */
     public function setAndroid($android)
     {
         $this->android = $android;
         return $this;
     }
 
+    /**
+     * Get the BlackberryMessagePayload.
+     * @return BlackberryMessagePayload
+     */
     public function getBlackberry()
     {
         return $this->blackberry;
     }
 
+    /**
+     * Set a new BlackberryMessagePayload. This will be the message delivered to
+     * the device.
+     * @param $blackberry
+     * @return $this
+     */
     public function setBlackberry($blackberry)
     {
         $this->blackberry = $blackberry;
         return $this;
     }
 
+    /**
+     * Get the array of aliases for this message
+     * @return mixed
+     */
     public function getAliases()
     {
         return $this->aliases;
     }
 
+    /**
+     * Set a new array of aliases for this message
+     * @param $aliases
+     * @return $this
+     */
     public function setAliases($aliases)
     {
         $this->aliases = $aliases;
         return $this;
     }
 
-    public function getExcludeTokens()
-    {
-        return $this->excludeTokens;
-    }
-
-    public function setExcludeTokens($excludeTokens)
-    {
-        $this->excludeTokens = $excludeTokens;
-        return $this;
-    }
-
+    /**
+     * Get the tags for this message
+     * @return mixed Current tags
+     */
     public function getTags()
     {
         $this->tags;
     }
 
+    /**
+     * Set and array of tags for this message.
+     * @param $tags
+     * @return $this
+     */
     public function setTags($tags)
     {
         $this->tags = $tags;
         return $this;
     }
 
+    /**
+     * Get the schedule for variables.
+     */
     public function getScheduleFor()
     {
         $this->scheduleFor;
     }
 
+    /**
+     * Set the "schedule_for" parameter of this payload, which represents a future
+     * time in ISO 8601 UTC format.      * If included, the message will be delivered at
+     * the given time. If omitted, the message will be delivered immediately.
+     *
+     * @example "2012-01-01 11:16:00"
+     *
+     * @param $scheduleFor
+     * @return $this
+     */
     public function setScheduleFor($scheduleFor)
     {
         $this->scheduleFor = $scheduleFor;
         return $this;
     }
 
+    /**
+     * Create a new NotificationPayload
+     * @return NotificationPayload
+     */
     public static function payload()
     {
         return new NotificationPayload();
     }
 
+    /**
+     * Get an array with all of the object metadata. Keys are set for the
+     * Urban Airship API, values are set to the current value, or nil.
+     * @return array
+     */
     public function metadata()
     {
         $metadata = array();
@@ -210,6 +272,11 @@ class NotificationPayload extends Payload
         return $metadata;
     }
 
+    /**
+     * Takes all the parameters of the object and creates a JSON object
+     * with the proper keys for the Urban Airship API
+     * @return array|mixed
+     */
     public function jsonSerialize()
     {
         $payload = $this->metadata();

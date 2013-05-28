@@ -12,7 +12,8 @@ abstract class Payload implements \JsonSerializable
 {
 
     /**
-     * Returns an reduced array that only has non null key/value pairs
+     * Returns an reduced array that only has key value pairs with non null
+     * values.
      * @param $payloadWithNilValues Array that contains null values
      * @return array Array with null values removed
      */

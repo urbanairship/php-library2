@@ -6,22 +6,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9c1f9946-8e00-4df6-a18f-285108634741" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/tests/TestPayloads.php" afterPath="$PROJECT_DIR$/src/tests/PaylaodTest.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/tests/TestPayloads.php" afterPath="$PROJECT_DIR$/src/tests/PayloadTest.php" />
       <change type="MOVED" beforePath="$PROJECT_DIR$/src/tests/TestRequests.php" afterPath="$PROJECT_DIR$/src/tests/RequestTest.php" />
       <change type="MOVED" beforePath="$PROJECT_DIR$/src/tests/TestResponse.php" afterPath="$PROJECT_DIR$/src/tests/ResponseTest.php" />
       <change type="MOVED" beforePath="$PROJECT_DIR$/src/tests/TestUrls.php" afterPath="$PROJECT_DIR$/src/tests/UrlTest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/UrbanAirship/Push/Payload/AndroidMessagePayload.php" afterPath="$PROJECT_DIR$/src/UrbanAirship/Push/Payload/AndroidMessagePayload.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/UrbanAirship/Push/Payload/BackberryMessagePayload.php" afterPath="$PROJECT_DIR$/src/UrbanAirship/Push/Payload/BackberryMessagePayload.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/UrbanAirship/Push/Payload/NotificationPayload.php" afterPath="$PROJECT_DIR$/src/UrbanAirship/Push/Payload/NotificationPayload.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/UrbanAirship/Push/Payload/Payload.php" afterPath="$PROJECT_DIR$/src/UrbanAirship/Push/Payload/Payload.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/UrbanAirship/Push/Request/PushNotificationRequest.php" afterPath="$PROJECT_DIR$/src/UrbanAirship/Push/Request/PushNotificationRequest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/UrbanAirship/Push/Response/UADeviceTokenListResponse.php" afterPath="$PROJECT_DIR$/src/UrbanAirship/Push/Response/UADeviceTokenListResponse.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="uaphp.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/urbanairship.php" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1366998354305" ignored="false" />
     <file path="/test_urbanairship.php" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1367271143378" ignored="false" />
-    <file path="/a.dummy" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1369760878351" ignored="false" />
+    <file path="/a.dummy" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1369761082695" ignored="false" />
     <file path="/UrbanAirship.php" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1367362809375" ignored="false" />
     <file path="/RESTClient.php" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1367355740682" ignored="false" />
     <file path="/TestUrbanAirship.php" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1367357792597" ignored="false" />
-    <file path="/Dummy.txt" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1369759250874" ignored="false" />
-    <file path="/a.php" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1369243227014" ignored="false" />
+    <file path="/Dummy.txt" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1369763000402" ignored="false" />
+    <file path="/a.php" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1369762937326" ignored="false" />
     <file path="/UrbanAirshipCLI.sh" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1367356526150" ignored="false" />
     <file path="/UrbanAirshipCLI.php" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1369429908291" ignored="false" />
     <file path="/UrbanAirshipTest.php" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1368551914529" ignored="false" />
@@ -59,7 +65,7 @@
     <file path="/IosDeviceTokensRequest.php" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1368570901008" ignored="false" />
     <file path="/IosDeviceTokenListRequest.php" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1369343542333" ignored="false" />
     <file path="/NotificationRequest.php" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1368648316624" ignored="false" />
-    <file path="/PushNotificationRequest.php" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1369251421463" ignored="false" />
+    <file path="/PushNotificationRequest.php" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1369764125434" ignored="false" />
     <file path="/IUrl.php" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1368634720902" ignored="false" />
     <file path="/NotificationUrl.php" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1368635217845" ignored="false" />
     <file path="/TestUrls.php" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1368720579707" ignored="false" />
@@ -68,7 +74,7 @@
     <file path="/APIRequest.php" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1368659484674" ignored="false" />
     <file path="/RequestBuilders.php" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1368659978456" ignored="false" />
     <file path="/AndroidMessagePayload.php" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1369434631508" ignored="false" />
-    <file path="/NotificationPayload.php" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1369248788387" ignored="false" />
+    <file path="/NotificationPayload.php" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1369763011330" ignored="false" />
     <file path="/BackberryMessagePayload.php" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1369252463182" ignored="false" />
     <file path="/UARequestException.php" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1369326289720" ignored="false" />
     <file path="/UAResponse.php" changelist="9c1f9946-8e00-4df6-a18f-285108634741" time="1369338244892" ignored="false" />
@@ -87,7 +93,7 @@
     <splitter proportion="0.5" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/uaphp$UAPHP_Tests.coverage" NAME="UAPHP Tests Coverage Results" MODIFIED="1369760959677" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/uaphp$UAPHP_Tests.coverage" NAME="UAPHP Tests Coverage Results" MODIFIED="1369761095629" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -142,21 +148,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="PaylaodTest.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/tests/PaylaodTest.php">
+      <file leaf-file-name="IosRegistrationPayload.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/UrbanAirship/Push/Payload/IosRegistrationPayload.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="0" selection-start="644" selection-end="644" vertical-scroll-proportion="19.875">
-              <folding>
-                <element signature="e#149#197#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UrlTest.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/tests/UrlTest.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
+            <state line="34" column="13" selection-start="858" selection-end="858" vertical-scroll-proportion="-0.8357488">
               <folding />
             </state>
           </provider>
@@ -165,34 +160,45 @@
       <file leaf-file-name="NotificationPayload.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/UrbanAirship/Push/Payload/NotificationPayload.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
+            <state line="28" column="47" selection-start="698" selection-end="698" vertical-scroll-proportion="-6.25">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="IosRegisterTokenRequest.php" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/UrbanAirship/Push/Request/IosRegisterTokenRequest.php">
+      <file leaf-file-name="PushNotificationRequest.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/UrbanAirship/Push/Request/PushNotificationRequest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.33834586">
+            <state line="52" column="1" selection-start="1259" selection-end="1259" vertical-scroll-proportion="-32.5">
+              <folding>
+                <element signature="e#6#93#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AndroidMessagePayload.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/UrbanAirship/Push/Payload/AndroidMessagePayload.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="83" column="0" selection-start="1598" selection-end="1766" vertical-scroll-proportion="-40.5">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ResponseTest.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/tests/ResponseTest.php">
+      <file leaf-file-name="BackberryMessagePayload.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/UrbanAirship/Push/Payload/BackberryMessagePayload.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="43" column="96" selection-start="1428" selection-end="1428" vertical-scroll-proportion="-21.875">
+            <state line="20" column="36" selection-start="371" selection-end="371" vertical-scroll-proportion="-4.25">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RequestTest.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/tests/RequestTest.php">
+      <file leaf-file-name="IosMessagePayload.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/UrbanAirship/Push/Payload/IosMessagePayload.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="57" column="85" selection-start="2093" selection-end="2093" vertical-scroll-proportion="19.25">
+            <state line="106" column="5" selection-start="2254" selection-end="2254" vertical-scroll-proportion="-28.375">
               <folding />
             </state>
           </provider>
@@ -216,22 +222,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/UrbanAirship/Push/Request/PushNotificationRequest.php" />
-        <option value="$PROJECT_DIR$/src/UrbanAirship/Push/Payload/BackberryMessagePayload.php" />
-        <option value="$PROJECT_DIR$/src/UrbanAirship/Push/Error/UARequestException.php" />
-        <option value="$PROJECT_DIR$/src/UrbanAirship/Push/Exception/UARequestException.php" />
         <option value="$PROJECT_DIR$/src/UrbanAirship/Push/Response/UAResponse.php" />
         <option value="$PROJECT_DIR$/src/tests/TestResponse.php" />
         <option value="$PROJECT_DIR$/src/UrbanAirship/Push/Request/IosDeviceTokenListRequest.php" />
         <option value="$PROJECT_DIR$/composer.json" />
         <option value="$PROJECT_DIR$/src/UrbanAirship/UrbanAirshipCLI.php" />
         <option value="$PROJECT_DIR$/src/tests/TestRequests.php" />
-        <option value="$PROJECT_DIR$/src/UrbanAirship/Push/Response/UADeviceTokenListResponse.php" />
         <option value="$PROJECT_DIR$/src/UrbanAirship/Push/Payload/IosMessagePayload.php" />
-        <option value="$PROJECT_DIR$/src/UrbanAirship/Push/Payload/AndroidMessagePayload.php" />
         <option value="$PROJECT_DIR$/src/UrbanAirship/Push/Payload/IosRegistrationPayload.php" />
         <option value="$PROJECT_DIR$/src/tests/TestPayloads.php" />
         <option value="$PROJECT_DIR$/src/tests/ResponseTest.php" />
+        <option value="$PROJECT_DIR$/src/UrbanAirship/Push/Response/UADeviceTokenListResponse.php" />
+        <option value="$PROJECT_DIR$/src/UrbanAirship/Push/Payload/AndroidMessagePayload.php" />
+        <option value="$PROJECT_DIR$/src/UrbanAirship/Push/Payload/BackberryMessagePayload.php" />
+        <option value="$PROJECT_DIR$/src/UrbanAirship/Push/Payload/Payload.php" />
+        <option value="$PROJECT_DIR$/src/UrbanAirship/Push/Payload/NotificationPayload.php" />
+        <option value="$PROJECT_DIR$/src/UrbanAirship/Push/Request/PushNotificationRequest.php" />
       </list>
     </option>
   </component>
@@ -249,7 +255,8 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="2583" />
+    <option name="x" value="2560" />
+    <option name="y" value="11" />
     <option name="width" value="2560" />
     <option name="height" value="1414" />
   </component>
@@ -284,7 +291,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -485,6 +491,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -577,7 +584,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="2583" y="0" width="2560" height="1414" extended-state="6" />
+    <frame x="2560" y="11" width="2560" height="1414" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -588,16 +595,16 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32975337" sideWeight="0.6568779" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15393795" sideWeight="0.6568779" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3431221" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15644905" sideWeight="0.6568779" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3431221" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3279321" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32975337" sideWeight="0.6568779" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29012346" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -669,114 +676,104 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/vendor/composer/installed.json">
+    <entry file="file://$PROJECT_DIR$/src/UrbanAirship/Push/Response/UAResponse.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="42" column="1" selection-start="706" selection-end="706" vertical-scroll-proportion="0.4340836" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/UrbanAirship/UrbanAirshipCLI.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="0" selection-start="54" selection-end="54" vertical-scroll-proportion="-3.75" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tests/ResponseTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="96" selection-start="1428" selection-end="1428" vertical-scroll-proportion="-21.875" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tests/UrlTest.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/UrbanAirship/Push/Request/IosDeviceTokenListRequest.php">
+    <entry file="file://$PROJECT_DIR$/src/tests/RequestTest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="70" selection-start="1184" selection-end="1184" vertical-scroll-proportion="0.5159705">
-          <folding />
-        </state>
+        <state line="57" column="85" selection-start="2093" selection-end="2093" vertical-scroll-proportion="19.25" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/nategood/httpful/src/Httpful/Response.php">
+    <entry file="file://$PROJECT_DIR$/src/UrbanAirship/Push/Request/IosRegisterTokenRequest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="20" selection-start="1272" selection-end="1272" vertical-scroll-proportion="0.012057878">
-          <folding />
-        </state>
+        <state line="16" column="3" selection-start="248" selection-end="248" vertical-scroll-proportion="0.096618354" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/UrbanAirship/Push/Response/UAResponse.php">
+    <entry file="file://$PROJECT_DIR$/src/tests/PayloadTest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="1" selection-start="706" selection-end="706" vertical-scroll-proportion="0.4340836">
+        <state line="29" column="0" selection-start="644" selection-end="644" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/UrbanAirship/UrbanAirshipAPI.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="0" selection-start="120" selection-end="120" vertical-scroll-proportion="0.08640553">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/UrbanAirship/UrbanAirshipCLI.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="0" selection-start="54" selection-end="54" vertical-scroll-proportion="-3.75">
+        <state line="10" column="0" selection-start="120" selection-end="120" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/UrbanAirship/Push/Response/UADeviceTokenListResponse.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="89" column="7" selection-start="2369" selection-end="2369" vertical-scroll-proportion="0.48847926">
+        <state line="23" column="41" selection-start="522" selection-end="522" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/UrbanAirship/Push/Payload/Payload.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="15" selection-start="286" selection-end="286" vertical-scroll-proportion="-6.25">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/UrbanAirship/Push/Payload/NotificationPayload.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="47" selection-start="698" selection-end="698" vertical-scroll-proportion="-6.25">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/UrbanAirship/Push/Request/PushNotificationRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="52" column="1" selection-start="1259" selection-end="1259" vertical-scroll-proportion="-32.5">
+          <folding>
+            <element signature="e#6#93#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/UrbanAirship/Push/Payload/AndroidMessagePayload.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="83" column="0" selection-start="1598" selection-end="1766" vertical-scroll-proportion="-40.5">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/UrbanAirship/Push/Payload/BackberryMessagePayload.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="36" selection-start="371" selection-end="371" vertical-scroll-proportion="-4.25">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/UrbanAirship/Push/Payload/IosMessagePayload.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="106" column="5" selection-start="2254" selection-end="2254" vertical-scroll-proportion="0.399384">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/UrbanAirship/Push/Payload/AndroidMessagePayload.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="0" selection-start="221" selection-end="221" vertical-scroll-proportion="0.1386037">
+        <state line="106" column="5" selection-start="2254" selection-end="2254" vertical-scroll-proportion="-28.375">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/UrbanAirship/Push/Payload/IosRegistrationPayload.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="13" selection-start="858" selection-end="858" vertical-scroll-proportion="0.35655737">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tests/ResponseTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="96" selection-start="1428" selection-end="1428" vertical-scroll-proportion="-21.875">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tests/UrlTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tests/RequestTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="85" selection-start="2093" selection-end="2093" vertical-scroll-proportion="19.25">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tests/PaylaodTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="0" selection-start="644" selection-end="644" vertical-scroll-proportion="19.875">
-          <folding>
-            <element signature="e#149#197#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/UrbanAirship/Push/Payload/NotificationPayload.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/UrbanAirship/Push/Request/IosRegisterTokenRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.33834586">
+        <state line="34" column="13" selection-start="858" selection-end="858" vertical-scroll-proportion="-0.8357488">
           <folding />
         </state>
       </provider>

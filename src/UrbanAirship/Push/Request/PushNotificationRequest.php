@@ -42,6 +42,10 @@ class PushNotificationRequest extends NotificationRequest
         return new PushNotificationRequest($url);
     }
 
+    /**
+     * Execute this request, and return the response.
+     * @return \Httpful\associative|string
+     */
     public function send()
     {
         return $this->buildRequest()->send();
