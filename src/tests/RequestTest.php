@@ -19,13 +19,19 @@ use Httpful\Http;
 
 require_once __DIR__ . "/../../vendor/autoload.php";
 
+use UrbanAirship\Push\Payload;
+
 use UrbanAirship\Push\Request\IosRegisterTokenRequest;
 use UrbanAirship\Push\Request\IosTokenInformationRequest;
 use UrbanAirship\Push\Request\IosDeactivateTokenRequest;
 use UrbanAirship\Push\Request\PushNotificationRequest;
 use UrbanAirship\Push\Request\IosFeedbackRequest;
-use UrbanAirship\Push\Payload;
+
 use UrbanAirship\Push\Url\NotificationUrl;
+
+use Httpful\Request;
+
+
 
 class TestRequests extends PHPUnit_Framework_TestCase
 {
@@ -45,12 +51,11 @@ class TestRequests extends PHPUnit_Framework_TestCase
 
     public function testTokenInformationRequest()
     {
-
         $infoRequest = IosTokenInformationRequest::request()
             ->setAppKey($this->key)
             ->setAppSecret($this->secret)
             ->setDeviceToken($this->token);
-        $request = $infoRequest->buildRequest();
+        $request = $infoRequest->buildHttpRequest();
         $expectedURL =  "https://go.urbanairship.com/api/device_tokens/token/";
         $this->assertTrue(strcmp($expectedURL, $request->uri) == 0, "bad url");
         $this->assertTrue(strcmp($request->username, $this->key) == 0, "bad key");
@@ -65,7 +70,7 @@ class TestRequests extends PHPUnit_Framework_TestCase
             ->setAppSecret($this->secret)
             ->setDeviceToken($this->token);
 
-        $request = $registrationRequest->buildRequest();
+        $request = $registrationRequest->buildHttpRequest();
         $expectedURL =  "https://go.urbanairship.com/api/device_tokens/token/";
         $this->assertTrue(strcmp($expectedURL, $request->uri) == 0, "bad url");
         $this->assertTrue(strcmp($request->username, $this->key) == 0, "bad username");
@@ -78,9 +83,8 @@ class TestRequests extends PHPUnit_Framework_TestCase
             ->setDeviceToken($this->token)
             ->setRegistrationPayload(json_encode(array("key" => "value")));
 
-        $request = $registrationRequest->buildRequest();
+        $request = $registrationRequest->buildHttpRequest();
         $this->assertTrue($request->content_type === "application/json");
-
 
     }
 
@@ -92,7 +96,7 @@ class TestRequests extends PHPUnit_Framework_TestCase
             ->setAppSecret($this->secret)
             ->setDeviceToken($this->token);
 
-        $request = $deactivateRequest->buildRequest();
+        $request = $deactivateRequest->buildHttpRequest();
         $expectedURL =  "https://go.urbanairship.com/api/device_tokens/token/";
         $this->assertTrue(strcmp($expectedURL, $request->uri) == 0, "bad url");
         $this->assertTrue(strcmp($request->username, $this->key) == 0, "bad username");
@@ -116,7 +120,7 @@ class TestRequests extends PHPUnit_Framework_TestCase
             ->setAppSecret($this->secret)
             ->setPushNotificationPayload($payload);
 
-        $request = $notificationRequest->buildRequest();
+        $request = $notificationRequest->buildHttpRequest();
         $this->assertTrue($request->content_type === "application/json");
         $expectedURL = "https://go.urbanairship.com/api/push/";
         $this->assertTrue(strcmp($expectedURL, $request->uri) == 0, "bad url");
@@ -135,7 +139,7 @@ class TestRequests extends PHPUnit_Framework_TestCase
     {
         $date = new DateTime();
         $feedbackRequest = IosFeedbackRequest::request()->setDateTime($date);
-        $request = $feedbackRequest->buildRequest();
+        $request = $feedbackRequest->buildHttpRequest();
         $dateString = date(DATE_ISO8601, $date->getTimestamp());
         $expectedUrl = "https://go.urbanairship.com/api/device_tokens/feedback/?since={$dateString}/";
         $this->assertTrue($expectedUrl === $request->uri, "URL for feedback incorrect");

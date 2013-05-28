@@ -8,6 +8,9 @@
 
 namespace UrbanAirship\Push\Request;
 
+use UrbanAirship\Push\Exception\UARequestException;
+use UrbanAirship\Push\Response\UAResponse;
+
 class PushNotificationRequest extends NotificationRequest
 {
 
@@ -43,11 +46,13 @@ class PushNotificationRequest extends NotificationRequest
     }
 
     /**
-     * Execute this request, and return the response.
-     * @return \Httpful\associative|string
+     * Send the request. This will return a UAResponse on any 200, or throw
+     * a UARequestException.
+     * @throws UARequestException
+     * @return UAResponse
      */
     public function send()
     {
-        return $this->buildRequest()->send();
+        return new UAResponse($this->buildHttpRequest()->send());
     }
 }

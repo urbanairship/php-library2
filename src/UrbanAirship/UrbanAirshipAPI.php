@@ -10,6 +10,7 @@ namespace UrbanAirship;
 
 require_once '../../vendor/autoload.php';
 
+use UrbanAirship\Push\Exception\UARequestException;
 use UrbanAirship\Push\Url\NotificationUrl;
 
 use UrbanAirship\Push\Response;
@@ -86,26 +87,29 @@ class UrbanAirshipAPI {
      *
      * @param $deviceToken string Device Token
      * @param $registrationPayload IosRegistrationPayload Optional registration payload
+     * @throws UARequestException
      * @return Response\UAResponse
      */
     public function registerDeviceToken($deviceToken, $registrationPayload=null)
     {
-        //TODO make some more requests, see what fits in here.
         $request = IosRegisterTokenRequest::request()
             ->setAppKey($this->appKey)
             ->setAppSecret($this->appMasterSecret)
             ->setDeviceToken($deviceToken);
 
         if(!is_null($registrationPayload)) {
-            $request->setRegistrationPayload(json_encode($registrationPayload));
+            $request->setRegistrationPayload($registrationPayload);
         }
 
-        return new Response\UAResponse($request->buildRequest()->send());
+        return $request->send();
     }
 
     /**
-     * Send a broadcast push notification with the given payload.
+     * Send a broadcast push notification with the given payload. Returns a
+     * UAResponse on success, throws a UARequestException on error.
+     *
      * @param NotificationPayload $notificationPayload
+     * @throws UARequestException
      * @return Response\UAResponse
      */
     public function sendBroadcastPushMessage(NotificationPayload $notificationPayload)
@@ -115,9 +119,18 @@ class UrbanAirshipAPI {
             ->setAppKey($this->appKey)
             ->setAppSecret($this->appMasterSecret)
             ->setPushNotificationPayload($notificationPayload);
-        return new Response\UAResponse($request->send());
+        return $request->send();
     }
 
+    /**
+     * Send a push notification with the given payload. Requires a list of
+     * device identifiers (device tokens, device ids, apids, or a mix).Returns a
+     * UAResponse on success, throws a UARequestException on error.
+     *
+     * @param NotificationPayload $notificationPayload
+     * @throws UARequestException
+     * @return Response\UAResponse
+     */
     public function sendPushNotification(NotificationPayload $notificationPayload)
     {
         $url = NotificationUrl::pushNotificationUrl();
@@ -125,8 +138,9 @@ class UrbanAirshipAPI {
             ->setAppKey($this->appKey)
             ->setAppSecret($this->appMasterSecret)
             ->setPushNotificationPayload($notificationPayload);
-        return new Response\UAResponse($request->send());
+        return $request->send();
     }
+
 
 
 

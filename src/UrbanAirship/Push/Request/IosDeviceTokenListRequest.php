@@ -8,6 +8,7 @@
 
 namespace UrbanAirship\Push\Request;
 
+use Httpful\Request;
 use UrbanAirship\Push\Url\IosUrl;
 use UrbanAirship\Push\Response\UADeviceTokenListResponse;
 use Httpful\Mime;
@@ -34,12 +35,21 @@ class IosDeviceTokenListRequest extends UARequest
         return $this;
     }
 
+    /**
+     * Create a new IosDeviceTokenListRequest
+     * @return IosDeviceTokenListRequest
+     */
     public static function request()
     {
         return new IosDeviceTokenListRequest();
     }
 
-    public function buildRequest()
+    /**
+     * Build a Httpful/Request authenticated with the app key and secret. Metadata
+     * on this object is used to create the registration payload.
+     * @return Request
+     */
+    public function buildHttpRequest()
     {
         if (is_null($this->nextPageUrl)) {
             $url = IosUrl::iosDeviceTokenList();
@@ -51,9 +61,10 @@ class IosDeviceTokenListRequest extends UARequest
 
     }
 
+
     public function send()
     {
-        return new UADeviceTokenListResponse($this->buildRequest()->send());
+        return new UADeviceTokenListResponse($this->buildHttpRequest()->send());
     }
 
 }

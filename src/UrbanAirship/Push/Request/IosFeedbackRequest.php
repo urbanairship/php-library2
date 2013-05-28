@@ -8,6 +8,8 @@
 
 namespace UrbanAirship\Push\Request;
 
+use UrbanAirship\Push\Exception\UARequestException;
+use UrbanAirship\Push\Response\UAResponse;
 use UrbanAirship\Push\Url\IosUrl;
 use Httpful\Mime;
 
@@ -21,6 +23,9 @@ use Httpful\Mime;
 class IosFeedbackRequest extends UARequest
 {
 
+    /**
+     * @var \DateTime Date for feedback request.
+     */
     private $dateTime;
 
     /**
@@ -49,12 +54,24 @@ class IosFeedbackRequest extends UARequest
      * If the date exceeds available feedback, the request will return a 400.
      * @return \Httpful\Request
      */
-    public function buildRequest()
+    public function buildHttpRequest()
     {
         $timestamp = $this->dateTime->getTimestamp();
         $url = IosUrl::iosFeedbackSince(date(DATE_ISO8601, $timestamp));
         $request = $this->basicAuthRequest($url);
         return $request;
+    }
+
+    /**
+     * Send the request. This will return a UAResponse on any 200, or throw
+     * a UARequestException.
+     * @throws UARequestException
+     * @return UAResponse
+     */
+    public function send()
+    {
+        $request = $this->buildHttpRequest();
+        return new UAResponse($request->send());
     }
 
 }

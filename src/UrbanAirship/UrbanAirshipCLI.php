@@ -21,11 +21,11 @@ $api = new UrbanAirshipAPI();
 $api->setAppKey($reachPushAppKey)->setAppMasterSecret($reachPushAppSecret);
 
 //// Setup a data payload
-//$registration = new IosRegistrationPayload();
-//$registration->setTags(array("tag from php"));
-//
-//// Execute, and catch errors
-//print_r($api->registerDeviceToken($deviceToken, $registration));
+$registration = new IosRegistrationPayload();
+$registration->setTags(array("tag from php"));
+
+// Execute, and catch errors
+print_r($api->registerDeviceToken($deviceToken, $registration));
 
 // Build APS payload
 $pushMessage = IosMessagePayload::payload();

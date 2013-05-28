@@ -11,7 +11,9 @@ namespace UrbanAirship\Push\Request;
 use Httpful\Http;
 use Httpful\Mime as Mime;
 use Httpful\Request as Request;
+use UrbanAirship\Push\Exception\UARequestException;
 use UrbanAirship\Push\Payload\IosRegistrationPayload;
+use UrbanAirship\Push\Response\UAResponse;
 use UrbanAirship\Push\Url\IosUrl;
 
 
@@ -59,7 +61,7 @@ class IosRegisterTokenRequest extends UARequest
      * on this object is used to create the registration payload.
      * @return Request
      */
-    public function buildRequest()
+    public function buildHttpRequest()
     {
         $url = IosUrl::iosRegistration($this->deviceToken);
         $request = $this->basicAuthRequest($url)->method(self::PUT);
@@ -79,14 +81,15 @@ class IosRegisterTokenRequest extends UARequest
     }
 
     /**
-     * Build a new request and send it. All calls to this method produce
-     * new request objects.
-     * @return \Httpful\Response Response for this request.
+     * Send the request. This will return a UAResponse on any 200, or throw
+     * a UARequestException.
+     * @throws UARequestException
+     * @return UAResponse
      */
     public function send()
     {
-        $request =$this->buildRequest();
-        return $request->send();
+        $request =$this->buildHttpRequest();
+        return new UAResponse($request->send());
     }
 
 }

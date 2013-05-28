@@ -9,6 +9,8 @@
 namespace UrbanAirship\Push\Request;
 
 
+use UrbanAirship\Push\Exception\UARequestException;
+use UrbanAirship\Push\Response\UAResponse;
 use UrbanAirship\Push\Url\IosUrl;
 use Httpful\Mime;
 
@@ -35,9 +37,9 @@ class IosTokenInformationRequest extends IosRegisterTokenRequest
      * Build a Httpful/Request using the metadata associated with this object.
      * @return \Httpful\Request
      */
-    public function buildRequest()
+    public function buildHttpRequest()
     {
-        $request = parent::buildRequest();
+        $request = parent::buildHttpRequest();
         $request->method(self::GET);
         return $request;
     }
@@ -52,14 +54,15 @@ class IosTokenInformationRequest extends IosRegisterTokenRequest
     }
 
     /**
-     * Build a new request and send it. All calls to this method produce
-     * new request objects.
-     * @return \Httpful\Response Response for this request.
+     * Send the request. This will return a UAResponse on any 200, or throw
+     * a UARequestException.
+     * @throws UARequestException
+     * @return UAResponse
      */
     public function send()
     {
-        $request = $this->buildRequest();
-        return $request->send();
+        $request = $this->buildHttpRequest();
+        return new UAResponse($request->send());
     }
 
 
