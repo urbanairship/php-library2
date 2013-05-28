@@ -41,6 +41,7 @@ class TestResponse extends PHPUnit_Framework_TestCase {
         $badResponseHeaders = "Status: 400 Bad Request\r\n\r\n";
         $badResponseBody = "Bad Request";
         $badResponse = new Response($badResponseBody, $badResponseHeaders, $request);
+        // Response gets flagged as not being used since creating a response throws an exception
         $response = new UAResponse($badResponse);
 
     }
