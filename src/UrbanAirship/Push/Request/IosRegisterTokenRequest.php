@@ -44,6 +44,7 @@ class IosRegisterTokenRequest extends UARequest
         $request = $this->basicAuthRequest($url)->method(self::PUT);
         if (!is_null($this->payload)){
             $request->payload = $this->payload;
+            $request->sendsType(MIme::JSON);
         }
         return $request;
     }

@@ -71,6 +71,17 @@ class TestRequests extends PHPUnit_Framework_TestCase
         $this->assertTrue(strcmp($request->username, $this->key) == 0, "bad username");
         $this->assertTrue(strcmp($request->password, $this->secret) == 0, "bad secret");
         $this->assertTrue(strcmp($request->method, "PUT") == 0, "wrong http method");
+
+        $registrationRequest = IosRegisterTokenRequest::request()
+            ->setAppKey($this->key)
+            ->setAppSecret($this->secret)
+            ->setDeviceToken($this->token)
+            ->setRegistrationPayload(json_encode(array("key" => "value")));
+
+        $request = $registrationRequest->buildRequest();
+        $this->assertTrue($request->content_type === "application/json");
+
+
     }
 
 
