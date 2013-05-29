@@ -16,6 +16,7 @@
 namespace UrbanAirship\Push\Request;
 
 use UrbanAirship\Push\Exception\UARequestException;
+use UrbanAirship\Push\Log\UALog;
 use UrbanAirship\Push\Response\UAResponse;
 use UrbanAirship\Push\Url\IosUrl;
 use Httpful\Mime;
@@ -63,6 +64,9 @@ class IosFeedbackRequest extends UARequest
      */
     public function buildHttpRequest()
     {
+        if(is_null($this->dateTime)){
+            $this->log->error("DateTime required for Urban Airship Feedback request");
+        }
         $timestamp = $this->dateTime->getTimestamp();
         $url = IosUrl::iosFeedbackSince(date(DATE_ISO8601, $timestamp));
         $request = $this->basicAuthRequest($url);
@@ -78,6 +82,8 @@ class IosFeedbackRequest extends UARequest
     public function send()
     {
         $request = $this->buildHttpRequest();
+        $this->log->info("Sending Urban Airship feedback request");
+        $this->log->debug(UALog::debugLogForRequest($request));
         return new UAResponse($request->send());
     }
 

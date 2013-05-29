@@ -17,6 +17,7 @@ namespace UrbanAirship\Push\Response;
 
 use Httpful\Response;
 use UrbanAirship\Push\Exception\UARequestException;
+use UrbanAirship\Push\Log\UALog;
 
 /**
  * Response object returned from Urban Airship requests. A lightweight wrapper
@@ -37,7 +38,11 @@ class UAResponse {
      */
     public function __construct($response){
         $this->response = $response;
+        $log = UALog::getLogger();
+        $log->info("Urban Airship Response received");
+        $log->debug(sprintf("UA API Response code:%s uri:%s", $response->code, $response->request->uri));
         if ($response->hasErrors()){
+            $log->error(sprintf("Non 200 response from UA Servers\nCode:%s\nBody:%s", $response->code, $response->body));
             throw new UARequestException($response);
         }
     }

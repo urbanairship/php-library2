@@ -16,9 +16,17 @@
 namespace UrbanAirship\Push\Request;
 
 use Httpful\Request;
+use UrbanAirship\Push\Log\UALog;
 use UrbanAirship\Push\Url\IosUrl;
 use UrbanAirship\Push\Payload\Payload;
 
+/**
+ * Base class for device metadata requests. This contains common methods to
+ * manipulate device metadata through the Urban Airship API, as well
+ * as logging for requests.
+ * Class UARequest
+ * @package UrbanAirship\Push\Request
+ */
 abstract class UARequest
 {
 
@@ -42,6 +50,15 @@ abstract class UARequest
      * @var Payload Payload for this request
      */
     protected $payload;
+
+    /**
+     * @var Logger for request
+     */
+    protected $log;
+
+    protected  function __construct(){
+        $this->log = UALog::getLogger();
+    }
 
     /**
      * @param $appKey string Application key

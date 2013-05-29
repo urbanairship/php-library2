@@ -16,6 +16,7 @@
 namespace UrbanAirship\Push\Request;
 
 use UrbanAirship\Push\Exception\UARequestException;
+use UrbanAirship\Push\Log\UALog;
 use UrbanAirship\Push\Response\UAResponse;
 
 class PushNotificationRequest extends NotificationRequest
@@ -26,6 +27,7 @@ class PushNotificationRequest extends NotificationRequest
      */
     protected  function __construct($url)
     {
+        parent::__construct();
         $this->url = $url;
     }
 
@@ -38,6 +40,7 @@ class PushNotificationRequest extends NotificationRequest
      */
     public function setPushNotificationPayload($payload)
     {
+        $this->log->debug(sprintf("Set push notification payload %s", json_encode($payload, JSON_PRETTY_PRINT)));
         $this->setPayload($payload);
         return $this;
     }
@@ -60,6 +63,9 @@ class PushNotificationRequest extends NotificationRequest
      */
     public function send()
     {
-        return new UAResponse($this->buildHttpRequest()->send());
+        $request = $this->buildHttpRequest();
+        $this->log->info("Sending UrbanAirship Registration request");
+        $this->log->debug(UALog::debugLogForRequest($request));
+        return new UAResponse($request->send());
     }
 }

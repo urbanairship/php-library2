@@ -17,6 +17,7 @@ namespace UrbanAirship\Push\Request;
 
 use Httpful\Request;
 use UrbanAirship\Push\Exception\UARequestException;
+use UrbanAirship\Push\Log\UALog;
 use UrbanAirship\Push\Url\IosUrl;
 use UrbanAirship\Push\Response\UADeviceTokenListResponse;
 use Httpful\Mime;
@@ -39,6 +40,7 @@ class IosDeviceTokenListRequest extends UARequest
      */
     public function setNextPageUrl($nextPageUrl)
     {
+        $this->log->debug("Setting next page URL %s", $nextPageUrl);
         $this->nextPageUrl = $nextPageUrl;
         return $this;
     }
@@ -65,7 +67,8 @@ class IosDeviceTokenListRequest extends UARequest
         else {
             $url = $this->nextPageUrl;
         }
-        return $this->basicAuthRequest($url)->expectsType(Mime::JSON);
+        $request = $this->basicAuthRequest($url)->expectsType(Mime::JSON);
+        return $request;
 
     }
 
@@ -78,7 +81,10 @@ class IosDeviceTokenListRequest extends UARequest
      */
     public function send()
     {
-        return new UADeviceTokenListResponse($this->buildHttpRequest()->send());
+        $request = $this->buildHttpRequest();
+        $this->log->info("Sending Urban Airship Device Token list request");
+        $this->log->debug(UALog::debugLogForRequest($request));
+        return new UADeviceTokenListResponse($request->send());
     }
 
 }

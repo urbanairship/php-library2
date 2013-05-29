@@ -17,6 +17,7 @@ namespace UrbanAirship\Push\Request;
 
 use \Httpful\Mime;
 use UrbanAirship\Push\Exception\UARequestException;
+use UrbanAirship\Push\Log\UALog;
 use UrbanAirship\Push\Response\UAResponse;
 
 /**
@@ -57,6 +58,8 @@ class IosDeactivateTokenRequest extends IosRegisterTokenRequest
     public function send()
     {
         $request = $this->buildHttpRequest();
+        $this->log->info("Sending Urban Airship Deactivate token request");
+        $this->log->debug(UALog::debugLogForRequest($request));
         return new UAResponse($request->send());
     }
 }

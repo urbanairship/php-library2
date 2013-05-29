@@ -18,7 +18,9 @@ namespace UrbanAirship\Push\Request;
 use Httpful\Http;
 use Httpful\Mime as Mime;
 use Httpful\Request as Request;
+
 use UrbanAirship\Push\Exception\UARequestException;
+use UrbanAirship\Push\Log\UALog;
 use UrbanAirship\Push\Payload\IosRegistrationPayload;
 use UrbanAirship\Push\Response\UAResponse;
 use UrbanAirship\Push\Url\IosUrl;
@@ -37,10 +39,6 @@ class IosRegisterTokenRequest extends UARequest
      */
     protected  $deviceToken;
 
-    // Don't allow construction outside factory method
-    protected  function  __construct(){}
-
-
     /**
      * Sets a registration payload.
      * @param $registrationPayload IosRegistrationPayload
@@ -48,6 +46,7 @@ class IosRegisterTokenRequest extends UARequest
      */
     public function setRegistrationPayload($registrationPayload)
     {
+        $this->log->debug(sprintf("Set registration payload %s", json_encode($registrationPayload, JSON_PRETTY_PRINT)));
         return $this->setPayload($registrationPayload);
     }
 
@@ -70,6 +69,9 @@ class IosRegisterTokenRequest extends UARequest
      */
     public function buildHttpRequest()
     {
+        if(is_null($this->deviceToken)){
+            $this->log->error("Device token is required for registration");
+        }
         $url = IosUrl::iosRegistration($this->deviceToken);
         $request = $this->basicAuthRequest($url)->method(self::PUT);
         if (!is_null($this->payload)){
@@ -96,6 +98,8 @@ class IosRegisterTokenRequest extends UARequest
     public function send()
     {
         $request =$this->buildHttpRequest();
+        $this->log->info("Sending UrbanAirship Registration request");
+        $this->log->debug(UALog::debugLogForRequest($request));
         return new UAResponse($request->send());
     }
 

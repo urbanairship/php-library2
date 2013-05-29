@@ -19,6 +19,7 @@ namespace UrbanAirship;
 
 require_once '../../vendor/autoload.php';
 
+use Monolog\Logger;
 use UrbanAirship\Push\Payload\IosMessagePayload;
 use UrbanAirship\Push\Payload\IosRegistrationPayload;
 use UrbanAirship\Push\Payload\NotificationPayload;
@@ -27,6 +28,14 @@ use UrbanAirship\Push\Request\PushNotificationRequest;
 use UrbanAirship\Push\Url\IosUrl;
 use UrbanAirship\Push\Url\NotificationUrl;
 
+use UrbanAirship\Push\Log\UALog;
+
+use Monolog\Handler\StreamHandler;
+
+$log = UALog::getLogger();
+$log->pushHandler(new StreamHandler("php://stdout"), Logger::DEBUG);
+
+$log->addDebug("CLI start");
 
 // Setup some data
 $reachPushAppKey = "Hx7SIqHqQDmFj6aruaAFcQ";
@@ -47,8 +56,6 @@ $registrationResponse = IosRegisterTokenRequest::request()
     ->setRegistrationPayload($registrationPayload)
     ->send();
 
-print_r($registrationResponse);
-
 // Similar process, setup a message
 $apsMessage = IosMessagePayload::payload()
     ->setAlert("PHP Alert for iOS");
@@ -65,12 +72,12 @@ $pushNotificationUrl = NotificationUrl::pushNotificationUrl();
 
 // Build the request by setting params, then send it. It throws an exception
 // if there is a non 2** from the server.
-$pushNotificationResponse = PushNotificationRequest::request($pushNotificationUrl)
-    ->setAppKey($reachPushAppKey)
-    ->setAppSecret($reachPushAppSecret)
-    ->setPushNotificationPayload($pushPayload)
-    ->send();
-
-print_r($pushNotificationResponse);
+//$pushNotificationResponse = PushNotificationRequest::request($pushNotificationUrl)
+//    ->setAppKey($reachPushAppKey)
+//    ->setAppSecret($reachPushAppSecret)
+//    ->setPushNotificationPayload($pushPayload)
+//    ->send();
+//
+//print_r($pushNotificationResponse);
 
 ?>

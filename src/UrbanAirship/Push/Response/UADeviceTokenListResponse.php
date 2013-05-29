@@ -14,6 +14,7 @@
 //    limitations under the License.
 
 namespace UrbanAirship\Push\Response;
+use UrbanAirship\Push\Log\UALog;
 
 /**
  * Returned for queries against the device token list API endpoint. This response
@@ -42,6 +43,8 @@ class UADeviceTokenListResponse extends UAResponse implements \Iterator{
      */
     private $page;
 
+    private $log;
+
     /**
      * Return the current page of results
      * @return mixed
@@ -56,6 +59,7 @@ class UADeviceTokenListResponse extends UAResponse implements \Iterator{
         parent::__construct($response);
         $this->position = 0;
         $this->page = $response->body;
+        $this->log = UALog::getLogger();
     }
 
     /**
@@ -110,14 +114,19 @@ class UADeviceTokenListResponse extends UAResponse implements \Iterator{
         if($this->position >= $tokenCount){
             $nextPage = $this->loadNextPage($this->page);
             if (is_null($nextPage)){
-                // TODO info about no more pages
+                $this->log->info("No more pages");
                 return false;
             }
             // Only replace the page if a new one came down
             $this->page = $nextPage;
             // Reset counter if a new page was downloaded.
             $this->position = 0;
+            $this->log->debug("Resetting counter, assigning new page of results");
             return true;
+        }
+        else {
+            $this->log->error("Unknown error in UA Device Token List response valid() method");
+            return false;
         }
     }
 
@@ -140,15 +149,22 @@ class UADeviceTokenListResponse extends UAResponse implements \Iterator{
      */
     private function loadNextPage($page)
     {
+        $this->log->info("Attempting to load next page of results");
         if (!isset($page->{self::NEXT_PAGE_KEY})){
+            $this->log->warn("No URL for next_page in current page of results");
             return null;
         }
         else {
             $request = $this->response->request;
             $request->uri($page->{self::NEXT_PAGE_KEY});
+            $request->info("Loading next page of tokens");
+            $this->log->debug(sprintf("Loading next page with request %s",
+                UALog::debugLogForRequest($request)));
             $response = $request->send();
             if ($response->hasErrors()){
-                // TODO log error info
+                $this->log->error(
+                    sprintf("Request for next page failed with error code:%s URL:%s",
+                        $response->code, $response->request->uri));
                 return null;
             }
             else {
