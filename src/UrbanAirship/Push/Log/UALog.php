@@ -17,15 +17,30 @@ namespace UrbanAirship\Push\Log;
 
 use Monolog\Logger;
 
+/**
+ * Logging class
+ * Class UALog
+ * @package UrbanAirship\Push\Log
+ */
 class UALog {
 
     const DEFAULT_UA_LOG_NAME = "com.urbanairship.uaphp";
 
+    /**
+     * Returns the logger for standard logging in the library
+     * @return Logger
+     */
     public static function getLogger()
     {
         return new Logger(self::DEFAULT_UA_LOG_NAME);
     }
 
+    /**
+     * Parse the components of the request into a string for consistent
+     * log statements
+     * @param $request
+     * @return string
+     */
     public static function debugLogForRequest($request)
     {
         $logLine = sprintf("\nUA PHP Request\n URL:%s\n", $request->uri);

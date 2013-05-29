@@ -32,6 +32,9 @@ use UrbanAirship\Push\Log\UALog;
 
 use Monolog\Handler\StreamHandler;
 
+// End developers can setup any type of logger they wish, Monolog conforms
+// to the PRS-3 logger interface, allowing for replacement if Monolog
+// is not the preferred logging framework.
 $log = UALog::getLogger();
 $log->pushHandler(new StreamHandler("php://stdout"), Logger::DEBUG);
 
@@ -43,7 +46,6 @@ $reachPushAppSecret = "JkyLL9IqQ2OVkashrzLq-A";
 $deviceToken = "1bf62ee6bf92337785c0da1c0ff16c7dbc03b9f4e19b23834a754f19c0e962d9";
 
 // Register a token
-
 $registrationPayload = IosRegistrationPayload::payload();
 $registrationPayload->setTags(array("iphone php"))->setAlias("M iphone 4");
 
@@ -56,7 +58,11 @@ $registrationResponse = IosRegisterTokenRequest::request()
     ->setRegistrationPayload($registrationPayload)
     ->send();
 
-// Similar process, setup a message
+$log->debug(sprintf("Server response Code:%s",
+    $registrationResponse->getResponseCode()));
+
+// Similar process for sending a message
+// First setup a message
 $apsMessage = IosMessagePayload::payload()
     ->setAlert("PHP Alert for iOS");
 
@@ -72,12 +78,14 @@ $pushNotificationUrl = NotificationUrl::pushNotificationUrl();
 
 // Build the request by setting params, then send it. It throws an exception
 // if there is a non 2** from the server.
-//$pushNotificationResponse = PushNotificationRequest::request($pushNotificationUrl)
-//    ->setAppKey($reachPushAppKey)
-//    ->setAppSecret($reachPushAppSecret)
-//    ->setPushNotificationPayload($pushPayload)
-//    ->send();
-//
-//print_r($pushNotificationResponse);
+$pushNotificationResponse = PushNotificationRequest::request($pushNotificationUrl)
+    ->setAppKey($reachPushAppKey)
+    ->setAppSecret($reachPushAppSecret)
+    ->setPushNotificationPayload($pushPayload)
+    ->send();
 
+$log->debug(sprintf("Server response Code:%s",
+    $pushNotificationResponse->getResponseCode()));
+
+$log->debug("CLI End");
 ?>
