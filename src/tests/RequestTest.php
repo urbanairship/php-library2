@@ -114,8 +114,7 @@ class TestRequests extends PHPUnit_Framework_TestCase
         $payload = Payload\NotificationPayload::payload()
             ->setAps($aps)
             ->setDeviceTokens($testTokens);
-        $url = NotificationUrl::pushNotificationUrl();
-        $notificationRequest = PushNotificationRequest::request($url)
+        $notificationRequest = PushNotificationRequest::request()
             ->setAppKey($this->key)
             ->setAppSecret($this->secret)
             ->setPushNotificationPayload($payload);
@@ -123,7 +122,7 @@ class TestRequests extends PHPUnit_Framework_TestCase
         $request = $notificationRequest->buildHttpRequest();
         $this->assertTrue($request->content_type === "application/json");
         $expectedURL = "https://go.urbanairship.com/api/push/";
-        $this->assertTrue(strcmp($expectedURL, $request->uri) == 0, "bad url");
+        $this->assertTrue(strcmp($expectedURL, $request->uri) == 0, "bad push url");
         $this->assertTrue(strcmp($request->username, $this->key) == 0, "bad username");
         $this->assertTrue(strcmp($request->password, $this->secret) == 0, "bad secret");
         $this->assertTrue(strcmp($request->method, "POST") == 0, "wrong http method");
@@ -132,6 +131,13 @@ class TestRequests extends PHPUnit_Framework_TestCase
         $this->assertTrue(strcmp($requestPayload->aps->alert, $testAlert) == 0, "wrong alert string" );
         $tokensArray = $requestPayload->device_tokens;
         $this->assertTrue($tokensArray == $testTokens);
+
+        // Test broadcast vs. push URL
+        $notificationRequest->setIsBroadcast(true);
+        $request = $notificationRequest->buildHttpRequest();
+        $expectedURL = "https://go.urbanairship.com/api/push/broadcast/";
+        $this->assertTrue($request->uri === $expectedURL, "bad broadcast url");
+
 
     }
 

@@ -69,19 +69,16 @@ $apsMessage = IosMessagePayload::payload()
 // Setup a payload that matches the type of message you want to send, either
 // a push, broadcast, or batch
 $pushPayload = NotificationPayload::payload()
-    ->setAps($apsMessage)
-    ->setDeviceTokens(array($deviceToken));
-
-// Pick the URL, this is how the same request object is used for different
-// requests safely.
-$pushNotificationUrl = NotificationUrl::pushNotificationUrl();
+    ->setAps($apsMessage);
+//    ->setDeviceTokens(array($deviceToken));
 
 // Build the request by setting params, then send it. It throws an exception
 // if there is a non 2** from the server.
-$pushNotificationResponse = PushNotificationRequest::request($pushNotificationUrl)
+$pushNotificationResponse = PushNotificationRequest::request()
     ->setAppKey($reachPushAppKey)
     ->setAppSecret($reachPushAppSecret)
     ->setPushNotificationPayload($pushPayload)
+    ->setIsBroadcast(true)
     ->send();
 
 $log->debug(sprintf("Server response Code:%s",

@@ -18,17 +18,48 @@ namespace UrbanAirship\Push\Request;
 use UrbanAirship\Push\Exception\UARequestException;
 use UrbanAirship\Push\Log\UALog;
 use UrbanAirship\Push\Response\UAResponse;
+use UrbanAirship\Push\Url\IosUrl;
+use UrbanAirship\Push\Url\NotificationUrl;
 
-class PushNotificationRequest extends NotificationRequest
+use Httpful\Mime;
+use Httpful\Request;
+
+class PushNotificationRequest extends UARequest
 {
 
     /**
-     * @param $url string URL to send the message to, push, batch, or broadcast
+     * @var bool Determines whether this is a broadcast or push notification.
      */
-    protected  function __construct($url)
+    private $isBroadcast;
+
+
+    protected function  __construct()
     {
         parent::__construct();
-        $this->url = $url;
+        $this->isBroadcast = false;
+
+    }
+
+    /**
+     * Identifies this request as a broadcast notification. Broadcasts are sent
+     * to all devices for an application. Push notifications require a list, or
+     * lists of device identifiers (apids|device id's|device tokens)
+     * @param $isBroadcast
+     * @return $this
+     */
+    public function setIsBroadcast($isBroadcast)
+    {
+        $this->isBroadcast = $isBroadcast;
+        return $this;
+    }
+
+    /**
+     * Status of the isBroadcast
+     * @return bool
+     */
+    public function getIsBroadcast()
+    {
+        return $this->isBroadcast;
     }
 
     /**
@@ -46,13 +77,32 @@ class PushNotificationRequest extends NotificationRequest
     }
 
     /**
-     * @param $url string URL for the push notification endpoint, either push,
-     * batch, or broadcast.
+     * Build a request with the given parameters.
      * @return PushNotificationRequest
      */
-    public static function request($url)
+    public static function request()
     {
-        return new PushNotificationRequest($url);
+        return new PushNotificationRequest();
+    }
+
+    /**
+     * Build a Httpful\Request with the parameters set on this object.
+     * @return Request|mixed
+     */
+    public function buildHttpRequest()
+    {
+        if ($this->isBroadcast){
+            $url = NotificationUrl::broadcastNotificationUrl();
+        }
+        else {
+            $url = NotificationUrl::pushNotificationUrl();
+        }
+
+        $request = self::basicAuthRequest($url)
+            ->method(self::POST)
+            ->sendsType(Mime::JSON)
+            ->body(json_encode($this->payload));
+        return $request;
     }
 
     /**
