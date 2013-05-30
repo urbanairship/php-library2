@@ -1,0 +1,7 @@
+<phpunit>
+  <testsuites>
+    <testsuite name="UA_lib">
+      <directory>src/tests</directory>
+    </testsuite>
+  </testsuites>
+</phpunit>
