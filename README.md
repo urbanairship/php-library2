@@ -3,20 +3,36 @@ Urban Airship PHP Library (Beta)
 *This is an in progress document*
 
 **Requirements**
+PHP 5.4.14
+
+**Dependencies**
+Composer
+Httpful
+Monolog
+
+**Development Dependencies**
+PHPUnit
 
 **Configuration**
 
-The project expects a enviroment variable denoting the root path of the project.::
-  UA_HANGER=/path/to/root/
-  
-Depenedencies are managed with Composer. Composer can be found here: http://getcomposer.org/
-Workflow aims to be
-  - download repo
-  - composer install
-  - start working
+For OS X, configuration through Homebrew worked well.
 
-I'm going for a single API class (UrbanAirshipAPI) and a bunch of data model classes. The API class is 
-simply a bunch of static methods that wrap HTTP calls to the API and return results. 
+Github:
+https://github.com/josegonzalez/homebrew-php
+Jive Doc:
+https://urbanairship.jiveon.com/docs/DOC-4735
 
-Testing is done with PHPUnit. 
-Documentation is built with PHPDocumentor.
+**Notes**
+
+The UrbanAirshipCLI class will be removed from the project and used as the new 
+shipping README as demo code. As it stands, it is a demo for how the library works.
+
+Attempted to follow the guidelines outlined here: https://github.com/php-fig/fig-standards
+
+This git history will be dumped before shipping, application keys and
+secrets have been committed to the repo during development.
+
+This README will be edited before shipping.
+
+Feedback is much appreciated. 
+
