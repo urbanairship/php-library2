@@ -82,7 +82,6 @@ class IosFeedbackRequest extends UARequest
     public function send()
     {
         $request = $this->buildHttpRequest();
-        $this->log->info("Sending Urban Airship feedback request");
         $this->log->debug(UALog::debugLogForRequest($request));
         return new UAResponse($request->send());
     }

@@ -114,7 +114,6 @@ class PushNotificationRequest extends UARequest
     public function send()
     {
         $request = $this->buildHttpRequest();
-        $this->log->info("Sending UrbanAirship Registration request");
         $this->log->debug(UALog::debugLogForRequest($request));
         return new UAResponse($request->send());
     }

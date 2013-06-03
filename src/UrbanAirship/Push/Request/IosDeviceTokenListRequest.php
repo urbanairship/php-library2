@@ -82,7 +82,6 @@ class IosDeviceTokenListRequest extends UARequest
     public function send()
     {
         $request = $this->buildHttpRequest();
-        $this->log->info("Sending Urban Airship Device Token list request");
         $this->log->debug(UALog::debugLogForRequest($request));
         return new UADeviceTokenListResponse($request->send());
     }

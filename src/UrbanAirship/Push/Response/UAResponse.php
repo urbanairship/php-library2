@@ -15,6 +15,7 @@
 
 namespace UrbanAirship\Push\Response;
 
+use Httpful\Mime;
 use Httpful\Response;
 use UrbanAirship\Push\Exception\UARequestException;
 use UrbanAirship\Push\Log\UALog;
@@ -28,6 +29,9 @@ use UrbanAirship\Push\Log\UALog;
  */
 class UAResponse {
 
+    /**
+     * @var $response \Httpful\Response
+     */
     protected  $response;
 
     /**
@@ -39,12 +43,23 @@ class UAResponse {
     public function __construct($response){
         $this->response = $response;
         $log = UALog::getLogger();
-        $log->info("Urban Airship Response received");
-        $log->debug(sprintf("UA API Response code:%s uri:%s", $response->code, $response->request->uri));
-        if ($response->hasErrors()){
-            $log->error(sprintf("Non 200 response from UA Servers\nCode:%s\nBody:%s", $response->code, $response->body));
-            throw new UARequestException($response);
+        if (strstr($response->headers["content-type"], Mime::JSON)){
+            $bodyLog = json_encode($response->body);
         }
+        else {
+            $bodyLog = $response->body;
+        }
+        $infoLog = sprintf(" code:%s uri:%s", $response->code,
+            $response->request->uri);
+        if ($response->hasErrors()){
+            $log->error(sprintf("Urban Airship API error%s", $infoLog));
+            $log->error(sprintf("Urban Airship Response received %s", $bodyLog));
+        }
+        else {
+            $log->debug(sprintf("Urban Airship API response detail%s", $infoLog));
+            $log->info(sprintf("Urban Airship Response received %s", $bodyLog));
+        }
+
     }
 
     /**
@@ -72,6 +87,11 @@ class UAResponse {
     public function getResponseBody()
     {
         return $this->response->body;
+    }
+
+    public function hasErrors()
+    {
+        return $this->response->hasErrors();
     }
 
 
