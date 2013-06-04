@@ -16,7 +16,7 @@
 namespace UrbanAirship\Push\Payload;
 
 
-class BackberryMessagePayload extends Payload {
+class BlackberryMessagePayload extends Payload {
 
     const BLACKBERRY_CONTENT_TYPE_KEY = "content-type";
     const BLACKBERRY_BODY_KEY = "body";
@@ -66,11 +66,11 @@ class BackberryMessagePayload extends Payload {
 
     /**
      * Create a new Blackberry Message Payload
-     * @return BackberryMessagePayload
+     * @return BlackberryMessagePayload
      */
     public static function payload()
     {
-        return new BackberryMessagePayload();
+        return new BlackberryMessagePayload();
     }
 
     /**

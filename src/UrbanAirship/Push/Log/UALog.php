@@ -74,7 +74,7 @@ class UALog {
             $logLine = sprintf("%sHeaders:%s\n", $logLine, $headerString);
         }
         if (!is_null($request->payload)){
-            $logLine = sprintf("%sBody:%s\n", $logLine, json_encode($request->payload, JSON_PRETTY_PRINT));
+            $logLine = sprintf("%sBody:%s\n", $logLine, json_encode($request->payload));
         }
         return $logLine;
     }

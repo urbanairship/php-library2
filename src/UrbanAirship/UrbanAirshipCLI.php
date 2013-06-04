@@ -32,57 +32,55 @@ use UrbanAirship\Push\Log\UALog;
 
 use Monolog\Handler\StreamHandler;
 
-// End developers can setup any type of logger they wish, Monolog conforms
-// to the PRS-3 logger interface, allowing for replacement if Monolog
-// is not the preferred logging framework.
-$log = UALog::getLogger();
-$log->pushHandler(new StreamHandler("php://stdout"), Logger::DEBUG);
-
-$log->addDebug("CLI start");
 
 // Setup some data
-$reachPushAppKey = "Hx7SIqHqQDmFj6aruaAFcQ";
-$reachPushAppSecret = "JkyLL9IqQ2OVkashrzLq-A";
-$deviceToken = "1bf62ee6bf92337785c0da1c0ff16c7dbc03b9f4e19b23834a754f19c0e962d9";
+$reachPushAppKey = "pvNYHR9ZSGGk1LwuPl4kqw";
+$reachPushAppSecret = "fTyEFfyTR-a40Bxcmv9vEg";
+$testDeviceToken = "254dacf1cc805018dff630d164d7ac4cdfd8ce14b4e66d96132d84bb16e93abc";
 
-// Register a token
-$registrationPayload = IosRegistrationPayload::payload();
-$registrationPayload->setTags(array("iphone php"))->setAlias("M iphone 4");
+// Setup some logging. Default is a stream handler. We use the Monolog library,
+// which is PRS-3 compliant, so any logging framework that complies with the standard
+// could be used. Read more about the FIG standards here:
+// https://github.com/php-fig/fig-standards
 
-// Setup key, secret, payload, and send. Will return a UAResponse with a 2**
-// or throw a UARequestException
-$registrationResponse = IosRegisterTokenRequest::request()
-    ->setAppKey($reachPushAppKey)
-    ->setAppSecret($reachPushAppSecret)
-    ->setDeviceToken($deviceToken)
-    ->setRegistrationPayload($registrationPayload)
-    ->send();
+UALog::setLogHandlers(array(new StreamHandler("php://stdout", Logger::DEBUG)));
+$log = UALog::getLogger();
 
-$log->debug(sprintf("Server response Code:%s",
-    $registrationResponse->getResponseCode()));
+// Set up your key and secret for the Urban Airship API
+$appKey = $reachPushAppKey;
+$appMasterSecret = $reachPushAppSecret;
 
-// Similar process for sending a message
-// First setup a message
+// The library supports all of the push types for Urban Airship, push notifications,
+// broadcast notifications, and batch. This example utilizes the push notification, which
+// sends a notification to a list of tokens.
+$deviceToken = $testDeviceToken;
+
+// Build a message payload with the necessary data for your notification. The library supports
+// iOS, Android, and Blackberry.
 $apsMessage = IosMessagePayload::payload()
-    ->setAlert("PHP Alert for iOS");
+    ->setAlert("Push Message")
+    ->setBadge(1)
+    ->setSound("customSound.caf");
 
 // Setup a payload that matches the type of message you want to send, either
-// a push, broadcast, or batch
+// a push, broadcast, or batch. See the Urban Airship documentation for payload formatting.
 $pushPayload = NotificationPayload::payload()
-    ->setAps($apsMessage);
-//    ->setDeviceTokens(array($deviceToken));
+    ->setAps($apsMessage)
+    ->setDeviceTokens(array($deviceToken));
 
-// Build the request by setting params, then send it. It throws an exception
-// if there is a non 2** from the server.
+// Create a request, set up authentication and payload, and send it. The response is wrapped and
+// returned. Logging is built in, and uses the logger you provide.
 $pushNotificationResponse = PushNotificationRequest::request()
-    ->setAppKey($reachPushAppKey)
-    ->setAppSecret($reachPushAppSecret)
+    ->setAppKey($appKey)
+    ->setAppSecret($appMasterSecret)
     ->setPushNotificationPayload($pushPayload)
-    ->setIsBroadcast(true)
     ->send();
 
-$log->debug(sprintf("Server response Code:%s",
-    $pushNotificationResponse->getResponseCode()));
+// Check the response for errors
+if ($pushNotificationResponse->hasErrors()) {
+    $log->error("Push notification didn't work");
+}
+else {
+    $log->debug("Push message succeeded");
+}
 
-$log->debug("CLI End");
-?>

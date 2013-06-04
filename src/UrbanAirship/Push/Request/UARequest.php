@@ -20,6 +20,8 @@ use UrbanAirship\Push\Log\UALog;
 use UrbanAirship\Push\Url\IosUrl;
 use UrbanAirship\Push\Payload\Payload;
 
+use Monolog\Logger;
+
 /**
  * Base class for device metadata requests. This contains common methods to
  * manipulate device metadata through the Urban Airship API, as well

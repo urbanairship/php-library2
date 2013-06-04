@@ -13,6 +13,7 @@ use UrbanAirship\Push\Url\NotificationUrl;
 use UrbanAirship\Push\Response\UAResponse;
 use UrbanAirship\Push\Log\UALog;
 use Httpful\Mime;
+use Httpful\Request;
 
 
 class BatchPushNotificationRequest extends UARequest
@@ -36,7 +37,7 @@ class BatchPushNotificationRequest extends UARequest
     /**
      * Payloads for push notification. See API documentation for payload options
      * and formats.
-     * @param $payload object Array with the correct parameters for the given
+     * @param  $payload Array with the correct parameters for the given
      * push URL. Improperly formatted payloads will result in a 400 response
      * @return $this
      */
@@ -68,9 +69,7 @@ class BatchPushNotificationRequest extends UARequest
     }
 
     /**
-     * Send the request. This will return a UAResponse on any 200, or throw
-     * a UARequestException.
-     * @throws UARequestException
+     * Send the request. This will return a UAResponse.
      * @return UAResponse
      */
     public function send()
