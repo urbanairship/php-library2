@@ -31,7 +31,7 @@ class UALog {
     /**
      * Add log handlers to tailor logging for your use case. Default logging
      * is the Monolog default, a Monolog StreamHandler('php://stderr', static::DEBUG)
-     * Use Monolog NullHandler to disable all logging. 
+     * Use Monolog NullHandler to disable all logging.
      * @param $handlers
      */
     public static function setLogHandlers($handlers)

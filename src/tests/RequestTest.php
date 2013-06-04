@@ -24,14 +24,15 @@ use UrbanAirship\Push\Payload;
 use UrbanAirship\Push\Request\IosRegisterTokenRequest;
 use UrbanAirship\Push\Request\IosTokenInformationRequest;
 use UrbanAirship\Push\Request\IosDeactivateTokenRequest;
-use UrbanAirship\Push\Request\PushNotificationRequest;
 use UrbanAirship\Push\Request\IosFeedbackRequest;
+
+use UrbanAirship\Push\Request\PushNotificationRequest;
+use UrbanAirship\Push\Request\BatchPushNotificationRequest;
+
 
 use UrbanAirship\Push\Url\NotificationUrl;
 
 use Httpful\Request;
-
-
 
 class TestRequests extends PHPUnit_Framework_TestCase
 {
@@ -150,6 +151,37 @@ class TestRequests extends PHPUnit_Framework_TestCase
         $expectedUrl = "https://go.urbanairship.com/api/device_tokens/feedback/?since={$dateString}/";
         $this->assertTrue($expectedUrl === $request->uri, "URL for feedback incorrect");
         $this->assertTrue("GET" === $request->method, "Feedback request method incorrect");
+
+    }
+
+    public function testBatchRequest()
+    {
+        $alert1 = "alert1";
+        $alert2 = "alert2";
+
+        $iosMessage1 = Payload\IosMessagePayload::payload()->setAlert($alert1);
+        $iosMessage2 = Payload\IosMessagePayload::payload()->setAlert($alert2);
+        $notif1 = Payload\NotificationPayload::payload()
+            ->setAps($iosMessage1)
+            ->setDeviceTokens(array("tokens1"));
+        $notif2 = Payload\NotificationPayload::payload()
+            ->setAps($iosMessage2)
+            ->setDeviceTokens(array("tokens2"));
+
+        $request1 = BatchPushNotificationRequest::request()
+            ->appendNotificationToBatch($notif1)
+            ->appendNotificationToBatch($notif2);
+        $httpRequest = $request1->buildHttpRequest();
+
+        $this->assertTrue($httpRequest->uri === "https://go.urbanairship.com/api/push/batch/");
+        $jsonPayload = json_decode($httpRequest->payload);
+        print_r($jsonPayload);
+        $this->assertTrue(is_array($jsonPayload));
+        $jsonMessage1 = $jsonPayload[0];
+        $this->assertTrue($jsonMessage1->aps->alert === "alert1");
+        $jsonMessage2 = $jsonPayload[1];
+        $this->assertTrue($jsonMessage2->aps->alert === "alert2");
+
 
     }
 

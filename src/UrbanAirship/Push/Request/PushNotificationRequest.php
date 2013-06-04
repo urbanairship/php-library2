@@ -37,7 +37,6 @@ class PushNotificationRequest extends UARequest
     {
         parent::__construct();
         $this->isBroadcast = false;
-
     }
 
     /**
@@ -106,8 +105,7 @@ class PushNotificationRequest extends UARequest
     }
 
     /**
-     * Send the request. This will return a UAResponse on any 200, or throw
-     * a UARequestException.
+     * Send the request. This will return a UAResponse.
      * @throws UARequestException
      * @return UAResponse
      */
