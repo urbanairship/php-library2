@@ -7,24 +7,11 @@
     <orderEntry type="module-library">
       <library name="PHP">
         <CLASSES>
-          <root url="file:///usr/local/Cellar/php54/5.4.14/lib/php" />
+          <root url="file:///usr/local/Cellar/php54/5.4.15/lib/php" />
         </CLASSES>
         <JAVADOC />
         <SOURCES>
-          <root url="file:///usr/local/Cellar/php54/5.4.14/lib/php" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library name="PHARS">
-        <CLASSES>
-          <root url="phar:///usr/local/Cellar/php54/5.4.14/lib/php/phpDocumentor/tests/data/test.phar" />
-          <root url="phar:///usr/local/Cellar/php54/5.4.14/lib/php/data/phpDocumentor/vendor/phpdocumentor/fileset/tests/data/test.phar" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="phar:///usr/local/Cellar/php54/5.4.14/lib/php/phpDocumentor/tests/data/test.phar" />
-          <root url="phar:///usr/local/Cellar/php54/5.4.14/lib/php/data/phpDocumentor/vendor/phpdocumentor/fileset/tests/data/test.phar" />
+          <root url="file:///usr/local/Cellar/php54/5.4.15/lib/php" />
         </SOURCES>
       </library>
     </orderEntry>

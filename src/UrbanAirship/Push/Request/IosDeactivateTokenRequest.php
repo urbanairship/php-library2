@@ -58,7 +58,6 @@ class IosDeactivateTokenRequest extends IosRegisterTokenRequest
     public function send()
     {
         $request = $this->buildHttpRequest();
-        $this->log->info("Sending Urban Airship Deactivate token request");
         $this->log->debug(UALog::debugLogForRequest($request));
         return new UAResponse($request->send());
     }

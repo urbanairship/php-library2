@@ -70,7 +70,6 @@ class IosTokenInformationRequest extends IosRegisterTokenRequest
     public function send()
     {
         $request = $this->buildHttpRequest();
-        $this->log->info("Sending Urban Airship Token Information request");
         $this->log->debug(UALog::debugLogForRequest($request));
         return new UAResponse($request->send());
     }
