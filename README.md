@@ -1,38 +1,69 @@
 Urban Airship PHP Library (Beta)
 ================================
-*This is an in progress document*
+PHP library for use with the Urban Airship API for sending push notifications. Supports iOS, Android, and Blackberry.
 
 **Requirements**
-PHP 5.4.14
+
+PHP >= 5.4.14
 
 **Dependencies**
-Composer
-Httpful
-Monolog
+
+- Composer
+- Httpful
+- Monolog
 
 **Development Dependencies**
+
 PHPUnit
 
-**Configuration**
+**Use**
 
-For OS X, configuration through Homebrew worked well.
+```PHP
+// Setup some logging. Default is a stream handler. We use the Monolog library,
+// which is PRS-3 compliant, so any logging framework that complies with the standard
+// could be used. Read more about the FIG standards here:
+// https://github.com/php-fig/fig-standards
 
-Github:
-https://github.com/josegonzalez/homebrew-php
-Jive Doc:
-https://urbanairship.jiveon.com/docs/DOC-4735
+UALog::setLogHandlers(array(new StreamHandler("php://stdout", Logger::DEBUG)));
+$log = UALog::getLogger();
 
-**Notes**
+// Set up your key and secret for the Urban Airship API
+$appKey = "key";
+$appSecret = "secret";
 
-The UrbanAirshipCLI class will be removed from the project and used as the new 
-shipping README as demo code. As it stands, it is a demo for how the library works.
+// The library supports all of the push types for Urban Airship, push notifications,
+// broadcast notifications, and batch. This example utilizes the push notification, which
+// sends a notification to a list of tokens.
+$deviceToken = "token";
 
-Attempted to follow the guidelines outlined here: https://github.com/php-fig/fig-standards
+// Build a message payload with the necessary data for your notification. The library supports
+// iOS, Android, and Blackberry.
+$apsMessage = IosMessagePayload::payload()
+    ->setAlert("Push Message")
+    ->setBadge(1)
+    ->setSound("customSound.caf");
 
-This git history will be dumped before shipping, application keys and
-secrets have been committed to the repo during development.
+// Setup a payload that matches the type of message you want to send, either
+// a push, broadcast, or batch. See the Urban Airship documentation for payload formatting.
+$pushPayload = NotificationPayload::payload()
+    ->setAps($apsMessage)
+    ->setDeviceTokens(array($deviceToken));
 
-This README will be edited before shipping.
+// Create a request, set up authentication and payload, and send it. The response is wrapped and
+// returned. Logging is built in, and uses the logger you provide.
+$pushNotificationResponse = PushNotificationRequest::request()
+    ->setAppKey($appKey)
+    ->setAppSecret($appSecret)
+    ->setPushNotificationPayload($pushPayload)
+    ->send();
 
-Feedback is much appreciated. 
+// Check the response for errors
+if ($pushNotificationResponse->hasErrors()) {
+    $log->error("Push notification didn't work");
+}
+else {
+    $log->debug("Push message succeeded");
+}
+```
+
 

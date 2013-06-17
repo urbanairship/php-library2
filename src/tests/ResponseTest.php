@@ -21,7 +21,8 @@ use Httpful\Response;
 use UrbanAirship\Push\Response\UAResponse;
 
 
-class TestResponse extends PHPUnit_Framework_TestCase {
+class TestResponse extends PHPUnit_Framework_TestCase
+{
 
     public function testUAResponse()
     {
@@ -41,14 +42,13 @@ class TestResponse extends PHPUnit_Framework_TestCase {
 
     public function testUAResponseThrowsException()
     {
-        // Set the expectation for an exception
-        $this->setExpectedException('UrbanAirship\Push\Exception\UARequestException');
         $request = Request::get("http://www.google.com");
 
         $badResponseHeaders = "Status: 400 Bad Request\r\n\r\n";
         $badResponseBody = "Bad Request";
         $badResponse = new Response($badResponseBody, $badResponseHeaders, $request);
-        new UAResponse($badResponse);
-
+        $response = new UAResponse($badResponse);
+        $this->assertTrue($response->hasErrors());
+        $this->assertTrue($response->getResponseCode() === 400);
     }
 }
