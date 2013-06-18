@@ -174,8 +174,8 @@ class Audience {
      * Produces a time specifier that represents relative amount of time, such
      * as "the past three days"
      *
-     * @param $resolution Valid time resolution
-     * @param $lengthOfTime Amount of time
+     * @param $resolution string Valid time resolution
+     * @param $lengthOfTime string Amount of time
      * @param $lastSeen bool Match a device only if
      * its last recorded position matches the location. If it has update
      * location anywhere else since, even if it otherwise matches the time
