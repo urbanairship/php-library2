@@ -15,6 +15,8 @@ const PIN_FORMAT = "/^[0-9a-fA-F]{8}$/";
 const UUID_FORMAT =
     "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$";
 
+CONST all = "all";
+
 /**
     * Select a single iOS device token
     * @param $token
