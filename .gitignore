@@ -6,3 +6,4 @@ docs/
 data/
 vendor/
 composer.phar
+composer.lock
