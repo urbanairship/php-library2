@@ -16,13 +16,13 @@ const AUTOBADGE_FORMAT = "/^(auto)|([+-][0-9]+)$/";
 function notification($alert=null)
 {
     $payload = array();
-    if ($alert != null)
-    {
+    if ($alert != null) {
         $payload["alert"] = $alert;
     }
     if (count($payload) == 0) {
         throw new InvalidArgumentException("Notification cannot be empty");
     }
+
     return $payload;
 }
 
@@ -42,14 +42,12 @@ function ios($alert=null, $badge=null, $sound=null, $content_available=false,
         $extra=null)
 {
     $payload = array();
-    if (!is_null($alert))
-    {
+    if (!is_null($alert)) {
         $payload["alert"] = $alert;
     }
-    if (!is_null($badge))
-    {
+    if (!is_null($badge)) {
         if (is_string($badge)) {
-            if (preg_match(AUTOBADGE_FORMAT, $badge) === 0){
+            if (preg_match(AUTOBADGE_FORMAT, $badge) === 0) {
                 throw new InvalidArgumentException("Invalid autobadge string");
             }
         } elseif (!is_int($badge)) {
@@ -57,26 +55,24 @@ function ios($alert=null, $badge=null, $sound=null, $content_available=false,
         }
         $payload["badge"] = $badge;
     }
-    if (!is_null($sound))
-    {
+    if (!is_null($sound)) {
         $payload["sound"] = $sound;
     }
-    if ($content_available)
-    {
+    if ($content_available) {
         $payload["content_available"] = true;
     }
-    if (!is_null($extra))
-    {
+    if (!is_null($extra)) {
         $payload["extra"] = $extra;
     }
+
     return $payload;
 }
 
-
-function device_types(/*args*/) {
-    if (func_num_args() == 1 )
-    {
+function device_types(/*args*/)
+{
+    if (func_num_args() == 1 ) {
         return array(func_get_args());
     }
+
     return func_get_args();
 }

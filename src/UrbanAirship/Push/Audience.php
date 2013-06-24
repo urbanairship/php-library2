@@ -10,12 +10,10 @@ namespace UrbanAirship\Push;
 
 use InvalidArgumentException;
 
-
 const DEVICE_TOKEN_FORMAT = "/^[0-9a-fA-F]{64}$/";
 const PIN_FORMAT = "/^[0-9a-fA-F]{8}$/";
 const UUID_FORMAT =
     "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$";
-
 
 /**
     * Select a single iOS device token
@@ -26,9 +24,10 @@ const UUID_FORMAT =
 function deviceToken($token)
 {
     // This could return a non boolean false if there is an error
-    if (preg_match(DEVICE_TOKEN_FORMAT, $token) === 0){
+    if (preg_match(DEVICE_TOKEN_FORMAT, $token) === 0) {
         throw new InvalidArgumentException("Invalid iOS device token");
     }
+
     return array("device_token" => $token);
 }
 
@@ -41,9 +40,10 @@ function deviceToken($token)
 function devicePin($pin)
 {
     // This could return a non boolean false if there is an error
-    if(preg_match(PIN_FORMAT, $pin) === 0){
+    if (preg_match(PIN_FORMAT, $pin) === 0) {
         throw new InvalidArgumentException("Invalid Blackberry pin");
     }
+
     return array("device_pin" => $pin);
 }
 
@@ -56,9 +56,10 @@ function devicePin($pin)
 function apid($uuid)
 {
     // This could return a non boolean false if there is an error
-    if(preg_match(UUID_FORMAT, $uuid) === 0){
+    if (preg_match(UUID_FORMAT, $uuid) === 0) {
         throw new InvalidArgumentException("Invalid APID");
     }
+
     return array("apid" => $uuid);
 }
 
@@ -71,9 +72,10 @@ function apid($uuid)
 function wns($uuid)
 {
     // This could return a non boolean false if there is an error
-    if(preg_match(UUID_FORMAT, $uuid) === 0){
+    if (preg_match(UUID_FORMAT, $uuid) === 0) {
         throw new InvalidArgumentException("Invalid WNS");
     }
+
     return array("wns" => $uuid);
 }
 
@@ -86,9 +88,10 @@ function wns($uuid)
 function mpns($uuid)
 {
     // This could return a non boolean false if there is an error
-    if(preg_match(UUID_FORMAT, $uuid) === 0){
+    if (preg_match(UUID_FORMAT, $uuid) === 0) {
         throw new InvalidArgumentException("Invalid MPNS");
     }
+
     return array("mpns" => $uuid);
 }
 
@@ -161,10 +164,9 @@ function acceptableResolution($resolution)
 {
     $acceptableValues = array("minutes", "hours", "days", "weeks", "months",
         "years");
-    if (array_search($resolution, $acceptableValues) === false){
+    if (array_search($resolution, $acceptableValues) === false) {
         return false;
-    }
-    else {
+    } else {
         return true;
     }
 }
@@ -184,13 +186,14 @@ function acceptableResolution($resolution)
     */
 function recentDate($resolution, $lengthOfTime, $lastSeen=false)
 {
-    if (!acceptableResolution($resolution)){
+    if (!acceptableResolution($resolution)) {
         throw new InvalidArgumentException("Invalid date resolution");
     }
     $payload = array("recent" => array($resolution => $lengthOfTime));
-    if ($lastSeen){
+    if ($lastSeen) {
         $payload["last_seen"] = true;
     }
+
     return $payload;
 }
 
@@ -209,13 +212,14 @@ function recentDate($resolution, $lengthOfTime, $lastSeen=false)
     */
 function absoluteDate($resolution, $start, $end, $lastSeen=false)
 {
-    if(!acceptableResolution($resolution)){
+    if (!acceptableResolution($resolution)) {
         throw new InvalidArgumentException("Invalid date resolution");
     }
     $resolutionPayload = array($resolution => array("start" => $start,
         "end" => $end));
-    if($lastSeen){
+    if ($lastSeen) {
         $resolutionPayload["last_seen"] = true;
     }
+
     return array("date" => $resolutionPayload);
 }
