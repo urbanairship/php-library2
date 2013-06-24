@@ -7,6 +7,7 @@ class PushRequest
     private $airship;
     private $audience;
     private $notification;
+    private $options = null;
     private $deviceTypes;
 
     function __construct($airship)
@@ -32,13 +33,23 @@ class PushRequest
         return $this;
     }
 
+    function setOptions($options)
+    {
+        $this->deviceTypes = $deviceTypes;
+        return $this;
+    }
+
     function makeBody()
     {
-        return json_encode(array(
+        $payload = array(
             'audience' => $this->audience,
             'notification' => $this->notification,
             'device_types' => $this->deviceTypes
-        ));
+        );
+        if (!is_null($this->options)) {
+            $payload['options'] = $this->options;
+        }
+        return json_encode($payload);
     }
 
     function send()
