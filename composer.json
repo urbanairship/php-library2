@@ -1,6 +1,11 @@
 {
     "autoload" : {
-        "psr-0":{"UrbanAirship":"src/"}
+        "psr-0":{"UrbanAirship":"src/"},
+        "files": [
+            "src/UrbanAirship/Push/Audience.php",
+            "src/UrbanAirship/Push/Notification.php"
+        ]
+
     },
     "require":{
         "monolog/monolog":"1.5.0",
