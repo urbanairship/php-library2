@@ -39,7 +39,7 @@ class PushRequest
         return $this;
     }
 
-    function makeBody()
+    function getPayload()
     {
         $payload = array(
             'audience' => $this->audience,
@@ -49,14 +49,14 @@ class PushRequest
         if (!is_null($this->options)) {
             $payload['options'] = $this->options;
         }
-        return json_encode($payload);
+        return $payload;
     }
 
     function send()
     {
-        print_r($this->makeBody() . "\n\n\n");
-        $response = $this->airship->request(
-            "POST", $this->makeBody(), "/api/push/", "application/json", 3);
+        print_r($this->json_encode($this->getPayload()) . "\n\n\n");
+        $response = $this->airship->request("POST",
+            json_encode($this->getPayload()), "/api/push/", "application/json", 3);
         print_r($response);
     }
 

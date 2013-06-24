@@ -4,6 +4,7 @@ namespace UrbanAirship;
 
 use Httpful\Request;
 use UrbanAirship\Push\PushRequest;
+use UrbanAirship\Push\ScheduledPushRequest;
 
 const BASE_URL = 'https://go.urbanairship.com';
 const VERSION_STRING = 'application/vnd.urbanairship+json; version=%d;';
@@ -24,17 +25,24 @@ class Airship
         return new PushRequest($this);
     }
 
-    public function request($method, $body, $path, $contentType, $version)
+    public function scheduledPush()
+    {
+        return new ScheduledPushRequest($this);
+    }
+
+    public function request($method, $body, $path, $contentType=null, $version=1)
     {
         $uri = BASE_URL . $path;
-        $response = Request::init()
+        $request = Request::init()
             ->method($method)
             ->uri($uri)
             ->authenticateWith($this->key, $this->secret)
-            ->addHeader("Content-type", sprintf(VERSION_STRING, $version))
-            ->addHeader("Accept", sprintf(VERSION_STRING, $version))
             ->body($body)
-            ->send();
+            ->addHeader("Accept", sprintf(VERSION_STRING, $version));
+        if (!is_null($contentType)) {
+            $request = $request->addHeader("Content-type", $contentType);
+        }
+        $response = $request->send();
         return $response;
     }
 }
