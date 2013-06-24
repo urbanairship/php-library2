@@ -89,4 +89,22 @@ class TestNotification extends PHPUnit_Framework_TestCase
     {
         P\ios(null, true);
     }
+
+    public function testDeviceTypes()
+    {
+        $this->assertEquals(
+            P\deviceTypes("ios"),
+            array("ios"));
+        $this->assertEquals(
+            P\deviceTypes("ios", "android"),
+            array("ios", "android"));
+    }
+
+    /**
+     * @expectedException        InvalidArgumentException
+     */
+    public function testInvalidDeviceType()
+    {
+        P\deviceTypes("ios", "symbian");
+    }
 }

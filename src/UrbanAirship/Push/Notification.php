@@ -68,11 +68,16 @@ function ios($alert=null, $badge=null, $sound=null, $content_available=false,
     return $payload;
 }
 
-function device_types(/*args*/)
+/**
+ * Device Type specifier.
+ */
+function deviceTypes(/*args*/)
 {
-    if (func_num_args() == 1 ) {
-        return array(func_get_args());
+    static $VALID_DEVICE_TYPES = array("ios", "android", "blackberry", "wns", "mpns");
+    foreach (func_get_args() as $type) {
+        if (!in_array($type, $VALID_DEVICE_TYPES)) {
+            throw new InvalidArgumentException("Invalid device type: " . $type);
+        }
     }
-
     return func_get_args();
 }
