@@ -13,7 +13,7 @@
 //    See the License for the specific language governing permissions and
 //    limitations under the License.
 
-namespace UrbanAirship\Push\Log;
+namespace UrbanAirship;
 
 use Monolog\Logger;
 
@@ -24,7 +24,7 @@ use Monolog\Logger;
  */
 class UALog {
 
-    const DEFAULT_UA_LOG_NAME = "com.urbanairship.uaphp";
+    const DEFAULT_UA_LOG_NAME = "UrbanAirship";
 
     private static $logHandlers;
 

@@ -54,10 +54,8 @@ class PushRequest
 
     function send()
     {
-        print_r($this->json_encode($this->getPayload()) . "\n\n\n");
         $response = $this->airship->request("POST",
             json_encode($this->getPayload()), "/api/push/", "application/json", 3);
-        print_r($response);
     }
 
 }

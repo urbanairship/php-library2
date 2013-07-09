@@ -33,16 +33,31 @@ class Airship
     public function request($method, $body, $path, $contentType=null, $version=1)
     {
         $uri = BASE_URL . $path;
+        $headers = array("Accept" => sprintf(VERSION_STRING, $version));
+        if (!is_null($contentType)) {
+            $headers["Content-type"] = $contentType;
+        }
+
+        $logger = UALog::getLogger();
+        $logger->debug("Making request", array(
+            "method" => $method,
+            "uri" => $uri,
+            "headers" => $headers,
+            "body" => $body));
+
         $request = Request::init()
             ->method($method)
             ->uri($uri)
             ->authenticateWith($this->key, $this->secret)
             ->body($body)
-            ->addHeader("Accept", sprintf(VERSION_STRING, $version));
-        if (!is_null($contentType)) {
-            $request = $request->addHeader("Content-type", $contentType);
-        }
+            ->addHeaders($headers);
         $response = $request->send();
+
+        $logger->debug("Received response", array(
+            "status" => $response->code,
+            "headers" => $response->headers,
+            "body" => $response->raw_body));
+
         return $response;
     }
 }
