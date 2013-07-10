@@ -58,6 +58,9 @@ class Airship
             "headers" => $response->headers,
             "body" => $response->raw_body));
 
+        if ($response->code >= 300) {
+            throw AirshipException::fromResponse($response);
+        }
         return $response;
     }
 }
