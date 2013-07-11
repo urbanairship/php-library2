@@ -6,6 +6,7 @@ use UrbanAirship\UALog;
 
 class PushRequest
 {
+    const PUSH_URL = "/api/push/";
     private $airship;
     private $audience;
     private $notification;
@@ -56,17 +57,15 @@ class PushRequest
 
     function send()
     {
+        $uri = $this->airship->build_url(self::PUSH_URL);
         $logger = UALog::getLogger();
 
         $response = $this->airship->request("POST",
-            json_encode($this->getPayload()), "/api/push/", "application/json", 3);
+            json_encode($this->getPayload()), $uri, "application/json", 3);
 
-        if ($response->code < 300 && $response->code >= 200) {
-            $payload = json_decode($response->raw_body, true);
-            // Successful push
-            $logger->info("Push sent successfully.", array("push_ids" => $payload['push_ids']));
-            return new PushResponse($response);
-        }
+        $payload = json_decode($response->raw_body, true);
+        $logger->info("Push sent successfully.", array("push_ids" => $payload['push_ids']));
+        return new PushResponse($response);
     }
 
 }

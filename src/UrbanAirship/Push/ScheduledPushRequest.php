@@ -2,8 +2,11 @@
 
 namespace UrbanAirship\Push;
 
+use UrbanAirship\UALog;
+
 class ScheduledPushRequest
 {
+    const SCHEDULE_URL = "/api/schedules/";
     private $airship;
     private $schedule;
     private $name = null;
@@ -46,10 +49,13 @@ class ScheduledPushRequest
 
     function send()
     {
-        print_r(json_encode($this->getPayload()) . "\n\n\n");
+        $uri = $this->airship->build_url(self::SCHEDULE_URL);
+        $logger = UALog::getLogger();
         $response = $this->airship->request("POST",
-            json_encode($this->getPayload()), "/api/schedules/", "application/json", 3);
-        print_r($response);
+            json_encode($this->getPayload()), $uri, "application/json", 3);
+        $payload = json_decode($response->raw_body, true);
+        $logger->info("Scheduled push sent successfully.", array("schedule_ids" => $payload['schedule_ids']));
+        return new PushResponse($response);
     }
 
 }

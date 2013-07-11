@@ -6,11 +6,13 @@ use Httpful\Request;
 use UrbanAirship\Push\PushRequest;
 use UrbanAirship\Push\ScheduledPushRequest;
 
-const BASE_URL = 'https://go.urbanairship.com';
-const VERSION_STRING = 'application/vnd.urbanairship+json; version=%d;';
 
 class Airship
 {
+
+    const BASE_URL = 'https://go.urbanairship.com';
+    const VERSION_STRING = 'application/vnd.urbanairship+json; version=%d;';
+
     public $key;
     public $secret;
 
@@ -30,10 +32,24 @@ class Airship
         return new ScheduledPushRequest($this);
     }
 
-    public function request($method, $body, $path, $contentType=null, $version=1)
+    public function build_url($path, $args=null) {
+        $url = self::BASE_URL . $path;
+
+        if (isset($args)) {
+            $params = array();
+            $url = $url . "?";
+
+            foreach ($args as $key => $value) {
+                $params[] = urlencode($key) . "=" . urlencode($value);
+            }
+            $url = $url . implode("&", $params);
+        }
+        return $url;
+    }
+
+    public function request($method, $body, $uri, $contentType=null, $version=1)
     {
-        $uri = BASE_URL . $path;
-        $headers = array("Accept" => sprintf(VERSION_STRING, $version));
+        $headers = array("Accept" => sprintf(self::VERSION_STRING, $version));
         if (!is_null($contentType)) {
             $headers["Content-type"] = $contentType;
         }
