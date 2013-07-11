@@ -83,7 +83,7 @@ class Airship
 
         $logger->debug("Received response", array(
             "status" => $response->code,
-            "headers" => $response->headers,
+            "headers" => $response->raw_headers,
             "body" => $response->raw_body));
 
         if ($response->code >= 300) {
