@@ -3,6 +3,7 @@
 namespace UrbanAirship;
 
 use Httpful\Request;
+use UrbanAirship\Devices\DeviceTokenList;
 use UrbanAirship\Push\PushRequest;
 use UrbanAirship\Push\ScheduledPushRequest;
 
@@ -20,6 +21,11 @@ class Airship
     {
         $this->key = $appKey;
         $this->secret = $masterSecret;
+    }
+
+    public function deviceTokenList($limit=null)
+    {
+        return new DeviceTokenList($this, $limit);
     }
 
     public function push()
