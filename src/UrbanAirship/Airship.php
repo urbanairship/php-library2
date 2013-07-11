@@ -4,6 +4,7 @@ namespace UrbanAirship;
 
 use Httpful\Request;
 use UrbanAirship\Devices\DeviceTokenList;
+use UrbanAirship\Devices\APIDList;
 use UrbanAirship\Push\PushRequest;
 use UrbanAirship\Push\ScheduledPushRequest;
 
@@ -26,6 +27,11 @@ class Airship
     public function listDeviceTokens($limit=null)
     {
         return new DeviceTokenList($this, $limit);
+    }
+
+    public function listAPIDs($limit=null)
+    {
+        return new APIDList($this, $limit);
     }
 
     public function push()
