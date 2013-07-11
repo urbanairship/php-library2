@@ -23,7 +23,7 @@ class Airship
         $this->secret = $masterSecret;
     }
 
-    public function deviceTokenList($limit=null)
+    public function listDeviceTokens($limit=null)
     {
         return new DeviceTokenList($this, $limit);
     }
