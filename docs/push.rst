@@ -189,3 +189,25 @@ You can override the payload with platform-specific values as well.
             "Hello BlackBerry"
          ))
       ))
+
+:function:`UrbanAirship\\Push\\wnsPayload`
+    WNS specific platform override payload.
+
+:function:`UrbanAirship\\Push\\mpnsPayload`
+    MPNS specific platform override payload.
+
+Device Types
+------------
+
+In addition to specifying the audience, you must specify the device types you
+wish to target, either with a list of strings:
+
+.. code-block:: php
+
+   $push->setDeviceTypes(P\deviceTypes('ios', 'blackberry'));
+
+or with the :constant:`UrbanAirship\\Push\\all` shortcut.
+
+.. code-block:: php
+
+   $push->setDeviceTypes(P\all);

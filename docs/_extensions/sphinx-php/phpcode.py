@@ -101,8 +101,8 @@ def php_constant_role(typ, rawtext, text, lineno, inliner, options={}, content=[
                  'exactly once' % (typ, base_url))
         full_url = base_url + utils.escape(full_class)
     if not has_explicit_title:
-        title = constant + '()'
-    list = [nodes.reference(title, title, internal=False, refuri=full_url, reftitle=namespace + '\\' + constant + '()')]
+        title = constant
+    list = [nodes.reference(title, title, internal=False, refuri=full_url, reftitle=namespace + '\\' + constant)]
     pnode = nodes.literal('', '', *list)
     return [pnode], []
 

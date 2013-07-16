@@ -131,8 +131,64 @@ function blackberry($alert, $body=null, $contentType=null)
 }
 
 /**
+    * WNS specific platform override payload.
+    *
+    * Must include exactly one of alert, toast, tile, or badge.
+    * @param $alert
+    * @param $toast
+    * @param $tile
+    * @param $badge
+    */
+function wnsPayload($alert=null, $toast=null, $tile=null, $badge=null)
+{
+    $payload = array();
+    if (!is_null($alert)) {
+        $payload["alert"] = $alert;
+    }
+    if (!is_null($toast)) {
+        $payload["toast"] = $toast;
+    }
+    if (!is_null($tile)) {
+        $payload["tile"] = $tile;
+    }
+    if (!is_null($badge)) {
+        $payload["badge"] = $badge;
+    }
+
+    if (count($payload) == 0) {
+        throw new InvalidArgumentException("wnsPayload cannot be empty");
+    }
+}
+
+/**
+    * MPNS specific platform override payload.
+    *
+    * Must include exactly one of alert, toast, or tile.
+    * @param $alert
+    * @param $toast
+    * @param $tile
+    */
+function mpnsPayload($alert=null, $toast=null, $tile=null)
+{
+    $payload = array();
+    if (!is_null($alert)) {
+        $payload["alert"] = $alert;
+    }
+    if (!is_null($toast)) {
+        $payload["toast"] = $toast;
+    }
+    if (!is_null($tile)) {
+        $payload["tile"] = $tile;
+    }
+    if (count($payload) == 0) {
+        throw new InvalidArgumentException("mpns cannot be empty");
+    }
+}
+
+/**
  * Device Type specifier.
  *
+ * @param args a list of strings as arguments, for each platform.
  */
 function deviceTypes(/*args*/)
 {
