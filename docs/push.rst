@@ -143,9 +143,12 @@ Location Selectors
    Produces a time specifier that represents an absolute amount of time,
    such as from 2012-01-01 12:00 to 2012-01-01 12:00
 
-   :param resolution: string Valid time resolution
-   :param start: string Beginning of absolute window
-   :param end: string End of absolute window
-   :param lastSeen: bool Match a device only if its last recorded position
+   :param resolution: Valid time resolution
+   :type resolution: string
+   :param start: Beginning of absolute window
+   :type start: string
+   :param end: End of absolute window
+   :type end: string
+   :param lastSeen: Match a device only if its last recorded position
       matches the location. If it has update location anywhere else since, even
       if it otherwise matches the time window, it will be excluded.
