@@ -2,7 +2,7 @@
 .idea/workspace.xml
 .idea/tasks.xml
 
-docs/
+docs/_build/
 data/
 vendor/
 composer.phar
