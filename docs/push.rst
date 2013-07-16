@@ -26,7 +26,12 @@ device types:
        ->setDeviceTypes(P\all)
        ->send();
 
-.. php:namespace:: UrbanAirship\Push
+These selector functions are all in the :namespace:`Urbanairship\\Push`
+namespace. It's recommended to use a shortcut.
+
+.. code-block:: php
+
+   use UrbanAirship\Push as P;
 
 Audience Selectors
 ------------------
@@ -34,13 +39,12 @@ Audience Selectors
 An audience should specify one or more devices. An audience can be a device,
 such as a **device token** or **APID**; a tag, alias, or segment; a location;
 or a combination. Audience selectors are combined with ``and_``, ``or_``, and
-``not_``. All selectors are available in the ``UrbanAirship\Push`` namespace.
+``not_``. All selectors are available in the :class:`UrbanAirship\\Push` namespace.
 
 Simple Selectors
 ++++++++++++++++
 
-.. php:global:: all
-
+:constant:`UrbanAirship\\Push\\all`
    Select all, to do a broadcast.
 
    Used in both ``audience`` and ``deviceTypes``.
@@ -49,59 +53,48 @@ Simple Selectors
 
       $push->setAudience(P\all);
 
-.. php:function:: deviceToken($token)
-
+:function:`UrbanAirship\\Push\\deviceToken`
    Select a single iOS device token.
 
    .. code-block:: php
 
       $push->setAudience(P\deviceToken("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"));
 
-.. php:function:: devicePin($pin)
-
+:function:`UrbanAirship\\Push\\devicePin`
    Select a single BlackBerry PIN.
 
-.. php:function:: apid($apid)
-
+:function:`UrbanAirship\\Push\\apid`
    Select a single Android APID.
 
-.. php:function:: wns($uuid):
-
+:function:`UrbanAirship\\Push\\wns`
    Select a single Windows 8 APID.
 
-.. php:function:: mns($uuid)
-
+:function:`UrbanAirship\\Push\\mpns`
    Select a single Windows Phone 8 APID.
 
-.. php:function:: tag($tag)
-
+:function:`UrbanAirship\\Push\\tag`
    Select a single tag.
 
-.. php:function:: alias($alias)
-
+:function:`UrbanAirship\\Push\\alias`
    Select a single alias.
 
-.. php:function:: segment($segment)
-
+:function:`UrbanAirship\\Push\\segment`
    Select a single segment.
 
 Compound Selectors
 ++++++++++++++++++
 
-.. php:function:: or_($arg1[, $arg2, ...])
-
+:function:`UrbanAirship\\Push\\or_`
    Select an audience that matches at least one of the given arguments.
 
    .. code-block:: php
 
       $push->setAudience(P\or_(P\tag("foo"), P\tag("bar")));
 
-.. php:function:: and_($arg1[, $arg2, ...])
-
+:function:`UrbanAirship\\Push\\and_`
    Select an audience that matches all of the given arguments.
 
-.. php:function:: not_($selector)
-
+:function:`UrbanAirship\\Push\\not_`
    Select an audience that does not match the given selector.
 
    .. code-block:: php
@@ -111,48 +104,21 @@ Compound Selectors
 Location Selectors
 ++++++++++++++++++
 
-.. php:function:: location($date, array $locationOpts)
-
+:function:`UrbanAirship\\Push\\location`
    Select a location expression.
 
    Location expressions are made up of either an id or an alias and a time
    period specifier. Use one of the date specifier functions to return a
-   properly formatted time specifier
+   properly formatted time specifier.
 
-   :param date: A date range specifier, created by either
-      :php:func`recentDate` or :php:func`absoluteDate`.
-   :param locationOpts: An array containing either id and value, or an alias
-      and value, e.g. ``array("id"=>"4oFkxX7RcUdirjtaenEQIV")`` or
-      ``array("us_zip": "94103")``.
-
-.. php:function:: recentDate($resolution, $lengthOfTime[, $lastSeen=false])
+:function:`UrbanAirship\\Push\\recentDate`
 
    Produces a time specifier that represents relative amount of time, such
    as "the past three days"
 
-   :param resolution: A string argument specifying a time resolution, e.g.
-      ``minutes`` or ``weeks``.
-   :param lengthOfTime: Amount of time.
-   :param lastSeen: bool. Match a device only if
-      its last recorded position matches the location. If it has update
-      location anywhere else since, even if it otherwise matches the time
-      window, it will be excluded.
-
-.. php:function:: absoluteDate($resolution, $start, $end[, $lastSeen=false])
-
+:function:`UrbanAirship\\Push\\absoluteDate`
    Produces a time specifier that represents an absolute amount of time,
    such as from 2012-01-01 12:00 to 2012-01-01 12:00
-
-   :param resolution: Valid time resolution
-   :type resolution: string
-   :param start: Beginning of absolute window
-   :type start: string
-   :param end: End of absolute window
-   :type end: string
-   :param lastSeen: Match a device only if its last recorded position
-      matches the location. If it has update location anywhere else since, even
-      if it otherwise matches the time window, it will be excluded.
-   :type lastSeen: bool
 
 Notifcation Payload
 -------------------
@@ -211,3 +177,24 @@ You can override the payload with platform-specific values as well.
             array("articleid" => "AB1234")
          ))
       ))
+
+.. php:function:: android([$alert[, collapseKey[, timeToLive[,
+      delayWhileIdle[, extra]]]]])
+
+    Android specific platform override payload.
+
+    All arguments are optional.
+
+    :param alert: Alert text.
+    :type alert: string
+    :param collapseKey: String
+    :param timeToLive: Integer
+    :param delayWhileIdle: Boolean
+    :param extra: A set of key/value pairs to include in the push payload
+        sent to the device. All values must be strings.
+
+    See
+    `GCM Advanced Topics <http://developer.android.com/google/gcm/adv.html>`_
+    for details on ``collapseKey``, ``timeToLive``, and
+    ``delayWhileIdle``.
+

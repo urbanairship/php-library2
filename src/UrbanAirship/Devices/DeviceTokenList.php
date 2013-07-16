@@ -1,6 +1,6 @@
 <?php
 
-namespace Urbanairship\Devices;
+namespace UrbanAirship\Devices;
 
 use UrbanAirship\Devices\DeviceList;
 

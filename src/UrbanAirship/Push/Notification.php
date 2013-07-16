@@ -1,6 +1,6 @@
 <?php
 
-namespace Urbanairship\Push;
+namespace UrbanAirship\Push;
 
 use InvalidArgumentException;
 
@@ -67,6 +67,31 @@ function ios($alert=null, $badge=null, $sound=null, $contentAvailable=false,
 
     return $payload;
 }
+
+
+function android($alert=null, $collapseKey=null, $timeToLive=null,
+    $delayWhileIdle=False, $extra=null)
+{
+    $payload = array();
+    if (!is_null($alert)) {
+        $payload["alert"] = $alert;
+    }
+    if (!is_null($collapse_key)) {
+        $payload["collapse_key"] = $collapse_key;
+    }
+    if (!is_null($timeToLive)) {
+        $payload["timeToLive"] = $timeToLive;
+    }
+    if (!is_null($delayWhileIdle)) {
+        $payload["delayWhileIdle"] = $delayWhileIdle;
+    }
+    if (!is_null($extra)) {
+        $payload["extra"] = $extra;
+    }
+
+    return $payload;
+}
+
 
 /**
  * Device Type specifier.

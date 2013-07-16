@@ -19,7 +19,8 @@ CONST all = "all";
 
 /**
     * Select a single iOS device token
-    * @param $token
+    *
+    * @param string $token
     * @return array
     * @throws \InvalidArgumentException
     */
@@ -97,16 +98,28 @@ function mpns($uuid)
     return array("mpns" => $uuid);
 }
 
+/**
+    * Select a single tag.
+    * @param string $tag
+*/
 function tag($tag)
 {
     return array("tag" => $tag);
 }
 
+/**
+    * Select a single alias.
+    * @param string $alias
+*/
 function alias($alias)
 {
     return array("alias" => $alias);
 }
 
+/**
+    * Select a single segment.
+    * @param string $segment
+*/
 function segment($segment)
 {
     return array("segment" => $segment);
@@ -114,16 +127,30 @@ function segment($segment)
 
 // Compound selectors
 
-function or_(/*args*/)
+/**
+    * Select an audience that matches one of the given selectors.
+    *
+    * Pass in any number of selectors as arguments.
+*/
+function or_()
 {
     return array("or" => func_get_args());
 }
 
-function and_(/*args*/)
+/**
+    * Select an audience that matches all of the given selectors.
+    *
+    * Pass in any number of selectors as arguments.
+*/
+function and_()
 {
     return array("and" => func_get_args());
 }
 
+/**
+    * Select audience members that do not match the given selector.
+    * @param $child
+*/
 function not_($child)
 {
     return array("not" => $child);
@@ -138,8 +165,10 @@ function not_($child)
     * period specifier. Use one of the date specifier functions to return a
     * properly formatted time specifier
     *
-    * @param $date
-    * @param array $locationOpts
+    * @param $date A date range specifier, created by either `recentDate` or `absoluteDate`.
+    * @param array $locationOpts An array containing either id and value, or an 
+    *   alias and value, e.g. `array("id"=>"4oFkxX7RcUdirjtaenEQIV")` or 
+    *   `array("us_zip": "94103")`.
     * @return array
     */
 function location($date, array $locationOpts)
@@ -177,7 +206,7 @@ function acceptableResolution($resolution)
     * Produces a time specifier that represents relative amount of time, such
     * as "the past three days"
     *
-    * @param $resolution string Valid time resolution
+    * @param $resolution string Valid time resolution, e.g. `minutes` or `weeks`.
     * @param $lengthOfTime string Amount of time
     * @param $lastSeen bool Match a device only if
     * its last recorded position matches the location. If it has update
