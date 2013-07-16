@@ -13,7 +13,7 @@ const AUTOBADGE_FORMAT = "/^(auto)|([+-][0-9]+)$/";
  * @return array
  * @throws \InvalidArgumentException If result payload is empty.
  */
-function notification($alert=null)
+function notification($alert, $overrides=array())
 {
     $payload = array();
     if ($alert != null) {
@@ -32,13 +32,13 @@ function notification($alert=null)
  * @param alert: iOS format alert, as either a string or array.
  * @param badge: An integer badge value or an autobadge string.
  * @param sound: An string sound file to play.
- * @param content_available: If true, pass on the content_available command
+ * @param contentAvailable: If true, pass on the content_available command
  * for Newsstand iOS applications.
  * @param extra: A set of key/value pairs to include in the push payload
  * sent to the device.
  * @throws \InvalidArgumentException for invalid values.
  */
-function ios($alert=null, $badge=null, $sound=null, $content_available=false,
+function ios($alert=null, $badge=null, $sound=null, $contentAvailable=false,
         $extra=null)
 {
     $payload = array();
@@ -58,7 +58,7 @@ function ios($alert=null, $badge=null, $sound=null, $content_available=false,
     if (!is_null($sound)) {
         $payload["sound"] = $sound;
     }
-    if ($content_available) {
+    if ($contentAvailable) {
         $payload["content_available"] = true;
     }
     if (!is_null($extra)) {

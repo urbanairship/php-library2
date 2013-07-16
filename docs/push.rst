@@ -152,3 +152,62 @@ Location Selectors
    :param lastSeen: Match a device only if its last recorded position
       matches the location. If it has update location anywhere else since, even
       if it otherwise matches the time window, it will be excluded.
+   :type lastSeen: bool
+
+Notifcation Payload
+-------------------
+
+The notification payload determines what message and data is sent to a device.
+At its simplest, it consists of a single string-valued attribute, "alert",
+which sends a push notification consisting of a single piece of text:
+
+.. code-block:: php
+
+   $push->setNotification(P\notification("Hello, world!"))
+
+You can override the payload with platform-specific values as well.
+
+.. php:function:: notification($alert[, $overrides])
+
+   Creates a notification payload.
+
+   :param alert: Global alert for all device types. Use null for no alert.
+   :type alert: string or null
+   :param overrides: Optional array of platform overrides.
+   :type overrides: array
+
+   .. code-block:: php
+
+      $push->setNotification(P\notification(
+         "Hello others",
+         array("ios"=>P\ios("Hello iOS", "+1"))))
+
+.. php:function:: ios([$alert[, $badge[, $sound[, $content_available[, $extra]]]]])
+
+   iOS/APNS specific platform override payload.
+
+   :param alert: iOS format alert, as either a string or array.
+   :type alert: string or array
+   :param badge: An integer badge value or an autobadge string.
+   :type badge: integer or string
+   :param sound: A sound file to play.
+   :type sound: string
+   :param contentAvailable: If true, pass on the content_available command
+      for Newsstand iOS applications.
+   :type contentAvailable: bool
+   :param extra: A set of key/value pairs to include in the push payload
+      sent to the device.
+   :type extra: array
+
+   .. code-block:: php
+
+      $push->setNotification(P\notification(
+         null,
+         array("ios"=>P\ios(
+            "Hello iOS",
+            "+1",
+            "cow.caf",
+            false,
+            array("articleid" => "AB1234")
+         ))
+      ))
