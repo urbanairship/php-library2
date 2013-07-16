@@ -133,14 +133,8 @@ which sends a push notification consisting of a single piece of text:
 
 You can override the payload with platform-specific values as well.
 
-.. php:function:: notification($alert[, $overrides])
-
+:function:`UrbanAirship\\Push\\notification`
    Creates a notification payload.
-
-   :param alert: Global alert for all device types. Use null for no alert.
-   :type alert: string or null
-   :param overrides: Optional array of platform overrides.
-   :type overrides: array
 
    .. code-block:: php
 
@@ -148,22 +142,8 @@ You can override the payload with platform-specific values as well.
          "Hello others",
          array("ios"=>P\ios("Hello iOS", "+1"))))
 
-.. php:function:: ios([$alert[, $badge[, $sound[, $content_available[, $extra]]]]])
-
+:function:`UrbanAirship\\Push\\ios`
    iOS/APNS specific platform override payload.
-
-   :param alert: iOS format alert, as either a string or array.
-   :type alert: string or array
-   :param badge: An integer badge value or an autobadge string.
-   :type badge: integer or string
-   :param sound: A sound file to play.
-   :type sound: string
-   :param contentAvailable: If true, pass on the content_available command
-      for Newsstand iOS applications.
-   :type contentAvailable: bool
-   :param extra: A set of key/value pairs to include in the push payload
-      sent to the device.
-   :type extra: array
 
    .. code-block:: php
 
@@ -178,23 +158,34 @@ You can override the payload with platform-specific values as well.
          ))
       ))
 
-.. php:function:: android([$alert[, collapseKey[, timeToLive[,
-      delayWhileIdle[, extra]]]]])
-
+:function:`UrbanAirship\\Push\\android`
     Android specific platform override payload.
 
-    All arguments are optional.
+   .. code-block:: php
 
-    :param alert: Alert text.
-    :type alert: string
-    :param collapseKey: String
-    :param timeToLive: Integer
-    :param delayWhileIdle: Boolean
-    :param extra: A set of key/value pairs to include in the push payload
-        sent to the device. All values must be strings.
+      $push->setNotification(P\notification(
+         null,
+         array("android"=>P\android(
+            "Hello Android",
+            null,
+            null,
+            false,
+            array("articleid" => "AB1234")
+         ))
+      ))
 
-    See
-    `GCM Advanced Topics <http://developer.android.com/google/gcm/adv.html>`_
-    for details on ``collapseKey``, ``timeToLive``, and
-    ``delayWhileIdle``.
+   See `GCM Advanced Topics
+   <http://developer.android.com/google/gcm/adv.html>`_ for details on
+   ``collapseKey``, ``timeToLive``, and ``delayWhileIdle``.
 
+:function:`UrbanAirship\\Push\\blackberry`
+    BlackBerry specific platform override payload.
+
+   .. code-block:: php
+
+      $push->setNotification(P\notification(
+         null,
+         array("blackberry"=>P\blackberry(
+            "Hello BlackBerry"
+         ))
+      ))
