@@ -24,7 +24,6 @@ Quick example
 
 .. code-block:: php
 
-   <?php
    require_once 'vendor/autoload.php';
 
    use Urbanairship\Airship;
@@ -38,7 +37,32 @@ Quick example
 
    print "Push sent!. Push IDs:" . $response.push_ids;
 
+Logging
+-------
 
+The library uses Monolog_ for request and response logging. At the `DEBUG`
+level all requests and responses are logged. At `INFO` succsesful push
+requests are logged.
+
+To control the logging, set a handler and a log level.
+
+.. code-block:: php
+
+   use UrbanAirship\UALog;
+   use Monolog\Logger;
+   use Monolog\Handler\StreamHandler;
+
+   UALog::setLogHandlers(array(new StreamHandler("php://stdout", Logger::DEBUG)));
+
+To turn off all logging, use a ``NullHandler``
+
+.. code-block:: php
+
+   use UrbanAirship\UALog;
+   use Monolog\Logger;
+   use Monolog\Handler\NullHandler;
+
+   UALog::setLogHandlers(array(new NullHandler()));
 
 Contents:
 
@@ -48,14 +72,6 @@ Contents:
    push.rst
 
 
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
-
-
 .. _uaapi: http://docs.urbanairship.com/reference/api/
 .. _fig: http://www.php-fig.org/
+.. _Monolog: https://github.com/Seldaek/monolog

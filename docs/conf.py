@@ -64,7 +64,7 @@ release = '0.1'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
-exclude_patterns = ['_build']
+exclude_patterns = ['_build', 'api']
 
 # The reST default role (used for this markup: `text`) to use for all documents.
 #default_role = None
@@ -141,10 +141,10 @@ html_static_path = ['_static']
 #html_additional_pages = {}
 
 # If false, no module index is generated.
-#html_domain_indices = True
+html_domain_indices = False
 
 # If false, no index is generated.
-#html_use_index = True
+html_use_index = False
 
 # If true, the index is split into individual pages for each letter.
 #html_split_index = False
@@ -250,5 +250,6 @@ from sphinx.highlighting import lexers
 from pygments.lexers.web import PhpLexer
 lexers['php'] = PhpLexer(startinline=True)
 lexers['php-annotations'] = PhpLexer(startinline=True)
-api_url = 'file:///Users/adam/projects/ua/uaphp-dev/docs/api/%s'
+#api_url = 'file:///Users/adam/projects/ua/uaphp-dev/docs/api/%s'
+api_url = 'api/%s'
 primary_domain = 'php'
