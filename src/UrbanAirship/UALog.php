@@ -49,25 +49,4 @@ class UALog {
         }
         return new Logger(self::DEFAULT_UA_LOG_NAME, self::$logHandlers);
     }
-
-    /**
-     * Parse the components of the request into a string for consistent
-     * log statements
-     * @param $request
-     * @return string
-     */
-    public static function debugLogForRequest($request)
-    {
-        $logLine = sprintf("\nUA PHP Request\n URL:%s\n", $request->uri);
-        if (!empty($request->headers)){
-            $headerString = implode("|", $request->headers);
-            $logLine = sprintf("%sHeaders:%s\n", $logLine, $headerString);
-        }
-        if (!is_null($request->payload)){
-            $logLine = sprintf("%sBody:%s\n", $logLine, json_encode($request->payload));
-        }
-        return $logLine;
-    }
-
-
 }
