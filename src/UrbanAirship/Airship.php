@@ -62,7 +62,7 @@ class Airship
         return $url;
     }
 
-    public function request($method, $body, $uri, $contentType=null, $version=1)
+    public function request($method, $body, $uri, $contentType=null, $version=1, $request=null)
     {
         $headers = array("Accept" => sprintf(self::VERSION_STRING, $version));
         if (!is_null($contentType)) {
@@ -76,7 +76,11 @@ class Airship
             "headers" => $headers,
             "body" => $body));
 
-        $request = Request::init()
+        if (is_null($request)) {
+            // Tests pass in a pre-built Request. Normal code builds one here.
+            $request = Request::init();
+        }
+        $request
             ->method($method)
             ->uri($uri)
             ->authenticateWith($this->key, $this->secret)

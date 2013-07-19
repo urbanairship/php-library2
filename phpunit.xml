@@ -1,7 +1,12 @@
-<phpunit>
+<phpunit bootstrap="src/tests/bootstrap.php">
   <testsuites>
     <testsuite name="UA_lib">
       <directory>src/tests</directory>
     </testsuite>
   </testsuites>
+  <filter>
+  <whitelist addUncoveredFilesFromWhitelist="true">
+    <directory suffix=".php">src/UrbanAirship/</directory>
+  </whitelist>
+</filter>
 </phpunit>
