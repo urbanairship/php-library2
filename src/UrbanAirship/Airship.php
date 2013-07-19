@@ -47,7 +47,7 @@ class Airship
         return new ScheduledPushRequest($this);
     }
 
-    public function build_url($path, $args=null) {
+    public function buildUrl($path, $args=null) {
         $url = self::BASE_URL . $path;
 
         if (isset($args)) {

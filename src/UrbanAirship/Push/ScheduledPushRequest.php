@@ -52,7 +52,7 @@ class ScheduledPushRequest
 
     function send()
     {
-        $uri = $this->airship->build_url(self::SCHEDULE_URL);
+        $uri = $this->airship->buildUrl(self::SCHEDULE_URL);
         $logger = UALog::getLogger();
         $response = $this->airship->request("POST",
             json_encode($this->getPayload()), $uri, "application/json", 3);

@@ -60,7 +60,7 @@ class PushRequest
 
     function send()
     {
-        $uri = $this->airship->build_url(self::PUSH_URL);
+        $uri = $this->airship->buildUrl(self::PUSH_URL);
         $logger = UALog::getLogger();
 
         $response = $this->airship->request("POST",

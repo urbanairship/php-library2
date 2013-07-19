@@ -30,9 +30,9 @@ abstract class DeviceList implements \Iterator
         $this->airship = $airship;
         $this->position = 0;
         if ($limit) {
-            $this->start_url = $airship->build_url(static::LIST_URL, array("limit" => $limit));
+            $this->start_url = $airship->buildUrl(static::LIST_URL, array("limit" => $limit));
         } else {
-            $this->start_url = $airship->build_url(static::LIST_URL);
+            $this->start_url = $airship->buildUrl(static::LIST_URL);
         }
     }
 
