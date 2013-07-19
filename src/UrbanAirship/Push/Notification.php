@@ -1,4 +1,7 @@
 <?php
+/*
+Copyright 2013 Urban Airship and Contributors
+*/
 
 namespace UrbanAirship\Push;
 

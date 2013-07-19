@@ -1,10 +1,7 @@
 <?php
-/**
- * Name: Matt Hooge
- * Company: Urban Airship
- * Date: 6/17/13
- * Time: 1:13 PM
- */
+/*
+Copyright 2013 Urban Airship and Contributors
+*/
 
 namespace UrbanAirship\Push;
 
