@@ -2,7 +2,8 @@ Urban Airship PHP Library (Beta)
 ================================
 PHP library for use with the Urban Airship API for sending push notifications. Supports iOS, Android, and Blackberry.
 
-**Requirements**
+Requirements
+------------
 
 PHP >= 5.4.14
 
@@ -16,54 +17,36 @@ PHP >= 5.4.14
 
 PHPUnit
 
-**Use**
+Example Usage
+-------------
 
-```PHP
-// Setup some logging. Default is a stream handler. We use the Monolog library,
-// which is PRS-3 compliant, so any logging framework that complies with the standard
-// could be used. Read more about the FIG standards here:
-// https://github.com/php-fig/fig-standards
+    <?php
 
-UALog::setLogHandlers(array(new StreamHandler("php://stdout", Logger::DEBUG)));
-$log = UALog::getLogger();
+    require_once 'vendor/autoload.php';
 
-// Set up your key and secret for the Urban Airship API
-$appKey = "key";
-$appSecret = "secret";
+    use UrbanAirship\Airship;
+    use UrbanAirship\AirshipException;
+    use UrbanAirship\UALog;
+    use UrbanAirship\Push as P;
+    use Monolog\Logger;
+    use Monolog\Handler\StreamHandler;
 
-// The library supports all of the push types for Urban Airship, push notifications,
-// broadcast notifications, and batch. This example utilizes the push notification, which
-// sends a notification to a list of tokens.
-$deviceToken = "token";
+    UALog::setLogHandlers(array(new StreamHandler("php://stdout", Logger::DEBUG)));
 
-// Build a message payload with the necessary data for your notification. The library supports
-// iOS, Android, and Blackberry.
-$apsMessage = IosMessagePayload::payload()
-    ->setAlert("Push Message")
-    ->setBadge(1)
-    ->setSound("customSound.caf");
+    $airship = new Airship("<app key>", "<master secret>");
 
-// Setup a payload that matches the type of message you want to send, either
-// a push, broadcast, or batch. See the Urban Airship documentation for payload formatting.
-$pushPayload = NotificationPayload::payload()
-    ->setAps($apsMessage)
-    ->setDeviceTokens(array($deviceToken));
+    try {
+        $response = $airship->push()
+            ->setAudience(P\all)
+            ->setNotification(P\notification("Hello from php"))
+            ->setDeviceTypes(P\all)
+            ->send();
+    } catch (AirshipException $e) {
+        print_r($e);
 
-// Create a request, set up authentication and payload, and send it. The response is wrapped and
-// returned. Logging is built in, and uses the logger you provide.
-$pushNotificationResponse = PushNotificationRequest::request()
-    ->setAppKey($appKey)
-    ->setAppSecret($appSecret)
-    ->setPushNotificationPayload($pushPayload)
-    ->send();
+Resources
+---------
 
-// Check the response for errors
-if ($pushNotificationResponse->hasErrors()) {
-    $log->error("Push notification didn't work");
-}
-else {
-    $log->debug("Push message succeeded");
-}
-```
-
-
+- [Home page](http://docs.urbanairship.com/reference/libraries/php/)
+- [Source](https://github.com/urbanairship/php-library2)
+- [Support](http://support.urbanairship.com/)
