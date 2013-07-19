@@ -14,7 +14,7 @@ class TestNotification extends PHPUnit_Framework_TestCase
      */
     public function testEmptyNotificaiton()
     {
-        P\notification();
+        P\notification(null);
     }
 
     public function testSimpleAlert()
