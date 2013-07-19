@@ -11,12 +11,12 @@ class PushResponse
 {
     public $ok = null;
     public $push_ids = null;
-    public $schedule_ids = null;
+    public $schedule_urls = null;
     public $operation_id = null;
     public $payload = null;
     public $response = null;
 
-    private $expected_keys = array('push_ids', 'schedule_ids', 'operation_id', 'ok');
+    private $expected_keys = array('push_ids', 'schedule_urls', 'operation_id', 'ok');
 
     function __construct($response) {
         $payload = json_decode($response->raw_body, true);

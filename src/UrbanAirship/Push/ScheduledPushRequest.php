@@ -57,7 +57,7 @@ class ScheduledPushRequest
         $response = $this->airship->request("POST",
             json_encode($this->getPayload()), $uri, "application/json", 3);
         $payload = json_decode($response->raw_body, true);
-        $logger->info("Scheduled push sent successfully.", array("schedule_ids" => $payload['schedule_ids']));
+        $logger->info("Scheduled push sent successfully.", array("schedule_urls" => $payload['schedule_urls']));
         return new PushResponse($response);
     }
 

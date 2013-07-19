@@ -41,7 +41,7 @@ class PushRequest
 
     function setOptions($options)
     {
-        $this->deviceTypes = $deviceTypes;
+        $this->options = $options;
         return $this;
     }
 
