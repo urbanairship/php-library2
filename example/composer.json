@@ -1,0 +1,7 @@
+{
+    "require":{
+        "urbanairship/urbanairship": "@dev",
+        "monolog/monolog":"*",
+        "nategood/httpful":"*"
+    }
+}
