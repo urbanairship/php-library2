@@ -1,4 +1,17 @@
 {
+    "name": "urbanairship/urbanairship",
+    "type": "library",
+    "description": "Urban Airship PHP Library",
+    "homepage": "http://docs.urbanairship.com/reference/libraries/php/",
+    "license": "Apache",
+    "authors": [
+        {
+            "name": "Urban Airship",
+            "email": "support@urbanairship.com",
+            "homepage": "http://support.urbanairship.com",
+            "role": "Developer"
+        }
+    ],
     "autoload" : {
         "psr-0":{"UrbanAirship":"src/"},
         "files": [
