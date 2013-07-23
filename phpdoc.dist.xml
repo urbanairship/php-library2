@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <phpdocumentor>
+  <title>Urban Airship PHP Library</title>
   <parser>
-      <default-package-name>phpDocumentor</default-package-name>
+      <default-package-name>UrbanAirship</default-package-name>
       <!-- Intermediate files -->
-      <target>data/output</target>
+      <target>docs/_tmp</target>
   </parser>
   <transformer>
-    <target>docs</target>
+    <target>docs/_build/html/api/</target>
+    <template name="responsive"/>
   </transformer>
   <files>
-    <directory>.</directory>
-    <ignore>tests/*</ignore>
+    <directory>src</directory>
+    <ignore>src/tests/*</ignore>
     <ignore>vendor/*</ignore>
   </files>
     <plugins>
-        <plugin path="Core">
-            <option name="a">value</option>
-        </plugin>
     </plugins>
 </phpdocumentor>
