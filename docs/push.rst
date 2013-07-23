@@ -39,7 +39,7 @@ Audience Selectors
 An audience should specify one or more devices. An audience can be a device,
 such as a **device token** or **APID**; a tag, alias, or segment; a location;
 or a combination. Audience selectors are combined with ``and_``, ``or_``, and
-``not_``. All selectors are available in the :class:`UrbanAirship\\Push` namespace.
+``not_``. All selectors are available in the :namespace:`UrbanAirship\\Push` namespace.
 
 Simple Selectors
 ++++++++++++++++
