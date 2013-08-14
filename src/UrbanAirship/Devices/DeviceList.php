@@ -89,7 +89,11 @@ abstract class DeviceList implements \Iterator
 
         // Check and load another page if it exists
         if ($this->loadNextPage()) {
-            return true;
+            $tokenCount = count($this->page->{static::MEMBER_KEY});
+            // Moving through next page
+            if ($this->position < $tokenCount){
+                return true;
+            }            
         }
 
         // No more data
