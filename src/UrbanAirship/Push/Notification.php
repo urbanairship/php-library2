@@ -93,8 +93,8 @@ function android($alert=null, $collapseKey=null, $timeToLive=null,
     if (!is_null($alert)) {
         $payload["alert"] = $alert;
     }
-    if (!is_null($collapse_key)) {
-        $payload["collapse_key"] = $collapse_key;
+    if (!is_null($collapseKey)) {
+        $payload["collapse_key"] = $collapseKey;
     }
     if (!is_null($timeToLive)) {
         $payload["timeToLive"] = $timeToLive;
