@@ -9,7 +9,7 @@ use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
 
 UALog::setLogHandlers(array(new StreamHandler("php://stdout", Logger::INFO)));
-$airship = new Airship("Ig0hGw0oS-u8IXJCuR06QQ", "bp_9LZ8bQZqTkoLZJWWsNw");
+$airship = new Airship("key", "secret");
 
 $response = $airship->push()
     ->setAudience(P\all)
