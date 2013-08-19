@@ -1,6 +1,6 @@
-# Recommended intellij sharing preferences
-.idea/workspace.xml
-.idea/tasks.xml
+# Removing entire .idea directory, and supporting files
+.idea/
+*.iml
 
 docs/_build/
 data/
