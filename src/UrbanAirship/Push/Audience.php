@@ -10,7 +10,7 @@ use InvalidArgumentException;
 const DEVICE_TOKEN_FORMAT = "/^[0-9a-fA-F]{64}$/";
 const PIN_FORMAT = "/^[0-9a-fA-F]{8}$/";
 const UUID_FORMAT =
-    "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$";
+    "/^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/";
 
 /**
     * Select all, to do a broadcast.
