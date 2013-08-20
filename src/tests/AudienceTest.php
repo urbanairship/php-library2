@@ -17,10 +17,22 @@ class TestAudience extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException        InvalidArgumentException
+     * @expectedException InvalidArgumentException
      */
     public function testInvalidDeviceToken()
     {
         P\deviceToken(dt . "more");
+    }
+
+    /**
+     * @expectedException InvalidArgumentException
+     */
+    public function testInvalidUUID()
+    {
+        P\apid("008b3f5b-5c30-467d-8885-foop");
+    }
+
+    public function testUUID(){
+        P\apid("008b3f5b-5c30-467d-8885-03c3e1089999");
     }
 }
