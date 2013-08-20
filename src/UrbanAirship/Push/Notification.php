@@ -41,6 +41,7 @@ function notification($alert, $overrides=array())
  * for Newsstand iOS applications.
  * @param $extra array: A set of key/value pairs to include in the push payload
  * sent to the device.
+ * @return array
  * @throws \InvalidArgumentException for invalid values.
  */
 function ios($alert=null, $badge=null, $sound=null, $contentAvailable=false,
@@ -74,18 +75,19 @@ function ios($alert=null, $badge=null, $sound=null, $contentAvailable=false,
 }
 
 /**
-    * Android specific platform override payload.
-    *
-    * @link http://developer.android.com/google/gcm/adv.html GCM Advanced Topics
-    * for details on `collapseKey`, `timeToLive`, and `delayWhileIdle`.
-    *
-    * @param $alert string|null
-    * @param $collapseKey
-    * @param $timeToLive
-    * @param $delayWhileIdle
-    * @param $extra array | A set of key/value pairs to include in the push payload
-    * sent to the device.
-    */
+ * Android specific platform override payload.
+ *
+ * @link http://developer.android.com/google/gcm/adv.html GCM Advanced Topics
+ * for details on `collapseKey`, `timeToLive`, and `delayWhileIdle`.
+ *
+ * @param $alert string|null
+ * @param $collapseKey
+ * @param $timeToLive
+ * @param $delayWhileIdle
+ * @param $extra array | A set of key/value pairs to include in the push payload
+ * sent to the device.
+ * @return array
+ */
 function android($alert=null, $collapseKey=null, $timeToLive=null,
     $delayWhileIdle=false, $extra=null)
 {
@@ -110,14 +112,16 @@ function android($alert=null, $collapseKey=null, $timeToLive=null,
 }
 
 /**
-    * BlackBerry specific platform override payload.
-    *
-    * Include either alert or both body and content_type.
-    *
-    * @param $alert string|null Alert text. Shortcut for content_type text/plain.
-    * @param $body string|null Body to send to the device.
-    * @param $contentType string|null MIME type describing body.
-    */
+ * BlackBerry specific platform override payload.
+ *
+ * Include either alert or both body and content_type.
+ *
+ * @param $alert string|null Alert text. Shortcut for content_type text/plain.
+ * @param $body string|null Body to send to the device.
+ * @param $contentType string|null MIME type describing body.
+ * @return array
+ * @throws InvalidArgumentException
+ */
 function blackberry($alert, $body=null, $contentType=null)
 {
     $payload = array();
@@ -134,14 +138,16 @@ function blackberry($alert, $body=null, $contentType=null)
 }
 
 /**
-    * WNS specific platform override payload.
-    *
-    * Must include exactly one of alert, toast, tile, or badge.
-    * @param $alert
-    * @param $toast
-    * @param $tile
-    * @param $badge
-    */
+ * WNS specific platform override payload.
+ *
+ * Must include exactly one of alert, toast, tile, or badge.
+ * @param $alert
+ * @param $toast
+ * @param $tile
+ * @param $badge
+ * @return array
+ * @throws InvalidArgumentException
+ */
 function wnsPayload($alert=null, $toast=null, $tile=null, $badge=null)
 {
     $payload = array();
@@ -164,13 +170,15 @@ function wnsPayload($alert=null, $toast=null, $tile=null, $badge=null)
 }
 
 /**
-    * MPNS specific platform override payload.
-    *
-    * Must include exactly one of alert, toast, or tile.
-    * @param $alert
-    * @param $toast
-    * @param $tile
-    */
+ * MPNS specific platform override payload.
+ *
+ * Must include exactly one of alert, toast, or tile.
+ * @param $alert
+ * @param $toast
+ * @param $tile
+ * @return array
+ * @throws InvalidArgumentException
+ */
 function mpnsPayload($alert=null, $toast=null, $tile=null)
 {
     $payload = array();
@@ -186,12 +194,15 @@ function mpnsPayload($alert=null, $toast=null, $tile=null)
     if (count($payload) == 0) {
         throw new InvalidArgumentException("mpns cannot be empty");
     }
+    return $payload;
 }
 
 /**
  * Device Type specifier.
  *
  * @param args a list of strings as arguments, for each platform.
+ * @return array
+ * @throws InvalidArgumentException
  */
 function deviceTypes(/*args*/)
 {
