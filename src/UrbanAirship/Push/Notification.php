@@ -99,10 +99,10 @@ function android($alert=null, $collapseKey=null, $timeToLive=null,
         $payload["collapse_key"] = $collapseKey;
     }
     if (!is_null($timeToLive)) {
-        $payload["timeToLive"] = $timeToLive;
+        $payload["time_to_live"] = $timeToLive;
     }
     if (!is_null($delayWhileIdle)) {
-        $payload["delayWhileIdle"] = $delayWhileIdle;
+        $payload["delay_while_idle"] = $delayWhileIdle;
     }
     if (!is_null($extra)) {
         $payload["extra"] = $extra;
