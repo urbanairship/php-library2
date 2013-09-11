@@ -1,7 +1,7 @@
 Urban Airship PHP Library
 =========================
 
-This library is a wrapper for the `Urban Airship web service API <uaapi>`_ for
+This library is a wrapper for the `Urban Airship web service API`_ for
 PHP.
 
 Goals
@@ -9,7 +9,7 @@ Goals
 
 * Provide a simple interface for the most commonly used APIs
 * Use modern PHP conventions, including using namespaces, abiding by the
-  `PHP-FIG Standards <fig>`_, and being autoloadable.
+  `PHP-FIG Standards`_, and being autoloadable.
 
 Requirements
 ------------
@@ -72,6 +72,6 @@ Contents:
    push.rst
 
 
-.. _uaapi: http://docs.urbanairship.com/reference/api/
-.. _fig: http://www.php-fig.org/
+.. _Urban Airship web service API: http://docs.urbanairship.com/reference/api/
+.. _PHP-FIG Standards: http://www.php-fig.org/
 .. _Monolog: https://github.com/Seldaek/monolog
