@@ -89,7 +89,7 @@ function ios($alert=null, $badge=null, $sound=null, $contentAvailable=false,
  * @return array
  */
 function android($alert=null, $collapseKey=null, $timeToLive=null,
-    $delayWhileIdle=false, $extra=null)
+    $delayWhileIdle=null, $extra=null)
 {
     $payload = array();
     if (!is_null($alert)) {
