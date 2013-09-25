@@ -169,7 +169,7 @@ You can override the payload with platform-specific values as well.
             "Hello Android",
             null,
             null,
-            false,
+            null,
             array("articleid" => "AB1234")
          ))
       ))
