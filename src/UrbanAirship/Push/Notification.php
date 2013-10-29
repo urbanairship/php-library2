@@ -167,6 +167,7 @@ function wnsPayload($alert=null, $toast=null, $tile=null, $badge=null)
     if (count($payload) == 0) {
         throw new InvalidArgumentException("wnsPayload cannot be empty");
     }
+    return $payload;
 }
 
 /**
