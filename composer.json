@@ -23,7 +23,7 @@
     },
     "require":{
         "monolog/monolog":"1.*",
-        "nategood/httpful":"*"
+        "max13/rest-manager": "1.*"
     },
     "require-dev": {
         "phpunit/phpunit": "3.7.*"
