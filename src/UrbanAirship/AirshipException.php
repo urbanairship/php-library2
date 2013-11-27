@@ -13,9 +13,9 @@ class AirshipException extends \Exception
 
     private $expected_keys = array('error', 'error_code', 'details');
 
-    public static function fromResponse($response) {
+    public static function fromRequest($request) {
         $exc = new AirshipException();
-        $payload = json_decode($response->raw_body, true);
+        $payload = json_decode($request->response('raw_body'), true);
         if ($payload != null) {
             foreach ($exc->expected_keys as $key) {
                 if (array_key_exists($key, $payload)) {
@@ -23,11 +23,11 @@ class AirshipException extends \Exception
                 }
             }
         } else {
-            $exc->error = $response->raw_body;
+            $exc->error = $request->response('raw_body');
         }
-        $exc->code = $response->code;
+        $exc->code = $request->response('code');
         $exc->message = sprintf("Airship request failed: %s on %s to %s",
-            $response->code, $response->request->method, $response->request->uri);
+            $request->response('code'), '?', $request->lastResUrl());
         return $exc;
     }
 }
