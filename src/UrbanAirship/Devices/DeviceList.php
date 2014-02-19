@@ -5,6 +5,12 @@ Copyright 2013 Urban Airship and Contributors
 
 namespace UrbanAirship\Devices;
 
+/**
+ * Class DeviceList
+ * @package UrbanAirship\Devices
+ *
+ *          Feb 19 2014 - Added logic to allow iteration over arrays from JSON.
+ */
 abstract class DeviceList implements \Iterator
 {
 
@@ -44,7 +50,7 @@ abstract class DeviceList implements \Iterator
      */
     public function current()
     {
-        $tokens = $this->page->{static::MEMBER_KEY};
+        $tokens = (is_object($this->page)) ? $this->page->{static::MEMBER_KEY} : $this->page;
         return $tokens[$this->position];
     }
 
@@ -80,7 +86,7 @@ abstract class DeviceList implements \Iterator
     public function valid()
     {
         if (isset($this->page)) {
-            $tokenCount = count($this->page->{static::MEMBER_KEY});
+            $tokenCount = count((is_object($this->page)) ? $this->page->{static::MEMBER_KEY} : $this->page);
             // Moving through existing page
             if ($this->position < $tokenCount){
                 return true;
@@ -89,7 +95,7 @@ abstract class DeviceList implements \Iterator
 
         // Check and load another page if it exists
         if ($this->loadNextPage()) {
-            $tokenCount = count($this->page->{static::MEMBER_KEY});
+            $tokenCount = count((is_object($this->page)) ? $this->page->{static::MEMBER_KEY} : $this->page);
             // If the next page has more tokens, keep going
             if ($tokenCount > 0){
                 return true;
