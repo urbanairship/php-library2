@@ -1,7 +1,7 @@
 {
-    "name": "invokelabs/urbanairship",
+    "name": "urbanairship/urbanairship",
     "type": "library",
-    "description": "Urban Airship PHP Library - Invoke Labs Fork",
+    "description": "Urban Airship PHP Library",
     "homepage": "http://docs.urbanairship.com/reference/libraries/php/",
     "license": "Apache",
     "authors": [
@@ -9,12 +9,6 @@
             "name": "Urban Airship",
             "email": "support@urbanairship.com",
             "homepage": "http://support.urbanairship.com",
-            "role": "Developer"
-        },
-        {
-            "name": "Invoke Labs",
-            "email": "ed.epstein@invokelabs.com",
-            "homepage": "http://invokelabs.com",
             "role": "Developer"
         }
     ],
