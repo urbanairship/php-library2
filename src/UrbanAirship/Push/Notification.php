@@ -257,7 +257,7 @@ function message($title, $body, $content_type=null, $content_encoding=null,
     if (!is_null($extra)) {
         $payload["extra"] = $extra;
     }
-    if ($icons) {
+    if (!is_null($extra)) {
         $payload["icons"] = $icons;
     }
 
