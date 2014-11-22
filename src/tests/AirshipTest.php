@@ -5,6 +5,9 @@ Copyright 2013 Urban Airship and Contributors
 
 require_once __DIR__ . "/../../vendor/autoload.php";
 
+ini_set('error_reporting', 2147483647);
+ini_set('display_errors', '1');
+
 use UrbanAirship\Airship;
 use UrbanAirship\AirshipException;
 
@@ -12,25 +15,24 @@ class TestAirship extends PHPUnit_Framework_TestCase
 {
     public function testRequest()
     {
-        $response = new StdClass();
-        $response->code = 200;
-        $response->raw_headers = array();
-        $response->raw_body = "OK";
-        $request = $this->getMock('StdClass', array('method', 'uri', 'authenticateWith', 'body', 'addHeaders', 'send'));
-        $request->expects($this->any())->method('method')->will($this->returnValue($request));
-        $request->expects($this->any())->method('uri')->will($this->returnValue($request));
-        $request->expects($this->any())->method('authenticateWith')->will($this->returnValue($request));
-        $request->expects($this->any())->method('body')->will($this->returnValue($request));
-        $request->expects($this->any())->method('addHeaders')->will($this->returnValue($request));
-        $request->expects($this->any())
-             ->method('send')
-             ->will($this->returnValue($response));
+        $response_code = 200;
+        $response_raw_headers = "HTTP/1.1 200 OK\nContent-Type: application/json";
+        $response_raw_body = 'Test Airship OK';
 
-        $airship = new Airship("key", "secret");
+        $request = $this->getMock('MX\RestManager');
+        $request->expects($this->once())->method('setHeaders')->will($this->returnValue(true));
+        $request->expects($this->once())->method('post')->will($this->returnValue($response_raw_body));
+        $request->expects($this->exactly(4))->method('response')
+                ->will($this->onConsecutiveCalls($response_code,
+                                                 $response_raw_headers,
+                                                 $response_raw_body,
+                                                 $response_code));
+        
+        $airship = new Airship('key', 'secret');
         $this->assertEquals(
-            $airship->request("POST", "some_data", "http://example.com/", "text/plain", 3, $request),
-            $response);
-
+            $airship->request('POST', 'some_data', 'http://example.com/', 'text/plain', 3, $request),
+            $response_raw_body
+        );
     }
 
     /**
@@ -38,27 +40,25 @@ class TestAirship extends PHPUnit_Framework_TestCase
      */
     public function testFailedRequest()
     {
-        $request = $this->getMock('StdClass', array('method', 'uri', 'authenticateWith', 'body', 'addHeaders', 'send'));
-        $request->method = 'POST';
-        $request->uri = 'http://example.com/';
+        $response_code = 400;
+        $response_raw_headers = "HTTP/1.1 400 Bad Request\nContent-Type: application/json";
+        $response_raw_body = "{\"error\": \"Bad Request\", \"error_code\": \"40000\", \"details\": \"Oops!\"}";
 
-        $response = new StdClass();
-        $response->code = 400;
-        $response->raw_headers = array();
-        $response->raw_body = "{\"error\": \"Bad Request\", \"error_code\": \"40000\", \"details\": \"Oops!\"}";
-        $response->request = $request;
-
-        $request->expects($this->any())->method('method')->will($this->returnValue($request));
-        $request->expects($this->any())->method('uri')->will($this->returnValue($request));
-        $request->expects($this->any())->method('authenticateWith')->will($this->returnValue($request));
-        $request->expects($this->any())->method('body')->will($this->returnValue($request));
-        $request->expects($this->any())->method('addHeaders')->will($this->returnValue($request));
-        $request->expects($this->any())
-             ->method('send')
-             ->will($this->returnValue($response));
-
-        $airship = new Airship("key", "secret");
-        $airship->request("POST", "some_data", "http://example.com/", "text/plain", 3, $request);
+        $request = $this->getMock('MX\RestManager');
+        $request->expects($this->once())->method('setHeaders')->will($this->returnValue(true));
+        $request->expects($this->once())->method('post')->will($this->returnValue($response_raw_body));
+        $request->expects($this->exactly(7))->method('response')
+                ->will($this->onConsecutiveCalls($response_code,
+                                                 $response_raw_headers,
+                                                 $response_raw_body,
+                                                 $response_code,
+                                                 $response_raw_body,
+                                                 $response_raw_body,
+                                                 $response_code));
+        $request->expects($this->once())->method('lastResUrl')->will($this->returnValue('http://example.com/'));
+        
+        $airship = new Airship('key', 'secret');
+        $airship->request('POST', 'some_data', 'http://example.com/', 'text/plain', 3, $request);
     }
 
     public function testBuildUrl()

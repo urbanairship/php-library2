@@ -5,7 +5,7 @@ Copyright 2013 Urban Airship and Contributors
 
 namespace UrbanAirship;
 
-use Httpful\Request;
+use MX\RestManager;
 use UrbanAirship\Devices\DeviceTokenList;
 use UrbanAirship\Devices\APIDList;
 use UrbanAirship\Push\PushRequest;
@@ -117,23 +117,21 @@ class Airship
 
         if (is_null($request)) {
             // Tests pass in a pre-built Request. Normal code builds one here.
-            $request = Request::init();
+            $request = new RestManager(self::BASE_URL, $this->key, $this->secret);
         }
-        $request
-            ->method($method)
-            ->uri($uri)
-            ->authenticateWith($this->key, $this->secret)
-            ->body($body)
-            ->addHeaders($headers);
-        $response = $request->send();
+        $method = strtolower($method);
+        $request->setHeaders($headers);
+        $response = is_callable(array($request, $method))
+                    ? $request->$method($uri, $body)
+                    : $request->custom($method, $uri, $body);
 
         $logger->debug("Received response", array(
-            "status" => $response->code,
-            "headers" => $response->raw_headers,
-            "body" => $response->raw_body));
+            "status" => $request->response('headers', 'Code'),
+            "headers" => $request->response('raw_headers'),
+            "body" => $request->response('raw_body')));
 
-        if ($response->code >= 300) {
-            throw AirshipException::fromResponse($response);
+        if ($request->response('headers', 'Code') >= 300) {
+            throw AirshipException::fromRequest($request);
         }
         return $response;
     }
