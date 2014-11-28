@@ -223,17 +223,17 @@ function deviceTypes(/*args*/)
  * @param $body string
  * @param $content_type string: A string denoting the MIME type of the data in body.
  * @param $content_encoding string: A string denoting encoding type of the data in body.
- *        For example, utf-8 or base64.
+ * For example, utf-8 or base64.
  * @param $expiry int|timestamp: The expiry time for a rich app page to delete a message from
- *        the user’s inbox. Can be an integer encoding number of seconds from now, or an absolute
- *        timestamp in ISO UTC format. An integer value of 0 is equivalent to no expiry set.
+ * the user’s inbox. Can be an integer encoding number of seconds from now, or an absolute
+ * timestamp in ISO UTC format. An integer value of 0 is equivalent to no expiry set.
  * @param $extra string: A JSON dictionary of string values. Values for each entry may only be strings.
- *        If an API user wishes to pass structured data in an extra key, it must be properly JSON-encoded
- *        as a string.
+ * If an API user wishes to pass structured data in an extra key, it must be properly JSON-encoded
+ * as a string.
  * @param $icons string: JSON dictionary of string key and value pairs.
- *        At this time, only one key, “list_icon”, is supported. Values must be URI/URLs to the icon
- *        resources. For resources hosted by UA, use the following URI format “ua:<resource-id>”.
- *        For example: "icons" : { "list_icon" : "ua:9bf2f510-050e-11e3-9446-14dae95134d2" }
+ * At this time, only one key, `"list_icon"`, is supported. Values must be URI/URLs to the icon
+ * resources. For resources hosted by UA, use the following URI format `ua:<resource-id>`.
+ * For example: `"icons" : { "list_icon" : "ua:9bf2f510-050e-11e3-9446-14dae95134d2" }`
  *
  * @return array
  */
