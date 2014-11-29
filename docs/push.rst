@@ -211,3 +211,23 @@ or with the :constant:`UrbanAirship\\Push\\all` shortcut.
 .. code-block:: php
 
    $push->setDeviceTypes(P\all);
+
+Rich Push
+---------
+
+If you'd like to send a rich push along with your notification (or alone), use
+setMessage. See :function:`UrbanAirship\\Push\\message` for more information
+about parameters.
+
+.. code-block:: php
+
+   $push->setMessage(P\message("This is the title",
+                "<html><body><h1>This is the message</h1></body></html>",
+                "text/html",
+                "utf-8",
+                0)
+        );
+
+Note: Rich Push is not supported on Windows, Windows Phone, or Blackberry, and
+requires additional setup for other platforms. See our API and implementation
+docs for more information.
