@@ -20,29 +20,32 @@ PHPUnit
 Example Usage
 -------------
 
-    <?php
+```php
+<?php
 
-    require_once 'vendor/autoload.php';
+require_once 'vendor/autoload.php';
 
-    use UrbanAirship\Airship;
-    use UrbanAirship\AirshipException;
-    use UrbanAirship\UALog;
-    use UrbanAirship\Push as P;
-    use Monolog\Logger;
-    use Monolog\Handler\StreamHandler;
+use UrbanAirship\Airship;
+use UrbanAirship\AirshipException;
+use UrbanAirship\UALog;
+use UrbanAirship\Push as P;
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
 
-    UALog::setLogHandlers(array(new StreamHandler("php://stdout", Logger::DEBUG)));
+UALog::setLogHandlers(array(new StreamHandler("php://stdout", Logger::DEBUG)));
 
-    $airship = new Airship("<app key>", "<master secret>");
+$airship = new Airship("<app key>", "<master secret>");
 
-    try {
-        $response = $airship->push()
-            ->setAudience(P\all)
-            ->setNotification(P\notification("Hello from php"))
-            ->setDeviceTypes(P\all)
-            ->send();
-    } catch (AirshipException $e) {
-        print_r($e);
+try {
+    $response = $airship->push()
+        ->setAudience(P\all)
+        ->setNotification(P\notification("Hello from php"))
+        ->setDeviceTypes(P\all)
+        ->send();
+} catch (AirshipException $e) {
+    print_r($e);
+}
+```
 
 Resources
 ---------

@@ -40,7 +40,7 @@ class TestNotification extends PHPUnit_Framework_TestCase
                 "badge" => "+1",
                 "content_available" => true,
                 "extra" => array(
-                    "foo" => 
+                    "foo" =>
                         array("bar" => "baz"))));
         $this->assertEquals(
             P\ios(null, "auto"),
@@ -87,6 +87,28 @@ class TestNotification extends PHPUnit_Framework_TestCase
         $this->assertEquals(
             P\deviceTypes("ios", "android"),
             array("ios", "android"));
+    }
+
+    public function testMessage()
+    {
+        $this->assertEquals(
+            P\message("This is a title",
+                "<html><body><h1>This is the messages</h1></body></html>",
+                "text/html",
+                "utf-8",
+                0,
+                array("offer_id"=>"608f1f6c-8860-c617-a803-b187b491568e"),
+                array("list_icon"=>"http://cdn.example.com/message.png")
+            ),
+            array('title' => "This is a title",
+                'body' => "<html><body><h1>This is the messages</h1></body></html>",
+                'content_type' => "text/html",
+                'content_encoding' => "utf-8",
+                'expiry' => 0,
+                'extra' => array("offer_id" => "608f1f6c-8860-c617-a803-b187b491568e"),
+                'icons' => array("list_icon"=>"http://cdn.example.com/message.png")
+            )
+        );
     }
 
     /**

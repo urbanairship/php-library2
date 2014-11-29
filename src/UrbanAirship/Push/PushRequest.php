@@ -15,6 +15,7 @@ class PushRequest
     private $notification;
     private $options = null;
     private $deviceTypes;
+    private $message;
 
     function __construct($airship)
     {
@@ -39,6 +40,12 @@ class PushRequest
         return $this;
     }
 
+    function setMessage($message)
+    {
+        $this->message = $message;
+        return $this;
+    }
+
     function setOptions($options)
     {
         $this->options = $options;
@@ -52,6 +59,9 @@ class PushRequest
             'notification' => $this->notification,
             'device_types' => $this->deviceTypes
         );
+        if (!is_null($this->message)) {
+            $payload['message'] = $this->message;
+        }
         if (!is_null($this->options)) {
             $payload['options'] = $this->options;
         }
