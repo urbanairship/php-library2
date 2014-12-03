@@ -5,7 +5,7 @@ PHP library for use with the Urban Airship API for sending push notifications. S
 Requirements
 ------------
 
-PHP >= 5.4.14
+PHP >= 5.3
 
 **Dependencies**
 
