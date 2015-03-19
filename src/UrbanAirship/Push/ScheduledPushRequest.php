@@ -20,9 +20,9 @@ class ScheduledPushRequest
         $this->airship = $airship;
     }
 
-    function setSchedule($schedule)
+    function setSchedule($setTime)
     {
-        $this->schedule = $schedule;
+        $this->schedule = array( 'scheduled_time' => gmdate("Y-m-d\TH:i:s", $setTime) );
         return $this;
     }
 
@@ -55,7 +55,7 @@ class ScheduledPushRequest
         $uri = $this->airship->buildUrl(self::SCHEDULE_URL);
         $logger = UALog::getLogger();
         $response = $this->airship->request("POST",
-            json_encode($this->getPayload()), $uri, "application/json", 3);
+            json_encode($this->getPayload()), $uri, "application/vnd.urbanairship+json", 3);
         $payload = json_decode($response->raw_body, true);
         $logger->info("Scheduled push sent successfully.", array("schedule_urls" => $payload['schedule_urls']));
         return new PushResponse($response);
