@@ -20,9 +20,9 @@ class ScheduledPushRequest
         $this->airship = $airship;
     }
 
-    function setSchedule($setTime)
+    function setSchedule($schedule)
     {
-        $this->schedule = array( 'scheduled_time' => gmdate("Y-m-d\TH:i:s", $setTime) );
+        $this->schedule = $schedule;
         return $this;
     }
 
