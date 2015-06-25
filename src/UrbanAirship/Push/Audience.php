@@ -33,7 +33,7 @@ function deviceToken($token)
         throw new InvalidArgumentException("Invalid iOS device token");
     }
 
-    return array("device_token" => $token);
+    return array("ios_channel" => $token);
 }
 
 /**
@@ -65,7 +65,7 @@ function apid($uuid)
         throw new InvalidArgumentException("Invalid APID");
     }
 
-    return array("apid" => $uuid);
+    return array("android_channel" => $uuid);
 }
 
 /**
