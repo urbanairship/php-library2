@@ -1,7 +1,7 @@
 Urban Airship PHP Library
 =========================
 
-This library is a wrapper for the `Urban Airship web service API`_ for
+This library is a wrapper for the `Urban Airship API`_ for
 PHP.
 
 Goals
