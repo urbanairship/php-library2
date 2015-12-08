@@ -72,6 +72,6 @@ Contents:
    push.rst
 
 
-.. _Urban Airship web service API: http://docs.urbanairship.com/reference/api/
+.. _Urban Airship API: http://docs.urbanairship.com/api/overview.html
 .. _PHP-FIG Standards: http://www.php-fig.org/
 .. _Monolog: https://github.com/Seldaek/monolog
