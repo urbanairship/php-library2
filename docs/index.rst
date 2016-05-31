@@ -4,7 +4,7 @@ Urban Airship PHP Library
 This library is a wrapper for the `Urban Airship web service API`_ for
 PHP.
 
-Urban Airship is not actively developing this repository but will respond to submitted issues.  Urban Airship will test and either approve or ask for updates on submitted pull requests and will merge approved pull requests then release updates as needed.
+Urban Airship is no longer actively developing this library but will respond to submitted issues and pull requests. It is provided as sample code, and Urban Airship makes no guarantees as to completeness or regularity of updates. However, we do welcome pull requests with a signed `contribution agreement <http://urbanairship.com/legal/contribution-agreement>`__.
 
 Goals
 -----
