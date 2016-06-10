@@ -5,11 +5,14 @@ Copyright 2013 Urban Airship and Contributors
 
 namespace UrbanAirship;
 
+use Httpful\Httpful;
 use Httpful\Request;
+use UrbanAirship\About;
 use UrbanAirship\Devices\DeviceTokenList;
 use UrbanAirship\Devices\APIDList;
 use UrbanAirship\Push\PushRequest;
 use UrbanAirship\Push\ScheduledPushRequest;
+
 
 
 class Airship
@@ -17,6 +20,7 @@ class Airship
 
     const BASE_URL = 'https://go.urbanairship.com';
     const VERSION_STRING = 'application/vnd.urbanairship+json; version=%d;';
+    const USER_AGENT_KEY = 'User-Agent';
 
     public $key;
     public $secret;
@@ -123,8 +127,12 @@ class Airship
             ->method($method)
             ->uri($uri)
             ->authenticateWith($this->key, $this->secret)
-            ->body($body)
-            ->addHeaders($headers);
+            ->body($body);
+
+        $userAgent = sprintf("%s/%s", "UAPHPLibrary", About::LIBRARY_VERSION);
+        $headers[self::USER_AGENT_KEY] = $userAgent;
+        $request->addHeaders($headers);
+
         $response = $request->send();
 
         $logger->debug("Received response", array(
