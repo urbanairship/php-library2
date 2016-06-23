@@ -35,4 +35,37 @@ class TestAudience extends PHPUnit_Framework_TestCase
     public function testUUID(){
         P\apid("008b3f5b-5c30-467d-8885-03c3e1089999");
     }
+
+    /**
+     * @expectedException InvalidArgumentException
+     */
+    public function testInvalidAndroidUUID(){
+        P\androidChannel("008b3f5b-5c30-467d-8885-foop");
+    }
+
+    public function testAndroidUUID(){
+        P\androidChannel("008b3f5b-5c30-467d-8885-03c3e1089999");
+    }
+
+    /**
+     * @expectedException InvalidArgumentException
+     */
+    public function testInvalidIosUUID(){
+        P\iosChannel("008b3f5b-5c30-467d-8885-foop");
+    }
+
+    public function testIosUUID(){
+        P\iosChannel("008b3f5b-5c30-467d-8885-03c3e1089999");
+    }
+
+    /**
+     * @expectedException InvalidArgumentException
+     */
+    public function testInvalidAmazonUUID(){
+        P\amazonChannel("008b3f5b-5c30-467d-8885-foop");
+    }
+
+    public function testAmazonUUID(){
+        P\amazonChannel("008b3f5b-5c30-467d-8885-03c3e1089999");
+    }
 }

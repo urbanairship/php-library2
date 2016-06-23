@@ -69,6 +69,51 @@ function apid($uuid)
 }
 
 /**
+    * Select a single Android Channel
+    * @param $uuid
+    * @return array
+    * @throws \InvalidArgumentException
+    */
+function androidChannel($uuid)
+{
+    // This could return a non boolean false if there is an error
+    if (preg_match(UUID_FORMAT, $uuid) === 0) {
+        throw new InvalidArgumentException("Invalid Android Channel");
+    }
+
+    return array("android_channel" => $uuid);
+}
+
+/**
+    * Select a single iOS Channel
+    * @param $uuid
+    * @return array
+    * @throws \InvalidArgumentException
+    */
+function iosChannel($uuid)
+{
+    if(preg_match(UUID_FORMAT, $uuid) === 0){
+        throw new InvalidArgumentException("Invalid iOS Channel");
+    }
+
+    return array("ios_channel" => $uuid);
+}
+
+/**
+    * Select a single Amazon Channel
+    * @param $uuid
+    * @return array
+    * @throws \InvalidArgumentException
+    */
+function amazonChannel($uuid){
+    if(preg_match(UUID_FORMAT, $uuid) === 0){
+        throw new InvalidArgumentException("Invalid Amazon Channel");
+    }
+
+    return array("amazon_channel" => $uuid);
+}
+
+/**
     * Select a single Windows 8 APID
     * @param $uuid
     * @return array

@@ -207,7 +207,7 @@ function mpnsPayload($alert=null, $toast=null, $tile=null)
  */
 function deviceTypes(/*args*/)
 {
-    static $VALID_DEVICE_TYPES = array("ios", "android", "blackberry", "wns", "mpns");
+    static $VALID_DEVICE_TYPES = array("ios", "android", "blackberry", "wns", "mpns", "amazon");
     foreach (func_get_args() as $type) {
         if (!in_array($type, $VALID_DEVICE_TYPES)) {
             throw new InvalidArgumentException("Invalid device type: " . $type);

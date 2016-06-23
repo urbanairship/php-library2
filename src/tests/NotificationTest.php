@@ -85,8 +85,8 @@ class TestNotification extends PHPUnit_Framework_TestCase
             P\deviceTypes("ios"),
             array("ios"));
         $this->assertEquals(
-            P\deviceTypes("ios", "android"),
-            array("ios", "android"));
+            P\deviceTypes("ios", "android", "amazon"),
+            array("ios", "android", "amazon"));
     }
 
     public function testMessage()
