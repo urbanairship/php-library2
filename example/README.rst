@@ -15,4 +15,4 @@ Setup
 #. Edit the script, or copy it, and replace the ``$key`` and ``$secret``.
 #. Run the script, which sends a broadcast to all devices::
 
-      $ php pusher.php
+      $ php pushTest.php
