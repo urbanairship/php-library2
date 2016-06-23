@@ -13,7 +13,7 @@ Setup
       $ composer install
 
 #. Edit the script, or copy it, and replace the ``$key`` and ``$secret``.
-#. Enter in an iOS channel from a test device
+#. Enter in an iOS channel from a test device.
 #. Run the script, which sends a push to your test device:
 
       $ php pushTest.php

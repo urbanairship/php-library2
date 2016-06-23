@@ -14,5 +14,5 @@ $airship = new Airship("key", "secret");
 $response = $airship->push()
     ->setAudience(P\iosChannel("<iOS Channel>"))
     ->setNotification(P\notification("Hello from PHP"))
-    ->setDeviceTypes(P\all)
+    ->setDeviceTypes("ios")
     ->send();
