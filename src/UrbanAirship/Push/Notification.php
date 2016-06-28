@@ -111,6 +111,48 @@ function android($alert=null, $collapseKey=null, $timeToLive=null,
     return $payload;
 }
 
+
+/**
+ * Amazon specific platform override payload.
+ *
+ * @link https://docs.urbanairship.com/api/ua.html#amazon Amazon Platform Overrides
+ * for details on `consolidation_key` and `expires_after`.
+ *
+ * @param $alert string|null
+ * @param $consolidation_key string|null Similar to GCM’s collapse_key.
+ * @param $expires_after int|null an integer value indicating the number of seconds that ADM will retain the message if the device is offline. The valid range is 60 - 2678400 (1 minute to 31 days), inclusive. Can also be an absolute ISO UTC timestamp, in which case the same validation rules apply, with the time period calculated relative to the time of the API call.
+ * @param $title string|null a string representing the title of the notification. The default value is the name of the app at the SDK.
+ * @param $summary string|null a string representing a summary of the notification.
+ * @param $extra array | A set of key/value pairs to include in the push payload
+ * sent to the device.
+ * @return array
+ */
+function amazon($alert=null, $consolidation_key=mull, $expires_after=null, 
+    $title=null, $summary=null, $extra=null)
+{
+    $payload = array();
+    if(!is_null($alert)){
+        $payload["alert"] = $alert;
+    }
+    if(!is_null($consolidation_key)){
+        $payload["consolidation_key"] = $consolidation_key;
+    }
+    if(!is_null($expires_after)){
+        $payload["expires_after"] = $expires_after;
+    }
+    if(!is_null($extra)){
+        $payload["extra"] = $extra;
+    }
+    if(!is_null($title)){
+        $payload["title"] = $title;
+    }
+    if(!is_null($summary)){
+        $payload["summary"] = $summary;
+    }
+
+    return $payload;
+}
+
 /**
  * BlackBerry specific platform override payload.
  *
