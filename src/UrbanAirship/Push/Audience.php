@@ -210,23 +210,16 @@ function acceptableResolution($resolution)
     *
     * @param $resolution string Valid time resolution, e.g. `minutes` or `weeks`.
     * @param $lengthOfTime string Amount of time
-    * @param $lastSeen bool Match a device only if
-    * its last recorded position matches the location. If it has update
-    * location anywhere else since, even if it otherwise matches the time
-    * window, it will be excluded.
     * @return array
     * @throws \InvalidArgumentException If the resolution is not recognized
     */
-function recentDate($resolution, $lengthOfTime, $lastSeen=false)
+function recentDate($resolution, $lengthOfTime)
 {
     if (!acceptableResolution($resolution)) {
         throw new InvalidArgumentException("Invalid date resolution");
     }
     $payload = array("recent" => array($resolution => $lengthOfTime));
-    if ($lastSeen) {
-        $payload["last_seen"] = true;
-    }
-
+    
     return $payload;
 }
 
@@ -236,23 +229,16 @@ function recentDate($resolution, $lengthOfTime, $lastSeen=false)
     * @param $resolution string Valid time resolution
     * @param $start string Beginning of absolute window
     * @param $end string End of absolute window
-    * @param $lastSeen bool Match a device only if
-    * its last recorded position matches the location. If it has update
-    * location anywhere else since, even if it otherwise matches the time
-    * window, it will be excluded.
     * @return array
     * @throws \InvalidArgumentException
     */
-function absoluteDate($resolution, $start, $end, $lastSeen=false)
+function absoluteDate($resolution, $start, $end)
 {
     if (!acceptableResolution($resolution)) {
         throw new InvalidArgumentException("Invalid date resolution");
     }
     $resolutionPayload = array($resolution => array("start" => $start,
         "end" => $end));
-    if ($lastSeen) {
-        $resolutionPayload["last_seen"] = true;
-    }
 
     return array("date" => $resolutionPayload);
 }
