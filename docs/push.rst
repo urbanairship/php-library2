@@ -37,7 +37,7 @@ Audience Selectors
 ------------------
 
 An audience should specify one or more devices. An audience can be a device,
-such as a **iOS Channel** or **Android Channel**; a tag, alias, or segment; a location;
+such as a **Channel**; a tag, named user, or segment; a location;
 or a combination. Audience selectors are combined with ``and_``, ``or_``, and
 ``not_``. All selectors are available in the :namespace:`UrbanAirship\\Push` namespace.
 
@@ -212,8 +212,8 @@ You can override the payload with platform-specific values as well.
          ))
       ))
 
-   See `Amazon Platform Overrides
-   <https://docs.urbanairship.com/api/ua.html#amazon>`_ for details on
+   See `Amazon Device Messaging
+   <https://developer.amazon.com/appsandservices/apis/engage/device-messaging/tech-docs/06-sending-a-message>`_ for details on
    ``consolidation_key`` and ``expires_after``.
 
 :function:`UrbanAirship\\Push\\blackberry`
