@@ -75,6 +75,9 @@ Simple Selectors
 :function:`UrbanAirship\\Push\\tag`
    Select a single tag.
 
+:function:`UrbanAirship\\Push\\named_user`
+   Select a single named user.
+
 :function:`UrbanAirship\\Push\\alias`
    Select a single alias.
 
