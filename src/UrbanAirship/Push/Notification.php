@@ -48,10 +48,10 @@ function ios($alert=null, $badge=null, $sound=null, $contentAvailable=false,
         $extra=null)
 {
     $payload = array();
-    if (!is_null($alert)) {
+    if ($alert) {
         $payload["alert"] = $alert;
     }
-    if (!is_null($badge)) {
+    if ($badge) {
         if (is_string($badge)) {
             if (preg_match(AUTOBADGE_FORMAT, $badge) === 0) {
                 throw new InvalidArgumentException("Invalid autobadge string");
@@ -61,13 +61,13 @@ function ios($alert=null, $badge=null, $sound=null, $contentAvailable=false,
         }
         $payload["badge"] = $badge;
     }
-    if (!is_null($sound)) {
+    if ($sound) {
         $payload["sound"] = $sound;
     }
     if ($contentAvailable) {
         $payload["content_available"] = true;
     }
-    if (!is_null($extra)) {
+    if ($extra) {
         $payload["extra"] = $extra;
     }
 
@@ -92,20 +92,62 @@ function android($alert=null, $collapseKey=null, $timeToLive=null,
     $delayWhileIdle=null, $extra=null)
 {
     $payload = array();
-    if (!is_null($alert)) {
+    if ($alert) {
         $payload["alert"] = $alert;
     }
-    if (!is_null($collapseKey)) {
+    if ($collapseKey) {
         $payload["collapse_key"] = $collapseKey;
     }
-    if (!is_null($timeToLive)) {
+    if ($timeToLive) {
         $payload["time_to_live"] = $timeToLive;
     }
-    if (!is_null($delayWhileIdle)) {
+    if ($delayWhileIdle) {
         $payload["delay_while_idle"] = $delayWhileIdle;
     }
-    if (!is_null($extra)) {
+    if ($extra) {
         $payload["extra"] = $extra;
+    }
+
+    return $payload;
+}
+
+
+/**
+ * Amazon specific platform override payload.
+ *
+ * @link https://docs.urbanairship.com/api/ua.html#amazon Amazon Platform Overrides
+ * for details on `consolidation_key` and `expires_after`.
+ *
+ * @param $alert string|null
+ * @param $consolidation_key string|null Similar to GCM’s collapse_key.
+ * @param $expires_after int|null an integer value indicating the number of seconds that ADM will retain the message if the device is offline. The valid range is 60 - 2678400 (1 minute to 31 days), inclusive. Can also be an absolute ISO UTC timestamp, in which case the same validation rules apply, with the time period calculated relative to the time of the API call.
+ * @param $title string|null a string representing the title of the notification. The default value is the name of the app at the SDK.
+ * @param $summary string|null a string representing a summary of the notification.
+ * @param $extra array | A set of key/value pairs to include in the push payload
+ * sent to the device.
+ * @return array
+ */
+function amazon($alert=null, $consolidation_key=mull, $expires_after=null, 
+    $title=null, $summary=null, $extra=null)
+{
+    $payload = array();
+    if($alert){
+        $payload["alert"] = $alert;
+    }
+    if($consolidation_key){
+        $payload["consolidation_key"] = $consolidation_key;
+    }
+    if($expires_after){
+        $payload["expires_after"] = $expires_after;
+    }
+    if($extra){
+        $payload["extra"] = $extra;
+    }
+    if($title){
+        $payload["title"] = $title;
+    }
+    if($summary){
+        $payload["summary"] = $summary;
     }
 
     return $payload;
@@ -207,7 +249,7 @@ function mpnsPayload($alert=null, $toast=null, $tile=null)
  */
 function deviceTypes(/*args*/)
 {
-    static $VALID_DEVICE_TYPES = array("ios", "android", "blackberry", "wns", "mpns");
+    static $VALID_DEVICE_TYPES = array("ios", "android", "blackberry", "wns", "mpns", "amazon");
     foreach (func_get_args() as $type) {
         if (!in_array($type, $VALID_DEVICE_TYPES)) {
             throw new InvalidArgumentException("Invalid device type: " . $type);

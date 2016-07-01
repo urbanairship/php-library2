@@ -37,7 +37,7 @@ Audience Selectors
 ------------------
 
 An audience should specify one or more devices. An audience can be a device,
-such as a **device token** or **APID**; a tag, alias, or segment; a location;
+such as a **Channel**; a tag, named user, or segment; a location;
 or a combination. Audience selectors are combined with ``and_``, ``or_``, and
 ``not_``. All selectors are available in the :namespace:`UrbanAirship\\Push` namespace.
 
@@ -53,12 +53,29 @@ Simple Selectors
 
       $push->setAudience(P\all);
 
+:function:`UrbanAirship\\Push\\iosChannel`
+   Select a single iOS channel.
+
+   .. code-block:: php
+
+      $push->setAudience(P\iosChannel("8ac440cb-f148-4856-9631-3c8eb8d88d60"));
+
+:function:`UrbanAirship\\Push\\androidChannel`
+   Select a single Android channel.
+
+   .. code-block:: php
+
+      $push->setAudience(P\androidChannel("b8f9b663-0a3b-cf45-587a-be880946e880"));
+
 :function:`UrbanAirship\\Push\\deviceToken`
    Select a single iOS device token.
 
    .. code-block:: php
 
       $push->setAudience(P\deviceToken("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"));
+
+:function:`UrbanAirship\\Push\\amazonChannel`
+   Select a single Amazon channel.
 
 :function:`UrbanAirship\\Push\\devicePin`
    Select a single BlackBerry PIN.
@@ -180,6 +197,27 @@ You can override the payload with platform-specific values as well.
    See `GCM Advanced Topics
    <http://developer.android.com/google/gcm/adv.html>`_ for details on
    ``collapseKey``, ``timeToLive``, and ``delayWhileIdle``.
+
+:function:`UrbanAirship\\Push\\amazon`
+    Amazon specific platform override payload.
+
+   .. code-block:: php
+
+      $push->setNotification(P\notification(
+         null,
+         array("amazon"=>P\amazon(
+            "Hello Amazon",
+            null,
+            null,
+            null,
+            null,
+            array("articleid" => "AB1234")
+         ))
+      ))
+
+   See `Amazon Device Messaging
+   <https://developer.amazon.com/appsandservices/apis/engage/device-messaging/tech-docs/06-sending-a-message>`_ for details on
+   ``consolidation_key`` and ``expires_after``.
 
 :function:`UrbanAirship\\Push\\blackberry`
     BlackBerry specific platform override payload.

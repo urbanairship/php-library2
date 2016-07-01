@@ -13,6 +13,7 @@ Setup
       $ composer install
 
 #. Edit the script, or copy it, and replace the ``$key`` and ``$secret``.
-#. Run the script, which sends a broadcast to all devices::
+#. Enter in an iOS channel from a test device.
+#. Run the script, which sends a push to your test device:
 
-      $ php pusher.php
+      $ php pushTest.php
