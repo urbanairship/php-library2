@@ -29,7 +29,7 @@ CONST all = "all";
 function deviceToken($token)
 {
     // This could return a non boolean false if there is an error
-    if (preg_match(DEVICE_TOKEN_FORMAT, $token) === 0) {
+    if (preg_match(DEVICE_TOKEN_FORMAT, $token) == 0) {
         throw new InvalidArgumentException("Invalid iOS device token");
     }
 
@@ -45,7 +45,7 @@ function deviceToken($token)
 function devicePin($pin)
 {
     // This could return a non boolean false if there is an error
-    if (preg_match(PIN_FORMAT, $pin) === 0) {
+    if (preg_match(PIN_FORMAT, $pin) == 0) {
         throw new InvalidArgumentException("Invalid Blackberry pin");
     }
 
@@ -61,7 +61,7 @@ function devicePin($pin)
 function apid($uuid)
 {
     // This could return a non boolean false if there is an error
-    if (preg_match(UUID_FORMAT, $uuid) === 0) {
+    if (preg_match(UUID_FORMAT, $uuid) == 0) {
         throw new InvalidArgumentException("Invalid APID");
     }
 
@@ -77,7 +77,7 @@ function apid($uuid)
 function androidChannel($uuid)
 {
     // This could return a non boolean false if there is an error
-    if (preg_match(UUID_FORMAT, $uuid) === 0) {
+    if (preg_match(UUID_FORMAT, $uuid) == 0) {
         throw new InvalidArgumentException("Invalid Android Channel");
     }
 
@@ -92,7 +92,7 @@ function androidChannel($uuid)
     */
 function iosChannel($uuid)
 {
-    if(preg_match(UUID_FORMAT, $uuid) === 0){
+    if(preg_match(UUID_FORMAT, $uuid) == 0){
         throw new InvalidArgumentException("Invalid iOS Channel");
     }
 
@@ -106,7 +106,7 @@ function iosChannel($uuid)
     * @throws \InvalidArgumentException
     */
 function amazonChannel($uuid){
-    if(preg_match(UUID_FORMAT, $uuid) === 0){
+    if(preg_match(UUID_FORMAT, $uuid) == 0){
         throw new InvalidArgumentException("Invalid Amazon Channel");
     }
 
@@ -122,7 +122,7 @@ function amazonChannel($uuid){
 function wns($uuid)
 {
     // This could return a non boolean false if there is an error
-    if (preg_match(UUID_FORMAT, $uuid) === 0) {
+    if (preg_match(UUID_FORMAT, $uuid) == 0) {
         throw new InvalidArgumentException("Invalid WNS");
     }
 
@@ -138,7 +138,7 @@ function wns($uuid)
 function mpns($uuid)
 {
     // This could return a non boolean false if there is an error
-    if (preg_match(UUID_FORMAT, $uuid) === 0) {
+    if (preg_match(UUID_FORMAT, $uuid) == 0) {
         throw new InvalidArgumentException("Invalid MPNS");
     }
 
@@ -242,7 +242,7 @@ function acceptableResolution($resolution)
 {
     $acceptableValues = array("minutes", "hours", "days", "weeks", "months",
         "years");
-    if (array_search($resolution, $acceptableValues) === false) {
+    if (array_search($resolution, $acceptableValues) == false) {
         return false;
     } else {
         return true;

@@ -48,10 +48,10 @@ function ios($alert=null, $badge=null, $sound=null, $contentAvailable=false,
         $extra=null)
 {
     $payload = array();
-    if (!is_null($alert)) {
+    if ($alert) {
         $payload["alert"] = $alert;
     }
-    if (!is_null($badge)) {
+    if ($badge) {
         if (is_string($badge)) {
             if (preg_match(AUTOBADGE_FORMAT, $badge) === 0) {
                 throw new InvalidArgumentException("Invalid autobadge string");
@@ -61,13 +61,13 @@ function ios($alert=null, $badge=null, $sound=null, $contentAvailable=false,
         }
         $payload["badge"] = $badge;
     }
-    if (!is_null($sound)) {
+    if ($sound) {
         $payload["sound"] = $sound;
     }
     if ($contentAvailable) {
         $payload["content_available"] = true;
     }
-    if (!is_null($extra)) {
+    if ($extra) {
         $payload["extra"] = $extra;
     }
 
@@ -92,19 +92,19 @@ function android($alert=null, $collapseKey=null, $timeToLive=null,
     $delayWhileIdle=null, $extra=null)
 {
     $payload = array();
-    if (!is_null($alert)) {
+    if ($alert) {
         $payload["alert"] = $alert;
     }
-    if (!is_null($collapseKey)) {
+    if ($collapseKey) {
         $payload["collapse_key"] = $collapseKey;
     }
-    if (!is_null($timeToLive)) {
+    if ($timeToLive) {
         $payload["time_to_live"] = $timeToLive;
     }
-    if (!is_null($delayWhileIdle)) {
+    if ($delayWhileIdle) {
         $payload["delay_while_idle"] = $delayWhileIdle;
     }
-    if (!is_null($extra)) {
+    if ($extra) {
         $payload["extra"] = $extra;
     }
 
@@ -131,22 +131,22 @@ function amazon($alert=null, $consolidation_key=mull, $expires_after=null,
     $title=null, $summary=null, $extra=null)
 {
     $payload = array();
-    if(!is_null($alert)){
+    if($alert){
         $payload["alert"] = $alert;
     }
-    if(!is_null($consolidation_key)){
+    if($consolidation_key){
         $payload["consolidation_key"] = $consolidation_key;
     }
-    if(!is_null($expires_after)){
+    if($expires_after){
         $payload["expires_after"] = $expires_after;
     }
-    if(!is_null($extra)){
+    if($extra){
         $payload["extra"] = $extra;
     }
-    if(!is_null($title)){
+    if($title){
         $payload["title"] = $title;
     }
-    if(!is_null($summary)){
+    if($summary){
         $payload["summary"] = $summary;
     }
 

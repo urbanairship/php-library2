@@ -47,6 +47,42 @@ class TestNotification extends PHPUnit_Framework_TestCase
             array("badge" => "auto"));
     }
 
+    public function testAndroid()
+    {
+        $this->assertEquals(
+            P\android("Hello", null, null, null, array("foo" => "bar")),
+            array(
+                "alert" => "Hello",
+                "extra" => array("foo" => "bar")));
+
+        $this->assertEquals(
+            P\android(null, "collapseKey", 100, true, array("foo" => "bar")),
+            array(
+                "collapse_key" => "collapseKey",
+                "time_to_live" => 100,
+                "delay_while_idle" => true,
+                "extra" => array("foo" => "bar")));
+    }
+
+    public function testAmazon()
+    {
+        $this->assertEquals(
+            P\amazon("Hello", null, null, null, null, array("foo" => "bar")),
+            array(
+                "alert" => "Hello",
+                "extra" => array("foo" => "bar")));
+
+        $this->assertEquals(
+            P\amazon("Hello", "consolidationKey", 100, "NotificationTitle", "NotificationSummary", array("foo" => "bar")),
+            array(
+                "alert" => "Hello",
+                "consolidation_key" => "consolidationKey",
+                "expires_after" => 100,
+                "title" => "NotificationTitle",
+                "summary" => "NotificationSummary",
+                "extra" => array("foo" => "bar")));
+    }
+
     /**
      * @expectedException        InvalidArgumentException
      */
