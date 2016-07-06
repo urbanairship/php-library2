@@ -5,3 +5,5 @@
 - removed deprecated last_seen location argument
 - added support for pushing to channels
 - added support for pushing to named users
+- added a user agent string to api requests
+- added docs for android, amazon, and ios channels.
