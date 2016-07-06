@@ -1,0 +1,7 @@
+--------------------
+0.2.0
+--------------------
+- added CHANGELOG
+- removed deprecated last_seen location argument
+- added support for pushing to channels
+- added support for pushing to named users

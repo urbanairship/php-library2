@@ -74,7 +74,7 @@ class PushRequest
         $logger = UALog::getLogger();
 
         $response = $this->airship->request("POST",
-            json_encode($this->getPayload()), $uri, "application/json", 3);
+            json_encode($this->getPayload()), $uri, "application/vnd.urbanairship+json", 3);
 
         $payload = json_decode($response->raw_body, true);
         $logger->info("Push sent successfully.", array("push_ids" => $payload['push_ids']));
