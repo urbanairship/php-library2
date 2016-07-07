@@ -1,0 +1,9 @@
+--------------------
+0.2.0
+--------------------
+- Added CHANGELOG
+- Removed deprecated last_seen location argument.
+- Added support for pushing to channels.
+- Added support for pushing to named users.
+- Added a user agent string to API requests.
+- Added docs for Android, Amazon, and iOS channels.

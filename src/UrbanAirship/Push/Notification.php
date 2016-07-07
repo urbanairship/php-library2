@@ -225,13 +225,13 @@ function wnsPayload($alert=null, $toast=null, $tile=null, $badge=null)
 function mpnsPayload($alert=null, $toast=null, $tile=null)
 {
     $payload = array();
-    if (!is_null($alert)) {
+    if ($alert) {
         $payload["alert"] = $alert;
     }
-    if (!is_null($toast)) {
+    if ($toast) {
         $payload["toast"] = $toast;
     }
-    if (!is_null($tile)) {
+    if ($tile) {
         $payload["tile"] = $tile;
     }
     if (count($payload) == 0) {
