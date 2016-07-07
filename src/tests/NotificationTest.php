@@ -102,6 +102,18 @@ class TestNotification extends PHPUnit_Framework_TestCase
             array("badge" => "Badge"));
     }
 
+    public function testMpns(){
+        $this->assertEquals(
+            P\mpnsPayload("Alert", "Toast", "Tile"),
+            array('alert'=>"Alert",
+                'toast'=>"Toast",
+                'tile'=>"Tile"));
+
+        $this->assertEquals(
+            P\mpnsPayload("Alert", null, null),
+            array('alert'=>"Alert"));
+    }
+
     /**
      * @expectedException        InvalidArgumentException
      */
