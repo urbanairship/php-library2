@@ -1,7 +1,7 @@
 Urban Airship PHP Library
 =========================
 
-This library is a wrapper for the `Urban Airship web service API`_ for
+This library is a wrapper for the `Urban Airship API`_ for
 PHP.
 
 Urban Airship is no longer actively developing this library but will respond to submitted issues and pull requests. It is provided as sample code, and Urban Airship makes no guarantees as to completeness or regularity of updates. However, we do welcome pull requests with a signed `contribution agreement <http://urbanairship.com/legal/contribution-agreement>`__.
@@ -74,6 +74,6 @@ Contents:
    push.rst
 
 
-.. _Urban Airship web service API: http://docs.urbanairship.com/reference/api/
+.. _Urban Airship API: http://docs.urbanairship.com/api/overview.html
 .. _PHP-FIG Standards: http://www.php-fig.org/
 .. _Monolog: https://github.com/Seldaek/monolog
