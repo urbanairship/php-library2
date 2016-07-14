@@ -42,7 +42,7 @@ class ScheduledPushRequest
     {
         $payload = array(
             'schedule' => $this->schedule,
-            'push' => $this->push->getPayload()
+            'push' => $this->push
         );
         if (!is_null($this->name)) {
             $payload['name'] = $this->name;
