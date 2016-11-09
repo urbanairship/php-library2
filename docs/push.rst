@@ -140,7 +140,7 @@ Location Selectors
    Produces a time specifier that represents an absolute amount of time,
    such as from 2012-01-01 12:00 to 2012-01-01 12:00
 
-Notifcation Payload
+Notification Payload
 -------------------
 
 The notification payload determines what message and data is sent to a device.
