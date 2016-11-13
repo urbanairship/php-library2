@@ -26,8 +26,8 @@ class AirshipException extends \Exception
             $exc->error = $response->raw_body;
         }
         $exc->code = $response->code;
-        $exc->message = sprintf("Airship request failed: %s on %s to %s",
-            $response->code, $response->request->method, $response->request->uri);
+        $exc->message = sprintf("Airship request failed: %s",
+            $response->raw_body);
         return $exc;
     }
 }
