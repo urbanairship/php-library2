@@ -111,7 +111,6 @@ abstract class DeviceList implements \Iterator
         $this->position = 0;
     }
 
-
     /**
      * Takes the current page and retrieves the next
      * page of results. Returns
