@@ -22,6 +22,9 @@ class DeviceTokenLookup
 		$this->lookup_url = $airship->buildUrl(static::LOOKUP_URL.$deviceId);
 	}
 
+	/**
+	 * Fetch metadata from a device token
+	 */
 	function deviceTokenInfo() {
 		$url = $this->lookup_url;
 		$response = $this->airship->request("GET", null, $url, null, 3);

@@ -22,6 +22,9 @@ class APIDLookup
 		$this->lookup_url = $airship->buildUrl(static::LOOKUP_URL.$deviceId);
 	}
 
+	/**
+	 * Fetch metadata from an APID
+	 */
 	function APIDInfo() {
 		$url = $this->lookup_url;
 		$response = $this->airship->request("GET", null, $url, null, 3);
