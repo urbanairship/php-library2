@@ -295,12 +295,22 @@ function message($title, $body, $content_type=null, $content_encoding=null,
         $payload["content_encoding"] = $content_encoding;
     }
     if (!is_null($expiry)) {
+        if (!is_int($expiry) && !is_string($expiry)) {
+            trigger_error("Expiry must either be an integer, or string of a timestamp in ISO UTC format.",
+             E_USER_WARNING);
+            die();
+        }
         $payload["expiry"] = $expiry;
     }
     if (!is_null($extra)) {
         $payload["extra"] = $extra;
     }
-    if (!is_null($extra)) {
+    if (!is_null($icons)) {
+        if (!is_array($icons)) {
+             trigger_error("Icons must be an array.",
+              E_USER_WARNING);
+             die();
+        }
         $payload["icons"] = $icons;
     }
 
