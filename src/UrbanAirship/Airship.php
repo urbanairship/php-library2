@@ -8,8 +8,12 @@ namespace UrbanAirship;
 use Httpful\Httpful;
 use Httpful\Request;
 use UrbanAirship\About;
-use UrbanAirship\Devices\DeviceTokenList;
-use UrbanAirship\Devices\APIDList;
+use UrbanAirship\Devices\DeviceListing\DeviceTokenList;
+use UrbanAirship\Devices\DeviceListing\APIDList;
+use UrbanAirship\Devices\DeviceListing\ChannelList;
+use UrbanAirship\Devices\DeviceLookup\ChannelLookup;
+use UrbanAirship\Devices\DeviceLookup\DeviceTokenLookup;
+use UrbanAirship\Devices\DeviceLookup\APIDLookup;
 use UrbanAirship\Push\PushRequest;
 use UrbanAirship\Push\ScheduledPushRequest;
 
@@ -32,6 +36,17 @@ class Airship
     }
 
     /**
+     * Return a list of channels for the app. The ChannelList implements
+     * an Iterator.
+     * @param int $limit Limit on channels returned
+     * @return ChannelList
+     */
+    public function listChannels($limit=null)
+    {
+        return new ChannelList($this, $limit);
+    }
+
+    /**
      * Return a list of device tokens for the app. The DeviceTokenList implements
      * an Iterator.
      * @param int $limit Limit on tokens returned
@@ -50,6 +65,36 @@ class Airship
     public function listAPIDs($limit=null)
     {
         return new APIDList($this, $limit);
+    }
+
+     /**
+     * Get information on an individual channel
+     * @param string $deviceid Device ID to look up
+     * @return ChannelLookup
+     */
+    public function channelLookup($deviceId)
+    {
+        return new ChannelLookup($this, $deviceId);
+    }
+
+  /**
+     * Get information on an individual device token
+     * @param string $deviceid Device ID to look up
+     * @return DeviceTokenLookup
+     */
+    public function deviceTokenLookup($deviceId)
+    {
+        return new DeviceTokenLookup($this, $deviceId);
+    }
+
+    /**
+     * Get information on an individual APID
+     * @param string $deviceid Device ID to look up
+     * @return APIDLookup
+     */
+    public function apidLookup($deviceId)
+    {
+        return new APIDLookup($this, $deviceId);
     }
 
     /**

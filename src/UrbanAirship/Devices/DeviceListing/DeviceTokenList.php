@@ -3,9 +3,9 @@
 Copyright 2013 Urban Airship and Contributors
 */
 
-namespace UrbanAirship\Devices;
+namespace UrbanAirship\Devices\DeviceListing;
 
-use UrbanAirship\Devices\DeviceList;
+use UrbanAirship\Devices\DeviceListing\DeviceList;
 
 class DeviceTokenList extends DeviceList
 {

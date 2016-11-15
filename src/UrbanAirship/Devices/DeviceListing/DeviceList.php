@@ -3,7 +3,7 @@
 Copyright 2013 Urban Airship and Contributors
 */
 
-namespace UrbanAirship\Devices;
+namespace UrbanAirship\Devices\DeviceListing;
 
 abstract class DeviceList implements \Iterator
 {
