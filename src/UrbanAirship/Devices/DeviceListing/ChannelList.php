@@ -1,6 +1,6 @@
 <?php
 /*
-Copyright 2013 Urban Airship and Contributors
+Copyright 2013-2016 Urban Airship and Contributors
 */
 
 namespace UrbanAirship\Devices\DeviceListing;
