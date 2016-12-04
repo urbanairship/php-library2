@@ -16,20 +16,25 @@ class APIDLookup
      */
 	private $deviceInfo;
 
-    function __construct($airship, $deviceId)
+   function __construct($airship, $deviceId)
 	{
 		$this->airship = $airship;
+		$this->identifier = $deviceId;
 		$this->lookup_url = $airship->buildUrl(static::LOOKUP_URL.$deviceId);
 	}
 
 	/**
-	 * Fetch metadata from an APID
+	 * Fetch metadata from a channel ID
 	 */
 	function APIDInfo() {
-		$url = $this->lookup_url;
-		$response = $this->airship->request("GET", null, $url, null, 3);
-        $this->deviceInfo = json_decode($response->raw_body);
-        return $this->deviceInfo;
+		if ($this->identifier == null) {
+			return null;
+    	} else {
+    		$url = $this->lookup_url;
+			$response = $this->airship->request("GET", null, $url, null, 3);
+	        $this->deviceInfo = json_decode($response->raw_body);
+	        return $this->deviceInfo;
+    	}
 	}
 
 }
