@@ -37,22 +37,6 @@ function deviceToken($token)
 }
 
 /**
-    * Select a single Blackberry Pin
-    * @param $pin
-    * @return array
-    * @throws \InvalidArgumentException
-    */
-function devicePin($pin)
-{
-    // This could return a non boolean false if there is an error
-    if (preg_match(PIN_FORMAT, $pin) == 0) {
-        throw new InvalidArgumentException("Invalid Blackberry pin");
-    }
-
-    return array("device_pin" => $pin);
-}
-
-/**
     * Select a single Android APID
     * @param $uuid
     * @return array

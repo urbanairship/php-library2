@@ -183,6 +183,6 @@ class TestNotification extends PHPUnit_Framework_TestCase
      */
     public function testInvalidDeviceType()
     {
-        P\deviceTypes("ios", "symbian");
+        P\deviceTypes("ios", "blackberry");
     }
 }
