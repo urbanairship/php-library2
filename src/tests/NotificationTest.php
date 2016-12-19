@@ -1,6 +1,6 @@
 <?php
 /*
-Copyright 2013 Urban Airship and Contributors
+Copyright 2013-2016 Urban Airship and Contributors
 */
 
 require_once __DIR__ . "/../../vendor/autoload.php";
@@ -183,6 +183,6 @@ class TestNotification extends PHPUnit_Framework_TestCase
      */
     public function testInvalidDeviceType()
     {
-        P\deviceTypes("ios", "symbian");
+        P\deviceTypes("ios", "blackberry");
     }
 }

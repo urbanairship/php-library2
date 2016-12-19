@@ -1,6 +1,6 @@
 <?php
 /*
-Copyright 2013 Urban Airship and Contributors
+Copyright 2013-2016 Urban Airship and Contributors
 */
 
 namespace UrbanAirship\Push;
@@ -34,22 +34,6 @@ function deviceToken($token)
     }
 
     return array("device_token" => $token);
-}
-
-/**
-    * Select a single Blackberry Pin
-    * @param $pin
-    * @return array
-    * @throws \InvalidArgumentException
-    */
-function devicePin($pin)
-{
-    // This could return a non boolean false if there is an error
-    if (preg_match(PIN_FORMAT, $pin) == 0) {
-        throw new InvalidArgumentException("Invalid Blackberry pin");
-    }
-
-    return array("device_pin" => $pin);
 }
 
 /**

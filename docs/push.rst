@@ -77,9 +77,6 @@ Simple Selectors
 :function:`UrbanAirship\\Push\\amazonChannel`
    Select a single Amazon channel.
 
-:function:`UrbanAirship\\Push\\devicePin`
-   Select a single BlackBerry PIN.
-
 :function:`UrbanAirship\\Push\\apid`
    Select a single Android APID.
 
@@ -219,18 +216,6 @@ You can override the payload with platform-specific values as well.
    <https://developer.amazon.com/appsandservices/apis/engage/device-messaging/tech-docs/06-sending-a-message>`_ for details on
    ``consolidation_key`` and ``expires_after``.
 
-:function:`UrbanAirship\\Push\\blackberry`
-    BlackBerry specific platform override payload.
-
-   .. code-block:: php
-
-      $push->setNotification(P\notification(
-         null,
-         array("blackberry"=>P\blackberry(
-            "Hello BlackBerry"
-         ))
-      ))
-
 :function:`UrbanAirship\\Push\\wnsPayload`
     WNS specific platform override payload.
 
@@ -245,7 +230,7 @@ wish to target, either with a list of strings:
 
 .. code-block:: php
 
-   $push->setDeviceTypes(P\deviceTypes('ios', 'blackberry'));
+   $push->setDeviceTypes(P\deviceTypes('ios', 'android'));
 
 or with the :constant:`UrbanAirship\\Push\\all` shortcut.
 
@@ -269,6 +254,6 @@ about parameters.
                 0)
         );
 
-Note: Rich Push is not supported on Windows, Windows Phone, or Blackberry, and
+Note: Rich Push is not supported on Windows or Windows Phone and
 requires additional setup for other platforms. See our API and implementation
 docs for more information.

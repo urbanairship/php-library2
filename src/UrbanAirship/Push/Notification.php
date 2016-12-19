@@ -1,6 +1,6 @@
 <?php
 /*
-Copyright 2013 Urban Airship and Contributors
+Copyright 2013-2016 Urban Airship and Contributors
 */
 
 namespace UrbanAirship\Push;
@@ -154,32 +154,6 @@ function amazon($alert=null, $consolidation_key=mull, $expires_after=null,
 }
 
 /**
- * BlackBerry specific platform override payload.
- *
- * Include either alert or both body and content_type.
- *
- * @param $alert string|null Alert text. Shortcut for content_type text/plain.
- * @param $body string|null Body to send to the device.
- * @param $contentType string|null MIME type describing body.
- * @return array
- * @throws InvalidArgumentException
- */
-function blackberry($alert, $body=null, $contentType=null)
-{
-    $payload = array();
-    if (!is_null($alert)) {
-        $payload["alert"] = $alert;
-        return $payload;
-    }
-    if (is_null($body) or is_null($contentType)) {
-        throw new InvalidArgumentException("Either alert or both body and contentType must be set.");
-    }
-    $payload["body"] = $body;
-    $payload["content_type"] = $contentType;
-    return $payload;
-}
-
-/**
  * WNS specific platform override payload.
  *
  * Must include exactly one of alert, toast, tile, or badge.
@@ -249,7 +223,7 @@ function mpnsPayload($alert=null, $toast=null, $tile=null)
  */
 function deviceTypes(/*args*/)
 {
-    static $VALID_DEVICE_TYPES = array("ios", "android", "blackberry", "wns", "mpns", "amazon");
+    static $VALID_DEVICE_TYPES = array("ios", "android", "wns", "mpns", "amazon");
     foreach (func_get_args() as $type) {
         if (!in_array($type, $VALID_DEVICE_TYPES)) {
             throw new InvalidArgumentException("Invalid device type: " . $type);
