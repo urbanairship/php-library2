@@ -1,6 +1,6 @@
 <?php
 /*
-Copyright 2013 Urban Airship and Contributors
+Copyright 2013-2016 Urban Airship and Contributors
 */
 
 namespace UrbanAirship;
@@ -26,8 +26,8 @@ class AirshipException extends \Exception
             $exc->error = $response->raw_body;
         }
         $exc->code = $response->code;
-        $exc->message = sprintf("Airship request failed: %s",
-            $response->raw_body);
+        $exc->message = sprintf("Airship request failed: %s on %s to %s: %s",
+             $response->code, $response->request->method, $response->request->uri, $response->raw_body);
         return $exc;
     }
 }

@@ -3,7 +3,7 @@
 Copyright 2013 Urban Airship and Contributors
 */
 
-namespace UrbanAirship\Devices;
+namespace UrbanAirship\Devices\DeviceListing;
 
 abstract class DeviceList implements \Iterator
 {
@@ -110,7 +110,6 @@ abstract class DeviceList implements \Iterator
     {
         $this->position = 0;
     }
-
 
     /**
      * Takes the current page and retrieves the next
