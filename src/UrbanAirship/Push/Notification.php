@@ -41,6 +41,18 @@ function notification($alert, $overrides=array())
  * for Newsstand iOS applications.
  * @param $extra array: A set of key/value pairs to include in the push payload
  * sent to the device.
+ * @param $expiry int|string: The expiry time for APNS to cease trying to deliver a push.
+ * @param $priority int: Sets the APNS priority of the delivery.
+ * @param $category string: Sets the APNs category for the push.
+ * @param $interactive object: Conforms to the standard interactive object specifications.
+ * @param $mutableContent boolean: When set to true, content may be modified by an extension.
+ * @param $mediaAttachment JSON: Specifies a media attachment to be handled by the UA Media 
+ * Attachment Extension.
+ * @param $title string: Sets the title of the notification.
+ * @param $subtitle string: Displays below the title of the notification.
+ * @param $collapseID string: When there is a newer message that renders an older, related 
+ * message irrelevant to the client app, the new message replaces the older message with the 
+ * same collapse_id.
  * @return array
  * @throws \InvalidArgumentException for invalid values.
  */
@@ -84,11 +96,7 @@ function ios($alert=null, $badge=null, $sound=null, $contentAvailable=false,
             trigger_error("iOS priority must be an integer.",
              E_USER_WARNING);
             die();
-        } elseif ($priority != 5 || $priority != 10) {
-            trigger_error("Must be 5 or 10.",
-             E_USER_WARNING);
-            die();
-        }
+        } 
         $payload["priority"] = $priority;
     }
     if ($category) {
@@ -130,12 +138,16 @@ function ios($alert=null, $badge=null, $sound=null, $contentAvailable=false,
  * @link http://developer.android.com/google/gcm/adv.html GCM Advanced Topics
  * for details on `collapseKey`, `timeToLive`, and `delayWhileIdle`.
  *
- * @param $alert string|null
- * @param $collapseKey
- * @param $timeToLive
- * @param $delayWhileIdle
- * @param $extra array | A set of key/value pairs to include in the push payload
+ * @param $alert string: Android format alert.
+ * @param $collapseKey string
+ * @param $timeToLive int|string: Specifies the expiration time for the message. 
+ * @param $delayWhileIdle boolen
+ * @param $extra array: A set of key/value pairs to include in the push payload
  * sent to the device.
+ * @param $style array: Android/Amazon advanced styles.
+ * @param $title string: Title of the notification.
+ * @param $summary string: Summary of the notification.
+ * @param $sound string: A sound file name included in the application’s resources.
  * @return array
  */
 function android($alert=null, $collapseKey=null, $timeToLive=null,
@@ -190,16 +202,25 @@ function android($alert=null, $collapseKey=null, $timeToLive=null,
  * @link https://docs.urbanairship.com/api/ua.html#amazon Amazon Platform Overrides
  * for details on `consolidation_key` and `expires_after`.
  *
- * @param $alert string|null
- * @param $consolidation_key string|null Similar to GCM’s collapse_key.
- * @param $expires_after int|null an integer value indicating the number of seconds that ADM will retain the message if the device is offline. The valid range is 60 - 2678400 (1 minute to 31 days), inclusive. Can also be an absolute ISO UTC timestamp, in which case the same validation rules apply, with the time period calculated relative to the time of the API call.
- * @param $title string|null a string representing the title of the notification. The default value is the name of the app at the SDK.
- * @param $summary string|null a string representing a summary of the notification.
- * @param $extra array | A set of key/value pairs to include in the push payload
+ * @param $alert string: Amazon format alert.
+ * @param $consolidation_key string: Similar to GCM’s collapse_key.
+ * @param $expires_after int: An integer value indicating the number of seconds that ADM will 
+ * retain the message if the device is offline. The valid range is 60 - 2678400 (1 minute to 
+ * 31 days), inclusive. Can also be an absolute ISO UTC timestamp, in which case the same 
+ * validation rules apply, with the time period calculated relative to the time of the API 
+ * call.
+ * @param $title string: A string representing the title of the notification. The default 
+ * value is the name of the app at the SDK.
+ * @param $summary string: A string representing a summary of the notification.
+ * @param $extra array: A set of key/value pairs to include in the push payload
  * sent to the device.
+ * @param $title string: Title of the notification. 
+ * @param $summary string: Summary of the notification.
+ * @param $style array: Android/Amazon advanced styles.
+ * @param $sound string: A sound file name included in the application’s resources.  
  * @return array
  */
-function amazon($alert=null, $consolidation_key=mull, $expires_after=null, 
+function amazon($alert=null, $consolidation_key=null, $expires_after=null, 
     $title=null, $summary=null, $extra=null, $style=null, $sound=null)
 {
     $payload = array();
