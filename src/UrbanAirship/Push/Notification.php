@@ -45,7 +45,8 @@ function notification($alert, $overrides=array())
  * @throws \InvalidArgumentException for invalid values.
  */
 function ios($alert=null, $badge=null, $sound=null, $contentAvailable=false,
-        $extra=null)
+        $extra=null, $expiry=null, $priority=null, $category=null, $interactive=null, 
+        $mutableContent=false, $mediaAttachment=null, $title=null, $subtitle=null, $collapseId=null)
 {
     $payload = array();
     if ($alert) {
@@ -70,6 +71,55 @@ function ios($alert=null, $badge=null, $sound=null, $contentAvailable=false,
     if ($extra) {
         $payload["extra"] = $extra;
     }
+    if ($expiry) {
+        if (!is_int($expiry) && !is_string($expiry)) {
+            trigger_error("Expiry must either be an integer, or string of a timestamp in ISO UTC format.",
+             E_USER_WARNING);
+            die();
+        }
+        $payload["expiry"] = $expiry;
+    }
+    if ($priority) {
+        if(!is_int($priority)) {
+            trigger_error("iOS priority must be an integer.",
+             E_USER_WARNING);
+            die();
+        } elseif ($priority != 5 || $priority != 10) {
+            trigger_error("Must be 5 or 10.",
+             E_USER_WARNING);
+            die();
+        }
+        $payload["priority"] = $priority;
+    }
+    if ($category) {
+        if (!is_string($category)) {
+            trigger_error("iOS category must be a string.",
+             E_USER_WARNING);
+        }
+        $payload["category"] = $category;
+    }
+    if ($interactive) {
+        $payload["interactive"] = $interactive;
+    }
+    if ($mutableContent) {
+        $payload["mutable_content"] = true;
+    }
+    if ($mediaAttachment) {
+        $payload["media_attachment"] = $mediaAttachment;
+    }
+    if ($title) {
+        if (!is_string($title)) {
+            trigger_error("iOS title must be a string.",
+             E_USER_WARNING);
+        }
+        $payload["title"] = $title;
+    }
+    if ($subtitle) {
+        $payload["subtitle"] = $subtitle;
+    }
+    if ($collapseId) {
+        $payload["collapse_id"] = $collapseId;
+    }
 
     return $payload;
 }
@@ -89,7 +139,8 @@ function ios($alert=null, $badge=null, $sound=null, $contentAvailable=false,
  * @return array
  */
 function android($alert=null, $collapseKey=null, $timeToLive=null,
-    $delayWhileIdle=null, $extra=null)
+    $delayWhileIdle=null, $extra=null, $style=null, $title=null, 
+    $summary=null, $sound=null)
 {
     $payload = array();
     if ($alert) {
@@ -99,6 +150,11 @@ function android($alert=null, $collapseKey=null, $timeToLive=null,
         $payload["collapse_key"] = $collapseKey;
     }
     if ($timeToLive) {
+        if (!is_int($timeToLive) && !is_string($timeToLive)) {
+            trigger_error("Android timeToLive must either be an integer, or string of a timestamp in ISO UTC format.",
+             E_USER_WARNING);
+            die();
+        }
         $payload["time_to_live"] = $timeToLive;
     }
     if ($delayWhileIdle) {
@@ -106,6 +162,22 @@ function android($alert=null, $collapseKey=null, $timeToLive=null,
     }
     if ($extra) {
         $payload["extra"] = $extra;
+    }
+    if ($style) {
+        $payload["style"] = $style;
+    }
+    if ($title) {
+        if (!is_string($title)) {
+            trigger_error("Android title must be a string.",
+             E_USER_WARNING);
+        }
+        $payload["title"] = $title;
+    }
+    if ($summary) {
+        $payload["summary"] = $summary;
+    }
+    if ($sound) {
+        $payload["sound"] = $sound;
     }
 
     return $payload;
@@ -128,26 +200,32 @@ function android($alert=null, $collapseKey=null, $timeToLive=null,
  * @return array
  */
 function amazon($alert=null, $consolidation_key=mull, $expires_after=null, 
-    $title=null, $summary=null, $extra=null)
+    $title=null, $summary=null, $extra=null, $style=null, $sound=null)
 {
     $payload = array();
-    if($alert){
+    if ($alert) {
         $payload["alert"] = $alert;
     }
-    if($consolidation_key){
+    if ($consolidation_key) {
         $payload["consolidation_key"] = $consolidation_key;
     }
-    if($expires_after){
+    if ($expires_after) {
         $payload["expires_after"] = $expires_after;
     }
-    if($extra){
+    if ($extra) {
         $payload["extra"] = $extra;
     }
-    if($title){
+    if ($title) {
         $payload["title"] = $title;
     }
-    if($summary){
+    if ($summary) {
         $payload["summary"] = $summary;
+    }
+    if ($style) {
+        $payload["style"] = $style;
+    }
+    if ($sound) {
+        $payload["sound"] = $sound;
     }
 
     return $payload;

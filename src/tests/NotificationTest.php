@@ -42,9 +42,19 @@ class TestNotification extends PHPUnit_Framework_TestCase
                 "extra" => array(
                     "foo" =>
                         array("bar" => "baz"))));
+
         $this->assertEquals(
             P\ios(null, "auto"),
             array("badge" => "auto"));
+
+        $this->assertEquals(
+            P\ios("Hi", "auto", null, false, null, null, null, null, null, true,
+                array("title" => "mustache twirl"), null, null, null),
+            array(
+                "alert" => "Hi",
+                "badge" => "auto",
+                "mutableContent" => true,
+                "mediaAttachment" => array("title" => "mustache twirl")));
     }
 
     public function testAndroid()
@@ -62,6 +72,14 @@ class TestNotification extends PHPUnit_Framework_TestCase
                 "time_to_live" => 100,
                 "delay_while_idle" => true,
                 "extra" => array("foo" => "bar")));
+
+        $this->assertEquals(
+            P\android("Hi", null, null, null, null, 
+                array("type" => "big_text"), null, null, null),
+            array(
+                "alert" => "Hi",
+                "style" => array("type" => "big_text")));
+
     }
 
     public function testAmazon()
