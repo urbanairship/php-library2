@@ -143,6 +143,7 @@ function ios($alert=null, $badge=null, $sound=null, $contentAvailable=false,
  * @param $alert string: Android format alert.
  * @param $collapseKey string
  * @param $timeToLive int|string: Specifies the expiration time for the message. 
+ * @param $deliveryPriority string: Defaults to normal if not provided. Sets the GCM priority.
  * @param $delayWhileIdle boolen
  * @param $extra array: A set of key/value pairs to include in the push payload
  * sent to the device.
