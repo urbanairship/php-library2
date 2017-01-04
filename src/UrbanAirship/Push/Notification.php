@@ -103,6 +103,7 @@ function ios($alert=null, $badge=null, $sound=null, $contentAvailable=false,
         if (!is_string($category)) {
             trigger_error("iOS category must be a string.",
              E_USER_WARNING);
+            die();
         }
         $payload["category"] = $category;
     }
@@ -119,6 +120,7 @@ function ios($alert=null, $badge=null, $sound=null, $contentAvailable=false,
         if (!is_string($title)) {
             trigger_error("iOS title must be a string.",
              E_USER_WARNING);
+            die();
         }
         $payload["title"] = $title;
     }
@@ -148,11 +150,22 @@ function ios($alert=null, $badge=null, $sound=null, $contentAvailable=false,
  * @param $title string: Title of the notification.
  * @param $summary string: Summary of the notification.
  * @param $sound string: A sound file name included in the application’s resources.
+ * @param $priority int: In the range from -2 to 2, inclusive. Used to help determine 
+ * notification sort order.
+ * @param $category string: Optional string from the following list: "alarm", "call", "email", 
+ * "err", "event", "msg", "promo", "recommendation", "service", "social", "status", "sys", and 
+ * "transport". It is used to help determine notification sort order.
+ * @param $visibility int: Optional integer in the range from -1 to 1 inclusive.
+ * @param $publicNotification object: A notification to show on the lock screen instead of the 
+ * redacted one.
+ * @param $publicOnly boolean: Set this to true if you do not want this notification to bridge * to other devices (wearables).
+ * @param $wearable Object
  * @return array
  */
 function android($alert=null, $collapseKey=null, $timeToLive=null,
-    $delayWhileIdle=null, $extra=null, $style=null, $title=null, 
-    $summary=null, $sound=null)
+    $deliveryPriority=null, $delayWhileIdle=null, $extra=null, $style=null, $title=null, 
+    $summary=null, $sound=null, $priority=null, $category=null, 
+    $visibility=null, $publicNotification=null, $localOnly=false, $wearable=null)
 {
     $payload = array();
     if ($alert) {
@@ -169,6 +182,9 @@ function android($alert=null, $collapseKey=null, $timeToLive=null,
         }
         $payload["time_to_live"] = $timeToLive;
     }
+    if ($deliveryPriority) {
+        $payload["delivery_priority"] = $deliveryPriority;
+    }
     if ($delayWhileIdle) {
         $payload["delay_while_idle"] = $delayWhileIdle;
     }
@@ -182,6 +198,7 @@ function android($alert=null, $collapseKey=null, $timeToLive=null,
         if (!is_string($title)) {
             trigger_error("Android title must be a string.",
              E_USER_WARNING);
+            die();
         }
         $payload["title"] = $title;
     }
@@ -190,6 +207,40 @@ function android($alert=null, $collapseKey=null, $timeToLive=null,
     }
     if ($sound) {
         $payload["sound"] = $sound;
+    }
+    if ($priority) {
+        $payload["priority"] = $priority;
+    }
+    if ($category) {
+        $validAndroidCategories = array("alarm", "call", "email", "err", "event", "msg", "promo", "recommendation", "service", "social", "status", "sys", "transport");
+        if (!in_array($category, $validAndroidCategories)) {
+            trigger_error("Category must be set to one of ".join(", ", $validAndroidCategories).".",
+             E_USER_WARNING);
+            die();
+        }
+        $payload["category"] = $category;
+    }
+    if ($visibility) {
+        $payload["visibility"] = $visibility;
+    }
+    if ($publicNotification) {
+        $payload["public_notification"] = $publicNotification;
+    }
+    if ($localOnly) {
+        if (!is_bool($localOnly)) {
+            trigger_error("Android local_only must be a boolean value.",
+             E_USER_WARNING);
+            die();
+        }
+        $payload["local_only"] = $localOnly;
+    }
+    if ($wearable) {
+        if (!is_array($wearable)) {
+             trigger_error("Android wearable must be an array.",
+              E_USER_WARNING);
+             die();
+        }
+        $payload["wearable"] = $wearable;
     }
 
     return $payload;

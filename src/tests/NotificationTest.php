@@ -82,17 +82,16 @@ class TestNotification extends PHPUnit_Framework_TestCase
     public function testAndroid()
     {
         $this->assertEquals(
-            P\android("Hello", null, null, null, array("foo" => "bar")),
+            P\android("Hello", null, null, null, null, array("foo" => "bar")),
             array(
                 "alert" => "Hello",
                 "extra" => array("foo" => "bar")));
 
         $this->assertEquals(
-            P\android(null, "collapseKey", 100, true, array("foo" => "bar")),
+            P\android(null, "collapseKey", 100, null, false, array("foo" => "bar")),
             array(
                 "collapse_key" => "collapseKey",
                 "time_to_live" => 100,
-                "delay_while_idle" => true,
                 "extra" => array("foo" => "bar")));
 
         $this->assertEquals(
@@ -101,12 +100,19 @@ class TestNotification extends PHPUnit_Framework_TestCase
               null,
               null,
               null,
+              false,
               array("articleid" => "AB1234"),
               array("type" => "big_text", "big_text" => "Holy moly, this is big!",
                "title" => "Holy bigness!", "summary" => "hi"),
               "hellya", 
               null,
-              "default"
+              "default",
+              0,
+              "alarm",
+              null,
+              null,
+              false,
+              array("interactive" => array("type" => "ua_yes_no_foreground", "button_actions" => array("yes" => array("add_tag" => "cake"), "no" => array("add_tag" => "nope"))))
            ),
             array(
                 "alert" => "Hello Android",
@@ -114,7 +120,10 @@ class TestNotification extends PHPUnit_Framework_TestCase
                 "style" => array("type" => "big_text", "big_text" => "Holy moly, this is big!",
                "title" => "Holy bigness!", "summary" => "hi"),
                 "title" => "hellya",
-                "sound" => "default"));
+                "sound" => "default",
+                "category" => "alarm",
+                "wearable" => array("interactive" => array("type" => "ua_yes_no_foreground", "button_actions" => array("yes" => array("add_tag" => "cake"), "no" => array("add_tag" => "nope"))))
+                ));
 
     }
 
