@@ -42,26 +42,89 @@ class TestNotification extends PHPUnit_Framework_TestCase
                 "extra" => array(
                     "foo" =>
                         array("bar" => "baz"))));
+
         $this->assertEquals(
             P\ios(null, "auto"),
             array("badge" => "auto"));
+
+        $this->assertEquals(
+            P\ios(
+              "Hello iOS",
+              "+1",
+              "default",
+              false,
+              array("articleid" => "AB1234"),
+              360,
+              10,
+              "news",
+              array("type" => "ua_yes_no_foreground", "button_actions" => array(
+                "yes" => array("add_tag" => "cake"), "no" => array("add_tag" => "nope"))),
+              true,
+              array("url" => "https://media.giphy.com/media/JYsWwF82EGnpC/giphy.gif"),
+              "hellya"
+           ),
+            array(
+                "alert" => "Hello iOS",
+                "badge" => "+1",
+                "sound" => "default",
+                "extra" => array("articleid" => "AB1234"),
+                "expiry" => 360,
+                "priority" => 10,
+                "category" => "news",
+                "interactive" => array("type" => "ua_yes_no_foreground", "button_actions" => array("yes" => array("add_tag" => "cake"), "no" => array("add_tag" => "nope"))),
+                "mutable_content" => true,
+                "media_attachment" => array("url" => "https://media.giphy.com/media/JYsWwF82EGnpC/giphy.gif"),
+                "title" => "hellya"
+            ));
+
     }
 
     public function testAndroid()
     {
         $this->assertEquals(
-            P\android("Hello", null, null, null, array("foo" => "bar")),
+            P\android("Hello", null, null, null, null, array("foo" => "bar")),
             array(
                 "alert" => "Hello",
                 "extra" => array("foo" => "bar")));
 
         $this->assertEquals(
-            P\android(null, "collapseKey", 100, true, array("foo" => "bar")),
+            P\android(null, "collapseKey", 100, null, false, array("foo" => "bar")),
             array(
                 "collapse_key" => "collapseKey",
                 "time_to_live" => 100,
-                "delay_while_idle" => true,
                 "extra" => array("foo" => "bar")));
+
+        $this->assertEquals(
+            P\android(
+              "Hello Android",
+              null,
+              null,
+              null,
+              false,
+              array("articleid" => "AB1234"),
+              array("type" => "big_text", "big_text" => "Holy moly, this is big!",
+               "title" => "Holy bigness!", "summary" => "hi"),
+              "hellya", 
+              null,
+              "default",
+              0,
+              "alarm",
+              null,
+              null,
+              false,
+              array("interactive" => array("type" => "ua_yes_no_foreground", "button_actions" => array("yes" => array("add_tag" => "cake"), "no" => array("add_tag" => "nope"))))
+           ),
+            array(
+                "alert" => "Hello Android",
+                "extra" => array("articleid" => "AB1234"),
+                "style" => array("type" => "big_text", "big_text" => "Holy moly, this is big!",
+               "title" => "Holy bigness!", "summary" => "hi"),
+                "title" => "hellya",
+                "sound" => "default",
+                "category" => "alarm",
+                "wearable" => array("interactive" => array("type" => "ua_yes_no_foreground", "button_actions" => array("yes" => array("add_tag" => "cake"), "no" => array("add_tag" => "nope"))))
+                ));
+
     }
 
     public function testAmazon()
@@ -73,14 +136,19 @@ class TestNotification extends PHPUnit_Framework_TestCase
                 "extra" => array("foo" => "bar")));
 
         $this->assertEquals(
-            P\amazon("Hello", "consolidationKey", 100, "NotificationTitle", "NotificationSummary", array("foo" => "bar")),
+            P\amazon("Hello", "consolidationKey", 100, "NotificationTitle", "NotificationSummary", array("foo" => "bar"), array("type" => "big_text", "big_text" => "Holy moly, this is big!",
+               "title" => "Holy bigness!", "summary" => "hi"), "default"),
             array(
                 "alert" => "Hello",
                 "consolidation_key" => "consolidationKey",
                 "expires_after" => 100,
                 "title" => "NotificationTitle",
                 "summary" => "NotificationSummary",
-                "extra" => array("foo" => "bar")));
+                "extra" => array("foo" => "bar"),
+                "style" => array("type" => "big_text", "big_text" => "Holy moly, this is big!",
+               "title" => "Holy bigness!", "summary" => "hi"),
+                "sound" => "default"));
+
     }
 
     public function testWns()
