@@ -9,6 +9,7 @@ use Httpful\Httpful;
 use Httpful\Request;
 use UrbanAirship\About;
 use UrbanAirship\Devices\DeviceTokenList;
+use UrbanAirship\Devices\FeedbackDeviceTokenList;
 use UrbanAirship\Devices\APIDList;
 use UrbanAirship\Push\PushRequest;
 use UrbanAirship\Push\ScheduledPushRequest;
@@ -51,6 +52,11 @@ class Airship
     {
         return new APIDList($this, $limit);
     }
+
+	public function listFeedbackDeviceTokens($since=null)
+	{
+		return new FeedbackDeviceTokenList($this, $since);
+	}
 
     /**
      * Return a PushRequest that can be used to send a push
