@@ -187,6 +187,7 @@ You can override the payload with platform-specific values as well.
             null,
             null,
             null,
+            false,
             array("articleid" => "AB1234")
          ))
       ))
