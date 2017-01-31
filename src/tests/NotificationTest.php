@@ -58,10 +58,10 @@ class TestNotification extends PHPUnit_Framework_TestCase
               10,
               "news",
               array("type" => "ua_yes_no_foreground", "button_actions" => array(
-                "yes" => array("add_tag" => "cake"), "no" => array("add_tag" => "nope"))),
+                "yes" => array("add_tag" => "tapped_yes"), "no" => array("add_tag" => "tapped_no"))),
               true,
               array("url" => "https://media.giphy.com/media/JYsWwF82EGnpC/giphy.gif"),
-              "hellya"
+              "Stuff"
            ),
             array(
                 "alert" => "Hello iOS",
@@ -71,10 +71,10 @@ class TestNotification extends PHPUnit_Framework_TestCase
                 "expiry" => 360,
                 "priority" => 10,
                 "category" => "news",
-                "interactive" => array("type" => "ua_yes_no_foreground", "button_actions" => array("yes" => array("add_tag" => "cake"), "no" => array("add_tag" => "nope"))),
+                "interactive" => array("type" => "ua_yes_no_foreground", "button_actions" => array("yes" => array("add_tag" => "tapped_yes"), "no" => array("add_tag" => "tapped_no"))),
                 "mutable_content" => true,
                 "media_attachment" => array("url" => "https://media.giphy.com/media/JYsWwF82EGnpC/giphy.gif"),
-                "title" => "hellya"
+                "title" => "Stuff"
             ));
 
     }
@@ -104,7 +104,7 @@ class TestNotification extends PHPUnit_Framework_TestCase
               array("articleid" => "AB1234"),
               array("type" => "big_text", "big_text" => "Holy moly, this is big!",
                "title" => "Holy bigness!", "summary" => "hi"),
-              "hellya", 
+              "Stuff", 
               null,
               "default",
               0,
@@ -112,17 +112,17 @@ class TestNotification extends PHPUnit_Framework_TestCase
               null,
               null,
               false,
-              array("interactive" => array("type" => "ua_yes_no_foreground", "button_actions" => array("yes" => array("add_tag" => "cake"), "no" => array("add_tag" => "nope"))))
+              array("interactive" => array("type" => "ua_yes_no_foreground", "button_actions" => array("yes" => array("add_tag" => "tapped_yes"), "no" => array("add_tag" => "tapped_no"))))
            ),
             array(
                 "alert" => "Hello Android",
                 "extra" => array("articleid" => "AB1234"),
                 "style" => array("type" => "big_text", "big_text" => "Holy moly, this is big!",
                "title" => "Holy bigness!", "summary" => "hi"),
-                "title" => "hellya",
+                "title" => "Stuff",
                 "sound" => "default",
                 "category" => "alarm",
-                "wearable" => array("interactive" => array("type" => "ua_yes_no_foreground", "button_actions" => array("yes" => array("add_tag" => "cake"), "no" => array("add_tag" => "nope"))))
+                "wearable" => array("interactive" => array("type" => "ua_yes_no_foreground", "button_actions" => array("yes" => array("add_tag" => "tapped_yes"), "no" => array("add_tag" => "tapped_no"))))
                 ));
 
     }
@@ -137,7 +137,7 @@ class TestNotification extends PHPUnit_Framework_TestCase
 
         $this->assertEquals(
             P\amazon("Hello", "consolidationKey", 100, "NotificationTitle", "NotificationSummary", array("foo" => "bar"), array("type" => "big_text", "big_text" => "Holy moly, this is big!",
-               "title" => "Holy bigness!", "summary" => "hi"), "default"),
+               "title" => "Holy bigness!", "summary" => "Big text"), "default"),
             array(
                 "alert" => "Hello",
                 "consolidation_key" => "consolidationKey",
@@ -146,7 +146,7 @@ class TestNotification extends PHPUnit_Framework_TestCase
                 "summary" => "NotificationSummary",
                 "extra" => array("foo" => "bar"),
                 "style" => array("type" => "big_text", "big_text" => "Holy moly, this is big!",
-               "title" => "Holy bigness!", "summary" => "hi"),
+               "title" => "Holy bigness!", "summary" => "Big text"),
                 "sound" => "default"));
 
     }
