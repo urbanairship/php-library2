@@ -72,6 +72,14 @@ Contents:
    :maxdepth: 2
 
    push.rst
+   devices.rst
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
 
 
 .. _Urban Airship API: http://docs.urbanairship.com/api/overview.html
