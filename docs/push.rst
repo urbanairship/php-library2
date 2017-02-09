@@ -239,6 +239,23 @@ or with the :constant:`UrbanAirship\\Push\\all` shortcut.
 
    $push->setDeviceTypes(P\all);
 
+In-App Message
+--------------
+
+You can send an in-app message alone or with a push notification by using setInAppMessage. See :function:`UrbanAirship\\Push\\inAppMessage` for more information about parameters.
+
+.. code-block:: php
+
+   $push->setInAppMessage(P\inAppMessage("This is the alert text!",
+                "banner",
+                0,
+                array("position"=>"top"),
+                null,
+                array("type" => "ua_yes_no_foreground", "button_actions" => array(
+                "yes" => array("add_tag" => "tapped_yes"), "no" => array("add_tag" => "tapped_no")))
+            ))
+        );
+
 Message Center
 --------------
 

@@ -3,5 +3,5 @@
 namespace UrbanAirship;
 
 class About {
-	const LIBRARY_VERSION = '0.2.0';
+	const LIBRARY_VERSION = '0.3.0';
 }

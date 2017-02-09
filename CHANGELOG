@@ -5,6 +5,7 @@
 - Updated platform overrides for iOS, Android and Amazon
 - Added support for device lookup
 - Added support for device listing
+- Added support for in-app messages
 - Fixed bug where list_icon sent empty strings if value was not provided
 
 --------------------
