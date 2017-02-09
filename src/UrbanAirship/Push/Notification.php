@@ -446,13 +446,12 @@ function message($title, $body, $content_type=null, $content_encoding=null,
  * In-App Message object
  *
  * @param alert String
- * @param displayType String: Specifies the display type. Currently, the only valid * option is "banner".
- * @param expiry int|timestamp: The expiry time for a rich app page to delete a message from
- * the user’s inbox. Can be an integer encoding number of seconds from now, or an absolute
- * timestamp in ISO UTC format. An integer value of 0 is equivalent to no expiry set.
+ * @param displayType String: Specifies the display type. Currently, the only valid 
+ * option is "banner".
+ * @param expiry int|timestamp: Specifies the time when the in-app message will expire.       * Defaults to 90 days from time of API request. Integer values will be interpreted as seconds * from now (time of API request).
  * @param display Object: Specifies the appearance of the in-app message.
- * @param actions Object: Specifies actions which occur when the user taps on the banner
- * notification
+ * @param actions Object: Specifies actions which occur when the user taps on the in-app 
+ * message
  * @param interactive Object: Specifies interactive category and associated actions.
  * @param extra Object
  * @return array
