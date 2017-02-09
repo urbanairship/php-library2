@@ -246,6 +246,27 @@ class TestNotification extends PHPUnit_Framework_TestCase
         );
     }
 
+    public function testInAppMessage()
+    {
+      $this->assertEquals(
+            P\inAppMessage("This is the alert text!",
+                "banner",
+                360,
+                array("position"=>"top"),
+                null,
+                array("type" => "ua_yes_no_foreground", "button_actions" => array(
+                "yes" => array("add_tag" => "tapped_yes"), "no" => array("add_tag" => "tapped_no"))),
+                null
+            ),
+            array('alert' => "This is the alert text!",
+                'display_type' => "banner",
+                'expiry' => 360,
+                'display' => array("position"=>"top"),
+                'interactive' => array("type" => "ua_yes_no_foreground", "button_actions" => array("yes" => array("add_tag" => "tapped_yes"), "no" => array("add_tag" => "tapped_no")))
+            )
+        );
+    }
+
     /**
      * @expectedException        InvalidArgumentException
      */
