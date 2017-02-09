@@ -138,7 +138,7 @@ Location Selectors
    such as from 2012-01-01 12:00 to 2012-01-01 12:00
 
 Notification Payload
--------------------
+--------------------
 
 The notification payload determines what message and data is sent to a device.
 At its simplest, it consists of a single string-valued attribute, "alert",
@@ -239,10 +239,27 @@ or with the :constant:`UrbanAirship\\Push\\all` shortcut.
 
    $push->setDeviceTypes(P\all);
 
-Rich Push
----------
+In-App Message
+--------------
 
-If you'd like to send a rich push along with your notification (or alone), use
+You can send an in-app message alone or with a push notification by using setInAppMessage. See :function:`UrbanAirship\\Push\\inAppMessage` for more information about parameters.
+
+.. code-block:: php
+
+   $push->setInAppMessage(P\inAppMessage("This is the alert text!",
+                "banner",
+                0,
+                array("position"=>"top"),
+                null,
+                array("type" => "ua_yes_no_foreground", "button_actions" => array(
+                "yes" => array("add_tag" => "tapped_yes"), "no" => array("add_tag" => "tapped_no")))
+            ))
+        );
+
+Message Center
+--------------
+
+If you'd like to send a Message Center message along with your notification (or alone), use
 setMessage. See :function:`UrbanAirship\\Push\\message` for more information
 about parameters.
 
@@ -255,6 +272,6 @@ about parameters.
                 0)
         );
 
-Note: Rich Push is not supported on Windows or Windows Phone and
+Note: Message Center is not supported on Windows or Windows Phone and
 requires additional setup for other platforms. See our API and implementation
 docs for more information.
