@@ -44,7 +44,7 @@ function notification($alert, $overrides=array())
  * @param $expiry int|string: The expiry time for APNS to cease trying to deliver a push.
  * @param $priority int: Sets the APNS priority of the delivery.
  * @param $category string: Sets the APNs category for the push.
- * @param $interactive object: Conforms to the standard interactive object specifications.
+ * @param $interactive Object: Conforms to the standard interactive object specifications.
  * @param $mutableContent boolean: When set to true, content may be modified by an extension.
  * @param $mediaAttachment JSON: Specifies a media attachment to be handled by the UA Media 
  * Attachment Extension.
@@ -157,7 +157,7 @@ function ios($alert=null, $badge=null, $sound=null, $contentAvailable=false,
  * "err", "event", "msg", "promo", "recommendation", "service", "social", "status", "sys", and 
  * "transport". It is used to help determine notification sort order.
  * @param $visibility int: Optional integer in the range from -1 to 1 inclusive.
- * @param $publicNotification object: A notification to show on the lock screen instead of the 
+ * @param $publicNotification Object: A notification to show on the lock screen instead of the 
  * redacted one.
  * @param $publicOnly boolean: Set this to true if you do not want this notification to bridge * to other devices (wearables).
  * @param $wearable Object
@@ -384,7 +384,7 @@ function deviceTypes(/*args*/)
 }
 
 /**
- * Rich Push Object
+ * Message Center Object
  *
  * @param $title string
  * @param $body string
@@ -437,6 +437,58 @@ function message($title, $body, $content_type=null, $content_encoding=null,
              die();
         }
         $payload["icons"] = $icons;
+    }
+
+    return $payload;
+}
+
+/**
+ * In-App Message object
+ *
+ * @param alert String
+ * @param displayType String: Specifies the display type. Currently, the only valid * option is "banner".
+ * @param expiry int|timestamp: The expiry time for a rich app page to delete a message from
+ * the user’s inbox. Can be an integer encoding number of seconds from now, or an absolute
+ * timestamp in ISO UTC format. An integer value of 0 is equivalent to no expiry set.
+ * @param display Object: Specifies the appearance of the in-app message.
+ * @param actions Object: Specifies actions which occur when the user taps on the banner
+ * notification
+ * @param interactive Object: Specifies interactive category and associated actions.
+ * @param extra Object
+ * @return array
+ */
+
+function inAppMessage($alert, $displayType, $expiry=null, $display=null, $actions=null,
+ $interactive=null, $extra=null)
+{
+    // Display Type can only be set to 'banner' at this time
+    $displayType = "banner";
+
+    if ($alert) {
+        $payload["alert"] = $alert;
+    }
+    if ($displayType) {
+        $payload["display_type"] = $displayType;
+    }
+    if ($expiry) {
+        if (!is_int($expiry) && !is_string($expiry)) {
+            trigger_error("Expiry must either be an integer, or string of a timestamp in ISO UTC format.",
+             E_USER_WARNING);
+            die();
+        }
+        $payload["expiry"] = $expiry;
+    }
+    if ($display) {
+        $payload["display"] = $display;
+    }
+    if ($actions) {
+        $payload["actions"] = $actions;
+    }
+    if ($interactive) {
+        $payload["interactive"] = $interactive;
+    }
+    if ($extra) {
+        $payload["extra"] = $extra;
     }
 
     return $payload;
