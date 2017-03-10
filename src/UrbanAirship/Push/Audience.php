@@ -1,6 +1,6 @@
 <?php
 /*
-Copyright 2013-2016 Urban Airship and Contributors
+Copyright 2013-2017 Urban Airship and Contributors
 */
 
 namespace UrbanAirship\Push;
@@ -111,22 +111,6 @@ function wns($uuid)
     }
 
     return array("wns" => $uuid);
-}
-
-/**
-    * Select a single Windows Phone 8 APID
-    * @param $uuid
-    * @return array
-    * @throws \InvalidArgumentException
-    */
-function mpns($uuid)
-{
-    // This could return a non boolean false if there is an error
-    if (preg_match(UUID_FORMAT, $uuid) == 0) {
-        throw new InvalidArgumentException("Invalid MPNS");
-    }
-
-    return array("mpns" => $uuid);
 }
 
 /**

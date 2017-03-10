@@ -1,6 +1,6 @@
 <?php
 /*
-Copyright 2013-2016 Urban Airship and Contributors
+Copyright 2013-2017 Urban Airship and Contributors
 */
 
 namespace UrbanAirship\Push;
@@ -338,34 +338,6 @@ function wnsPayload($alert=null, $toast=null, $tile=null, $badge=null)
 }
 
 /**
- * MPNS specific platform override payload.
- *
- * Must include exactly one of alert, toast, or tile.
- * @param $alert
- * @param $toast
- * @param $tile
- * @return array
- * @throws InvalidArgumentException
- */
-function mpnsPayload($alert=null, $toast=null, $tile=null)
-{
-    $payload = array();
-    if ($alert) {
-        $payload["alert"] = $alert;
-    }
-    if ($toast) {
-        $payload["toast"] = $toast;
-    }
-    if ($tile) {
-        $payload["tile"] = $tile;
-    }
-    if (count($payload) == 0) {
-        throw new InvalidArgumentException("mpns cannot be empty");
-    }
-    return $payload;
-}
-
-/**
  * Device Type specifier.
  *
  * @param args a list of strings as arguments, for each platform.
@@ -374,7 +346,7 @@ function mpnsPayload($alert=null, $toast=null, $tile=null)
  */
 function deviceTypes(/*args*/)
 {
-    static $VALID_DEVICE_TYPES = array("ios", "android", "wns", "mpns", "amazon");
+    static $VALID_DEVICE_TYPES = array("ios", "android", "wns", "amazon");
     foreach (func_get_args() as $type) {
         if (!in_array($type, $VALID_DEVICE_TYPES)) {
             throw new InvalidArgumentException("Invalid device type: " . $type);

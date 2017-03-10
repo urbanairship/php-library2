@@ -83,9 +83,6 @@ Simple Selectors
 :function:`UrbanAirship\\Push\\wns`
    Select a single Windows 8 APID.
 
-:function:`UrbanAirship\\Push\\mpns`
-   Select a single Windows Phone 8 APID.
-
 :function:`UrbanAirship\\Push\\tag`
    Select a single tag.
 
@@ -219,9 +216,6 @@ You can override the payload with platform-specific values as well.
 
 :function:`UrbanAirship\\Push\\wnsPayload`
     WNS specific platform override payload.
-
-:function:`UrbanAirship\\Push\\mpnsPayload`
-    MPNS specific platform override payload.
 
 Device Types
 ------------
