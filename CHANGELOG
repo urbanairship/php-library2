@@ -1,4 +1,9 @@
 --------------------
+1.0.0
+--------------------
+- Removed support for MPNS
+
+--------------------
 0.3.0
 --------------------
 - Removed support for Blackberry
