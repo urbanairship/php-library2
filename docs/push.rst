@@ -81,7 +81,7 @@ Simple Selectors
    Select a single Android APID.
 
 :function:`UrbanAirship\\Push\\wns`
-   Select a single Windows 8 APID.
+   Select a single Windows APID.
 
 :function:`UrbanAirship\\Push\\tag`
    Select a single tag.
