@@ -2,7 +2,7 @@ Urban Airship PHP Library (Beta)
 ================================
 PHP library for use with the Urban Airship API for sending push notifications. Supports iOS, Android, and Windows.
 
-Urban Airship is no longer actively developing this library but will respond to submitted issues and pull requests. It is provided as sample code, and Urban Airship makes no guarantees as to completeness or regularity of updates. However, we do welcome pull requests with a signed [contribution agreement](http://urbanairship.com/legal/contribution-agreement/).
+Urban Airship is no longer actively developing this library but will respond to submitted issues and pull requests. It is provided as sample code, and Urban Airship makes no guarantees as to completeness or regularity of updates. However, we do welcome pull requests with a signed [Contributor License Agreement](https://docs.google.com/forms/d/e/1FAIpQLScErfiz-fXSPpVZ9r8Di2Tr2xDFxt5MgzUel0__9vqUgvko7Q/viewform).
 
 Requirements
 ------------
