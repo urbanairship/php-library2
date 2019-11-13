@@ -15,7 +15,7 @@ const UUID_FORMAT =
 /**
     * Select all, to do a broadcast.
     *
-    * Used in both `audience` and `deviceTypes`.
+    * Used in `audience`. Previously also used in `deviceTypes` (now deprecated for that).
  */
 CONST all = "all";
 
