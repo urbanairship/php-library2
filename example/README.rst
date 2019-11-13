@@ -1,7 +1,7 @@
 PHP Script Example
 ==================
 
-This example is a simple PHP script using the Urban Airship PHP library. It has
+This example is a simple PHP script using the Airship PHP library. It has
 an example composer.json that fetches the library from Packagist.
 
 Setup
