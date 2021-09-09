@@ -22,7 +22,7 @@
 
     },
     "require":{
-        "monolog/monolog":"1.*",
+        "monolog/monolog":">=1.0",
         "nategood/httpful":">=0.1.2"
     },
     "require-dev": {
