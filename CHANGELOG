@@ -1,4 +1,15 @@
 --------------------
+0.4.1
+--------------------
+- Monolog versions greater than 1 are now allowed
+
+--------------------
+0.4.0
+--------------------
+- Removed support for MPNS
+- Updated documentation
+
+--------------------
 0.3.0
 --------------------
 - Removed support for Blackberry

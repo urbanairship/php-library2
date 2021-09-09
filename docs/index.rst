@@ -1,10 +1,13 @@
-Urban Airship PHP Library
-=========================
+Airship PHP Library
+===================
 
-This library is a wrapper for the `Urban Airship API`_ for
-PHP.
+This library is a PHP wrapper for the `Airship API`_.
 
-Urban Airship is no longer actively developing this library but will respond to submitted issues and pull requests. It is provided as sample code, and Urban Airship makes no guarantees as to completeness or regularity of updates. However, we do welcome pull requests with a signed `contribution agreement <http://urbanairship.com/legal/contribution-agreement>`__.
+Airship is no longer actively developing this library, but will respond to
+feature requests, issues, and pull requests that are submitted via
+https://support.airship.com. This library is provided as sample code, and
+Airship makes no guarantees as to completeness or regularity of updates.
+However, we do welcome pull requests with a signed `contribution agreement <https://docs.google.com/forms/d/e/1FAIpQLScErfiz-fXSPpVZ9r8Di2Tr2xDFxt5MgzUel0__9vqUgvko7Q/viewform>`__.
 
 Goals
 -----
@@ -32,9 +35,9 @@ Quick example
    use UrbanAirship\Push as P;
 
    $response = $airship->push()
-       ->setAudience(P\deviceToken("ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"))
-       ->setNotification(P\notification("Hello from php!"))
-       ->setDeviceTypes(P\all)
+       ->setAudience(P\iosChannel("Insert your iOS channel here!"))
+       ->setNotification(P\notification("Hello from PHP"))
+       ->setDeviceTypes(P\deviceTypes("ios"))
        ->send();
 
    print "Push sent!. Push IDs:" . $response.push_ids;
@@ -82,6 +85,6 @@ Indices and tables
 * :ref:`search`
 
 
-.. _Urban Airship API: http://docs.urbanairship.com/api/overview.html
+.. _Airship API: https://docs.airship.com/api/ua/
 .. _PHP-FIG Standards: http://www.php-fig.org/
 .. _Monolog: https://github.com/Seldaek/monolog

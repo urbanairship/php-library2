@@ -1,6 +1,6 @@
 <?php
 /*
-Copyright 2013-2016 Urban Airship and Contributors
+Copyright 2013-2017 Urban Airship and Contributors
 */
 
 require_once __DIR__ . "/../../vendor/autoload.php";
@@ -168,18 +168,6 @@ class TestNotification extends PHPUnit_Framework_TestCase
         $this->assertEquals(
             P\wnsPayload(null, null, null, "Badge"),
             array("badge" => "Badge"));
-    }
-
-    public function testMpns(){
-        $this->assertEquals(
-            P\mpnsPayload("Alert", "Toast", "Tile"),
-            array('alert'=>"Alert",
-                'toast'=>"Toast",
-                'tile'=>"Tile"));
-
-        $this->assertEquals(
-            P\mpnsPayload("Alert", null, null),
-            array('alert'=>"Alert"));
     }
 
     /**

@@ -10,8 +10,7 @@ notification, you:
 #. Specify device types.
 #. Deliver the notification.
 
-This example performs a broadcast with the same alert to all recipients and
-device types:
+This example performs a broadcast with the same alert to all recipients:
 
 .. code-block:: php
 
@@ -23,7 +22,7 @@ device types:
    $response = $airship->push()
        ->setAudience(P\all)
        ->setNotification(P\notification("Hello, World!"))
-       ->setDeviceTypes(P\all)
+       ->setDeviceTypes(P\deviceTypes("ios", "android"))
        ->send();
 
 These selector functions are all in the :namespace:`Urbanairship\\Push`
@@ -39,15 +38,14 @@ Audience Selectors
 An audience should specify one or more devices. An audience can be a device,
 such as a **Channel**; a tag, named user, or segment; a location;
 or a combination. Audience selectors are combined with ``and_``, ``or_``, and
-``not_``. All selectors are available in the :namespace:`UrbanAirship\\Push` namespace.
+``not_``. All selectors are available in the :namespace:`UrbanAirship\\Push`
+namespace.
 
 Simple Selectors
 ++++++++++++++++
 
 :constant:`UrbanAirship\\Push\\all`
-   Select all, to do a broadcast.
-
-   Used in both ``audience`` and ``deviceTypes``.
+   Select all to do a broadcast to all devices.
 
    .. code-block:: php
 
@@ -81,10 +79,7 @@ Simple Selectors
    Select a single Android APID.
 
 :function:`UrbanAirship\\Push\\wns`
-   Select a single Windows 8 APID.
-
-:function:`UrbanAirship\\Push\\mpns`
-   Select a single Windows Phone 8 APID.
+   Select a single Windows APID.
 
 :function:`UrbanAirship\\Push\\tag`
    Select a single tag.
@@ -220,29 +215,22 @@ You can override the payload with platform-specific values as well.
 :function:`UrbanAirship\\Push\\wnsPayload`
     WNS specific platform override payload.
 
-:function:`UrbanAirship\\Push\\mpnsPayload`
-    MPNS specific platform override payload.
-
 Device Types
 ------------
 
 In addition to specifying the audience, you must specify the device types you
-wish to target, either with a list of strings:
+wish to target with a list of strings:
 
 .. code-block:: php
 
-   $push->setDeviceTypes(P\deviceTypes('ios', 'android'));
-
-or with the :constant:`UrbanAirship\\Push\\all` shortcut.
-
-.. code-block:: php
-
-   $push->setDeviceTypes(P\all);
+   $push->setDeviceTypes(P\deviceTypes("ios", "android"));
 
 In-App Message
 --------------
 
-You can send an in-app message alone or with a push notification by using setInAppMessage. See :function:`UrbanAirship\\Push\\inAppMessage` for more information about parameters.
+You can send an in-app message alone or with a push notification by using
+setInAppMessage. See :function:`UrbanAirship\\Push\\inAppMessage` for more
+information about parameters.
 
 .. code-block:: php
 
@@ -259,8 +247,8 @@ You can send an in-app message alone or with a push notification by using setInA
 Message Center
 --------------
 
-If you'd like to send a Message Center message along with your notification (or alone), use
-setMessage. See :function:`UrbanAirship\\Push\\message` for more information
+If you'd like to send a Message Center message along with your notification (or
+alone), use setMessage. See :function:`UrbanAirship\\Push\\message` for more information
 about parameters.
 
 .. code-block:: php
@@ -272,6 +260,5 @@ about parameters.
                 0)
         );
 
-Note: Message Center is not supported on Windows or Windows Phone and
-requires additional setup for other platforms. See our API and implementation
-docs for more information.
+Note: Message Center is not supported all platforms. See our API and
+implementation docs for more information.

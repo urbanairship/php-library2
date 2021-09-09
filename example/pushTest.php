@@ -12,7 +12,7 @@ UALog::setLogHandlers(array(new StreamHandler("php://stdout", Logger::INFO)));
 $airship = new Airship("key", "secret");
 
 $response = $airship->push()
-    ->setAudience(P\iosChannel("<iOS Channel>"))
+    ->setAudience(P\iosChannel("Insert your iOS channel here!"))
     ->setNotification(P\notification("Hello from PHP"))
-    ->setDeviceTypes("ios")
+    ->setDeviceTypes(P\deviceTypes("ios"))
     ->send();
