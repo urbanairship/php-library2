@@ -156,6 +156,7 @@ class Airship
         if (!is_null($contentType)) {
             $headers["Content-type"] = $contentType;
         }
+        $headers["X-AIRSHIP-APPKEY"] = $this->key
 
         $logger = UALog::getLogger();
         $logger->debug("Making request", array(
