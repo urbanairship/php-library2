@@ -174,7 +174,7 @@ class Airship
             ->authenticateWith($this->key, $this->secret)
             ->body($body);
 
-        $userAgent = sprintf("%s/%s", "UAPHPLibrary", About::LIBRARY_VERSION);
+        $userAgent = sprintf("%s/%s %s", "UAPHPLibrary", About::LIBRARY_VERSION, $this->key);
         $headers[self::USER_AGENT_KEY] = $userAgent;
         $request->addHeaders($headers);
 
