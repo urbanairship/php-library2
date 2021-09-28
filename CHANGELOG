@@ -1,4 +1,9 @@
 --------------------
+0.4.2
+--------------------
+- Adds app key to the user agent string
+
+--------------------
 0.4.1
 --------------------
 - Monolog versions greater than 1 are now allowed

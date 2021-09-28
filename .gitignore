@@ -1,6 +1,7 @@
 # Removing entire .idea directory, and supporting files
 .idea/
 *.iml
+.vscode/
 
 docs/_build/
 data/
