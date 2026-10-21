@@ -3,12 +3,9 @@ Airship PHP Library
 
 This library is a PHP wrapper for the `Airship API`_.
 
-This library is DEPRECATED. Airship is no longer actively developing this
-library, but may respond to feature requests, issues, and pull requests
-that are submitted via https://support.airship.com. This library is provided
-as sample code, and Airship makes no guarantees as to completeness or
-regularity of updates. We will consider pull requests with a signed
-`contribution agreement <https://docs.google.com/forms/d/e/1FAIpQLScErfiz-fXSPpVZ9r8Di2Tr2xDFxt5MgzUel0__9vqUgvko7Q/viewform>`__.
+This library is deprecated. We no longer develop or update it. It
+provides sample code only, with no guarantees of completeness.
+We may respond to issues submitted to https://support.airship.com.
 
 Goals
 -----
