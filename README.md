@@ -4,16 +4,17 @@ Airship PHP Library
 PHP library for use with the Airship REST API for sending notifications.
 Supports iOS, Android, Amazon, and Windows.
 
-Airship is no longer actively developing this library, but will respond to
-feature requests, issues, and pull requests when they are submitted via
-https://support.airship.com. This library is provided as sample code, and
-Airship makes no guarantees as to completeness or regularity of updates.
-However, we do welcome pull requests with a signed `contribution agreement <https://docs.google.com/forms/d/e/1FAIpQLScErfiz-fXSPpVZ9r8Di2Tr2xDFxt5MgzUel0__9vqUgvko7Q/viewform>`__.
+This library is DEPRECATED. Airship is no longer actively developing this
+library, but may respond to feature requests, issues, and pull requests
+that are submitted via https://support.airship.com. This library is provided
+as sample code, and Airship makes no guarantees as to completeness or
+regularity of updates. We will consider pull requests with a signed
+`contribution agreement <https://docs.google.com/forms/d/e/1FAIpQLScErfiz-fXSPpVZ9r8Di2Tr2xDFxt5MgzUel0__9vqUgvko7Q/viewform>`__.
 
 Requirements
 ------------
 
-PHP >= 5.3
+PHP >= 5.3 (You are responsible for utilizing a safe, patched PHP version)
 
 **Dependencies**
 
